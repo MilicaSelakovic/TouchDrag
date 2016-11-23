@@ -3,6 +3,8 @@ package com.example.descretegeometrycalculations;
 import java.util.Vector;
 import android.graphics.Point;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
 
 /**
  * Created by milica on 19.11.16..
@@ -10,20 +12,17 @@ import android.support.annotation.NonNull;
 
 public class DescreteCurvature {
 
-    private Vector<Point> points;
 
-
-    public DescreteCurvature(Point beginPoint){
-        points.add(beginPoint);
+    public DescreteCurvature(){
     }
 
-
-    private void addPoint(Point point){
-        points.add(point);
-    }
-
-    private Double Curvature(){
+    public static double Curvature(Vector<Point> points){
         int len = points.size();
+
+        if(len < 5){
+            return -1.;
+        }
+
         if( len % 2 == 0){
             points.remove(0);
             len --;
@@ -38,10 +37,12 @@ public class DescreteCurvature {
             Point tmp = new Point(Q.x - P.x, Q.y - P.y);
             result = new Point(result.x + tmp.x, result.y + tmp.y);
 
-            intensity += tmp.x^2 + tmp.y^2;
+            intensity += tmp.x*tmp.x + tmp.y*tmp.y;
         }
-
-        return 2* Math.sqrt(result.x^2 + result.y^2)/intensity;
+    /*Debug*/
+        Log.d("Intezitet", Double.toString(intensity));
+        return 2* Math.sqrt(result.x*result.x + result.y*result.y)/intensity;
     }
+
 
 }

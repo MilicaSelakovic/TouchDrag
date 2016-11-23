@@ -1,5 +1,7 @@
 package com.example.milica.master;
 
+import android.graphics.Point;
+import android.util.Log;
 import android.view.View;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,8 +13,9 @@ import android.view.MotionEvent;
 
 import android.graphics.Color;
 
-
-
+import com.example.descretegeometrycalculations.DescreteCurvature;
+import android.graphics.Point;
+import java.util.Vector;
 /**
  * Created by milica on 19.11.16..
  */
@@ -30,9 +33,12 @@ public class DrawingView extends View {
     //canvas bitmap
     private Bitmap canvasBitmap;
 
+    private Vector<Point> points;
+
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
         setupDrawing();
+        points = new Vector<>();
     }
 
     private void setupDrawing(){
@@ -58,19 +64,27 @@ public class DrawingView extends View {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
 
+        double cur = DescreteCurvature.Curvature(points);
+
+        Log.d("krivina", Double.toString(cur));
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
         float touchY = event.getY();
-
+        Point touchPoint = new Point((int)touchX,(int)touchY);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 drawPath.moveTo(touchX, touchY);
+                //Log.d("novo", "OPET");
+                points.removeAllElements();
+                points.add(touchPoint);
                 break;
             case MotionEvent.ACTION_MOVE:
+                points.add(touchPoint);
                 drawPath.lineTo(touchX, touchY);
+
                 break;
             case MotionEvent.ACTION_UP:
                 //drawCanvas.drawPath(drawPath, drawPaint); ovo sluzi da ostavi nacrtano a to nam ne treba
@@ -84,7 +98,4 @@ public class DrawingView extends View {
         return  true;
     }
 
-    private void drawGeometry(Canvas canvas){
-
-    }
 }

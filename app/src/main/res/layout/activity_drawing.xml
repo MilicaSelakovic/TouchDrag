@@ -19,12 +19,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add"
-            android:id="@+id/imageButton" />
-
         <view
             android:layout_width="match_parent"
             android:layout_height="match_parent"
