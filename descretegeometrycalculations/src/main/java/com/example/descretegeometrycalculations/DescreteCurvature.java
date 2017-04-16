@@ -72,14 +72,15 @@ public class DescreteCurvature {
 
 */
     private static boolean checkCircle(double x0, double y0, double r, Vector<PointF> points){
-        Log.d("poluprecnik", Double.toString(r));
+      //  Log.d("poluprecnik", Double.toString(r));
         if( r < 0)
             return false;
 
         for (PointF p: points) {
             double d = ((p.x - x0)*(p.x - x0) + (p.y - y0)*(p.y - y0))/  r;
-            Log.d("odnos", Double.toString(d));
-            if (  d > 2  || d < 0.5) {
+           // Log.d("odnos", Double.toString(d));
+           // Log.d("r", Double.toString(r));
+            if ( d > 1.5  || d < 0.75 || r > 300000) {
                 return false;
             }
         }
@@ -120,7 +121,7 @@ public class DescreteCurvature {
         boolean isCrircle =  checkCircle(x0, y0, r, points);
 
         if(isCrircle){
-            return new Circle(points);
+            return new Circle(x0, y0, Math.sqrt(r));
         } else {
             return null;
         }
@@ -129,11 +130,14 @@ public class DescreteCurvature {
     private static Vector<Point> proredi(Vector<PointF> points){
         Vector<Point> newPoints = new Vector<>();
 
+        Vector<Point> oldPoints = new Vector<>();
+
         boolean ind = true;
 
         for(PointF point : points){
             Point P = new Point(point.x, point.y);
 
+            oldPoints.add(P);
             if(ind){
                 newPoints.add(P);
                 ind = false;
@@ -141,13 +145,17 @@ public class DescreteCurvature {
                 Point diff = new Point(P.x - newPoints.lastElement().x, P.y  - newPoints.lastElement().y);
                 double normdiff =  Math.sqrt(diff.dot(diff));
               //  Log.d("diff", Double.toString(normdiff));
-                if(normdiff> 30){
+                if(normdiff> 40){
                     newPoints.add(P);
                 }
 
             }
 
         }
+
+        if(newPoints.size() < 4)
+            return oldPoints;
+
         return  newPoints;
     }
 
@@ -172,13 +180,20 @@ public class DescreteCurvature {
 
         n = newPoints.size();
 
-//        Log.d("Nove tacke", Integer.toString(n) + " " + newPoints.toString());
+       //Log.d("Nove tacke", Integer.toString(n) + " " + newPoints.toString());
+
+        GeometricObject obj = circle(points);
+
+        if(obj != null){
+            return  obj;
+        }
 
         int lessThenPI = 0;
         boolean isLine = true;
 
         Vector<Point> breakPoints = new Vector<>();
 
+        breakPoints.add(newPoints.firstElement());
 
         for (int i = 1; i <  n - 1; i++){
 
@@ -197,12 +212,12 @@ public class DescreteCurvature {
             double normr = Math.sqrt(R.dot(R));
 
             double angle = Math.acos(dprod/(normp*normr));
-            //Log.d("ugao",  Double.toString(angle));
-
-            if(angle < 0.95*Math.PI && angle > 0){
+//            Log.d("ugao",  Double.toString(angle));
+//
+            if(angle < 0.90*Math.PI && angle > 0){
                 lessThenPI ++;
 
-                if(lessThenPI > 3) {
+                if(lessThenPI > 2) {
                     isLine = false;
                     break;
                 }
@@ -211,14 +226,21 @@ public class DescreteCurvature {
                     breakPoints.add(begin);
                     lessThenPI = 0;
                 }
+
             }
         }
 
+        breakPoints.add(newPoints.lastElement());
+
         if(isLine){
-            return new Line(points);
+            if(breakPoints.size() > 2){
+                return new Polygon(breakPoints);
+            } else if (breakPoints.size() == 2){
+                return new Line(breakPoints.firstElement(), breakPoints.lastElement());
+            }
         }
 
-        return circle(points);
+        return null;
 
       }
 
