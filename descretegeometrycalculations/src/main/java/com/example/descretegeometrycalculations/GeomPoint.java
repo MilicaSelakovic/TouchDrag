@@ -9,19 +9,35 @@ import android.graphics.PointF;
  */
 
 public class GeomPoint implements GeometricObject{
-    private PointF point;
+    private float x;
+    private float y;
 
-    public GeomPoint(PointF p){
-        point = p;
+    public GeomPoint(float x, float y){
+        this.x = x;
+        this.y = y;
     }
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
-        canvas.drawPoint(point.x, point.y, paint);
+        canvas.drawPoint(x, y, paint);
     }
 
     @Override
     public String toString() {
         return "Tacka";
+    }
+
+
+    public void connection(GeometricObject object){
+
+    }
+
+    public float X(){
+        return x;
+    }
+
+
+    public float Y(){
+        return y;
     }
 }

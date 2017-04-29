@@ -8,7 +8,9 @@ import android.graphics.Paint;
  */
 
 public interface GeometricObject {
-
+    public static final double EPISLON = 0.001;
     public abstract void draw (Canvas canvas, Paint paint);
+
+    public abstract void connection(GeometricObject object);
 
 }

@@ -16,9 +16,9 @@ import java.util.Vector;
 public class Polygon implements GeometricObject {
     Vector<Point> points;
 
-
     public Polygon(Vector<Point> points){
         this.points = new Vector<>(points);
+
     }
 
 
@@ -31,7 +31,7 @@ public class Polygon implements GeometricObject {
         for (Point p: points) {
             path.lineTo((float) p.x, (float) p.y);
         }
-
+        path.lineTo((float) points.firstElement().x, (float) points.firstElement().y);
         canvas.drawPath(path, paint);
     }
 
@@ -39,4 +39,33 @@ public class Polygon implements GeometricObject {
     public String toString() {
         return "Poligon " + Integer.toString(points.size());
     }
+
+
+    public void connection(GeometricObject object){
+
+    }
+
+    // veze sa segmentom pojedinacnim i to samo sa Linijama i tackama
+    // mogu tacke preskeka da se generisu ?
+
+    // trougao - krug
+    // upisan, opisan
+
+    // trougao - prava
+    // simentrala ugla
+    // simetrala stranice
+    // tezisna linija
+    // visina
+
+
+    // trougao tacka
+    // teme
+    // ortocentar
+    // teziste
+    // centri opisanog, upisanog kruga
+    // sredine stranica
+    //
+
+    // druge poligone zanemarujem sada
+
 }

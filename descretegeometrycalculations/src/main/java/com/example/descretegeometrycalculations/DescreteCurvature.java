@@ -167,7 +167,7 @@ public class DescreteCurvature {
             return null;
 
         if( n < 3){
-            return new GeomPoint(points.firstElement());
+            return new GeomPoint(points.firstElement().x,  points.firstElement().y);
         }
 
 //        PointF begin = points.get(0);
@@ -236,7 +236,8 @@ public class DescreteCurvature {
             if(breakPoints.size() > 2){
                 return new Polygon(breakPoints);
             } else if (breakPoints.size() == 2){
-                return new Line(breakPoints.firstElement(), breakPoints.lastElement());
+                return new Line(new GeomPoint((float) breakPoints.firstElement().x, (float) breakPoints.firstElement().y),
+                        new GeomPoint((float) breakPoints.lastElement().x,(float) breakPoints.lastElement().y));
             }
         }
 

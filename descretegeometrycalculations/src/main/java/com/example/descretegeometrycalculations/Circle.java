@@ -5,33 +5,60 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 
-import java.util.Vector;
+import java.util.Set;
 
 /**
  * Created by milica on 23.11.16..
  */
 
 public class Circle implements GeometricObject {
-    private double centerx;
-    private double centery;
+
+    private GeomPoint center;
     private double radius;
 
+    private Set<Line> tangentLines;
+
     public Circle(double x, double y, double r){
-        centerx = x;
-        centery = y;
+        center = new GeomPoint((float) x, (float)  y);
         radius = r;
+    }
+
+    public GeomPoint getCenter() {
+        return center;
     }
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
         paint.setColor(Color.BLUE);
-        canvas.drawCircle((float) centerx, (float) centery, (float) radius, paint);
+        center.draw(canvas, paint);
         paint.setColor(Color.YELLOW);
-        canvas.drawPoint((float) centerx, (float) centery, paint);
+        canvas.drawCircle(center.X(), center.Y(), (float) radius, paint);
     }
 
     @Override
     public String toString() {
         return "Krug  " + Double.toString(radius);
     }
+
+    public boolean pointBelong(GeomPoint point){
+        return Math.abs(point.X()*point.X() + point.Y()*point.Y() - radius*radius) <= EPISLON;
+    }
+
+    public void connection(GeometricObject object){
+
+    }
+
+    private void connectionLine(Line line){
+        // veze kruga i linije
+        if(ConnectionCalculations.tangentLine(this, line)){
+            tangentLines.add(line);
+        }
+
+    }
+
+
+    //TODO Veze
+
+    // tangenta
+    //
 }
