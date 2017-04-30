@@ -5,9 +5,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
 
+import org.opencv.core.Mat;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.Vector;
 
 /**
@@ -19,6 +25,7 @@ public class Line implements GeometricObject {
     private GeomPoint end;
 
     private GeomPoint vector; // normiran vektor pravca
+    private TreeSet<Line> parallel = new TreeSet<>();
 
     public Line(GeomPoint x, GeomPoint y){
         begin = x ;
@@ -29,10 +36,26 @@ public class Line implements GeometricObject {
         vector = new GeomPoint(vX / norm, vY/norm);
     }
 
+    private float yCoord(float x, float y){
+
+        if(Math.abs(end.X() - begin.X()) <= 10e-5){
+            return y;
+        }
+
+        return (end.Y() - begin.Y()) / (end.X() - begin.X()) * (x - begin.X()) + begin.Y();
+    }
+
    @Override
     public void draw(Canvas canvas, Paint paint) {
-       paint.setColor(Color.BLUE);
-        canvas.drawLine( begin.X(), begin.Y(), end.X(), end.Y(), paint);
+       float x1 = 0;
+       float x2  = canvas.getWidth();
+
+       if(Math.abs(end.X() - begin.X()) <= 10e-5){
+           x2 = begin.X();
+           x1 = x2;
+       }
+       int y = canvas.getHeight();
+       canvas.drawLine( x1, yCoord(x1, 0), x2, yCoord(x2, y), paint);
     }
 
     @Override
@@ -45,7 +68,8 @@ public class Line implements GeometricObject {
         return vector;
     }
 
-    public boolean belongTo(GeomPoint point){
+    public boolean contain
+            (GeomPoint point){
         return  Math.abs((point.Y() - begin.Y())*(end.X() - begin.X()) - (end.Y() - begin.Y())*(point.X() - begin.X())) < EPISLON;
     }
     public void connection(GeometricObject object){

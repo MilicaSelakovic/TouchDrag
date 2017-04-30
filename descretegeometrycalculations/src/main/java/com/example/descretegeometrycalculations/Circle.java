@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by milica on 23.11.16..
@@ -16,7 +17,7 @@ public class Circle implements GeometricObject {
     private GeomPoint center;
     private double radius;
 
-    private Set<Line> tangentLines;
+    private TreeSet<Line> tangentLines = new TreeSet<>();
 
     public Circle(double x, double y, double r){
         center = new GeomPoint((float) x, (float)  y);
@@ -29,9 +30,7 @@ public class Circle implements GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
-        paint.setColor(Color.BLUE);
         center.draw(canvas, paint);
-        paint.setColor(Color.YELLOW);
         canvas.drawCircle(center.X(), center.Y(), (float) radius, paint);
     }
 

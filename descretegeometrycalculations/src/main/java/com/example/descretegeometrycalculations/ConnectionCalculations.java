@@ -1,7 +1,5 @@
 package com.example.descretegeometrycalculations;
 
-import org.opencv.core.Point;
-
 /**
  * Created by milica on 29.4.17..
  */
@@ -68,7 +66,7 @@ public class ConnectionCalculations {
     public static boolean isSymetry(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je prava l simetrala ugla ABC
 
-        if(!l.belongTo(B))
+        if(!l.contain(B))
             return false;
         float andleA = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
         float angleB = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
@@ -83,29 +81,48 @@ public class ConnectionCalculations {
 
 
         GeomPoint center = new GeomPoint((A.X() + B.X())/2, (A.Y() + B.Y())/2);
-        return l.belongTo(center);
+        return l.contain(center);
 
     }
 
     public static boolean centroidLine(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je l tezisna linija koja prolazi kroz teme B
 
-        if(!l.belongTo(B)){
+        if(!l.contain(B)){
             return false;
         }
 
         GeomPoint center = new GeomPoint((A.X() + C.X())/2, (A.Y() + C.Y())/2);
-        return l.belongTo(center);
+        return l.contain(center);
     }
 
     public static boolean altitude(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je l visina iz tacke B (hb)
-        if(!l.belongTo(B)){
+        if(!l.contain(B)){
             return false;
         }
 
         return normalLine(l, new Line(A,C));
 
+    }
+
+    //
+
+    public static boolean segmentContains(GeomPoint A, GeomPoint B, GeomPoint C){
+        // proverava da li C pripada segmentu A B
+
+        Line ab = new Line(A, B);
+
+        if(!ab.contain(C)){
+            return false;
+        }
+
+        boolean xACB = A.X() <= C.X() && B.X() <= C.X();
+        boolean xBCA = A.X() >= C.X() && B.X() >= C.X();
+        boolean yACB = A.Y() <= C.Y() && B.Y() <= C.Y();
+        boolean yBCA = A.Y() <= C.Y() && B.Y() <= C.Y();
+
+        return (xACB || xBCA) && (yACB || yBCA);
     }
 
 

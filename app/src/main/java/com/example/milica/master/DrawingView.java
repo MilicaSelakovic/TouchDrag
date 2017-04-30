@@ -24,7 +24,7 @@ public class DrawingView extends View {
     //drawing path
     private Path drawPath;
     //drawing and canvas paint
-    private Paint drawPaint, canvasPaint, objectPaint;
+    private Paint drawPaint, canvasPaint, objectPaint, drawObject;
     //initial color
     private int paintColor = Color.parseColor("#808080");
     //canvas
@@ -54,14 +54,23 @@ public class DrawingView extends View {
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
 
+        drawObject = new Paint();
+        drawObject.setColor(Color.BLUE);
+        drawObject.setAntiAlias(true);
+        drawObject.setStrokeWidth(5);
+        drawObject.setStyle(Paint.Style.STROKE);
+        drawObject.setStrokeJoin(Paint.Join.ROUND);
+        drawObject.setStrokeCap(Paint.Cap.ROUND);
+        drawObject.setPathEffect(new DashPathEffect(new float[]{10, 10}, 0));
+
+
         objectPaint = new Paint();
         objectPaint.setColor(Color.BLACK);
         objectPaint.setAntiAlias(true);
-        objectPaint.setStrokeWidth(5);
+        objectPaint.setStrokeWidth(10);
         objectPaint.setStyle(Paint.Style.STROKE);
         objectPaint.setStrokeJoin(Paint.Join.ROUND);
         objectPaint.setStrokeCap(Paint.Cap.ROUND);
-        objectPaint.setPathEffect(new DashPathEffect(new float[]{10, 10}, 0));
     }
 
     @Override
@@ -78,7 +87,7 @@ public class DrawingView extends View {
         current = DescreteCurvature.getGeometricObject(points);
       if(current != null) {
 //            Log.d("Objekat", current.toString());
-           current.draw(canvas, objectPaint);
+           current.draw(canvas, drawObject);
         }
     }
 

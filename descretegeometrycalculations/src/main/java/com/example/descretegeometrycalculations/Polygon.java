@@ -24,7 +24,6 @@ public class Polygon implements GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
-        paint.setColor(Color.BLUE);
         Path path = new Path();
         path.moveTo((float) points.firstElement().x, (float) points.firstElement().y);
 
@@ -51,7 +50,7 @@ public class Polygon implements GeometricObject {
     // trougao - krug
     // upisan, opisan
 
-    // trougao - prava
+    // trougao - prava   done
     // simentrala ugla
     // simetrala stranice
     // tezisna linija
@@ -65,7 +64,5 @@ public class Polygon implements GeometricObject {
     // centri opisanog, upisanog kruga
     // sredine stranica
     //
-
-    // druge poligone zanemarujem sada
 
 }
