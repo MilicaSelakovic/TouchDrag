@@ -4,9 +4,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.util.Log;
 
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.Vector;
 
 /**
  * Created by milica on 23.11.16..
@@ -17,7 +19,7 @@ public class Circle implements GeometricObject {
     private GeomPoint center;
     private double radius;
 
-    private TreeSet<Line> tangentLines = new TreeSet<>();
+    private Vector<Line> tangentLines = new Vector<>();
 
     public Circle(double x, double y, double r){
         center = new GeomPoint((float) x, (float)  y);
@@ -26,6 +28,10 @@ public class Circle implements GeometricObject {
 
     public GeomPoint getCenter() {
         return center;
+    }
+
+    public double getRadius(){
+        return radius;
     }
 
     @Override
@@ -40,17 +46,25 @@ public class Circle implements GeometricObject {
     }
 
     public boolean pointBelong(GeomPoint point){
-        return Math.abs(point.X()*point.X() + point.Y()*point.Y() - radius*radius) <= EPISLON;
+        double x = point.X() - center.X();
+        double y = point.Y() - center.Y();
+        double d = Math.sqrt(x*x + y*y)- radius;
+        Log.d("Tacka", Double.toString(d));
+        return Math.abs(d) <= 10; // TODO promeniti ovu konstantu
     }
 
     public void connection(GeometricObject object){
-
+        if(object instanceof Line){
+            connectionLine((Line) object);
+            Log.d("Linija", "da");
+        }
     }
 
     private void connectionLine(Line line){
         // veze kruga i linije
         if(ConnectionCalculations.tangentLine(this, line)){
             tangentLines.add(line);
+            Log.d("Tangenta", "da");
         }
 
     }

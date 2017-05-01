@@ -23,6 +23,8 @@ import java.util.Vector;
 public class Line implements GeometricObject {
     private GeomPoint begin;
     private GeomPoint end;
+    private float k;
+    private float n;
 
     private GeomPoint vector; // normiran vektor pravca
     private TreeSet<Line> parallel = new TreeSet<>();
@@ -30,10 +32,11 @@ public class Line implements GeometricObject {
     public Line(GeomPoint x, GeomPoint y){
         begin = x ;
         end = y;
-        float vX = end.X() - begin.Y();
-        float vY = end.X() - begin.Y();
+        float vX = end.X() - begin.X();
+        float vY = end.Y() - begin.Y();
         float norm = (float) Math.sqrt(vX*vX + vY*vY);
         vector = new GeomPoint(vX / norm, vY/norm);
+
     }
 
     private float yCoord(float x, float y){
@@ -68,8 +71,17 @@ public class Line implements GeometricObject {
         return vector;
     }
 
-    public boolean contain
-            (GeomPoint point){
+    public double distance(GeomPoint point){
+        double n1 = end.Y() - begin.Y();
+        double n2 = begin.X() - end.X();
+        double n3 = -begin.Y()*n2 - begin.X()*n1;
+
+        double d = Math.abs(n1*point.X() + n2*point.Y() + n3);
+        double norm = Math.sqrt(n1*n1 + n2*n2);
+        return d/norm;
+    }
+
+    public boolean contain(GeomPoint point){
         return  Math.abs((point.Y() - begin.Y())*(end.X() - begin.X()) - (end.Y() - begin.Y())*(point.X() - begin.X())) < EPISLON;
     }
     public void connection(GeometricObject object){

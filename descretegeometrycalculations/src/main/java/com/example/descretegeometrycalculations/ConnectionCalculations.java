@@ -8,11 +8,11 @@ public class ConnectionCalculations {
 
 
 
-    private static float dotProduct(GeomPoint x, GeomPoint y){
+    public static float dotProduct(GeomPoint x, GeomPoint y){
         return x.X()*y.X() + x.Y()*y.Y();
     }
 
-    private static float crossProductNorm(GeomPoint point1, GeomPoint point2){
+    public static float crossProductNorm(GeomPoint point1, GeomPoint point2){
         return point1.X()*point2.Y() - point1.Y()*point2.X();
     }
 
@@ -22,7 +22,7 @@ public class ConnectionCalculations {
         float norm1 = (float) Math.sqrt(point1.X()*point1.X() + point1.Y()*point1.Y());
         float norm2 = (float) Math.sqrt(point2.X()*point2.X() + point2.Y()*point2.Y());
 
-        if(norm1 <= 0.00000001 || norm2 <= 0.00000000001){
+        if(norm1 <= 10e-5 || norm2 <= 10e-5){
             return 0;
         }
 
@@ -38,15 +38,9 @@ public class ConnectionCalculations {
     // Veze izmedju Kruga i Linije
     public static boolean tangentLine(Circle circle, Line line){
 
-        GeomPoint v = line.getVector();
-        GeomPoint center = circle.getCenter();
+        double dist = line.distance(circle.getCenter());
 
-        float dotVC = dotProduct(v, center);
-        float dotVV = dotProduct(v, v);
-
-        GeomPoint orthogonalProj = new GeomPoint(dotVC*v.X()/dotVV, dotVC*v.Y()/dotVV);
-
-        return circle.pointBelong(orthogonalProj);
+        return Math.abs(dist-circle.getRadius()) < 10; // TODO promeni konstantu
     }
 
     // Veze izmedju dve Linije
