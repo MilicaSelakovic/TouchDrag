@@ -9,13 +9,10 @@ import org.opencv.core.Point;
 
 import java.util.Vector;
 
-//import android.support.annotation.Nullable;
+public class DiscreteCurvature {
 
 
-public class DescreteCurvature {
-
-
-    public DescreteCurvature() {
+    public DiscreteCurvature() {
     }
 
 
@@ -69,15 +66,13 @@ public class DescreteCurvature {
         }
 
     */
+
     private static boolean checkCircle(double x0, double y0, double r, Vector<PointF> points) {
-        //  Log.d("poluprecnik", Double.toString(r));
         if (r < 0)
             return false;
 
         for (PointF p : points) {
             double d = ((p.x - x0) * (p.x - x0) + (p.y - y0) * (p.y - y0)) / r;
-            // Log.d("odnos", Double.toString(d));
-            // Log.d("r", Double.toString(r));
             if (d > 1.5 || d < 0.75 || r > 300000) {
                 return false;
             }
@@ -86,6 +81,12 @@ public class DescreteCurvature {
         return true;
     }
 
+    /*
+    * Checks if points representing circle
+    * using least square method
+    *
+    *
+    * */
     private static GeometricObject circle(Vector<PointF> points) {
 
         int n = points.size();
@@ -96,7 +97,7 @@ public class DescreteCurvature {
             PointF p = points.elementAt(i);
             A.put(i, 0, 2 * p.x);
             A.put(i, 1, 2 * p.y);
-            //A.put(i, 2, 1);
+
             b.put(i, 0, p.x * p.x + p.y * p.y);
         }
 
@@ -116,9 +117,9 @@ public class DescreteCurvature {
 
         double r = c + x0 * x0 + y0 * y0;
 
-        boolean isCrircle = checkCircle(x0, y0, r, points);
+        boolean isCircle = checkCircle(x0, y0, r, points);
 
-        if (isCrircle) {
+        if (isCircle) {
             return new Circle(x0, y0, Math.sqrt(r));
         } else {
             return null;
@@ -142,7 +143,6 @@ public class DescreteCurvature {
             } else {
                 Point diff = new Point(P.x - newPoints.lastElement().x, P.y - newPoints.lastElement().y);
                 double normdiff = Math.sqrt(diff.dot(diff));
-                //  Log.d("diff", Double.toString(normdiff));
                 if (normdiff > 40) {
                     newPoints.add(P);
                 }
@@ -168,17 +168,9 @@ public class DescreteCurvature {
             return new GeomPoint(points.firstElement().x, points.firstElement().y);
         }
 
-//        PointF begin = points.get(0);
-//        PointF end = points.get(n-1);
-
-
-//        Log.d("tacke", Integer.toString(n) + " " + points.toString());
-
         Vector<Point> newPoints = proredi(points);
 
         n = newPoints.size();
-
-        //Log.d("Nove tacke", Integer.toString(n) + " " + newPoints.toString());
 
         GeometricObject obj = circle(points);
 
@@ -210,8 +202,7 @@ public class DescreteCurvature {
             double normr = Math.sqrt(R.dot(R));
 
             double angle = Math.acos(dprod / (normp * normr));
-//            Log.d("ugao",  Double.toString(angle));
-//
+
             //TODO nastelovati ovaj ugao
             if (angle < 0.8 * Math.PI && angle > 0) {
                 lessThenPI++;
@@ -233,6 +224,9 @@ public class DescreteCurvature {
 
         if (isLine) {
             if (breakPoints.size() > 2) {
+                if (breakPoints.size() == 3) {
+                    return new Triangle(breakPoints);
+                }
                 return new Polygon(breakPoints);
             } else if (breakPoints.size() == 2) {
                 return new Line(breakPoints.firstElement(), breakPoints.lastElement());

@@ -4,9 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-/**
- * Created by milica on 27.11.16..
- */
 
 public class GeomPoint implements GeometricObject {
     private float x;
@@ -26,7 +23,7 @@ public class GeomPoint implements GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {
-        canvas.drawCircle(x, y, 15f, circlePaint);
+        canvas.drawCircle(x, y, 10f, circlePaint);
     }
 
     @Override

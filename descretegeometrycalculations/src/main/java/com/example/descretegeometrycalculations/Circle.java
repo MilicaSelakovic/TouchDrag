@@ -2,13 +2,8 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.util.Log;
 
 import java.util.Vector;
-
-/**
- * Created by milica on 23.11.16..
- */
 
 public class Circle implements GeometricObject {
 
@@ -46,29 +41,30 @@ public class Circle implements GeometricObject {
         double x = point.X() - center.X();
         double y = point.Y() - center.Y();
         double d = Math.sqrt(x * x + y * y) - radius;
-        Log.d("Tacka", Double.toString(d));
-        return Math.abs(d) <= 10; // TODO promeniti ovu konstantu
+        return Math.abs(d) <= EPISLON; // TODO promeniti ovu konstantu
     }
 
     public void connection(GeometricObject object) {
         if (object instanceof Line) {
             connectionLine((Line) object);
-            Log.d("Linija", "da");
         }
+
+        if(object instanceof GeomPoint){
+            if(pointBelong((GeomPoint) object)){
+                // TODO sta sa tackom
+            }
+        }
+
     }
 
     private void connectionLine(Line line) {
-        // veze kruga i linije
+
         if (ConnectionCalculations.tangentLine(this, line)) {
             tangentLines.add(line);
-            Log.d("Tangenta", "da");
+//            Log.d("Tangenta", "da");
         }
 
     }
 
 
-    //TODO Veze
-
-    // tangenta
-    //
 }

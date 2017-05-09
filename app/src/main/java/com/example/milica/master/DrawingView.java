@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 
 import android.graphics.Color;
 
-import com.example.descretegeometrycalculations.DescreteCurvature;
+import com.example.descretegeometrycalculations.DiscreteCurvature;
 import com.example.descretegeometrycalculations.GeometricObject;
 
 import java.util.Vector;
@@ -36,9 +36,12 @@ public class DrawingView extends View {
     private Vector<GeometricObject> geometricObjects;
     private GeometricObject current;
 
+    boolean actionDown;
+
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
         setupDrawing();
+        actionDown = false;
         points = new Vector<>();
         geometricObjects = new Vector<>();
     }
@@ -84,9 +87,8 @@ public class DrawingView extends View {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
 
-        current = DescreteCurvature.getGeometricObject(points);
-      if(current != null) {
-//            Log.d("Objekat", current.toString());
+        current = DiscreteCurvature.getGeometricObject(points);
+      if(current != null && actionDown) {
            current.draw(canvas, drawObject, false);
         }
     }
@@ -100,9 +102,9 @@ public class DrawingView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 drawPath.moveTo(touchX, touchY);
- //               Log.d("novo", "OPET");
                 points.removeAllElements();
                 points.add(touchPoint);
+                actionDown = true;
                 break;
             case MotionEvent.ACTION_MOVE:
                 points.add(touchPoint);
@@ -110,9 +112,8 @@ public class DrawingView extends View {
 
                 break;
             case MotionEvent.ACTION_UP:
-//                drawCanvas.restore();
+                actionDown = false;
                 if(current != null) {
-//                    Log.d("sta je", current.toString());
                     geometricObjects.add(current);
                     for(GeometricObject object : geometricObjects){
                         object.connection(current);
