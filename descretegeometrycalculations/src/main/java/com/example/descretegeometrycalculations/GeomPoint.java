@@ -1,25 +1,32 @@
 package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PointF;
 
 /**
  * Created by milica on 27.11.16..
  */
 
-public class GeomPoint implements GeometricObject{
+public class GeomPoint implements GeometricObject {
     private float x;
     private float y;
+    private Paint circlePaint;
 
-    public GeomPoint(float x, float y){
+    public GeomPoint(float x, float y) {
         this.x = x;
         this.y = y;
+
+        circlePaint = new Paint();
+        circlePaint.setColor(Color.BLUE);
+        circlePaint.setAntiAlias(true);
+        circlePaint.setStyle(Paint.Style.FILL);
+
     }
 
     @Override
-    public void draw(Canvas canvas, Paint paint) {
-        canvas.drawPoint(x, y, paint);
+    public void draw(Canvas canvas, Paint paint, boolean finished) {
+        canvas.drawCircle(x, y, 15f, circlePaint);
     }
 
     @Override
@@ -28,16 +35,16 @@ public class GeomPoint implements GeometricObject{
     }
 
 
-    public void connection(GeometricObject object){
+    public void connection(GeometricObject object) {
 
     }
 
-    public float X(){
+    public float X() {
         return x;
     }
 
 
-    public float Y(){
+    public float Y() {
         return y;
     }
 }

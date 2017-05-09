@@ -1,5 +1,7 @@
 package com.example.descretegeometrycalculations;
 
+import android.util.Log;
+
 /**
  * Created by milica on 29.4.17..
  */
@@ -60,12 +62,14 @@ public class ConnectionCalculations {
     public static boolean isSymetry(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je prava l simetrala ugla ABC
 
-        if(!l.contain(B))
+        if(!l.contain(B)) {
+//            Log.d("Simetrala", "ne sadrzi srednju tacku");
             return false;
-        float andleA = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
+        }
+        float angleA = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
         float angleB = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
 
-        return Math.abs(andleA-angleB) <= GeometricObject.EPISLON;
+        return Math.abs(angleA-angleB) <= GeometricObject.EPISLON;
     }
 
     public static boolean isSegmentCentar(GeomPoint A, GeomPoint B, Line l){

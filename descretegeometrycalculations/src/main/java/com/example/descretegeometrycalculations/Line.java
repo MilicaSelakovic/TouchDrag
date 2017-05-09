@@ -2,19 +2,10 @@ package com.example.descretegeometrycalculations;
 
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
 
 
-import org.opencv.core.Mat;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
 import java.util.TreeSet;
-import java.util.Vector;
 
 /**
  * Created by milica on 23.11.16..
@@ -49,7 +40,7 @@ public class Line implements GeometricObject {
     }
 
    @Override
-    public void draw(Canvas canvas, Paint paint) {
+    public void draw(Canvas canvas, Paint paint, boolean finished) {
        float x1 = 0;
        float x2  = canvas.getWidth();
 
@@ -82,10 +73,32 @@ public class Line implements GeometricObject {
     }
 
     public boolean contain(GeomPoint point){
-        return  Math.abs((point.Y() - begin.Y())*(end.X() - begin.X()) - (end.Y() - begin.Y())*(point.X() - begin.X())) < EPISLON;
+        double n1 = end.Y() - begin.Y();
+        double n2 = begin.X() - end.X();
+        double n3 = -begin.Y()*n2 - begin.X()*n1;
+
+        double d = Math.abs(n1*point.X() + n2*point.Y() + n3)/Math.sqrt(n1*n1 + n2*n2);
+        return  d < EPISLON;
     }
     public void connection(GeometricObject object){
+        if(object instanceof Line){
+            connectionLine((Line) object);
+        }
 
+        if(object instanceof GeomPoint){
+            if(contain((GeomPoint) object)){
+//                Log.d("Tacka", "pripada");
+            }
+        }
+    }
+
+    public void connectionLine(Line line){
+        if(ConnectionCalculations.normalLine(this, line)){
+//            Log.d("linija", "normala");
+        }
+        if(ConnectionCalculations.parallelLine(this, line)){
+//            Log.d("Linija", "paralela");
+        }
     }
 
     //TODO Veze sa linijom
