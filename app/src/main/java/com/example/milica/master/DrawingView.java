@@ -57,7 +57,7 @@ public class DrawingView extends View {
         drawObject = new Paint();
         drawObject.setColor(Color.BLUE);
         drawObject.setAntiAlias(true);
-        drawObject.setStrokeWidth(5);
+        drawObject.setStrokeWidth(3);
         drawObject.setStyle(Paint.Style.STROKE);
         drawObject.setStrokeJoin(Paint.Join.ROUND);
         drawObject.setStrokeCap(Paint.Cap.ROUND);
@@ -65,9 +65,9 @@ public class DrawingView extends View {
 
 
         objectPaint = new Paint();
-        objectPaint.setColor(Color.BLACK);
+        objectPaint.setColor(Color.parseColor("#483D8B"));
         objectPaint.setAntiAlias(true);
-        objectPaint.setStrokeWidth(10);
+        objectPaint.setStrokeWidth(4);
         objectPaint.setStyle(Paint.Style.STROKE);
         objectPaint.setStrokeJoin(Paint.Join.ROUND);
         objectPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -87,7 +87,7 @@ public class DrawingView extends View {
         current = DescreteCurvature.getGeometricObject(points);
       if(current != null) {
 //            Log.d("Objekat", current.toString());
-           current.draw(canvas, drawObject);
+           current.draw(canvas, drawObject, false);
         }
     }
 
@@ -114,10 +114,13 @@ public class DrawingView extends View {
                 if(current != null) {
 //                    Log.d("sta je", current.toString());
                     geometricObjects.add(current);
+                    for(GeometricObject object : geometricObjects){
+                        object.connection(current);
+                    }
                     current = null;
                 }
                 for(GeometricObject object : geometricObjects){
-                    object.draw(drawCanvas, objectPaint);
+                    object.draw(drawCanvas, objectPaint, true);
                 }
                 drawPath.reset();
                 break;
