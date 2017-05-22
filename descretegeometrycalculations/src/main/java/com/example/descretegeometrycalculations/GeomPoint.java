@@ -6,6 +6,7 @@ import android.graphics.Paint;
 
 
 public class GeomPoint implements GeometricObject {
+
     private float x;
     private float y;
     private Paint circlePaint;
@@ -44,4 +45,23 @@ public class GeomPoint implements GeometricObject {
     public float Y() {
         return y;
     }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public boolean equal(GeomPoint Y){
+        // TODO epsilon
+        double epsilon = 1e-3;
+        if( Math.abs(x - Y.X()) < epsilon && Math.abs(y-Y.Y()) <epsilon){
+            return true;
+        }
+
+        return false;
+    }
+
 }

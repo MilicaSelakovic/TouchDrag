@@ -17,6 +17,11 @@ public class Circle implements GeometricObject {
         radius = r;
     }
 
+    public Circle(GeomPoint X, double r){
+        this.center = X;
+        this.radius = r;
+    }
+
     public GeomPoint getCenter() {
         return center;
     }

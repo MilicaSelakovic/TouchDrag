@@ -12,10 +12,9 @@ import java.util.TreeSet;
  */
 
 public class Line implements GeometricObject {
+
     private GeomPoint begin;
     private GeomPoint end;
-    private float k;
-    private float n;
 
     private GeomPoint vector; // normiran vektor pravca
     private TreeSet<Line> parallel = new TreeSet<>();
@@ -38,6 +37,7 @@ public class Line implements GeometricObject {
 
         return (end.Y() - begin.Y()) / (end.X() - begin.X()) * (x - begin.X()) + begin.Y();
     }
+
 
    @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {
@@ -62,6 +62,22 @@ public class Line implements GeometricObject {
         return vector;
     }
 
+    public GeomPoint getBegin() {
+        return begin;
+    }
+
+    public void setBegin(GeomPoint begin) {
+        this.begin = begin;
+    }
+
+    public GeomPoint getEnd() {
+        return end;
+    }
+
+    public void setEnd(GeomPoint end) {
+        this.end = end;
+    }
+
     public double distance(GeomPoint point){
         double n1 = end.Y() - begin.Y();
         double n2 = begin.X() - end.X();
@@ -70,6 +86,18 @@ public class Line implements GeometricObject {
         double d = Math.abs(n1*point.X() + n2*point.Y() + n3);
         double norm = Math.sqrt(n1*n1 + n2*n2);
         return d/norm;
+    }
+
+    public float ACoef(){
+        return end.Y() - begin.Y();
+    }
+
+    public float BCoef(){
+        return -end.X() + begin.X();
+    }
+
+    public float CCoef(){
+        return ACoef()*begin.X() + BCoef()*begin.Y();
     }
 
     public boolean contain(GeomPoint point){
