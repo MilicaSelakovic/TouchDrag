@@ -38,40 +38,12 @@ public class Polygon implements GeometricObject {
     }
 
 
-    public void connection(GeometricObject object){
-
-        if(points.size() == 3){
-            if(object instanceof Line){
-                if(angleSymetry((Line) object)){
-                    Log.d("Simetrala", "ugla");
-                }
-            }
-        }
-
-    }
-
-    private boolean trianglePoint(GeomPoint point){
-        for(GeomPoint p : points){
-            double d = Math.sqrt(Math.pow(point.X() - p.X(), 2) + Math.pow(point.Y() - p.Y(), 2));
-            if(d < EPISLON){
-                return true;
-            }
-        }
+    public boolean connection(GeometricObject object){
 
         return false;
+
     }
 
-    private boolean angleSymetry(Line line){
-        int n = points.size();
-
-        for(int i = 0; i < n; i++){
-            if(ConnectionCalculations.isSymetry(points.elementAt(i), points.elementAt((i+1)%n), points.elementAt((i+2)%n), line)){
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     // veze sa segmentom pojedinacnim i to samo sa Linijama i tackama
     // mogu tacke preskeka da se generisu ?

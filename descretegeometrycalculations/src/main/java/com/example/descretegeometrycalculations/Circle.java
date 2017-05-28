@@ -49,7 +49,7 @@ public class Circle implements GeometricObject {
         return Math.abs(d) <= EPISLON; // TODO promeniti ovu konstantu
     }
 
-    public void connection(GeometricObject object) {
+    public boolean connection(GeometricObject object) {
         if (object instanceof Line) {
             connectionLine((Line) object);
         }
@@ -59,6 +59,8 @@ public class Circle implements GeometricObject {
                 // TODO sta sa tackom
             }
         }
+
+        return false;
 
     }
 

@@ -53,13 +53,15 @@ public class ConnectionCalculations {
 
     public static boolean normalLine(Line l1, Line l2){
         float dot = dotProduct(l1.getVector(), l2.getVector());
-        return Math.abs(dot) <= GeometricObject.EPISLON;
+        // ovi vektori su normirani, pa dot ne moze biti veci od 1
+        // TODO konstanta
+        return Math.abs(dot) <= 0.1;
     }
 
 
     // Veze izmedju trougla i linije
 
-    public static boolean isSymetry(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
+    public static boolean isBisector(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je prava l simetrala ugla ABC
 
         if(!l.contain(B)) {
@@ -67,9 +69,10 @@ public class ConnectionCalculations {
             return false;
         }
         float angleA = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
-        float angleB = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
-
-        return Math.abs(angleA-angleB) <= GeometricObject.EPISLON;
+        float angleB = angle(l.getVector(), new GeomPoint(B.X()-C.X(), B.Y()-C.Y()));
+        // TODO konstanta
+        // ugao je u radijanima
+        return Math.abs(angleA-angleB) <= 0.1;
     }
 
     public static boolean isSegmentCentar(GeomPoint A, GeomPoint B, Line l){

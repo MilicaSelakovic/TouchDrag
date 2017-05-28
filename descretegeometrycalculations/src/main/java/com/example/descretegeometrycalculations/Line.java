@@ -108,7 +108,7 @@ public class Line implements GeometricObject {
         double d = Math.abs(n1*point.X() + n2*point.Y() + n3)/Math.sqrt(n1*n1 + n2*n2);
         return  d < EPISLON;
     }
-    public void connection(GeometricObject object){
+    public boolean connection(GeometricObject object){
         if(object instanceof Line){
             connectionLine((Line) object);
         }
@@ -118,6 +118,8 @@ public class Line implements GeometricObject {
 //                Log.d("Tacka", "pripada");
             }
         }
+
+        return false;
     }
 
     public void connectionLine(Line line){

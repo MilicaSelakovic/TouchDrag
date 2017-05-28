@@ -114,9 +114,15 @@ public class DrawingView extends View {
             case MotionEvent.ACTION_UP:
                 actionDown = false;
                 if(current != null) {
-                    geometricObjects.add(current);
+                    boolean ind = true;
                     for(GeometricObject object : geometricObjects){
-                        object.connection(current);
+                        if(object.connection(current)){
+                            ind = false;
+                            break;
+                        }
+                    }
+                    if(ind){
+                        geometricObjects.add(current);
                     }
                     current = null;
                 }

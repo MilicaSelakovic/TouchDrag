@@ -33,8 +33,8 @@ public class GeomPoint implements GeometricObject {
     }
 
 
-    public void connection(GeometricObject object) {
-
+    public boolean connection(GeometricObject object) {
+        return false;
     }
 
     public float X() {
@@ -64,4 +64,7 @@ public class GeomPoint implements GeometricObject {
         return false;
     }
 
+    public double distance(GeomPoint X){
+        return Math.sqrt((x-X.X())*(x-X.X()) + (y-X.Y())*(y-X.Y()));
+    }
 }

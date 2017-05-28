@@ -111,7 +111,7 @@ public class GeometricConstructions {
     k(X, Y ) са центром у тачки X коjи садржи тачку Y ; услов недегенериса-
     ности jе да су тачке X и Y различите; */
 
-    private static Circle w06(GeomPoint X, GeomPoint Y){
+    public static Circle w06(GeomPoint X, GeomPoint Y){
         double r = Math.sqrt(Math.pow(X.X() - Y.X(), 2) + Math.pow(X.Y() - Y.Y(), 2));
 
         return new Circle(X, r);
@@ -121,13 +121,72 @@ public class GeometricConstructions {
             тачке; услов недегенерисаности jе да се кругови секу, а услов одређености
     да су кругови различити;
     */
-    //TODO napisati presek dva kruga
 
+    public static int w07(Circle c1, Circle c2, GeomPoint S1, GeomPoint S2){
+        double d = c1.getCenter().distance(c2.getCenter());
+        double r1 = c1.getRadius();
+        double r2 = c2.getRadius();
+
+        if(d + 0.001 > r1 + r1 ){
+            return 0;
+        }
+
+        // TODO konstanta
+        if (Math.abs(r1+r2-d) < 0.001){
+            GeomPoint P = w01(c1.getCenter(), c1.getCenter(), c2.getCenter(), (float)(r1/r2));
+            S1.setX(P.X());
+            S2.setY(P.Y());
+
+            return 1;
+        }
+
+        // Tacka P je presek S1S2 sa C1C2
+        // x je |PC2|
+
+        double x = (d*d + r2*r2 - r1*r1)/(2*d);
+
+        // a = |PS1| = |PS2|
+        GeomPoint P = w01(c2.getCenter(), c2.getCenter(), c1.getCenter(), (float)(x/d));
+
+        // vektor pravca normale na C1C2
+        GeomPoint s = new GeomPoint(-(c2.getCenter().Y() - c1.getCenter().Y()), c2.getCenter().X() - c1.getCenter().X());
+
+        float a = (float)Math.sqrt(r2*r2 - x*x);
+
+        S1.setX(P.X() + a*s.X());
+        S1.setY(P.Y() + a*s.Y());
+
+        S2.setX(P.X() - a*s.X());
+        S2.setY(P.Y() - a*s.Y());
+
+        return 2;
+
+    }
     /*
     W08 Ако су датa два круга и jедна њихова заjедничка тачка, могуће jе кон-
     струисати њихову другу заjедничку тачку; услов недегенерисаности jе да
     се кругови секу, а услов одређености да су кругови различити;
     */
+
+    public static GeomPoint w08(Circle c1, Circle c2, GeomPoint P){
+        GeomPoint S1 = new GeomPoint(0,0);
+        GeomPoint S2 = new GeomPoint(0,0);
+
+        int i = w07(c1, c2, S1, S2);
+
+        if(i !=  2){
+            // Ovo ne bi trebalo da se desi
+            return null;
+        }
+
+        if(S1.equal(P)){
+            return S2;
+        }
+
+        return S1;
+    }
+
+
 
     /*
     W09 Ако су дате тачке X и Y могуће jе конструисати круг са пречником XY ;
@@ -167,19 +226,49 @@ public class GeometricConstructions {
     тангенте из тачке X на круг k; услов недегенерисаности jе да jе тачка X
     ван круга k; */
 
+    public static void w12(Circle k, GeomPoint X, Line t1, Line t2){
+        double d = k.getCenter().distance(X);
+        GeomPoint T1 = new GeomPoint(0,0);
+        GeomPoint T2 = new GeomPoint(0,0);
+
+        double a = Math.sqrt(d*d - Math.pow(k.getRadius(),2));
+
+        w07(k, new Circle(X, a), T1, T2);
+
+        t1.setBegin(X);
+        t2.setEnd(T1);
+
+        t2.setBegin(X);
+        t2.setEnd(T2);
+    }
 
     /*
     W13 Ако су дати круг k, тачка X ван круга k и jедна тангента из тачке X
     на круг k, могуће jе конструисати другу тангенту из тачке X на круг k;
     услов недегенерисаности jе да jе тачка X ван круга k;*/
 
+    public static Line w13(Circle k, GeomPoint X, Line t){
+        Line t1 = new Line(X, new GeomPoint(0,0));
+        Line t2 = new Line(X, new GeomPoint(0,0));
+
+        w12(k, X, t1, t2);
+
+        if(t1.getEnd().equal(t.getEnd())){
+            return t2;
+        }
+
+        return t1;
+    }
+
     /*
     W14 Ако су дате тачке X и Y могуће jе конструисати медиjатрису дужи XY ;
     услов одређености jе да су тачке X и Y различите;
     */
 
-    public static GeomPoint w14(GeomPoint X, GeomPoint Y){
-        return new GeomPoint((X.X() + Y.X())/2, (X.Y() + Y.Y()) /2);
+    public static Line w14(GeomPoint X, GeomPoint Y){
+        GeomPoint A = new GeomPoint((X.X() + Y.X())/2, (X.Y() + Y.Y()) /2);
+        GeomPoint v= new GeomPoint( - (X.Y() - Y.Y()), X.X() - Y.X());
+        return new Line(A, new GeomPoint(A.X() + v.X(), A.Y() + v.Y()));
     }
 
     /*
@@ -187,6 +276,13 @@ public class GeometricConstructions {
     сати праву коjа jе слика праве p при хомотетиjи у односу на тачку X са
     коефициjентом r; */
 
+
+    public static Line w15(GeomPoint X, Line p, float r){
+        GeomPoint begin = w01(X,X, p.getBegin(), r);
+        GeomPoint end = w01(X, X, p.getEnd(), r);
+
+        return new Line(begin, end);
+    }
 
     /*
     W16 Ако су дати тачка X и права p могуће jе конструисати праву коjа садржи
@@ -218,4 +314,15 @@ public class GeometricConstructions {
     у тачки X коjи изнутра додируjе круг k1; услов недегенерисаности jе да
     je тачка X унутар круга k1 и да тачка X ниjе центар круга k1;
     */
+
+
+    /*Simetrala ugla*/
+
+    public static Line bisectorAngle(GeomPoint A, GeomPoint B, GeomPoint C){
+        GeomPoint B1 = w01(B, B, C, (float) (B.distance(A)/B.distance(C)));
+        GeomPoint S = w01(A, A, B1, 1f/2);
+
+        return new Line(B, S);
+        
+    }
 }
