@@ -2,8 +2,6 @@ package com.example.milica.master;
 
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
-//import android.util.Log;
-import android.util.Log;
 import android.view.View;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -28,8 +26,7 @@ public class DrawingView extends View {
     private Paint drawPaint, canvasPaint, objectPaint, drawObject;
     //initial color
     private int paintColor = Color.parseColor("#808080");
-    //canvas
-    private Canvas drawCanvas;
+
     //canvas bitmap
     private Bitmap canvasBitmap;
 
@@ -39,10 +36,13 @@ public class DrawingView extends View {
 
     boolean actionDown;
 
+    boolean moveMode;
+
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
         setupDrawing();
         actionDown = false;
+        moveMode  = false;
         points = new Vector<>();
         geometricObjects = new Vector<>();
     }
@@ -80,20 +80,20 @@ public class DrawingView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        drawCanvas = new Canvas(canvasBitmap);
-//        drawCanvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
-
-        if(actionDown){
-            canvas.drawPath(drawPath, drawPaint);
-        }
-        current = DiscreteCurvature.getGeometricObject(points);
-        if(current != null && actionDown) {
-            current.draw(canvas, drawObject, false);
+        if(!moveMode) {
+            if (actionDown) {
+                canvas.drawPath(drawPath, drawPaint);
+            }
+            current = DiscreteCurvature.getGeometricObject(points);
+            if (current != null && actionDown) {
+                current.draw(canvas, drawObject, false);
+            }
         }
 
         for(GeometricObject object : geometricObjects){
@@ -106,48 +106,70 @@ public class DrawingView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
         float touchY = event.getY();
-        PointF touchPoint = new PointF((int)touchX,(int)touchY);
+        PointF touchPoint = new PointF(touchX,touchY);
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                drawPath.moveTo(touchX, touchY);
-                points.removeAllElements();
-                points.add(touchPoint);
-                actionDown = true;
-                break;
-            case MotionEvent.ACTION_MOVE:
-                points.add(touchPoint);
-                drawPath.lineTo(touchX, touchY);
-
-                break;
-            case MotionEvent.ACTION_UP:
-                actionDown = false;
-                if(current != null) {
-                    boolean ind = true;
+                if(moveMode){
                     for(GeometricObject object : geometricObjects){
-                        if(object.connection(current)){
-                            ind = false;
+                        if(object.isUnderCursor(touchX, touchY)){
+                            current = object;
                             break;
                         }
                     }
-                    if(ind){
-                        geometricObjects.add(current);
-                    }
-                    current = null;
+                } else {
+                    drawPath.moveTo(touchX, touchY);
+                    points.removeAllElements();
+                    points.add(touchPoint);
+                    actionDown = true;
+                    invalidate();
                 }
-                drawPath.reset();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if(moveMode){
+                    if(current != null)
+                        current.translate(touchX, touchY);
+                }else {
+                    points.add(touchPoint);
+                    drawPath.lineTo(touchX, touchY);
+                }
+                invalidate();
+                break;
 
+            case MotionEvent.ACTION_UP:
+                if(moveMode){
+                    if(current != null)
+                        current.translate(touchX, touchY);
+                    current = null;
+                }else {
+                    actionDown = false;
+                    if (current != null) {
+                        boolean ind = true;
+                        for (GeometricObject object : geometricObjects) {
+                            if (object.connection(current)) {
+                                ind = false;
+                                break;
+                            }
+                        }
+                        if (ind) {
+                            geometricObjects.add(current);
+                        }
+                        current = null;
+                    }
+                    drawPath.reset();
+                }
+                invalidate();
                 break;
             default:
                 return false;
         }
 
-        invalidate();
+
         return  true;
     }
 
     public void setMoving(boolean value){
-        Log.d("Desava ", Boolean.toString(value));
+        moveMode = value;
     }
 
 }

@@ -2,19 +2,15 @@ package com.example.descretegeometrycalculations;
 
 import android.util.Log;
 
-/**
- * Created by milica on 29.4.17..
- */
-
-public class ConnectionCalculations {
+class ConnectionCalculations {
 
 
 
-    public static float dotProduct(GeomPoint x, GeomPoint y){
+    static float dotProduct(GeomPoint x, GeomPoint y){
         return x.X()*y.X() + x.Y()*y.Y();
     }
 
-    public static float crossProductNorm(GeomPoint point1, GeomPoint point2){
+    private static float crossProductNorm(GeomPoint point1, GeomPoint point2){
         return point1.X()*point2.Y() - point1.Y()*point2.X();
     }
 
@@ -38,7 +34,7 @@ public class ConnectionCalculations {
     }
 
     // Veze izmedju Kruga i Linije
-    public static boolean tangentLine(Circle circle, Line line){
+    static boolean tangentLine(Circle circle, Line line){
 
         double dist = line.distance(circle.getCenter());
 
@@ -61,7 +57,7 @@ public class ConnectionCalculations {
 
     // Veze izmedju trougla i linije
 
-    public static boolean isBisector(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
+    static boolean isBisector(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je prava l simetrala ugla ABC
 
         if(!l.contain(B)) {
@@ -75,7 +71,7 @@ public class ConnectionCalculations {
         return Math.abs(angleA-angleB) <= 0.1;
     }
 
-    public static boolean isSegmentCentar(GeomPoint A, GeomPoint B, Line l){
+    static boolean isSegmentCentar(GeomPoint A, GeomPoint B, Line l){
         if(!normalLine(new Line(A, B), l)){
             return false;
         }
@@ -86,7 +82,7 @@ public class ConnectionCalculations {
 
     }
 
-    public static boolean centroidLine(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
+    static boolean centroidLine(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
         // proverava da li je l tezisna linija koja prolazi kroz teme B
 
         if(!l.contain(B)){
@@ -97,13 +93,9 @@ public class ConnectionCalculations {
         return l.contain(center);
     }
 
-    public static boolean altitude(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
+    static boolean altitude(GeomPoint A, GeomPoint B, GeomPoint C, Line l) {
         // proverava da li je l visina iz tacke B (hb)
-        if(!l.contain(B)){
-            return false;
-        }
-
-        return normalLine(l, new Line(A,C));
+        return l.contain(B) && normalLine(l, new Line(A, C));
 
     }
 

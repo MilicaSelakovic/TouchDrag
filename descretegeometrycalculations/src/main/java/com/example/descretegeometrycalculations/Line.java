@@ -5,21 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 
-import java.util.TreeSet;
 
-/**
- * Created by milica on 23.11.16..
- */
-
-public class Line implements GeometricObject {
+class Line implements GeometricObject {
 
     private GeomPoint begin;
     private GeomPoint end;
 
     private GeomPoint vector; // normiran vektor pravca
-    private TreeSet<Line> parallel = new TreeSet<>();
+    //private TreeSet<Line> parallel = new TreeSet<>();
 
-    public Line(GeomPoint x, GeomPoint y){
+    Line(GeomPoint x, GeomPoint y){
         begin = x ;
         end = y;
         float vX = end.X() - begin.X();
@@ -57,16 +52,23 @@ public class Line implements GeometricObject {
         return "Linija";
     }
 
+    public boolean isUnderCursor(float x, float y){
+        return false;
+    }
+    public void translate(float x, float y){
+
+    }
+
 
     public GeomPoint getVector() {
         return vector;
     }
 
-    public GeomPoint getBegin() {
+    GeomPoint getBegin() {
         return begin;
     }
 
-    public void setBegin(GeomPoint begin) {
+    void setBegin(GeomPoint begin) {
         this.begin = begin;
     }
 
@@ -78,7 +80,7 @@ public class Line implements GeometricObject {
         this.end = end;
     }
 
-    public double distance(GeomPoint point){
+    double distance(GeomPoint point){
         double n1 = end.Y() - begin.Y();
         double n2 = begin.X() - end.X();
         double n3 = -begin.Y()*n2 - begin.X()*n1;
@@ -88,19 +90,19 @@ public class Line implements GeometricObject {
         return d/norm;
     }
 
-    public float ACoef(){
+    float ACoef(){
         return end.Y() - begin.Y();
     }
 
-    public float BCoef(){
+    float BCoef(){
         return -end.X() + begin.X();
     }
 
-    public float CCoef(){
+    float CCoef(){
         return ACoef()*begin.X() + BCoef()*begin.Y();
     }
 
-    public boolean contain(GeomPoint point){
+    boolean contain(GeomPoint point){
         double n1 = end.Y() - begin.Y();
         double n2 = begin.X() - end.X();
         double n3 = -begin.Y()*n2 - begin.X()*n1;
@@ -113,22 +115,22 @@ public class Line implements GeometricObject {
             connectionLine((Line) object);
         }
 
-        if(object instanceof GeomPoint){
-            if(contain((GeomPoint) object)){
-//                Log.d("Tacka", "pripada");
-            }
-        }
+//        if(object instanceof GeomPoint){
+//            if(contain((GeomPoint) object)){
+////                Log.d("Tacka", "pripada");
+//            }
+//        }
 
         return false;
     }
 
-    public void connectionLine(Line line){
-        if(ConnectionCalculations.normalLine(this, line)){
-//            Log.d("linija", "normala");
-        }
-        if(ConnectionCalculations.parallelLine(this, line)){
-//            Log.d("Linija", "paralela");
-        }
+    private void connectionLine(Line line){
+//        if(ConnectionCalculations.normalLine(this, line)){
+////            Log.d("linija", "normala");
+//        }
+//        if(ConnectionCalculations.parallelLine(this, line)){
+////            Log.d("Linija", "paralela");
+//        }
     }
 
     //TODO Veze sa linijom

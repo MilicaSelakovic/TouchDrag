@@ -3,18 +3,14 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.util.Log;
 
 import java.util.Vector;
 
-/**
- * Created by milica on 23.11.16..
- */
 
-public class Polygon implements GeometricObject {
+class Polygon implements GeometricObject {
     Vector<GeomPoint> points;
 
-    public Polygon(Vector<GeomPoint> points){
+    Polygon(Vector<GeomPoint> points){
         this.points = new Vector<>(points);
 
     }
@@ -43,6 +39,13 @@ public class Polygon implements GeometricObject {
         return false;
 
     }
+
+    public boolean isUnderCursor(float x, float y){
+        return false;
+    }
+    public void translate(float x, float y){
+    }
+
 
 
     // veze sa segmentom pojedinacnim i to samo sa Linijama i tackama

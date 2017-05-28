@@ -5,9 +5,12 @@ import android.graphics.Paint;
 
 
 public interface GeometricObject {
-    public static final double EPISLON = 10; //TODO nastelovati konstantu
-    public abstract void draw(Canvas canvas, Paint paint, boolean finished);
+    double EPISLON = 10; //TODO nastelovati konstantu
+    void draw(Canvas canvas, Paint paint, boolean finished);
 
-    public abstract boolean connection(GeometricObject object);
+    boolean connection(GeometricObject object);
+
+    boolean isUnderCursor(float x, float y);
+    void translate(float x, float y);
 
 }

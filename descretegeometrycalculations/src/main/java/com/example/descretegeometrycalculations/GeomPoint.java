@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 
-public class GeomPoint implements GeometricObject {
+class GeomPoint implements GeometricObject {
 
     private float x;
     private float y;
@@ -13,7 +13,7 @@ public class GeomPoint implements GeometricObject {
 
     private boolean move;
 
-    public GeomPoint(float x, float y) {
+    GeomPoint(float x, float y) {
         this.x = x;
         this.y = y;
         this.move = true;
@@ -25,7 +25,7 @@ public class GeomPoint implements GeometricObject {
 
     }
 
-    public GeomPoint(float x, float y, boolean move) {
+    GeomPoint(float x, float y, boolean move) {
         this.x = x;
         this.y = y;
         this.move = move;
@@ -54,49 +54,48 @@ public class GeomPoint implements GeometricObject {
         return "Tacka";
     }
 
+    public boolean isUnderCursor(float x, float y) {
+        //TODO: 28.5.17. konstanta mora da se nasteluje
+        double epsilon = 10;
+        return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
+    }
+    public void translate(float x, float y){
+        this.x = x;
+        this.y = y;
+    }
+
+
 
     public boolean connection(GeometricObject object) {
         return false;
     }
 
-    public float X() {
+    float X() {
         return x;
     }
 
 
-    public float Y() {
+    float Y() {
         return y;
     }
 
-    public void setX(float x) {
+    void setX(float x) {
         this.x = x;
     }
 
-    public void setY(float y) {
+    void setY(float y) {
         this.y = y;
     }
 
 
-    public boolean isMove() {
-        return move;
-    }
-
-    public void setMove(boolean move) {
-        this.move = move;
-    }
-
-
-    public boolean equal(GeomPoint Y){
+    boolean equal(GeomPoint Y){
         // TODO epsilon
         double epsilon = 1e-3;
-        if( Math.abs(x - Y.X()) < epsilon && Math.abs(y-Y.Y()) <epsilon){
-            return true;
-        }
+        return Math.abs(x - Y.X()) < epsilon && Math.abs(y - Y.Y()) < epsilon;
 
-        return false;
     }
 
-    public double distance(GeomPoint X){
+    double distance(GeomPoint X){
         return Math.sqrt((x-X.X())*(x-X.X()) + (y-X.Y())*(y-X.Y()));
     }
 }

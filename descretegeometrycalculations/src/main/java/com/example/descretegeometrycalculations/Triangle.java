@@ -7,6 +7,9 @@ import android.util.Log;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
+    enum movingPoint {
+        nothing, A, B, C, H, T, Oi, O, Sa, Sb, Sc
+    };
     private GeomPoint A, B, C;
     private GeomPoint H = null; // ortocentar
     private GeomPoint T = null; // teziste
@@ -22,6 +25,7 @@ public class Triangle extends Polygon {
     private Line ha = null, hb = null, hc = null; // visine trougla
     private Circle inscribed = null, circumscribed = null; // upisan i opisan krug
 
+    private movingPoint point = movingPoint.nothing;
 
     public Triangle(Vector<GeomPoint> points) {
         super(points);
@@ -165,6 +169,148 @@ public class Triangle extends Polygon {
         }
 
         return ind;
+    }
+
+    public boolean isUnderCursor(float x, float y){
+        if(A.isUnderCursor(x, y)){
+            point = movingPoint.A;
+            return true;
+        }
+
+        if(B.isUnderCursor(x, y)){
+            point = movingPoint.B;
+            return true;
+        }
+
+        if(C.isUnderCursor(x, y)){
+            point = movingPoint.C;
+            return true;
+        }
+
+        // TODO: 28.5.17. ispisati i za ostale tacke
+        point = movingPoint.nothing;
+        return false;
+    }
+    public void translate(float x, float y){
+        switch (point){
+            case A:
+                A.translate(x, y);
+                vertexMoved();
+                break;
+            case B:
+                B.translate(x, y);
+                vertexMoved();
+                break;
+            case C:
+                C.translate(x, y);
+                vertexMoved();
+                break;
+            default:
+                return;
+        }
+    }
+
+
+    private void vertexMoved(){
+        if(symB != null)
+            symB = GeometricConstructions.bisectorAngle(A, B, C);
+
+        if(symA != null)
+            symA = GeometricConstructions.bisectorAngle(C, A, B);
+
+        if(symC != null)
+            symC = GeometricConstructions.bisectorAngle(B, C, A);
+
+        if(Oi != null) {
+            Line l1 = GeometricConstructions.bisectorAngle(A, B, C);
+            Line l2 = GeometricConstructions.bisectorAngle(C, A, B);
+            Oi = GeometricConstructions.w03(l1, l2);
+        }
+
+        if(hb != null) {
+            hb = GeometricConstructions.w10(B, new Line(A, C));
+        }
+
+        if(hc != null) {
+            hc = GeometricConstructions.w10(C, new Line(A, B));
+        }
+
+        if(ha != null) {
+            ha = GeometricConstructions.w10(A, new Line(C, B));
+        }
+
+
+        if(H != null){
+            if(ha != null) {
+                if(hb != null)
+                    H = GeometricConstructions.w03(ha, hb);
+                else
+                    H = GeometricConstructions.w03(ha, hc);
+            } else {
+                H = GeometricConstructions.w03(hb, hc);
+            }
+        }
+
+        if(Sb != null){
+            Sb = GeometricConstructions.w01(A, A, C, 1.0f/2);
+        }
+
+        if(tb != null){
+            tb = new Line(B, Sb);
+        }
+
+
+        if(Sc != null){
+            Sc = GeometricConstructions.w01(A, A, B, 1.0f/2);
+        }
+
+        if(tc != null){
+            tc = new Line(C, Sc);
+        }
+
+        if(Sa != null){
+            Sa = GeometricConstructions.w01(B, B, C, 1.0f/2);
+        }
+
+        if(ta != null){
+            ta = new Line(A, Sa);
+        }
+
+
+        if(T != null) {
+            if (ta != null) {
+                if (tb != null) {
+                    T = GeometricConstructions.w03(ta, tb);
+                } else if (tc != null) {
+                    T = GeometricConstructions.w03(tc, ta);
+                }
+            } else if(tb != null && tc != null) {
+                T = GeometricConstructions.w03(tc, ta);
+            }
+        }
+
+
+        if(symAB != null){
+            symAB = GeometricConstructions.w10(Sc, new Line(A, B));
+        }
+
+
+        if(symAC != null){
+            symAC = GeometricConstructions.w10(Sb, new Line(A, C));
+        }
+        if(symBC != null){
+            symBC = GeometricConstructions.w10(Sa, new Line(B, C));
+        }
+
+        if(O != null){
+            GeomPoint S1 = GeometricConstructions.w01(A, A, C, 1.0f/2);
+            GeomPoint S2 = GeometricConstructions.w01(A, A, B, 1.0f/2);
+            Line s1 = GeometricConstructions.w10(S1, new Line(A, C));
+            Line s2 = GeometricConstructions.w10(S2, new Line(A, B));
+
+            O = GeometricConstructions.w03(s1, s2);
+        }
+
     }
 
     private boolean jednakostranican(GeomPoint A, GeomPoint B, GeomPoint C){
