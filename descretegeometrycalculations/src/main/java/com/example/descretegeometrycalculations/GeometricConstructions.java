@@ -40,7 +40,7 @@ public class GeometricConstructions {
     public static GeomPoint w03(Line l1, Line l2){
         float delta = l1.ACoef()*l2.BCoef() - l1.BCoef()*l2.ACoef();
         float deltaX = l1.CCoef()*l2.BCoef() - l1.BCoef()*l2.CCoef();
-        float deltaY = l1.ACoef()*l2.CCoef() - l1.BCoef()*l2.CCoef();
+        float deltaY = l1.ACoef()*l2.CCoef() - l1.CCoef()*l2.ACoef();
 
         if(Math.abs(delta) < GeometricObject.EPISLON){
             //TODO nema resenja

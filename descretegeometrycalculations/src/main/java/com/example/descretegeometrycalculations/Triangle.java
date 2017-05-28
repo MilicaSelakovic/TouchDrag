@@ -156,7 +156,7 @@ public class Triangle extends Polygon {
                 ind = true;
             }
 
-            Log.d("idiot", "la");
+//            Log.d("idiot", "la");
 
         }
 
@@ -215,6 +215,14 @@ public class Triangle extends Polygon {
         if(ConnectionCalculations.isBisector(A, B, C, line)){
             if(symB == null)
                 symB = GeometricConstructions.bisectorAngle(A, B, C);
+
+            if(Oi == null) {
+                if (symA != null) {
+                    Oi = GeometricConstructions.w03(symA, symB);
+                } else if (symC != null) {
+                    Oi = GeometricConstructions.w03(symB, symC);
+                }
+            }
             return true;
         }
 
@@ -222,12 +230,28 @@ public class Triangle extends Polygon {
         if(ConnectionCalculations.isBisector(C, A, B, line)){
             if(symA == null)
                 symA = GeometricConstructions.bisectorAngle(C, A, B);
+
+            if(Oi == null) {
+                if (symB != null) {
+                    Oi = GeometricConstructions.w03(symA, symB);
+                } else if (symC != null) {
+                    Oi = GeometricConstructions.w03(symA, symC);
+                }
+            }
             return true;
         }
 
         if(ConnectionCalculations.isBisector(B, C, A, line)){
             if(symC == null)
                 symC = GeometricConstructions.bisectorAngle(B, C, A);
+
+            if(Oi == null) {
+                if (symA != null) {
+                    Oi = GeometricConstructions.w03(symA, symC);
+                } else if (symB != null) {
+                    Oi = GeometricConstructions.w03(symB, symC);
+                }
+            }
             return true;
         }
 
@@ -240,18 +264,46 @@ public class Triangle extends Polygon {
             if(hb == null) {
                 hb = GeometricConstructions.w10(B, new Line(A, C));
             }
+
+            if(H == null){
+                if(ha != null){
+                    H = GeometricConstructions.w03(ha, hb);
+                } else if(hc != null ){
+                    H = GeometricConstructions.w03(hc, hb);
+                }
+            }
+
             return true;
         }
 
         if(ConnectionCalculations.altitude(B, C, A, line)){
             if(hc == null)
                 hc = GeometricConstructions.w10(C, new Line(A, B));
+
+
+            if(H == null){
+                if(ha != null){
+                    H = GeometricConstructions.w03(ha, hc);
+                } else if(hb != null ){
+                    H = GeometricConstructions.w03(hc, hb);
+                }
+            }
             return true;
         }
 
         if(ConnectionCalculations.altitude(C, A, B, line)){
             if(ha == null)
                 ha = GeometricConstructions.w10(A, new Line(C, B));
+
+
+            if(H == null){
+                if(hb != null){
+                    H = GeometricConstructions.w03(ha, hb);
+                } else if(hc != null ){
+                    H = GeometricConstructions.w03(hc, ha);
+                }
+            }
+
             return true;
         }
 
@@ -267,6 +319,15 @@ public class Triangle extends Polygon {
             if(tb == null){
                 tb = new Line(B, Sb);
             }
+
+
+            if(T == null){
+                if(ta != null){
+                    T = GeometricConstructions.w03(ta, tb);
+                } else if(tc != null ){
+                    T = GeometricConstructions.w03(tc, tb);
+                }
+            }
             return  true;
         }
 
@@ -277,6 +338,15 @@ public class Triangle extends Polygon {
 
             if(tc == null){
                 tc = new Line(C, Sc);
+            }
+
+
+            if(T == null){
+                if(ta != null){
+                    T = GeometricConstructions.w03(ta, tc);
+                } else if(tb != null ){
+                    T = GeometricConstructions.w03(tc, tb);
+                }
             }
             return  true;
         }
@@ -289,6 +359,15 @@ public class Triangle extends Polygon {
 
             if(ta == null){
                 ta = new Line(A, Sa);
+            }
+
+
+            if(T == null){
+                if(tb != null){
+                    T = GeometricConstructions.w03(ta, tb);
+                } else if(tc != null ){
+                    T = GeometricConstructions.w03(tc, ta);
+                }
             }
             return  true;
         }
@@ -307,6 +386,14 @@ public class Triangle extends Polygon {
                 symAB = GeometricConstructions.w10(Sc, new Line(A, B));
             }
 
+            if(O == null){
+                if(symAC != null){
+                    O = GeometricConstructions.w03(symAB, symAC);
+                } else if(symBC != null){
+                    O = GeometricConstructions.w03(symAB, symBC);
+                }
+            }
+
             return true;
         }
 
@@ -318,6 +405,15 @@ public class Triangle extends Polygon {
 
             if(symAC == null){
                 symAC = GeometricConstructions.w10(Sb, new Line(A, C));
+            }
+
+
+            if(O == null){
+                if(symAB != null){
+                    O = GeometricConstructions.w03(symAB, symAC);
+                } else if(symBC != null){
+                    O = GeometricConstructions.w03(symAC, symBC);
+                }
             }
 
             return true;
@@ -332,6 +428,15 @@ public class Triangle extends Polygon {
 
             if(symBC == null){
                 symBC = GeometricConstructions.w10(Sa, new Line(B, C));
+            }
+
+
+            if(O == null){
+                if(symAC != null){
+                    O = GeometricConstructions.w03(symBC, symAC);
+                } else if(symAB != null){
+                    O = GeometricConstructions.w03(symAB, symBC);
+                }
             }
 
             return true;
