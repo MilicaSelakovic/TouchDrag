@@ -11,9 +11,12 @@ public class GeomPoint implements GeometricObject {
     private float y;
     private Paint circlePaint;
 
+    private boolean move;
+
     public GeomPoint(float x, float y) {
         this.x = x;
         this.y = y;
+        this.move = true;
 
         circlePaint = new Paint();
         circlePaint.setColor(Color.BLUE);
@@ -21,6 +24,25 @@ public class GeomPoint implements GeometricObject {
         circlePaint.setStyle(Paint.Style.FILL);
 
     }
+
+    public GeomPoint(float x, float y, boolean move) {
+        this.x = x;
+        this.y = y;
+        this.move = move;
+
+        circlePaint = new Paint();
+        if(move)
+            circlePaint.setColor(Color.BLUE);
+        else
+            circlePaint.setColor(Color.DKGRAY);
+
+        circlePaint.setAntiAlias(true);
+        circlePaint.setStyle(Paint.Style.FILL);
+
+    }
+
+
+
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {
@@ -53,6 +75,16 @@ public class GeomPoint implements GeometricObject {
     public void setY(float y) {
         this.y = y;
     }
+
+
+    public boolean isMove() {
+        return move;
+    }
+
+    public void setMove(boolean move) {
+        this.move = move;
+    }
+
 
     public boolean equal(GeomPoint Y){
         // TODO epsilon

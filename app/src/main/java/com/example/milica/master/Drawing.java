@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ToggleButton;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
@@ -49,5 +51,10 @@ public class Drawing extends Activity {
             Log.d("OpenCV", "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
+    }
+
+    public void moveEnable(View view){
+        boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton)).isChecked();
+        ((DrawingView) this.findViewById(R.id.view)).setMoving(value);
     }
 }

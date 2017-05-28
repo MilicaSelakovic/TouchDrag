@@ -1,7 +1,5 @@
 package com.example.descretegeometrycalculations;
 
-import org.opencv.core.Mat;
-
 /**
  * Created by milica on 22.5.17..
  */
@@ -18,7 +16,7 @@ public class GeometricConstructions {
         GeomPoint v = new GeomPoint(W.X() - Z.X(), W.Y() - Z.Y());
         float x = X.X() + r*v.X();
         float y = X.Y() + r*v.Y();
-        return new GeomPoint(x, y);
+        return new GeomPoint(x, y, false);
     }
 
     /*
@@ -45,7 +43,7 @@ public class GeometricConstructions {
         if(Math.abs(delta) < GeometricObject.EPISLON){
             //TODO nema resenja
         }
-        return new GeomPoint(deltaX/delta,deltaY/delta);
+        return new GeomPoint(deltaX/delta,deltaY/delta, false);
     }
 
     /*
@@ -94,8 +92,8 @@ public class GeometricConstructions {
     да се права и круг секу;*/
 
     public static GeomPoint w05(Line l, Circle c, GeomPoint P){
-        GeomPoint S1 = new GeomPoint(0, 0);
-        GeomPoint S2 = new GeomPoint(0, 0);
+        GeomPoint S1 = new GeomPoint(0, 0, false);
+        GeomPoint S2 = new GeomPoint(0, 0, false);
 
         w04(l, c, S1, S2);
 
@@ -169,8 +167,8 @@ public class GeometricConstructions {
     */
 
     public static GeomPoint w08(Circle c1, Circle c2, GeomPoint P){
-        GeomPoint S1 = new GeomPoint(0,0);
-        GeomPoint S2 = new GeomPoint(0,0);
+        GeomPoint S1 = new GeomPoint(0,0, false);
+        GeomPoint S2 = new GeomPoint(0,0, false);
 
         int i = w07(c1, c2, S1, S2);
 
@@ -194,7 +192,7 @@ public class GeometricConstructions {
     */
 
     public static Circle w09(GeomPoint X, GeomPoint Y){
-        GeomPoint S = new GeomPoint((X.X() + Y.X())/ 2, (X.Y() + Y.Y())/2);
+        GeomPoint S = new GeomPoint((X.X() + Y.X())/ 2, (X.Y() + Y.Y())/2, false);
         double r = Math.sqrt(Math.pow(X.X() - Y.X(), 2) + Math.pow(X.Y() - Y.Y(), 2))/2;
 
         return new Circle(S, r);

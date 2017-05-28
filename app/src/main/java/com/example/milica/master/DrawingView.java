@@ -3,6 +3,7 @@ package com.example.milica.master;
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
 //import android.util.Log;
+import android.util.Log;
 import android.view.View;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -80,17 +81,25 @@ public class DrawingView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
+//        drawCanvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
-        canvas.drawPath(drawPath, drawPaint);
 
-        current = DiscreteCurvature.getGeometricObject(points);
-      if(current != null && actionDown) {
-           current.draw(canvas, drawObject, false);
+        if(actionDown){
+            canvas.drawPath(drawPath, drawPaint);
         }
+        current = DiscreteCurvature.getGeometricObject(points);
+        if(current != null && actionDown) {
+            current.draw(canvas, drawObject, false);
+        }
+
+        for(GeometricObject object : geometricObjects){
+            object.draw(canvas, objectPaint, true);
+        }
+
     }
 
     @Override
@@ -126,10 +135,8 @@ public class DrawingView extends View {
                     }
                     current = null;
                 }
-                for(GeometricObject object : geometricObjects){
-                    object.draw(drawCanvas, objectPaint, true);
-                }
                 drawPath.reset();
+
                 break;
             default:
                 return false;
@@ -137,6 +144,10 @@ public class DrawingView extends View {
 
         invalidate();
         return  true;
+    }
+
+    public void setMoving(boolean value){
+        Log.d("Desava ", Boolean.toString(value));
     }
 
 }
