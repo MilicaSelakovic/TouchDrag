@@ -2,137 +2,39 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
-    enum movingPoint {
-        nothing, A, B, C, H, T, Oi, O, Sa, Sb, Sc
-    };
-    private GeomPoint A, B, C;
-    private GeomPoint H = null; // ortocentar
-    private GeomPoint T = null; // teziste
-    private GeomPoint Oi = null; // centar upisanog
-    private GeomPoint O = null; // centar opisanog
-    private GeomPoint Sa = null; // centar stranice BC
-    private GeomPoint Sb = null; // centar stanice AC
-    private GeomPoint Sc = null; // centar stranice AB
+    private HashMap<String, GeometricObject> znacajniObjecti;
 
-    private Line symA = null, symB = null, symC = null; // simetrale ugla kod temena
-    private Line symAB = null, symAC = null, symBC = null; // simetrale stranica
-    private Line ta = null, tb = null, tc = null; // tezisne linije
-    private Line ha = null, hb = null, hc = null; // visine trougla
-    private Circle inscribed = null, circumscribed = null; // upisan i opisan krug
-
-    private movingPoint point = movingPoint.nothing;
+    private String movingPoint = "";
+    private boolean isMovingSet = false;
 
     public Triangle(Vector<GeomPoint> points) {
         super(points);
-
-        A = points.elementAt(0);
-        B = points.elementAt(1);
-        C = points.elementAt(2);
-        //boolean t = jednakostranican(A, B, C);
-        //if (t)
-         //   Log.d("Jednakostranican", "jeste");
-
+        // TODO proveriti da li ih je 30 na kraju
+        znacajniObjecti = new HashMap<>(30);
+        fillMap(points);
     }
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {
         super.draw(canvas, paint, finished);
-        A.draw(canvas, paint, finished);
-        B.draw(canvas, paint, finished);
-        C.draw(canvas, paint, finished);
-
-        if(H != null){
-            H.draw(canvas, paint, finished);
-        }
-
-        if(T != null){
-            T.draw(canvas, paint, finished);
-        }
-
-        if(Oi != null){
-            Oi.draw(canvas, paint, finished);
-        }
-
-        if(O != null){
-            O.draw(canvas, paint, finished);
-        }
-
-        if(Sa != null){
-            Sa.draw(canvas, paint, finished);
-        }
-
-
-        if(Sb != null){
-            Sb.draw(canvas, paint, finished);
-        }
-
-
-        if(Sc != null){
-            Sc.draw(canvas, paint, finished);
-        }
-
-        if(symA != null){
-            symA.draw(canvas, paint, finished);
-        }
-
-        if(symB != null){
-            symB.draw(canvas, paint, finished);
-        }
-
-        if(symC != null){
-            symC.draw(canvas, paint, finished);
-        }
-
-        if(symAB != null){
-            symAB.draw(canvas, paint, finished);
-        }
-
-        if(symBC != null){
-            symBC.draw(canvas, paint, finished);
-        }
-
-        if(symAC != null){
-            symAC.draw(canvas, paint, finished);
-        }
-
-        if(ta != null){
-            ta.draw(canvas, paint, finished);
-        }
-
-        if(tb != null){
-            tb.draw(canvas, paint, finished);
-        }
-
-        if(tc != null){
-            tc.draw(canvas, paint, finished);
-        }
-
-        if(ha != null){
-            ha.draw(canvas, paint, finished);
-        }
-
-        if(hb != null){
-            hb.draw(canvas, paint, finished);
-        }
-
-        if(hc != null){
-            hc.draw(canvas, paint, finished);
-        }
-
-        if(inscribed != null){
-            inscribed.draw(canvas, paint, finished);
-        }
-
-        if (circumscribed != null){
-            circumscribed.draw(canvas,paint, finished);
+        for (Map.Entry<String, GeometricObject> entry: znacajniObjecti.entrySet()){
+            if(entry.getValue() != null)
+                entry.getValue().draw(canvas, paint, finished);
         }
 
     }
+
 
     @Override
     public boolean connection(GeometricObject object) {
@@ -142,7 +44,6 @@ public class Triangle extends Polygon {
             if(bisector(l)){
                 Log.d("Simetrala", "ugla");
                 ind = true;
-//                return true;
             }
 
             if( centroid(l)){
@@ -160,8 +61,6 @@ public class Triangle extends Polygon {
                 ind = true;
             }
 
-//            Log.d("idiot", "la");
-
         }
 
         if(object instanceof Circle){
@@ -172,231 +71,79 @@ public class Triangle extends Polygon {
     }
 
     public boolean isUnderCursor(float x, float y){
-        if(A.isUnderCursor(x, y)){
-            point = movingPoint.A;
-            return true;
+
+        for(Map.Entry<String, GeometricObject> entry : znacajniObjecti.entrySet()){
+            if(entry.getValue() == null)
+                continue;
+            if( entry.getValue().isUnderCursor(x, y)){
+                movingPoint = entry.getKey();
+                isMovingSet = true;
+                return true;
+            }
         }
 
-        if(B.isUnderCursor(x, y)){
-            point = movingPoint.B;
-            return true;
-        }
+        isMovingSet = false;
 
-        if(C.isUnderCursor(x, y)){
-            point = movingPoint.C;
-            return true;
-        }
-
-        // TODO: 28.5.17. ispisati i za ostale tacke
-        point = movingPoint.nothing;
         return false;
     }
+
     public void translate(float x, float y){
-        switch (point){
-            case A:
-                A.translate(x, y);
-                vertexMoved();
-                break;
-            case B:
-                B.translate(x, y);
-                vertexMoved();
-                break;
-            case C:
-                C.translate(x, y);
-                vertexMoved();
-                break;
-            default:
-                return;
+        if(isMovingSet) {
+            znacajniObjecti.get(movingPoint).translate(x, y);
+            vertexMoved();
         }
     }
 
 
     private void vertexMoved(){
-        if(symB != null)
-            symB = GeometricConstructions.bisectorAngle(A, B, C);
 
-        if(symA != null)
-            symA = GeometricConstructions.bisectorAngle(C, A, B);
-
-        if(symC != null)
-            symC = GeometricConstructions.bisectorAngle(B, C, A);
-
-        if(Oi != null) {
-            Line l1 = GeometricConstructions.bisectorAngle(A, B, C);
-            Line l2 = GeometricConstructions.bisectorAngle(C, A, B);
-            Oi = GeometricConstructions.w03(l1, l2);
-        }
-
-        if(hb != null) {
-            hb = GeometricConstructions.w10(B, new Line(A, C));
-        }
-
-        if(hc != null) {
-            hc = GeometricConstructions.w10(C, new Line(A, B));
-        }
-
-        if(ha != null) {
-            ha = GeometricConstructions.w10(A, new Line(C, B));
-        }
-
-
-        if(H != null){
-            if(ha != null) {
-                if(hb != null)
-                    H = GeometricConstructions.w03(ha, hb);
-                else
-                    H = GeometricConstructions.w03(ha, hc);
-            } else {
-                H = GeometricConstructions.w03(hb, hc);
+        for(Map.Entry<String, GeometricObject> entry : znacajniObjecti.entrySet()){
+            if (entry.getKey() == "A" || entry.getKey() == "B" || entry.getKey() == "C"){
+                continue;
             }
-        }
 
-        if(Sb != null){
-            Sb = GeometricConstructions.w01(A, A, C, 1.0f/2);
-        }
-
-        if(tb != null){
-            tb = new Line(B, Sb);
-        }
-
-
-        if(Sc != null){
-            Sc = GeometricConstructions.w01(A, A, B, 1.0f/2);
-        }
-
-        if(tc != null){
-            tc = new Line(C, Sc);
-        }
-
-        if(Sa != null){
-            Sa = GeometricConstructions.w01(B, B, C, 1.0f/2);
-        }
-
-        if(ta != null){
-            ta = new Line(A, Sa);
-        }
-
-
-        if(T != null) {
-            if (ta != null) {
-                if (tb != null) {
-                    T = GeometricConstructions.w03(ta, tb);
-                } else if (tc != null) {
-                    T = GeometricConstructions.w03(tc, ta);
-                }
-            } else if(tb != null && tc != null) {
-                T = GeometricConstructions.w03(tc, ta);
-            }
-        }
-
-
-        if(symAB != null){
-            symAB = GeometricConstructions.w10(Sc, new Line(A, B));
-        }
-
-
-        if(symAC != null){
-            symAC = GeometricConstructions.w10(Sb, new Line(A, C));
-        }
-        if(symBC != null){
-            symBC = GeometricConstructions.w10(Sa, new Line(B, C));
-        }
-
-        if(O != null){
-            GeomPoint S1 = GeometricConstructions.w01(A, A, C, 1.0f/2);
-            GeomPoint S2 = GeometricConstructions.w01(A, A, B, 1.0f/2);
-            Line s1 = GeometricConstructions.w10(S1, new Line(A, C));
-            Line s2 = GeometricConstructions.w10(S2, new Line(A, B));
-
-            O = GeometricConstructions.w03(s1, s2);
+            ((SignificantObject)entry.getValue()).construct();
         }
 
     }
 
-    private boolean jednakostranican(GeomPoint A, GeomPoint B, GeomPoint C){
-        double AB = Math.sqrt(ConnectionCalculations.dotProduct(A, B));
-        double AC = Math.sqrt(ConnectionCalculations.dotProduct(A, C));
-        double BC = Math.sqrt(ConnectionCalculations.dotProduct(C, B));
-
-        // TODO konstanta epsilon
-        double eps = 100;
-        Log.d("a", Double.toString(AB));
-        Log.d("b", Double.toString(AC));
-        Log.d("c", Double.toString(BC));
-        if( Math.abs(AB - AC) < eps  && Math.abs(AC- BC) < eps
-                && Math.abs(AB-BC) < eps) {
-            double k = Math.sqrt(3)/2;
-            double x = (A.X() + B.X())/2;
-            double y = (A.Y() + B.Y())/2;
-
-            double dx = k*(A.Y() - B.Y());
-            double dy = k*(A.X() - B.X());
-
-            if( Math.abs(C.X() - x - dx) < Math.abs(C.X() - x + dx) ){
-                C.setX((float) (x + dx));
-                C.setY((float) (y - dy));
-            } else {
-                C.setX((float) (x - dx));
-                C.setY((float)(y + dy));
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean trianglePoint(GeomPoint point){
-        for(GeomPoint p : points){
-            double d = Math.sqrt(Math.pow(point.X() - p.X(), 2) + Math.pow(point.Y() - p.Y(), 2));
-            if(d < EPISLON){
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     private boolean bisector(Line line){
-        if(ConnectionCalculations.isBisector(A, B, C, line)){
-            if(symB == null)
-                symB = GeometricConstructions.bisectorAngle(A, B, C);
+        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
+        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
+        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
 
-            if(Oi == null) {
-                if (symA != null) {
-                    Oi = GeometricConstructions.w03(symA, symB);
-                } else if (symC != null) {
-                    Oi = GeometricConstructions.w03(symB, symC);
-                }
+
+        if(ConnectionCalculations.isBisector(A, B, C, line)){
+            ((SignificantObject)znacajniObjecti.get("symB")).setVisible(true);
+
+
+            if(((SignificantObject) znacajniObjecti.get("symC")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("symA")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("I")).setVisible(true);
             }
             return true;
         }
 
 
         if(ConnectionCalculations.isBisector(C, A, B, line)){
-            if(symA == null)
-                symA = GeometricConstructions.bisectorAngle(C, A, B);
+            ((SignificantObject)znacajniObjecti.get("symA")).setVisible(true);
 
-            if(Oi == null) {
-                if (symB != null) {
-                    Oi = GeometricConstructions.w03(symA, symB);
-                } else if (symC != null) {
-                    Oi = GeometricConstructions.w03(symA, symC);
-                }
+
+            if(((SignificantObject) znacajniObjecti.get("symC")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("symB")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("I")).setVisible(true);
             }
             return true;
         }
 
         if(ConnectionCalculations.isBisector(B, C, A, line)){
-            if(symC == null)
-                symC = GeometricConstructions.bisectorAngle(B, C, A);
+            ((SignificantObject)znacajniObjecti.get("symC")).setVisible(true);
 
-            if(Oi == null) {
-                if (symA != null) {
-                    Oi = GeometricConstructions.w03(symA, symC);
-                } else if (symB != null) {
-                    Oi = GeometricConstructions.w03(symB, symC);
-                }
+
+            if(((SignificantObject) znacajniObjecti.get("symB")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("symA")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("I")).setVisible(true);
             }
             return true;
         }
@@ -406,50 +153,40 @@ public class Triangle extends Polygon {
     }
 
     private boolean altitude(Line line){
+        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
+        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
+        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+
         if(ConnectionCalculations.altitude(A, B, C, line)){
-            if(hb == null) {
-                hb = GeometricConstructions.w10(B, new Line(A, C));
-            }
+            ((SignificantObject) znacajniObjecti.get("Hb")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("hb")).setVisible(true);
 
-            if(H == null){
-                if(ha != null){
-                    H = GeometricConstructions.w03(ha, hb);
-                } else if(hc != null ){
-                    H = GeometricConstructions.w03(hc, hb);
-                }
+            if(((SignificantObject) znacajniObjecti.get("ha")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("hc")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("H")).setVisible(true);
             }
-
             return true;
         }
 
         if(ConnectionCalculations.altitude(B, C, A, line)){
-            if(hc == null)
-                hc = GeometricConstructions.w10(C, new Line(A, B));
+            ((SignificantObject) znacajniObjecti.get("Hc")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("hc")).setVisible(true);
 
-
-            if(H == null){
-                if(ha != null){
-                    H = GeometricConstructions.w03(ha, hc);
-                } else if(hb != null ){
-                    H = GeometricConstructions.w03(hc, hb);
-                }
+            if(((SignificantObject) znacajniObjecti.get("ha")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("hb")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("H")).setVisible(true);
             }
             return true;
         }
 
         if(ConnectionCalculations.altitude(C, A, B, line)){
-            if(ha == null)
-                ha = GeometricConstructions.w10(A, new Line(C, B));
+            ((SignificantObject) znacajniObjecti.get("Ha")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("ha")).setVisible(true);
 
-
-            if(H == null){
-                if(hb != null){
-                    H = GeometricConstructions.w03(ha, hb);
-                } else if(hc != null ){
-                    H = GeometricConstructions.w03(hc, ha);
-                }
+            if(((SignificantObject) znacajniObjecti.get("hb")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("hc")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("H")).setVisible(true);
             }
-
             return true;
         }
 
@@ -457,63 +194,42 @@ public class Triangle extends Polygon {
     }
 
     private boolean centroid(Line line){
+        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
+        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
+        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+
         if(ConnectionCalculations.centroidLine(A, B, C, line)){
-            if(Sb == null){
-                Sb = GeometricConstructions.w01(A, A, C, 1.0f/2);
-            }
+            ((SignificantObject) znacajniObjecti.get("Sb")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("tb")).setVisible(true);
 
-            if(tb == null){
-                tb = new Line(B, Sb);
-            }
-
-
-            if(T == null){
-                if(ta != null){
-                    T = GeometricConstructions.w03(ta, tb);
-                } else if(tc != null ){
-                    T = GeometricConstructions.w03(tc, tb);
-                }
+            if(((SignificantObject) znacajniObjecti.get("ta")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("tc")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("T")).setVisible(true);
             }
             return  true;
         }
 
         if(ConnectionCalculations.centroidLine(B, C, A, line)){
-            if(Sc == null){
-                Sc = GeometricConstructions.w01(A, A, B, 1.0f/2);
-            }
-
-            if(tc == null){
-                tc = new Line(C, Sc);
-            }
+            ((SignificantObject) znacajniObjecti.get("Sc")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("tc")).setVisible(true);
 
 
-            if(T == null){
-                if(ta != null){
-                    T = GeometricConstructions.w03(ta, tc);
-                } else if(tb != null ){
-                    T = GeometricConstructions.w03(tc, tb);
-                }
+            if(((SignificantObject) znacajniObjecti.get("ta")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("tb")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("T")).setVisible(true);
             }
             return  true;
         }
 
 
         if(ConnectionCalculations.centroidLine(C, A, B, line)){
-            if(Sa == null){
-                Sa = GeometricConstructions.w01(B, B, C, 1.0f/2);
-            }
-
-            if(ta == null){
-                ta = new Line(A, Sa);
-            }
+            ((SignificantObject) znacajniObjecti.get("Sa")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("ta")).setVisible(true);
 
 
-            if(T == null){
-                if(tb != null){
-                    T = GeometricConstructions.w03(ta, tb);
-                } else if(tc != null ){
-                    T = GeometricConstructions.w03(tc, ta);
-                }
+            if(((SignificantObject) znacajniObjecti.get("tb")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("tc")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("T")).setVisible(true);
             }
             return  true;
         }
@@ -523,21 +239,18 @@ public class Triangle extends Polygon {
     }
 
     private boolean prepBisector(Line line){
+        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
+        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
+        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+
         if(ConnectionCalculations.isSegmentCentar(A, B, line)){
-            if(Sc == null){
-                Sc = GeometricConstructions.w01(A, A, B, 1.0f/2);
-            }
+            ((SignificantObject) znacajniObjecti.get("Sc")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("symAB")).setVisible(true);
 
-            if(symAB == null){
-                symAB = GeometricConstructions.w10(Sc, new Line(A, B));
-            }
 
-            if(O == null){
-                if(symAC != null){
-                    O = GeometricConstructions.w03(symAB, symAC);
-                } else if(symBC != null){
-                    O = GeometricConstructions.w03(symAB, symBC);
-                }
+            if(((SignificantObject) znacajniObjecti.get("symBC")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("symAC")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("O")).setVisible(true);
             }
 
             return true;
@@ -545,44 +258,27 @@ public class Triangle extends Polygon {
 
 
         if(ConnectionCalculations.isSegmentCentar(C, A, line)){
-            if(Sb == null){
-                Sb = GeometricConstructions.w01(A, A, C, 1.0f/2);
+            ((SignificantObject) znacajniObjecti.get("Sb")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("symAC")).setVisible(true);
+
+
+            if(((SignificantObject) znacajniObjecti.get("symBC")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("symAB")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("O")).setVisible(true);
             }
-
-            if(symAC == null){
-                symAC = GeometricConstructions.w10(Sb, new Line(A, C));
-            }
-
-
-            if(O == null){
-                if(symAB != null){
-                    O = GeometricConstructions.w03(symAB, symAC);
-                } else if(symBC != null){
-                    O = GeometricConstructions.w03(symAC, symBC);
-                }
-            }
-
             return true;
         }
 
 
 
         if(ConnectionCalculations.isSegmentCentar( B, C, line)){
-            if(Sa == null){
-                Sa = GeometricConstructions.w01(B, B, C, 1.0f/2);
-            }
-
-            if(symBC == null){
-                symBC = GeometricConstructions.w10(Sa, new Line(B, C));
-            }
+            ((SignificantObject) znacajniObjecti.get("Sa")).setVisible(true);
+            ((SignificantObject) znacajniObjecti.get("symBC")).setVisible(true);
 
 
-            if(O == null){
-                if(symAC != null){
-                    O = GeometricConstructions.w03(symBC, symAC);
-                } else if(symAB != null){
-                    O = GeometricConstructions.w03(symAB, symBC);
-                }
+            if(((SignificantObject) znacajniObjecti.get("symAB")).isVisible() ||
+                    ((SignificantObject) znacajniObjecti.get("symAC")).isVisible()){
+                ((SignificantObject) znacajniObjecti.get("O")).setVisible(true);
             }
 
             return true;
@@ -591,4 +287,43 @@ public class Triangle extends Polygon {
         return false;
     }
 
+    private void  fillMap(Vector<GeomPoint> points){
+        GeomPoint A = points.elementAt(0);
+        GeomPoint B = points.elementAt(1);
+        GeomPoint C = points.elementAt(2);
+
+        Incenter I = new Incenter(A, B, C);
+        Circumcenter O = new Circumcenter(A, B, C);
+        znacajniObjecti.put("A", A);
+        znacajniObjecti.put("B", B);
+        znacajniObjecti.put("C", C);
+        znacajniObjecti.put("H", new Orthocenter(A, B, C));
+        znacajniObjecti.put("Ha", new FootOfAltitude(C, A, B));
+        znacajniObjecti.put("Hb", new FootOfAltitude(A, B, C));
+        znacajniObjecti.put("Hc", new FootOfAltitude(B, C, A));
+        znacajniObjecti.put("T", new Centroid(A, B, C));
+        znacajniObjecti.put("I", I);
+        znacajniObjecti.put("O", O);
+        znacajniObjecti.put("Sa", new Midpoint(C, A, B));
+        znacajniObjecti.put("Sb", new Midpoint(A, B, C));
+        znacajniObjecti.put("Sc", new Midpoint(B, C, A));
+
+        znacajniObjecti.put("symBC", new PerpBisector(C, A, B));
+        znacajniObjecti.put("symAC", new PerpBisector(A, B, C));
+        znacajniObjecti.put("symAB", new PerpBisector(B, C, A));
+        znacajniObjecti.put("symA", new AngleBisector(C, A, B));
+        znacajniObjecti.put("symB", new AngleBisector(A, B, C));
+        znacajniObjecti.put("symC", new AngleBisector(B, C, A));
+
+        znacajniObjecti.put("ta", new Median(C, A, B));
+        znacajniObjecti.put("tb", new Median(A, B, C));
+        znacajniObjecti.put("tc", new Median(B, C, A));
+
+        znacajniObjecti.put("ha", new Altitude(C, A, B));
+        znacajniObjecti.put("hb", new Altitude(A, B, C));
+        znacajniObjecti.put("hc", new Altitude(B, C, A));
+
+        znacajniObjecti.put("ki", new Incircle(I, A, B, C));
+        znacajniObjecti.put("kc", new CircumscribedCircle(O, A));
+    }
 }

@@ -8,6 +8,8 @@ import java.util.Vector;
 class Circle implements GeometricObject {
 
     private GeomPoint center;
+
+
     private double radius;
 
     private Vector<Line> tangentLines = new Vector<>();
@@ -29,6 +31,10 @@ class Circle implements GeometricObject {
     double getRadius() {
         return radius;
     }
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {

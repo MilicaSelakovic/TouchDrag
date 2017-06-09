@@ -17,11 +17,12 @@ class Line implements GeometricObject {
     Line(GeomPoint x, GeomPoint y){
         begin = x ;
         end = y;
-        float vX = end.X() - begin.X();
-        float vY = end.Y() - begin.Y();
-        float norm = (float) Math.sqrt(vX*vX + vY*vY);
-        vector = new GeomPoint(vX / norm, vY/norm);
-
+        if(x != null && y != null) {
+            float vX = end.X() - begin.X();
+            float vY = end.Y() - begin.Y();
+            float norm = (float) Math.sqrt(vX * vX + vY * vY);
+            vector = new GeomPoint(vX / norm, vY / norm);
+        }
     }
 
     private float yCoord(float x, float y){
