@@ -11,6 +11,7 @@ public class Incenter extends GeomPoint implements SignificantObject {
 
     Incenter(GeomPoint A, GeomPoint B, GeomPoint C){
         super(0,0);
+
         this.A = A;
         this.B = B;
         this.C = C;

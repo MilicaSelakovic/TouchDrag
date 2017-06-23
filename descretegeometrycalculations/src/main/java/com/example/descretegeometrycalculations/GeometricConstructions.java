@@ -1,9 +1,5 @@
 package com.example.descretegeometrycalculations;
 
-/**
- * Created by milica on 22.5.17..
- */
-
 public class GeometricConstructions {
     /*
     W01 Ако су дате тачке X, Z и W, и рационалан броj r могуће jе конструисати

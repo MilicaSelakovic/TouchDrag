@@ -37,12 +37,13 @@
                 android:onClick="moveEnable" />
 
             <Button
-                android:text="Button"
+                android:text="delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button3"
                 android:layout_weight="1"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:onClick="clear" />
 
             <Button
                 android:text="Button"

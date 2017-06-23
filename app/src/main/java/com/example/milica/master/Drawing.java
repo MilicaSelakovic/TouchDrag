@@ -57,4 +57,8 @@ public class Drawing extends Activity {
         boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton)).isChecked();
         ((DrawingView) this.findViewById(R.id.view)).setMoving(value);
     }
+
+    public void clear(View view){
+        ((DrawingView) this.findViewById(R.id.view)).clearPanel();
+    }
 }

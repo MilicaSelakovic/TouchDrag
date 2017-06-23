@@ -172,4 +172,9 @@ public class DrawingView extends View {
         moveMode = value;
     }
 
+    public void clearPanel(){
+        geometricObjects.clear();
+        invalidate();
+    }
+
 }
