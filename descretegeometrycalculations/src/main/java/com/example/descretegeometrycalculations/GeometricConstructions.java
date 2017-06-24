@@ -297,10 +297,31 @@ public class GeometricConstructions {
     X и Y различите, тачке Y и Z различите и да тачка Y ниjе средиште дужи
     XZ;*/
 
+    // TODO pitati da li se se misli da vazi H(X,Z;Y,W)
+    public static GeomPoint w19(GeomPoint X, GeomPoint Y, GeomPoint Z) {
+        /*Tacka van prave XY
+        * */
+
+        GeomPoint O = new GeomPoint((X.X() + Y.X()) / 2 + 200, (X.Y() + Y.Y()) / 2 + 200);
+
+        Line b = new Line(X, O);
+        Line c = w16(Z, b);
+        Line m = new Line(Y, O);
+
+        GeomPoint E = w03(c, m);
+
+        GeomPoint F = w01(Z, E, Z, 1);
+
+        Line n = new Line(O, F);
+        Line a = new Line(X, Y);
+
+        return w03(n, a);
+    }
     /*
     W20 Ако су дате тачке X и Y и угао α могуће jе конструисати скуп тачака из
     коjих се дуж XY види под углом A · α/2
     B + C · π/2D. */
+
 
 
     /*
@@ -309,6 +330,13 @@ public class GeometricConstructions {
     je тачка X унутар круга k1 и да тачка X ниjе центар круга k1;
     */
 
+    public static Circle w22(GeomPoint X, Circle k) {
+        double XO = X.distance(k.getCenter());
+
+        double r = k.getRadius() - XO;
+
+        return new Circle(X, r);
+    }
 
     /*Simetrala ugla*/
 
