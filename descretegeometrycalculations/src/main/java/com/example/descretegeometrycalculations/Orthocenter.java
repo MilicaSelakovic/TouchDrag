@@ -3,9 +3,6 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-/**
- * Created by milica on 9.6.17..
- */
 
 public class Orthocenter extends GeomPoint implements SignificantObject {
 
@@ -13,7 +10,7 @@ public class Orthocenter extends GeomPoint implements SignificantObject {
     private boolean visible = false;
 
     Orthocenter(GeomPoint A, GeomPoint B, GeomPoint C){
-        super(0,0);
+        super(0, 0, false);
         this.A = A;
         this.B = B;
         this.C = C;

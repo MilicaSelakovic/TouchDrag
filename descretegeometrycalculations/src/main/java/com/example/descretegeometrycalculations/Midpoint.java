@@ -14,7 +14,7 @@ public class Midpoint extends GeomPoint implements SignificantObject {
 
 
     Midpoint(GeomPoint A, GeomPoint B, GeomPoint C) {
-        super(0, 0);
+        super(0, 0, false);
         this.A = A;
         this.B = B;
         this.C = C;

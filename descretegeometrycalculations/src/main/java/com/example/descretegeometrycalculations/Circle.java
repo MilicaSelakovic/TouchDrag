@@ -2,6 +2,7 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 import java.util.Vector;
 
@@ -70,7 +71,9 @@ class Circle implements GeometricObject {
     }
 
     public void translate(float x, float y){
-
+//        center.translate(x, y);
+//
+//        Log.d("centar", center.toString());
     }
 
 

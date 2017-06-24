@@ -2,18 +2,14 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.View;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
-    private HashMap<String, GeometricObject> znacajniObjecti;
+    private HashMap<String, GeometricObject> significatObjects;
 
     private String movingPoint = "";
     private boolean isMovingSet = false;
@@ -21,14 +17,22 @@ public class Triangle extends Polygon {
     public Triangle(Vector<GeomPoint> points) {
         super(points);
         // TODO proveriti da li ih je 30 na kraju
-        znacajniObjecti = new HashMap<>(30);
+        significatObjects = new HashMap<>(30);
         fillMap(points);
+
+//        for(Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()){
+//            if (entry.getKey() == "A" || entry.getKey() == "B" || entry.getKey() == "C"){
+//                continue;
+//            }
+//
+//            ((SignificantObject)entry.getValue()).setVisible(true);
+//        }
     }
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {
         super.draw(canvas, paint, finished);
-        for (Map.Entry<String, GeometricObject> entry: znacajniObjecti.entrySet()){
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if(entry.getValue() != null)
                 entry.getValue().draw(canvas, paint, finished);
         }
@@ -72,7 +76,7 @@ public class Triangle extends Polygon {
 
     public boolean isUnderCursor(float x, float y){
 
-        for(Map.Entry<String, GeometricObject> entry : znacajniObjecti.entrySet()){
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if(entry.getValue() == null)
                 continue;
             if( entry.getValue().isUnderCursor(x, y)){
@@ -89,7 +93,7 @@ public class Triangle extends Polygon {
 
     public void translate(float x, float y){
         if(isMovingSet) {
-            znacajniObjecti.get(movingPoint).translate(x, y);
+            significatObjects.get(movingPoint).translate(x, y);
             vertexMoved();
         }
     }
@@ -97,7 +101,7 @@ public class Triangle extends Polygon {
 
     private void vertexMoved(){
 
-        for(Map.Entry<String, GeometricObject> entry : znacajniObjecti.entrySet()){
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if (entry.getKey() == "A" || entry.getKey() == "B" || entry.getKey() == "C"){
                 continue;
             }
@@ -109,41 +113,41 @@ public class Triangle extends Polygon {
 
 
     private boolean bisector(Line line){
-        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
-        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
-        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+        GeomPoint A = (GeomPoint) significatObjects.get("A");
+        GeomPoint B = (GeomPoint) significatObjects.get("B");
+        GeomPoint C = (GeomPoint) significatObjects.get("C");
 
 
         if(ConnectionCalculations.isBisector(A, B, C, line)){
-            ((SignificantObject)znacajniObjecti.get("symB")).setVisible(true);
+            ((SignificantObject) significatObjects.get("symB")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("symC")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("symA")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("I")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("symC")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("symA")).isVisible()) {
+                ((SignificantObject) significatObjects.get("I")).setVisible(true);
             }
             return true;
         }
 
 
         if(ConnectionCalculations.isBisector(C, A, B, line)){
-            ((SignificantObject)znacajniObjecti.get("symA")).setVisible(true);
+            ((SignificantObject) significatObjects.get("symA")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("symC")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("symB")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("I")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("symC")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("symB")).isVisible()) {
+                ((SignificantObject) significatObjects.get("I")).setVisible(true);
             }
             return true;
         }
 
         if(ConnectionCalculations.isBisector(B, C, A, line)){
-            ((SignificantObject)znacajniObjecti.get("symC")).setVisible(true);
+            ((SignificantObject) significatObjects.get("symC")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("symB")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("symA")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("I")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("symB")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("symA")).isVisible()) {
+                ((SignificantObject) significatObjects.get("I")).setVisible(true);
             }
             return true;
         }
@@ -153,39 +157,39 @@ public class Triangle extends Polygon {
     }
 
     private boolean altitude(Line line){
-        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
-        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
-        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+        GeomPoint A = (GeomPoint) significatObjects.get("A");
+        GeomPoint B = (GeomPoint) significatObjects.get("B");
+        GeomPoint C = (GeomPoint) significatObjects.get("C");
 
         if(ConnectionCalculations.altitude(A, B, C, line)){
-            ((SignificantObject) znacajniObjecti.get("Hb")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("hb")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Hb")).setVisible(true);
+            ((SignificantObject) significatObjects.get("hb")).setVisible(true);
 
-            if(((SignificantObject) znacajniObjecti.get("ha")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("hc")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("H")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("ha")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("hc")).isVisible()) {
+                ((SignificantObject) significatObjects.get("H")).setVisible(true);
             }
             return true;
         }
 
         if(ConnectionCalculations.altitude(B, C, A, line)){
-            ((SignificantObject) znacajniObjecti.get("Hc")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("hc")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Hc")).setVisible(true);
+            ((SignificantObject) significatObjects.get("hc")).setVisible(true);
 
-            if(((SignificantObject) znacajniObjecti.get("ha")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("hb")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("H")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("ha")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("hb")).isVisible()) {
+                ((SignificantObject) significatObjects.get("H")).setVisible(true);
             }
             return true;
         }
 
         if(ConnectionCalculations.altitude(C, A, B, line)){
-            ((SignificantObject) znacajniObjecti.get("Ha")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("ha")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Ha")).setVisible(true);
+            ((SignificantObject) significatObjects.get("ha")).setVisible(true);
 
-            if(((SignificantObject) znacajniObjecti.get("hb")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("hc")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("H")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("hb")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("hc")).isVisible()) {
+                ((SignificantObject) significatObjects.get("H")).setVisible(true);
             }
             return true;
         }
@@ -194,42 +198,42 @@ public class Triangle extends Polygon {
     }
 
     private boolean centroid(Line line){
-        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
-        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
-        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+        GeomPoint A = (GeomPoint) significatObjects.get("A");
+        GeomPoint B = (GeomPoint) significatObjects.get("B");
+        GeomPoint C = (GeomPoint) significatObjects.get("C");
 
         if(ConnectionCalculations.centroidLine(A, B, C, line)){
-            ((SignificantObject) znacajniObjecti.get("Sb")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("tb")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Sb")).setVisible(true);
+            ((SignificantObject) significatObjects.get("tb")).setVisible(true);
 
-            if(((SignificantObject) znacajniObjecti.get("ta")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("tc")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("T")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("ta")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("tc")).isVisible()) {
+                ((SignificantObject) significatObjects.get("T")).setVisible(true);
             }
             return  true;
         }
 
         if(ConnectionCalculations.centroidLine(B, C, A, line)){
-            ((SignificantObject) znacajniObjecti.get("Sc")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("tc")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Sc")).setVisible(true);
+            ((SignificantObject) significatObjects.get("tc")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("ta")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("tb")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("T")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("ta")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("tb")).isVisible()) {
+                ((SignificantObject) significatObjects.get("T")).setVisible(true);
             }
             return  true;
         }
 
 
         if(ConnectionCalculations.centroidLine(C, A, B, line)){
-            ((SignificantObject) znacajniObjecti.get("Sa")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("ta")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Sa")).setVisible(true);
+            ((SignificantObject) significatObjects.get("ta")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("tb")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("tc")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("T")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("tb")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("tc")).isVisible()) {
+                ((SignificantObject) significatObjects.get("T")).setVisible(true);
             }
             return  true;
         }
@@ -239,18 +243,18 @@ public class Triangle extends Polygon {
     }
 
     private boolean prepBisector(Line line){
-        GeomPoint A = (GeomPoint) znacajniObjecti.get("A");
-        GeomPoint B = (GeomPoint) znacajniObjecti.get("B");
-        GeomPoint C = (GeomPoint) znacajniObjecti.get("C");
+        GeomPoint A = (GeomPoint) significatObjects.get("A");
+        GeomPoint B = (GeomPoint) significatObjects.get("B");
+        GeomPoint C = (GeomPoint) significatObjects.get("C");
 
         if(ConnectionCalculations.isSegmentCentar(A, B, line)){
-            ((SignificantObject) znacajniObjecti.get("Sc")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("symAB")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Sc")).setVisible(true);
+            ((SignificantObject) significatObjects.get("symAB")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("symBC")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("symAC")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("O")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("symBC")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("symAC")).isVisible()) {
+                ((SignificantObject) significatObjects.get("O")).setVisible(true);
             }
 
             return true;
@@ -258,13 +262,13 @@ public class Triangle extends Polygon {
 
 
         if(ConnectionCalculations.isSegmentCentar(C, A, line)){
-            ((SignificantObject) znacajniObjecti.get("Sb")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("symAC")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Sb")).setVisible(true);
+            ((SignificantObject) significatObjects.get("symAC")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("symBC")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("symAB")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("O")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("symBC")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("symAB")).isVisible()) {
+                ((SignificantObject) significatObjects.get("O")).setVisible(true);
             }
             return true;
         }
@@ -272,13 +276,13 @@ public class Triangle extends Polygon {
 
 
         if(ConnectionCalculations.isSegmentCentar( B, C, line)){
-            ((SignificantObject) znacajniObjecti.get("Sa")).setVisible(true);
-            ((SignificantObject) znacajniObjecti.get("symBC")).setVisible(true);
+            ((SignificantObject) significatObjects.get("Sa")).setVisible(true);
+            ((SignificantObject) significatObjects.get("symBC")).setVisible(true);
 
 
-            if(((SignificantObject) znacajniObjecti.get("symAB")).isVisible() ||
-                    ((SignificantObject) znacajniObjecti.get("symAC")).isVisible()){
-                ((SignificantObject) znacajniObjecti.get("O")).setVisible(true);
+            if (((SignificantObject) significatObjects.get("symAB")).isVisible() ||
+                    ((SignificantObject) significatObjects.get("symAC")).isVisible()) {
+                ((SignificantObject) significatObjects.get("O")).setVisible(true);
             }
 
             return true;
@@ -294,36 +298,36 @@ public class Triangle extends Polygon {
 
         Incenter I = new Incenter(A, B, C);
         Circumcenter O = new Circumcenter(A, B, C);
-        znacajniObjecti.put("A", A);
-        znacajniObjecti.put("B", B);
-        znacajniObjecti.put("C", C);
-        znacajniObjecti.put("H", new Orthocenter(A, B, C));
-        znacajniObjecti.put("Ha", new FootOfAltitude(C, A, B));
-        znacajniObjecti.put("Hb", new FootOfAltitude(A, B, C));
-        znacajniObjecti.put("Hc", new FootOfAltitude(B, C, A));
-        znacajniObjecti.put("T", new Centroid(A, B, C));
-        znacajniObjecti.put("I", I);
-        znacajniObjecti.put("O", O);
-        znacajniObjecti.put("Sa", new Midpoint(C, A, B));
-        znacajniObjecti.put("Sb", new Midpoint(A, B, C));
-        znacajniObjecti.put("Sc", new Midpoint(B, C, A));
+        significatObjects.put("A", A);
+        significatObjects.put("B", B);
+        significatObjects.put("C", C);
+        significatObjects.put("H", new Orthocenter(A, B, C));
+        significatObjects.put("Ha", new FootOfAltitude(C, A, B));
+        significatObjects.put("Hb", new FootOfAltitude(A, B, C));
+        significatObjects.put("Hc", new FootOfAltitude(B, C, A));
+        significatObjects.put("T", new Centroid(A, B, C));
+        significatObjects.put("I", I);
+        significatObjects.put("O", O);
+        significatObjects.put("Sa", new Midpoint(C, A, B));
+        significatObjects.put("Sb", new Midpoint(A, B, C));
+        significatObjects.put("Sc", new Midpoint(B, C, A));
 
-        znacajniObjecti.put("symBC", new PerpBisector(C, A, B));
-        znacajniObjecti.put("symAC", new PerpBisector(A, B, C));
-        znacajniObjecti.put("symAB", new PerpBisector(B, C, A));
-        znacajniObjecti.put("symA", new AngleBisector(C, A, B));
-        znacajniObjecti.put("symB", new AngleBisector(A, B, C));
-        znacajniObjecti.put("symC", new AngleBisector(B, C, A));
+        significatObjects.put("symBC", new PerpBisector(C, A, B));
+        significatObjects.put("symAC", new PerpBisector(A, B, C));
+        significatObjects.put("symAB", new PerpBisector(B, C, A));
+        significatObjects.put("symA", new AngleBisector(C, A, B));
+        significatObjects.put("symB", new AngleBisector(A, B, C));
+        significatObjects.put("symC", new AngleBisector(B, C, A));
 
-        znacajniObjecti.put("ta", new Median(C, A, B));
-        znacajniObjecti.put("tb", new Median(A, B, C));
-        znacajniObjecti.put("tc", new Median(B, C, A));
+        significatObjects.put("ta", new Median(C, A, B));
+        significatObjects.put("tb", new Median(A, B, C));
+        significatObjects.put("tc", new Median(B, C, A));
 
-        znacajniObjecti.put("ha", new Altitude(C, A, B));
-        znacajniObjecti.put("hb", new Altitude(A, B, C));
-        znacajniObjecti.put("hc", new Altitude(B, C, A));
+        significatObjects.put("ha", new Altitude(C, A, B));
+        significatObjects.put("hb", new Altitude(A, B, C));
+        significatObjects.put("hc", new Altitude(B, C, A));
 
-        znacajniObjecti.put("ki", new Incircle(I, A, B, C));
-        znacajniObjecti.put("kc", new CircumscribedCircle(O, A));
+        significatObjects.put("ki", new Incircle(I, A, B, C));
+        significatObjects.put("kc", new CircumscribedCircle(O, A));
     }
 }

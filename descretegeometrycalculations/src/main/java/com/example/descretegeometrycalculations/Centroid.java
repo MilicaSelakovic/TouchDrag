@@ -9,7 +9,7 @@ public class Centroid extends GeomPoint implements SignificantObject {
     private boolean visible = false;
 
     Centroid(GeomPoint A, GeomPoint B, GeomPoint C){
-        super(0,0);
+        super(0, 0, false);
         this.A = A;
         this.B = B;
         this.C = C;

@@ -3,6 +3,8 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.provider.DocumentsContract;
+import android.renderscript.Float2;
 
 
 class GeomPoint implements GeometricObject {
@@ -19,9 +21,10 @@ class GeomPoint implements GeometricObject {
         this.move = true;
 
         circlePaint = new Paint();
-        circlePaint.setColor(Color.BLUE);
+
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL);
+
 
     }
 
@@ -31,10 +34,6 @@ class GeomPoint implements GeometricObject {
         this.move = move;
 
         circlePaint = new Paint();
-        if(move)
-            circlePaint.setColor(Color.BLUE);
-        else
-            circlePaint.setColor(Color.DKGRAY);
 
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL);
@@ -46,17 +45,23 @@ class GeomPoint implements GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {
-        canvas.drawCircle(x, y, 10f, circlePaint);
+        if (move) {
+            circlePaint.setColor(Color.BLUE);
+
+        } else {
+            circlePaint.setColor(Color.GRAY);
+        }
+        canvas.drawCircle(x, y, 15f, circlePaint);
     }
 
     @Override
     public String toString() {
-        return "Tacka";
+        return "Tacka" + Float.toString(x) + ", " + Float.toString(y);
     }
 
     public boolean isUnderCursor(float x, float y) {
         //TODO: 28.5.17. konstanta mora da se nasteluje
-        double epsilon = 10;
+        double epsilon = 15;
         return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
     }
     public void translate(float x, float y){
