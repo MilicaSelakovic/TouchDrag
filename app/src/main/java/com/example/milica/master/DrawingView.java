@@ -2,6 +2,7 @@ package com.example.milica.master;
 
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.View;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -15,7 +16,10 @@ import android.graphics.Color;
 
 import com.example.descretegeometrycalculations.DiscreteCurvature;
 import com.example.descretegeometrycalculations.GeometricObject;
+import com.example.descretegeometrycalculations.SignificantObject;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class DrawingView extends View {
@@ -31,9 +35,12 @@ public class DrawingView extends View {
     private Bitmap canvasBitmap;
 
     private Vector<PointF> points;
-    private Vector<GeometricObject> geometricObjects;
+    private HashMap<String, GeometricObject> geometricObjects;
+    private Vector<String> commands;
     private GeometricObject current;
 
+    private Recognizer recognizer;
+    private UniqueID uniqueID;
     boolean actionDown;
 
     boolean moveMode;
@@ -41,10 +48,14 @@ public class DrawingView extends View {
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
         setupDrawing();
+
+        uniqueID = new UniqueID();
+        recognizer = new Recognizer(uniqueID);
         actionDown = false;
         moveMode  = false;
         points = new Vector<>();
-        geometricObjects = new Vector<>();
+        geometricObjects = new HashMap<>();
+        commands = new Vector<>();
     }
 
     private void setupDrawing(){
@@ -90,15 +101,17 @@ public class DrawingView extends View {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
             }
-            current = DiscreteCurvature.getGeometricObject(points);
+            //current = DiscreteCurvature.getGeometricObject(points);
             if (current != null && actionDown) {
                 current.draw(canvas, drawObject, false);
             }
         }
 
-        for(GeometricObject object : geometricObjects){
-            object.draw(canvas, objectPaint, true);
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+
+            entry.getValue().draw(canvas, objectPaint, true);
         }
+
 
     }
 
@@ -110,54 +123,58 @@ public class DrawingView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if(moveMode){
-                    for(GeometricObject object : geometricObjects){
-                        if(object.isUnderCursor(touchX, touchY)){
-                            current = object;
-                            break;
-                        }
-                    }
-                } else {
+//                if(moveMode){
+//                    for(GeometricObject object : geometricObjects){
+//                        if(object.isUnderCursor(touchX, touchY)){
+//                            current = object;
+//                            break;
+//                        }
+//                    }
+//                } else {
                     drawPath.moveTo(touchX, touchY);
                     points.removeAllElements();
                     points.add(touchPoint);
                     actionDown = true;
                     invalidate();
-                }
+//                }
                 break;
             case MotionEvent.ACTION_MOVE:
-                if(moveMode){
-                    if(current != null)
-                        current.translate(touchX, touchY);
-                }else {
+//                if(moveMode){
+//                    if(current != null)
+//                        current.translate(touchX, touchY);
+//                }else {
                     points.add(touchPoint);
                     drawPath.lineTo(touchX, touchY);
-                }
+                current = recognizer.recognizeCurrent(points);
+                //current = recognizer.recognize(points, )
+//                }
                 invalidate();
                 break;
 
             case MotionEvent.ACTION_UP:
-                if(moveMode){
-                    if(current != null)
-                        current.translate(touchX, touchY);
-                    current = null;
-                }else {
+//                if(moveMode){
+//                    if(current != null)
+//                        current.translate(touchX, touchY);
+//                    current = null;
+//                }else {
                     actionDown = false;
-                    if (current != null) {
-                        boolean ind = true;
-                        for (GeometricObject object : geometricObjects) {
-                            if (object.connection(current)) {
-                                ind = false;
-                                break;
-                            }
-                        }
-                        if (ind) {
-                            geometricObjects.add(current);
-                        }
-                        current = null;
-                    }
+                recognizer.recognize(points, geometricObjects, commands);
+//                    if (current != null) {
+//                        boolean ind = true;
+//                        for (GeometricObject object : geometricObjects) {
+//                            if (object.connection(current)) {
+//                                ind = false;
+//                                break;
+//                            }
+//                        }
+//                        if (ind) {
+//                            geometricObjects.add(current);
+//                        }
+//                        current = null;
+//                    }
                     drawPath.reset();
-                }
+                Log.d("komande", commands.toString());
+//                }
                 invalidate();
                 break;
             default:

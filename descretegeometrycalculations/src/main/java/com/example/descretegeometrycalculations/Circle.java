@@ -6,10 +6,11 @@ import android.util.Log;
 
 import java.util.Vector;
 
-class Circle implements GeometricObject {
+public class Circle implements GeometricObject {
 
     private GeomPoint center;
 
+    String id;
 
     private double radius;
 
@@ -29,11 +30,19 @@ class Circle implements GeometricObject {
         return center;
     }
 
-    double getRadius() {
+    public double getRadius() {
         return radius;
     }
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 

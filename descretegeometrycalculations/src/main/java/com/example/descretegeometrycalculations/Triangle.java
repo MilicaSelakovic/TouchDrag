@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
+    String id;
     private HashMap<String, GeometricObject> significatObjects;
 
     private String movingPoint = "";
@@ -20,13 +21,21 @@ public class Triangle extends Polygon {
         significatObjects = new HashMap<>(30);
         fillMap(points);
 
-//        for(Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()){
-//            if (entry.getKey() == "A" || entry.getKey() == "B" || entry.getKey() == "C"){
-//                continue;
-//            }
-//
-//            ((SignificantObject)entry.getValue()).setVisible(true);
-//        }
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+            if (entry.getKey() == "A" || entry.getKey() == "B" || entry.getKey() == "C") {
+                continue;
+            }
+
+            ((SignificantObject) entry.getValue()).setVisible(true);
+        }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override

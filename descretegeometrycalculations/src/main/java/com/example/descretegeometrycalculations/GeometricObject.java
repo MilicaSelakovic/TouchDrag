@@ -13,4 +13,9 @@ public interface GeometricObject {
     boolean isUnderCursor(float x, float y);
     void translate(float x, float y);
 
+    public String getId();
+
+    public void setId(String id);
+
+
 }

@@ -7,13 +7,15 @@ import android.provider.DocumentsContract;
 import android.renderscript.Float2;
 
 
-class GeomPoint implements GeometricObject {
+public class GeomPoint implements GeometricObject {
 
     private float x;
     private float y;
     private Paint circlePaint;
 
     private boolean move;
+
+    String id;
 
     GeomPoint(float x, float y) {
         this.x = x;
@@ -40,6 +42,14 @@ class GeomPoint implements GeometricObject {
 
     }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
 

@@ -7,7 +7,17 @@ import android.graphics.Path;
 import java.util.Vector;
 
 
-class Polygon implements GeometricObject {
+public class Polygon implements GeometricObject {
+    String id;
+
+    public Vector<GeomPoint> getPoints() {
+        return points;
+    }
+
+    public void setPoints(Vector<GeomPoint> points) {
+        this.points = points;
+    }
+
     Vector<GeomPoint> points;
 
     Polygon(Vector<GeomPoint> points){
@@ -15,6 +25,13 @@ class Polygon implements GeometricObject {
 
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished) {

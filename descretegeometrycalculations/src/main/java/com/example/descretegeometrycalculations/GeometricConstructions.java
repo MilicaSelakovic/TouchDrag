@@ -287,7 +287,6 @@ public class GeometricConstructions {
     }
 
     /*
-    TODO ovde fali w18 i w17 ne razumem
     W17 Ако су дате тачке X и Y и угао α могуће jе конструисати праву q тако
     да jе угао ∠(XY , q) = A · α/2B + C · π/2D; */
 
@@ -297,7 +296,6 @@ public class GeometricConstructions {
     X и Y различите, тачке Y и Z различите и да тачка Y ниjе средиште дужи
     XZ;*/
 
-    // TODO pitati da li se se misli da vazi H(X,Z;Y,W)
     public static GeomPoint w19(GeomPoint X, GeomPoint Y, GeomPoint Z) {
         /*Tacka van prave XY
         * */

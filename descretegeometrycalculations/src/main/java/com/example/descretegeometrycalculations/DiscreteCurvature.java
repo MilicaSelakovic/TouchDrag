@@ -158,6 +158,7 @@ public class DiscreteCurvature {
     }
 
     // @Nullable
+    // TODO dopuniti listu konstrukcija
     public static GeometricObject getGeometricObject(Vector<PointF> points) {
         int n = points.size();
 
@@ -175,6 +176,9 @@ public class DiscreteCurvature {
         GeometricObject obj = circle(points);
 
         if (obj != null) {
+
+            // TODO konstrukcije add w06 center point
+
             return obj;
         }
 
@@ -227,6 +231,8 @@ public class DiscreteCurvature {
                 if (breakPoints.size() == 3) {
                     return new Triangle(breakPoints);
                 }
+
+                // TODO: spisak konstrukcija za poligon
                 return new Polygon(breakPoints);
             } else if (breakPoints.size() == 2) {
                 return new Line(breakPoints.firstElement(), breakPoints.lastElement());

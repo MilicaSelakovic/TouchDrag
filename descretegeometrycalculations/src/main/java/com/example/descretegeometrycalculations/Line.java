@@ -5,9 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 
+public class Line implements GeometricObject {
 
-class Line implements GeometricObject {
 
+    private String id;
     private GeomPoint begin;
     private GeomPoint end;
 
@@ -15,6 +16,7 @@ class Line implements GeometricObject {
     //private TreeSet<Line> parallel = new TreeSet<>();
 
     Line(GeomPoint x, GeomPoint y){
+        id = "";
         begin = x ;
         end = y;
         if(x != null && y != null) {
@@ -23,6 +25,15 @@ class Line implements GeometricObject {
             float norm = (float) Math.sqrt(vX * vX + vY * vY);
             vector = new GeomPoint(vX / norm, vY / norm);
         }
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     private float yCoord(float x, float y){
@@ -65,11 +76,11 @@ class Line implements GeometricObject {
         return vector;
     }
 
-    GeomPoint getBegin() {
+    public GeomPoint getBegin() {
         return begin;
     }
 
-    void setBegin(GeomPoint begin) {
+    public void setBegin(GeomPoint begin) {
         this.begin = begin;
     }
 
