@@ -91,9 +91,19 @@ public class Recognizer {
                 command += idp + " ";
             }
 
+            String idA = uniqueID.getID();
+            String idB = uniqueID.getID();
+            String idC = uniqueID.getID();
+
+            ((Triangle) recognized).setIDLines(idA, idB, idC);
+            // TODO srediti ove linije
+            commands.add("line " + idA + " ");
+            commands.add("line " + idB + " ");
+            commands.add("line " + idC + " ");
             commands.add(command);
 
         }
+
 
         objects.put(id, recognized);
 

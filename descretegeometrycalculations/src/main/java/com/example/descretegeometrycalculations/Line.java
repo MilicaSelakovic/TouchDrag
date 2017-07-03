@@ -4,6 +4,8 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import java.util.Vector;
+
 
 public class Line implements GeometricObject {
 
@@ -133,6 +135,10 @@ public class Line implements GeometricObject {
 //            }
 //        }
 
+        return false;
+    }
+
+    public boolean connection(GeometricObject object, Vector<String> commands) {
         return false;
     }
 

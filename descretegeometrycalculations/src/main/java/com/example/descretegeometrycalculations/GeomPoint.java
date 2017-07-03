@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.provider.DocumentsContract;
 import android.renderscript.Float2;
 
+import java.util.Vector;
+
 
 public class GeomPoint implements GeometricObject {
 
@@ -82,6 +84,10 @@ public class GeomPoint implements GeometricObject {
 
 
     public boolean connection(GeometricObject object) {
+        return false;
+    }
+
+    public boolean connection(GeometricObject object, Vector<String> commands) {
         return false;
     }
 

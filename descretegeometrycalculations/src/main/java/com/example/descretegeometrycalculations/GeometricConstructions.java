@@ -1,6 +1,8 @@
 package com.example.descretegeometrycalculations;
 
 public class GeometricConstructions {
+
+    // TODO: 3.7.17. Dodati centroid A B C koji konstruise tb 
     /*
     W01 Ако су дате тачке X, Z и W, и рационалан броj r могуће jе конструисати
     тачку Y тако да важи:

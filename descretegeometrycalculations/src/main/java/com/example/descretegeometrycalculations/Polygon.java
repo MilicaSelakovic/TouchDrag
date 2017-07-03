@@ -57,6 +57,12 @@ public class Polygon implements GeometricObject {
 
     }
 
+    public boolean connection(GeometricObject object, Vector<String> commands) {
+
+        return false;
+
+    }
+
     public boolean isUnderCursor(float x, float y){
         return false;
     }
