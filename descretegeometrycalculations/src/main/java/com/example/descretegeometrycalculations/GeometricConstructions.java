@@ -2,7 +2,7 @@ package com.example.descretegeometrycalculations;
 
 public class GeometricConstructions {
 
-    // TODO: 3.7.17. Dodati centroid A B C koji konstruise tb 
+    // TODO: 3.7.17. Dodati centroid A B C koji konstruise tb
     /*
     W01 Ако су дате тачке X, Z и W, и рационалан броj r могуће jе конструисати
     тачку Y тако да важи:
@@ -263,8 +263,9 @@ public class GeometricConstructions {
 
     public static Line w14(GeomPoint X, GeomPoint Y){
         GeomPoint A = new GeomPoint((X.X() + Y.X())/2, (X.Y() + Y.Y()) /2);
-        GeomPoint v= new GeomPoint( - (X.Y() - Y.Y()), X.X() - Y.X());
-        return new Line(A, new GeomPoint(A.X() + v.X(), A.Y() + v.Y()));
+//        GeomPoint v= new GeomPoint( - (X.Y() - Y.Y()), X.X() - Y.X());
+//        return new Line(A, new GeomPoint(A.X() + v.X(), A.Y() + v.Y()));
+        return GeometricConstructions.w10(A, new Line(X, Y));
     }
 
     /*

@@ -374,47 +374,66 @@ public class Triangle extends Polygon {
     }
 
     private boolean prepBisector(Line line, Vector<String> commands) {
-        GeomPoint A = (GeomPoint) significatObjects.get("A");
-        GeomPoint B = (GeomPoint) significatObjects.get("B");
-        GeomPoint C = (GeomPoint) significatObjects.get("C");
-
         if(ConnectionCalculations.isSegmentCentar(A, B, line)){
-            ((SignificantObject) significatObjects.get("Sc")).setVisible(true);
-            ((SignificantObject) significatObjects.get("symAB")).setVisible(true);
+            Line l = GeometricConstructions.w14(A, B);
+            line.setBegin(l.getBegin());
+            line.setEnd(l.getEnd());
 
-
-            if (((SignificantObject) significatObjects.get("symBC")).isVisible() ||
-                    ((SignificantObject) significatObjects.get("symAC")).isVisible()) {
-                ((SignificantObject) significatObjects.get("O")).setVisible(true);
-            }
+            significatObjects.put("symAB", line);
+            commands.add("w14 " + line.getId() + " " + A.getId() + " " + B.getId());
+            commands.add("add symAB " + id + " " + line.getId());
+//            ((SignificantObject) significatObjects.get("Sc")).setVisible(true);
+//            ((SignificantObject) significatObjects.get("symAB")).setVisible(true);
+//
+//
+//            if (((SignificantObject) significatObjects.get("symBC")).isVisible() ||
+//                    ((SignificantObject) significatObjects.get("symAC")).isVisible()) {
+//                ((SignificantObject) significatObjects.get("O")).setVisible(true);
+//            }
 
             return true;
         }
 
 
         if(ConnectionCalculations.isSegmentCentar(C, A, line)){
-            ((SignificantObject) significatObjects.get("Sb")).setVisible(true);
-            ((SignificantObject) significatObjects.get("symAC")).setVisible(true);
+            Line l = GeometricConstructions.w14(A, C);
+            line.setBegin(l.getBegin());
+            line.setEnd(l.getEnd());
 
+            significatObjects.put("symAC", line);
+            commands.add("w14 " + line.getId() + " " + A.getId() + " " + C.getId());
+            commands.add("add symAC " + id + " " + line.getId());
 
-            if (((SignificantObject) significatObjects.get("symBC")).isVisible() ||
-                    ((SignificantObject) significatObjects.get("symAB")).isVisible()) {
-                ((SignificantObject) significatObjects.get("O")).setVisible(true);
-            }
+//            ((SignificantObject) significatObjects.get("Sb")).setVisible(true);
+//            ((SignificantObject) significatObjects.get("symAC")).setVisible(true);
+//
+//
+//            if (((SignificantObject) significatObjects.get("symBC")).isVisible() ||
+//                    ((SignificantObject) significatObjects.get("symAB")).isVisible()) {
+//                ((SignificantObject) significatObjects.get("O")).setVisible(true);
+//            }
             return true;
         }
 
 
 
         if(ConnectionCalculations.isSegmentCentar( B, C, line)){
-            ((SignificantObject) significatObjects.get("Sa")).setVisible(true);
-            ((SignificantObject) significatObjects.get("symBC")).setVisible(true);
+            Line l = GeometricConstructions.w14(B, C);
+            line.setBegin(l.getBegin());
+            line.setEnd(l.getEnd());
 
+            significatObjects.put("symBC", line);
+            commands.add("w14 " + line.getId() + " " + B.getId() + " " + C.getId());
+            commands.add("add symBC " + id + " " + line.getId());
 
-            if (((SignificantObject) significatObjects.get("symAB")).isVisible() ||
-                    ((SignificantObject) significatObjects.get("symAC")).isVisible()) {
-                ((SignificantObject) significatObjects.get("O")).setVisible(true);
-            }
+//            ((SignificantObject) significatObjects.get("Sa")).setVisible(true);
+//            ((SignificantObject) significatObjects.get("symBC")).setVisible(true);
+//
+//
+//            if (((SignificantObject) significatObjects.get("symAB")).isVisible() ||
+//                    ((SignificantObject) significatObjects.get("symAC")).isVisible()) {
+//                ((SignificantObject) significatObjects.get("O")).setVisible(true);
+//            }
 
             return true;
         }
