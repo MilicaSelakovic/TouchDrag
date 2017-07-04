@@ -348,4 +348,10 @@ public class GeometricConstructions {
         return new Line(B, S);
         
     }
+
+    public static Line centroid(GeomPoint A, GeomPoint B, GeomPoint C) {
+        GeomPoint sB = new GeomPoint((A.X() + C.X()) / 2, (A.Y() + C.Y()) / 2);
+
+        return new Line(B, sB);
+    }
 }
