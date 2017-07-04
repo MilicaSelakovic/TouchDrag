@@ -143,11 +143,9 @@ public class DrawingView extends View {
 //                    if(current != null)
 //                        current.translate(touchX, touchY);
 //                }else {
-                    points.add(touchPoint);
-                    drawPath.lineTo(touchX, touchY);
+                points.add(touchPoint);
+                drawPath.lineTo(touchX, touchY);
                 current = recognizer.recognizeCurrent(points);
-                //current = recognizer.recognize(points, )
-//                }
                 invalidate();
                 break;
 
@@ -157,24 +155,11 @@ public class DrawingView extends View {
 //                        current.translate(touchX, touchY);
 //                    current = null;
 //                }else {
-                    actionDown = false;
+                actionDown = false;
                 recognizer.recognize(points, geometricObjects, commands);
-//                    if (current != null) {
-//                        boolean ind = true;
-//                        for (GeometricObject object : geometricObjects) {
-//                            if (object.connection(current)) {
-//                                ind = false;
-//                                break;
-//                            }
-//                        }
-//                        if (ind) {
-//                            geometricObjects.add(current);
-//                        }
-//                        current = null;
-//                    }
-                    drawPath.reset();
+                drawPath.reset();
+                current = null;
                 Log.d("komande", commands.toString());
-//                }
                 invalidate();
                 break;
             default:
@@ -191,6 +176,7 @@ public class DrawingView extends View {
 
     public void clearPanel(){
         geometricObjects.clear();
+        commands.clear();
         invalidate();
     }
 

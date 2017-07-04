@@ -31,10 +31,12 @@ public class Recognizer {
         recognized.setId(id);
 
 
-//        for(Map.Entry<String, GeometricObject> entry : objects.entrySet()){
-//            if(entry.getValue().connection(recognized))
-//                return true;
-//        }
+        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue().connection(recognized, commands)) {
+                objects.put(id, recognized);
+                return true;
+            }
+        }
 
         if (recognized instanceof GeomPoint) {
             commands.add("point " + id);
