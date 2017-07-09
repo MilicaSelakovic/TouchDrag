@@ -72,11 +72,11 @@ public class Triangle extends Polygon {
     }
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished) {
-        super.draw(canvas, paint, finished);
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
+        super.draw(canvas, paint, finished, choose);
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if(entry.getValue() != null)
-                entry.getValue().draw(canvas, paint, finished);
+                entry.getValue().draw(canvas, paint, finished, false);
         }
 
     }

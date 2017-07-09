@@ -3,8 +3,6 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.provider.DocumentsContract;
-import android.renderscript.Float2;
 
 import java.util.Vector;
 
@@ -16,7 +14,7 @@ public class GeomPoint implements GeometricObject {
     private Paint circlePaint;
 
     private boolean move;
-    private boolean canChoose;
+    private int canChoose;
 
     String id;
 
@@ -24,7 +22,7 @@ public class GeomPoint implements GeometricObject {
         this.x = x;
         this.y = y;
         this.move = true;
-        this.canChoose = false;
+        this.canChoose = 0;
 
         circlePaint = new Paint();
 
@@ -38,7 +36,7 @@ public class GeomPoint implements GeometricObject {
         this.x = x;
         this.y = y;
         this.move = move;
-        this.canChoose = false;
+        this.canChoose = 0;
 
         circlePaint = new Paint();
 
@@ -59,7 +57,7 @@ public class GeomPoint implements GeometricObject {
 
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
         if (move) {
             circlePaint.setColor(Color.BLUE);
 

@@ -2,7 +2,6 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.util.Log;
 
 import java.util.Vector;
 
@@ -47,9 +46,9 @@ public class Circle implements GeometricObject {
 
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
         if (finished)
-            center.draw(canvas, paint, false);
+            center.draw(canvas, paint, false, false);
         canvas.drawCircle(center.X(), center.Y(), (float) radius, paint);
     }
 

@@ -18,9 +18,9 @@ public class Centroid extends GeomPoint implements SignificantObject {
     }
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
         if(visible)
-            super.draw(canvas, paint, finished);
+            super.draw(canvas, paint, finished, choose);
     }
 
     @Override

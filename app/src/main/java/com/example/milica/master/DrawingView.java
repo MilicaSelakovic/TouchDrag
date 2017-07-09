@@ -15,9 +15,7 @@ import android.view.MotionEvent;
 import android.graphics.Color;
 
 import com.example.descretegeometrycalculations.Contructor;
-import com.example.descretegeometrycalculations.DiscreteCurvature;
 import com.example.descretegeometrycalculations.GeometricObject;
-import com.example.descretegeometrycalculations.SignificantObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -106,13 +104,13 @@ public class DrawingView extends View {
             }
             //current = DiscreteCurvature.getGeometricObject(points);
             if (current != null && actionDown) {
-                current.draw(canvas, drawObject, false);
+                current.draw(canvas, drawObject, false, false);
             }
         }
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
 
-            entry.getValue().draw(canvas, objectPaint, true);
+            entry.getValue().draw(canvas, objectPaint, true, false);
         }
 
 

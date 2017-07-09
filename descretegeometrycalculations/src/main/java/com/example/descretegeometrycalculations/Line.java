@@ -49,7 +49,7 @@ public class Line implements GeometricObject {
 
 
    @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished) {
+   public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
        float x1 = 0;
        float x2  = canvas.getWidth();
 
