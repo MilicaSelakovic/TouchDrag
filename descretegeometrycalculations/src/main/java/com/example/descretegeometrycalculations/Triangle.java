@@ -12,9 +12,10 @@ public class Triangle extends Polygon {
     String id;
     private HashMap<String, GeometricObject> significatObjects;
     private GeomPoint A, B, C;
-    private String movingPoint = "";
-    private boolean isMovingSet = false;
 
+    private String freePoint1;
+    private String freePoint2;
+    private String freePoint3;
 
     private Line a, b, c;
 
@@ -31,6 +32,10 @@ public class Triangle extends Polygon {
         a = new Line(B, C);
         b = new Line(A, C);
         c = new Line(A, B);
+
+        freePoint1 = "A";
+        freePoint2 = "B";
+        freePoint3 = "C";
 
     }
 
@@ -71,12 +76,32 @@ public class Triangle extends Polygon {
         this.id = id;
     }
 
+    private boolean isFree(String point) {
+        if (point == freePoint1 || point == freePoint2 || point == freePoint3)
+            return true;
+
+        return false;
+    }
+    @Override
+    public void setChoose() {
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+            if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
+                if (isFree(entry.getKey())) {
+                    ((GeomPoint) entry.getValue()).setCanChoose(1);
+                } else {
+                    ((GeomPoint) entry.getValue()).setCanChoose(-1);
+                }
+            }
+
+        }
+    }
+
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
         super.draw(canvas, paint, finished, choose);
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if(entry.getValue() != null)
-                entry.getValue().draw(canvas, paint, finished, false);
+                entry.getValue().draw(canvas, paint, finished, choose);
         }
 
     }
@@ -140,26 +165,11 @@ public class Triangle extends Polygon {
     }
 
     public boolean isUnderCursor(float x, float y) {
-//
-//        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
-//            if(entry.getValue() == null)
-//                continue;
-//            if( entry.getValue().isUnderCursor(x, y)){
-//                movingPoint = entry.getKey();
-//                isMovingSet = true;
-//                return true;
-//            }
-//        }
-//
-//        isMovingSet = false;
 
         return false;
     }
 
     public void translate(float x, float y){
-        if(isMovingSet) {
-            significatObjects.get(movingPoint).translate(x, y);
-        }
     }
 
 

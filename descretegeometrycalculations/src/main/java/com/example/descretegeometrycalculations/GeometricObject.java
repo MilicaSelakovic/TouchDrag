@@ -15,6 +15,8 @@ public interface GeometricObject {
 
     boolean connection(GeometricObject object, Vector<String> commands);
 
+    void setChoose();
+
     boolean isUnderCursor(float x, float y);
     void translate(float x, float y);
 

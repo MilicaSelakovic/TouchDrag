@@ -14,9 +14,11 @@ public class GeomPoint implements GeometricObject {
     private Paint circlePaint;
 
     private boolean move;
+
+
     private int canChoose;
 
-    String id;
+    private String id;
 
     GeomPoint(float x, float y) {
         this.x = x;
@@ -54,6 +56,9 @@ public class GeomPoint implements GeometricObject {
         this.id = id;
     }
 
+    public void setCanChoose(int canChoose) {
+        this.canChoose = canChoose;
+    }
 
 
     @Override
@@ -64,6 +69,20 @@ public class GeomPoint implements GeometricObject {
         } else {
             circlePaint.setColor(Color.GRAY);
         }
+
+        if (choose) {
+            switch (canChoose) {
+                case -1:
+                    circlePaint.setColor(Color.RED);
+                case 0:
+                    circlePaint.setColor(Color.BLACK);
+                case 1:
+                    circlePaint.setColor(Color.GREEN);
+            }
+
+
+        }
+
         canvas.drawCircle(x, y, 15f, circlePaint);
     }
 
@@ -90,6 +109,11 @@ public class GeomPoint implements GeometricObject {
 
     public boolean connection(GeometricObject object, Vector<String> commands) {
         return false;
+    }
+
+    @Override
+    public void setChoose() {
+
     }
 
     float X() {

@@ -51,6 +51,11 @@ public class Polygon implements GeometricObject {
     }
 
 
+    @Override
+    public void setChoose() {
+
+    }
+
     public boolean connection(GeometricObject object){
 
         return false;

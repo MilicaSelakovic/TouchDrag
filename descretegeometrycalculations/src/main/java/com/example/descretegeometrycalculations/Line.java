@@ -142,6 +142,11 @@ public class Line implements GeometricObject {
         return false;
     }
 
+    @Override
+    public void setChoose() {
+
+    }
+
     private void connectionLine(Line line){
 //        if(ConnectionCalculations.normalLine(this, line)){
 ////            Log.d("linija", "normala");

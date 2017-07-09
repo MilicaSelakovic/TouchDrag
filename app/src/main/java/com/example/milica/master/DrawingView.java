@@ -44,6 +44,7 @@ public class DrawingView extends View {
     boolean actionDown;
 
     boolean moveMode;
+    boolean chooseMode;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -54,6 +55,7 @@ public class DrawingView extends View {
         contructor = new Contructor();
         actionDown = false;
         moveMode  = false;
+        chooseMode = false;
         points = new Vector<>();
         geometricObjects = new HashMap<>();
         commands = new Vector<>();
@@ -98,7 +100,7 @@ public class DrawingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
-        if(!moveMode) {
+        if (!moveMode && !chooseMode) {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
             }
@@ -110,7 +112,7 @@ public class DrawingView extends View {
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
 
-            entry.getValue().draw(canvas, objectPaint, true, false);
+            entry.getValue().draw(canvas, objectPaint, true, chooseMode);
         }
 
 
@@ -187,4 +189,13 @@ public class DrawingView extends View {
         invalidate();
     }
 
+
+    public void setChoose(boolean value) {
+        chooseMode = value;
+        if (value) {
+            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                entry.getValue().setChoose();
+            }
+        }
+    }
 }

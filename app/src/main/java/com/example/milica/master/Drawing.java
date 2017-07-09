@@ -64,6 +64,7 @@ public class Drawing extends Activity {
     }
 
     public void choose(View view) {
-
+        boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton2)).isChecked();
+        ((DrawingView) this.findViewById(R.id.view)).setChoose(value);
     }
 }
