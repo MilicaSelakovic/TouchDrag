@@ -96,7 +96,7 @@ public class Triangle extends Polygon {
                 ind = true;
             }
 
-            if (centroid(l, commands)) {
+            if (median(l, commands)) {
                 Log.d("Tezisna", "linija");
                 ind = true;
             }
@@ -115,25 +115,43 @@ public class Triangle extends Polygon {
 
         if (object instanceof GeomPoint) {
             GeomPoint p = (GeomPoint) object;
-            if (orthocenter(p, commands))
+            if (orthocenter(p, commands)) {
+                p.setMove(false);
                 return true;
-        }
+            }
 
-        return ind;
-    }
-    public boolean isUnderCursor(float x, float y){
+            if (circumcenter(p, commands)) {
+                p.setMove(false);
+                return true;
+            }
 
-        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
-            if(entry.getValue() == null)
-                continue;
-            if( entry.getValue().isUnderCursor(x, y)){
-                movingPoint = entry.getKey();
-                isMovingSet = true;
+            if (incenter(p, commands)) {
+                p.setMove(false);
+                return true;
+            }
+
+            if (centroid(p, commands)) {
+                p.setMove(false);
                 return true;
             }
         }
 
-        isMovingSet = false;
+        return ind;
+    }
+
+    public boolean isUnderCursor(float x, float y) {
+//
+//        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+//            if(entry.getValue() == null)
+//                continue;
+//            if( entry.getValue().isUnderCursor(x, y)){
+//                movingPoint = entry.getKey();
+//                isMovingSet = true;
+//                return true;
+//            }
+//        }
+//
+//        isMovingSet = false;
 
         return false;
     }
@@ -153,7 +171,7 @@ public class Triangle extends Polygon {
             line.setEnd(s.getEnd());
             significatObjects.put("symB", line);
             commands.add("bisectorAngle " + line.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
-            commands.add("add symB" + " " + id + " " + line.getId());
+//            commands.add("add symB" + " " + id + " " + line.getId());
             return true;
         }
 
@@ -164,7 +182,7 @@ public class Triangle extends Polygon {
             line.setEnd(s.getEnd());
             significatObjects.put("symA", line);
             commands.add("bisectorAngle " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
-            commands.add("add symA" + " " + id + " " + line.getId());
+//            commands.add("add symA" + " " + id + " " + line.getId());
             return true;
         }
 
@@ -174,7 +192,7 @@ public class Triangle extends Polygon {
             line.setEnd(s.getEnd());
             significatObjects.put("symC", line);
             commands.add("bisectorAngle " + line.getId() + " " + B.getId() + " " + C.getId() + " " + A.getId());
-            commands.add("add symC" + " " + id + " " + line.getId());
+//            commands.add("add symC" + " " + id + " " + line.getId());
             return true;
         }
 
@@ -188,7 +206,7 @@ public class Triangle extends Polygon {
             line.setBegin(h.getBegin());
             line.setEnd(h.getEnd());
             commands.add("w10 " + line.getId() + " " + B.getId() + " " + b.getId());
-            commands.add("add hb" + " " + id + " " + line.getId());
+//            commands.add("add hb" + " " + id + " " + line.getId());
             significatObjects.put("hb", line);
             return true;
         }
@@ -198,7 +216,7 @@ public class Triangle extends Polygon {
             line.setBegin(h.getBegin());
             line.setEnd(h.getEnd());
             commands.add("w10 " + line.getId() + " " + C.getId() + " " + c.getId());
-            commands.add("add hc" + " " + id + " " + line.getId());
+//            commands.add("add hc" + " " + id + " " + line.getId());
             significatObjects.put("hc", line);
             return true;
         }
@@ -208,7 +226,7 @@ public class Triangle extends Polygon {
             line.setBegin(h.getBegin());
             line.setEnd(h.getEnd());
             commands.add("w10 " + line.getId() + " " + A.getId() + " " + a.getId());
-            commands.add("add ha" + " " + id + " " + line.getId());
+//            commands.add("add ha" + " " + id + " " + line.getId());
             significatObjects.put("hc", line);
             return true;
         }
@@ -216,7 +234,7 @@ public class Triangle extends Polygon {
         return false;
     }
 
-    private boolean centroid(Line line, Vector<String> commands) {
+    private boolean median(Line line, Vector<String> commands) {
 
         if(ConnectionCalculations.centroidLine(A, B, C, line)){
             Line t = new Median(A, B, C);
@@ -225,7 +243,7 @@ public class Triangle extends Polygon {
             significatObjects.put("tb", line);
 
             commands.add("centroid " + line.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
-            commands.add("add tb" + " " + id + " " + line.getId());
+//            commands.add("add tb" + " " + id + " " + line.getId());
 
             return  true;
         }
@@ -237,7 +255,7 @@ public class Triangle extends Polygon {
             significatObjects.put("tc", line);
 
             commands.add("centroid " + line.getId() + " " + B.getId() + " " + C.getId() + " " + A.getId());
-            commands.add("add tc" + " " + id + " " + line.getId());
+//            commands.add("add tc" + " " + id + " " + line.getId());
             return true;
         }
 
@@ -249,7 +267,7 @@ public class Triangle extends Polygon {
             significatObjects.put("ta", line);
 
             commands.add("centroid " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
-            commands.add("add ta" + " " + id + " " + line.getId());
+//            commands.add("add ta" + " " + id + " " + line.getId());
             return true;
         }
 
@@ -264,7 +282,7 @@ public class Triangle extends Polygon {
 
             significatObjects.put("symAB", line);
             commands.add("w14 " + line.getId() + " " + A.getId() + " " + B.getId());
-            commands.add("add symAB " + id + " " + line.getId());
+//            commands.add("add symAB " + id + " " + line.getId());
 
             return true;
         }
@@ -277,7 +295,7 @@ public class Triangle extends Polygon {
 
             significatObjects.put("symAC", line);
             commands.add("w14 " + line.getId() + " " + A.getId() + " " + C.getId());
-            commands.add("add symAC " + id + " " + line.getId());
+//            commands.add("add symAC " + id + " " + line.getId());
 
             return true;
         }
@@ -291,7 +309,7 @@ public class Triangle extends Polygon {
 
             significatObjects.put("symBC", line);
             commands.add("w14 " + line.getId() + " " + B.getId() + " " + C.getId());
-            commands.add("add symBC " + id + " " + line.getId());
+//            commands.add("add symBC " + id + " " + line.getId());
 
             return true;
         }
@@ -330,5 +348,100 @@ public class Triangle extends Polygon {
         }
         return false;
     }
+
+    private boolean incenter(GeomPoint point, Vector<String> commands) {
+        GeomPoint O = new Incenter(A, B, C);
+
+        if (O.distance(point) > 20) {
+            return false;
+        }
+        point.setX(O.X());
+        point.setY(O.Y());
+        Line symA = (Line) significatObjects.get("symA");
+        Line symB = (Line) significatObjects.get("symB");
+        Line symC = (Line) significatObjects.get("symC");
+
+        if (symA != null && symB != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + symA.getId() + " " + symB.getId());
+            return true;
+        }
+
+        if (symC != null && symB != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + symC.getId() + " " + symB.getId());
+            return true;
+        }
+        if (symA != null && symC != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + symA.getId() + " " + symC.getId());
+            return true;
+        }
+        return false;
+    }
+
+    private boolean centroid(GeomPoint point, Vector<String> commands) {
+        GeomPoint T = new Incenter(A, B, C);
+
+        if (T.distance(point) > 20) {
+            return false;
+        }
+        point.setX(T.X());
+        point.setY(T.Y());
+        Line ta = (Line) significatObjects.get("ta");
+        Line tb = (Line) significatObjects.get("tb");
+        Line tc = (Line) significatObjects.get("tc");
+
+        if (ta != null && tb != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tb.getId());
+            return true;
+        }
+
+        if (tc != null && tb != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + tc.getId() + " " + tb.getId());
+            return true;
+        }
+        if (ta != null && tc != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tc.getId());
+            return true;
+        }
+        return false;
+    }
+
+
+    private boolean circumcenter(GeomPoint point, Vector<String> commands) {
+        GeomPoint O = new Circumcenter(A, B, C);
+
+        if (O.distance(point) > 20) {
+            return false;
+        }
+        point.setX(O.X());
+        point.setY(O.Y());
+        Line symAB = (Line) significatObjects.get("symAB");
+        Line symBC = (Line) significatObjects.get("symBC");
+        Line symAC = (Line) significatObjects.get("symAC");
+
+        if (symAB != null && symBC != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + symAB.getId() + " " + symBC.getId());
+            return true;
+        }
+
+        if (symAC != null && symBC != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + symAC.getId() + " " + symBC.getId());
+            return true;
+        }
+        if (symAB != null && symAC != null) {
+            significatObjects.put("O", point);
+            commands.add("w03 " + point.getId() + " " + symAB.getId() + " " + symAC.getId());
+            return true;
+        }
+        return false;
+    }
+
 
 }

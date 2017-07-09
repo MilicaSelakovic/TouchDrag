@@ -58,7 +58,12 @@ public class Drawing extends Activity {
         ((DrawingView) this.findViewById(R.id.view)).setMoving(value);
     }
 
-    public void clear(View view){
+
+    public void delete(View view) {
         ((DrawingView) this.findViewById(R.id.view)).clearPanel();
+    }
+
+    public void choose(View view) {
+
     }
 }

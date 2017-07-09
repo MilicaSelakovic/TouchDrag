@@ -16,6 +16,7 @@ public class GeomPoint implements GeometricObject {
     private Paint circlePaint;
 
     private boolean move;
+    private boolean canChoose;
 
     String id;
 
@@ -23,6 +24,7 @@ public class GeomPoint implements GeometricObject {
         this.x = x;
         this.y = y;
         this.move = true;
+        this.canChoose = false;
 
         circlePaint = new Paint();
 
@@ -36,6 +38,7 @@ public class GeomPoint implements GeometricObject {
         this.x = x;
         this.y = y;
         this.move = move;
+        this.canChoose = false;
 
         circlePaint = new Paint();
 
@@ -106,6 +109,10 @@ public class GeomPoint implements GeometricObject {
 
     void setY(float y) {
         this.y = y;
+    }
+
+    void setMove(boolean value) {
+        move = value;
     }
 
 

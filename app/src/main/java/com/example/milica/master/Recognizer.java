@@ -66,22 +66,6 @@ public class Recognizer {
 
         }
 
-        if (recognized instanceof Polygon && !(recognized instanceof Triangle)) {
-            Vector<GeomPoint> polyPoints = ((Polygon) recognized).getPoints();
-
-            String command = "polygon " + id + " ";
-
-            for (GeomPoint p : polyPoints) {
-                String idp = uniqueID.getID();
-                p.setId(idp);
-                command += idp + " ";
-                objects.put(idp, p);
-            }
-
-            commands.add(command);
-
-        }
-
         if (recognized instanceof Triangle) {
             Vector<GeomPoint> polyPoints = ((Polygon) recognized).getPoints();
 
@@ -90,6 +74,7 @@ public class Recognizer {
             for (GeomPoint p : polyPoints) {
                 String idp = uniqueID.getID();
                 p.setId(idp);
+                objects.put(idp, p);
                 command += idp + " ";
             }
 
@@ -99,9 +84,32 @@ public class Recognizer {
 
             ((Triangle) recognized).setIDLines(idA, idB, idC);
             // TODO srediti ove linije
+            objects.put(idA, ((Triangle) recognized).getLineA());
+            objects.put(idB, ((Triangle) recognized).getLineB());
+            objects.put(idC, ((Triangle) recognized).getLineC());
+
             commands.add("line " + idA + " ");
             commands.add("line " + idB + " ");
             commands.add("line " + idC + " ");
+            commands.add(command);
+            objects.put(id, recognized);
+            return true;
+        }
+
+
+        if (recognized instanceof Polygon) {
+            Vector<GeomPoint> polyPoints = ((Polygon) recognized).getPoints();
+
+            String command = "polygon " + id + " ";
+
+            for (GeomPoint p : polyPoints) {
+                String idp = uniqueID.getID();
+                p.setId(idp);
+                objects.put(idp, p);
+                command += idp + " ";
+                objects.put(idp, p);
+            }
+
             commands.add(command);
 
         }

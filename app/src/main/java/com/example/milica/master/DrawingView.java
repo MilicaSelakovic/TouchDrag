@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 
 import android.graphics.Color;
 
+import com.example.descretegeometrycalculations.Contructor;
 import com.example.descretegeometrycalculations.DiscreteCurvature;
 import com.example.descretegeometrycalculations.GeometricObject;
 import com.example.descretegeometrycalculations.SignificantObject;
@@ -41,6 +42,7 @@ public class DrawingView extends View {
 
     private Recognizer recognizer;
     private UniqueID uniqueID;
+    private Contructor contructor;
     boolean actionDown;
 
     boolean moveMode;
@@ -51,6 +53,7 @@ public class DrawingView extends View {
 
         uniqueID = new UniqueID();
         recognizer = new Recognizer(uniqueID);
+        contructor = new Contructor();
         actionDown = false;
         moveMode  = false;
         points = new Vector<>();
@@ -123,43 +126,49 @@ public class DrawingView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-//                if(moveMode){
-//                    for(GeometricObject object : geometricObjects){
-//                        if(object.isUnderCursor(touchX, touchY)){
-//                            current = object;
-//                            break;
-//                        }
-//                    }
-//                } else {
+                if (moveMode) {
+                    for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                        if (entry.getValue().isUnderCursor(touchX, touchY)) {
+                            current = entry.getValue();
+                            break;
+                        }
+                    }
+                } else {
                     drawPath.moveTo(touchX, touchY);
                     points.removeAllElements();
                     points.add(touchPoint);
                     actionDown = true;
                     invalidate();
-//                }
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
-//                if(moveMode){
-//                    if(current != null)
-//                        current.translate(touchX, touchY);
-//                }else {
-                points.add(touchPoint);
-                drawPath.lineTo(touchX, touchY);
-                current = recognizer.recognizeCurrent(points);
+                if (moveMode) {
+                    if (current != null) {
+                        current.translate(touchX, touchY);
+                        contructor.recontruct(commands, geometricObjects);
+                    }
+                } else {
+                    points.add(touchPoint);
+                    drawPath.lineTo(touchX, touchY);
+                    current = recognizer.recognizeCurrent(points);
+                }
                 invalidate();
                 break;
 
             case MotionEvent.ACTION_UP:
-//                if(moveMode){
-//                    if(current != null)
-//                        current.translate(touchX, touchY);
-//                    current = null;
-//                }else {
-                actionDown = false;
-                recognizer.recognize(points, geometricObjects, commands);
-                drawPath.reset();
-                current = null;
-                Log.d("komande", commands.toString());
+                if (moveMode) {
+                    if (current != null) {
+                        current.translate(touchX, touchY);
+                        contructor.recontruct(commands, geometricObjects);
+                    }
+                    current = null;
+                } else {
+                    actionDown = false;
+                    recognizer.recognize(points, geometricObjects, commands);
+                    drawPath.reset();
+                    current = null;
+                    Log.d("komande", commands.toString());
+                }
                 invalidate();
                 break;
             default:
