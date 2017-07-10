@@ -30,7 +30,7 @@ public class Contructor {
             switch (array[0].trim()) {
                 case "w01":
                     X = GeometricConstructions.w01((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
-                            (GeomPoint) objects.get(array[4]), Float.parseFloat(array[4]));
+                            (GeomPoint) objects.get(array[4]), Float.parseFloat(array[5]));
                     GeomPoint Y = (GeomPoint) objects.get(array[1]);
                     if (Y == null) {
                         Y = new GeomPoint(0, 0);
