@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 
@@ -81,6 +82,12 @@ public class GeomPoint implements GeometricObject {
                 case 1:
                     circlePaint.setColor(Color.rgb(27, 226, 98));
                     break;
+                case 2:
+                    circlePaint.setColor(Color.YELLOW);
+                    break;
+                case 3:
+                    circlePaint.setColor(Color.MAGENTA);
+                    break;
             }
 
 
@@ -99,14 +106,21 @@ public class GeomPoint implements GeometricObject {
         double epsilon = 20;
         return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
     }
+
+    public boolean underCursor(float x, float y) {
+        //TODO: 28.5.17. konstanta mora da se nasteluje
+        double epsilon = 20;
+        return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
+    }
+
+
     public void translate(float x, float y){
         this.x = x;
         this.y = y;
     }
 
 
-
-    public boolean connection(GeometricObject object) {
+    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
         return false;
     }
 

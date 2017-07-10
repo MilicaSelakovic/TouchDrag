@@ -3,6 +3,7 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 public class Circle implements GeometricObject {
@@ -69,14 +70,8 @@ public class Circle implements GeometricObject {
         return Math.abs(d) <= EPISLON; // TODO promeniti ovu konstantu
     }
 
-    public boolean connection(GeometricObject object) {
-        if (object instanceof Line) {
-            connectionLine((Line) object);
-        }
-
-
+    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
         return false;
-
     }
 
 

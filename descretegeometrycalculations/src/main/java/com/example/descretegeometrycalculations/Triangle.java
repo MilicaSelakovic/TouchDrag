@@ -17,7 +17,11 @@ public class Triangle extends Polygon {
     private String freePoint2;
     private String freePoint3;
 
+    private String choosen = "";
+
     private Line a, b, c;
+
+    Vector<String> reconstruction = null;
 
     public Triangle(Vector<GeomPoint> points) {
         super(points);
@@ -79,6 +83,75 @@ public class Triangle extends Polygon {
     private boolean isFree(String point) {
         return point == freePoint1 || point == freePoint2 || point == freePoint3;
     }
+
+
+    private void recolor(HashMap<String, Vector<String>> trics) {
+        ((GeomPoint) significatObjects.get(choosen)).setCanChoose(2);
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+            if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
+                if (choosen == freePoint1) {
+                    if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
+
+                        ((GeomPoint) entry.getValue()).setCanChoose(3);
+
+                    }
+                }
+                if (choosen == freePoint2) {
+                    if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
+
+                        ((GeomPoint) entry.getValue()).setCanChoose(3);
+
+                    }
+                }
+
+                if (choosen == freePoint3) {
+                    if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
+
+                        ((GeomPoint) entry.getValue()).setCanChoose(3);
+
+                    }
+                }
+            }
+
+        }
+    }
+
+    private Vector<String> canBeConstruct(HashMap<String, Vector<String>> trics, String point, String free1, String free2) {
+        Vector<String> construction = trics.get(point + " " + free1 + " " + free2);
+        if (construction != null) {
+            return construction;
+        }
+
+        construction = trics.get(point + " " + free2 + " " + free1);
+        if (construction != null) {
+            return construction;
+        }
+
+        construction = trics.get(free1 + " " + point + " " + free2);
+        if (construction != null) {
+            return construction;
+        }
+
+
+        construction = trics.get(free1 + " " + free2 + " " + point);
+        if (construction != null) {
+            return construction;
+        }
+
+        construction = trics.get(free2 + " " + free1 + " " + point);
+        if (construction != null) {
+            return construction;
+        }
+
+        construction = trics.get(free2 + " " + point + " " + free1);
+        if (construction != null) {
+            return construction;
+        }
+
+
+        return null;
+    }
+
     @Override
     public void setChoose() {
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
@@ -100,13 +173,67 @@ public class Triangle extends Polygon {
     }
 
 
+    public boolean changeFree(float x, float y, HashMap<String, Vector<String>> trics) {
+        boolean ind = false;
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+
+            if (entry.getValue() instanceof GeomPoint && entry.getValue() != null && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
+                if (choosen == freePoint1) {
+                    reconstruction = canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3);
+                    if (reconstruction != null) {
+                        freePoint1 = entry.getKey();
+                        ind = true;
+
+                    }
+                }
+                if (choosen == freePoint2) {
+                    reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3);
+                    if (reconstruction != null) {
+                        freePoint2 = entry.getKey();
+                        ind = true;
+                    }
+                }
+
+                if (choosen == freePoint3) {
+                    reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2);
+                    if (reconstruction != null) {
+                        freePoint3 = entry.getKey();
+                        ind = true;
+                    }
+                }
+
+                if (ind) {
+                    ((GeomPoint) significatObjects.get(choosen)).setMove(false);
+                    ((GeomPoint) significatObjects.get(choosen)).setCanChoose(-1);
+                    ((GeomPoint) significatObjects.get(entry.getKey())).setMove(true);
+                    ((GeomPoint) significatObjects.get(entry.getKey())).setCanChoose(1);
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
     @Override
-    public boolean connection(GeometricObject object) {
+    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+            if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
+                if (isFree(entry.getKey())) {
+                    if (((GeomPoint) entry.getValue()).underCursor(x, y)) {
+                        choosen = entry.getKey();
+                        recolor(trics);
+                        return true;
+                    }
+                }
+            }
+
+        }
+
         return false;
     }
 
     public boolean connection(GeometricObject object, Vector<String> commands) {
-        boolean ind = false;
+
         if(object instanceof Line){
             Line l = (Line) object;
             if (bisector(l, commands)) {
@@ -154,15 +281,28 @@ public class Triangle extends Polygon {
             }
         }
 
-        return ind;
+        return false;
     }
 
-    public boolean isUnderCursor(float x, float y) {
+    public boolean belong(GeomPoint point) {
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+            if (point == entry.getValue())
+                return true;
+        }
 
         return false;
     }
 
+    public boolean isUnderCursor(float x, float y) {
+        return false;
+    }
+
     public void translate(float x, float y){
+        if (reconstruction != null) {
+            Contructor contructor = new Contructor();
+
+            contructor.reconstruct(reconstruction, significatObjects);
+        }
     }
 
 

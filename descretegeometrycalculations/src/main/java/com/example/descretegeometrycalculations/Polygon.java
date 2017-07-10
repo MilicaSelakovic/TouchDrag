@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 
@@ -56,7 +57,7 @@ public class Polygon implements GeometricObject {
 
     }
 
-    public boolean connection(GeometricObject object){
+    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
 
         return false;
 

@@ -13,7 +13,7 @@ public class Contructor {
     }
 
 
-    public void recontruct(Vector<String> commands, HashMap<String, GeometricObject> objects) {
+    public void reconstruct(Vector<String> commands, HashMap<String, GeometricObject> objects) {
         for (String command : commands) {
             executeCommand(command, objects);
         }

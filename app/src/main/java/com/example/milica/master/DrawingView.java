@@ -15,7 +15,9 @@ import android.view.MotionEvent;
 import android.graphics.Color;
 
 import com.example.descretegeometrycalculations.Contructor;
+import com.example.descretegeometrycalculations.GeomPoint;
 import com.example.descretegeometrycalculations.GeometricObject;
+import com.example.descretegeometrycalculations.Triangle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +48,10 @@ public class DrawingView extends View {
     boolean moveMode;
     boolean chooseMode;
 
+    private HashMap<String, Vector<String>> trics;
+
+    Triangle currentTriangle;
+
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
         setupDrawing();
@@ -59,6 +65,21 @@ public class DrawingView extends View {
         points = new Vector<>();
         geometricObjects = new HashMap<>();
         commands = new Vector<>();
+        currentTriangle = null;
+
+        trics = new HashMap<>();
+        Vector<String> konstrukcija = new Vector<>();
+        konstrukcija.add("w01 Mc A A B 0.5");
+        konstrukcija.add("w02 ha A H");
+        konstrukcija.add("w02 hb B H");
+        konstrukcija.add("w06 k Mc A");
+        konstrukcija.add("w05 Ha ha k A");
+        konstrukcija.add("w02 a Ha B");
+        konstrukcija.add("w05 Hb hb k B");
+        konstrukcija.add("w02 b Hb A");
+        konstrukcija.add("w03 C a b");
+
+        trics.put("A B H", konstrukcija);
     }
 
     private void setupDrawing(){
@@ -130,10 +151,35 @@ public class DrawingView extends View {
                     for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                         if (entry.getValue().isUnderCursor(touchX, touchY)) {
                             current = entry.getValue();
+
+                            for (Map.Entry<String, GeometricObject> entry1 : geometricObjects.entrySet()) {
+                                if (entry1.getValue() instanceof Triangle) {
+                                    if (((Triangle) entry1.getValue()).belong((GeomPoint) current)) {
+                                        currentTriangle = (Triangle) entry1.getValue();
+                                        break;
+                                    }
+                                }
+                            }
+
                             break;
                         }
                     }
                 } else if (chooseMode) {
+                    if (currentTriangle == null) {
+                        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                            if (entry.getValue().choose(touchX, touchY, trics)) {
+                                currentTriangle = (Triangle) entry.getValue();
+                                break;
+                            }
+                        }
+                    } else {
+                        if (currentTriangle.changeFree(touchX, touchY, trics)) {
+                            currentTriangle.setChoose();
+                            currentTriangle = null;
+                        }
+
+                    }
+                    invalidate();
                 } else {
                     drawPath.moveTo(touchX, touchY);
                     points.removeAllElements();
@@ -146,9 +192,12 @@ public class DrawingView extends View {
                 if (moveMode) {
                     if (current != null) {
                         current.translate(touchX, touchY);
-                        contructor.recontruct(commands, geometricObjects);
+                        if (currentTriangle != null)
+                            currentTriangle.translate(touchX, touchY);
+                        contructor.reconstruct(commands, geometricObjects);
                     }
                 } else if (chooseMode) {
+                    break;
                 } else {
                     points.add(touchPoint);
                     drawPath.lineTo(touchX, touchY);
@@ -161,10 +210,14 @@ public class DrawingView extends View {
                 if (moveMode) {
                     if (current != null) {
                         current.translate(touchX, touchY);
-                        contructor.recontruct(commands, geometricObjects);
+                        if (currentTriangle != null)
+                            currentTriangle.translate(touchX, touchY);
+                        contructor.reconstruct(commands, geometricObjects);
                     }
                     current = null;
+                    currentTriangle = null;
                 } else if (chooseMode) {
+                    break;
                 } else {
                     actionDown = false;
                     recognizer.recognize(points, geometricObjects, commands);
@@ -200,6 +253,8 @@ public class DrawingView extends View {
             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                 entry.getValue().setChoose();
             }
+        } else {
+            currentTriangle = null;
         }
 
         invalidate();

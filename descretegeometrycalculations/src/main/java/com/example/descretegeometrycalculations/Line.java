@@ -4,6 +4,7 @@ package com.example.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 
@@ -92,6 +93,9 @@ public class Line implements GeometricObject {
             float vX = end.X() - begin.X();
             float vY = end.Y() - begin.Y();
             float norm = (float) Math.sqrt(vX * vX + vY * vY);
+            if (vector == null) {
+                vector = new GeomPoint(0, 0);
+            }
             vector.setX(vX / norm);
             vector.setY(vY / norm);
         }
@@ -136,17 +140,8 @@ public class Line implements GeometricObject {
         double d = Math.abs(n1*point.X() + n2*point.Y() + n3)/Math.sqrt(n1*n1 + n2*n2);
         return  d < EPISLON;
     }
-    public boolean connection(GeometricObject object){
-        if(object instanceof Line){
-            connectionLine((Line) object);
-        }
 
-//        if(object instanceof GeomPoint){
-//            if(contain((GeomPoint) object)){
-////                Log.d("Tacka", "pripada");
-//            }
-//        }
-
+    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
         return false;
     }
 
