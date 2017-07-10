@@ -8,6 +8,7 @@ import java.util.Vector;
 
 public class Circle implements GeometricObject {
 
+
     private GeomPoint center;
 
     String id;
@@ -29,6 +30,11 @@ public class Circle implements GeometricObject {
     public GeomPoint getCenter() {
         return center;
     }
+
+    public void setCenter(GeomPoint center) {
+        this.center = center;
+    }
+
 
     public double getRadius() {
         return radius;

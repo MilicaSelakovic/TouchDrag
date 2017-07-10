@@ -179,24 +179,24 @@ public class Triangle extends Polygon {
 
             if (entry.getValue() instanceof GeomPoint && entry.getValue() != null && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
                 if (choosen == freePoint1) {
-                    reconstruction = canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3);
-                    if (reconstruction != null) {
+                    if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
+                        reconstruction = canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3);
                         freePoint1 = entry.getKey();
                         ind = true;
 
                     }
                 }
                 if (choosen == freePoint2) {
-                    reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3);
-                    if (reconstruction != null) {
+                    if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
+                        reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3);
                         freePoint2 = entry.getKey();
                         ind = true;
                     }
                 }
 
                 if (choosen == freePoint3) {
-                    reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2);
-                    if (reconstruction != null) {
+                    if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
+                        reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2);
                         freePoint3 = entry.getKey();
                         ind = true;
                     }
@@ -299,9 +299,15 @@ public class Triangle extends Polygon {
 
     public void translate(float x, float y){
         if (reconstruction != null) {
+            HashMap<String, GeometricObject> copy = new HashMap<>();
+
+            for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+                copy.put(entry.getKey(), entry.getValue());
+            }
+
             Contructor contructor = new Contructor();
 
-            contructor.reconstruct(reconstruction, significatObjects);
+            contructor.reconstruct(reconstruction, copy);
         }
     }
 
