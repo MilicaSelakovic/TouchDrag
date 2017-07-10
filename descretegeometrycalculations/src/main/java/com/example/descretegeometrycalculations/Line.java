@@ -84,6 +84,17 @@ public class Line implements GeometricObject {
 
     public void setBegin(GeomPoint begin) {
         this.begin = begin;
+        updateVector();
+    }
+
+    private void updateVector() {
+        if (begin != null && end != null) {
+            float vX = end.X() - begin.X();
+            float vY = end.Y() - begin.Y();
+            float norm = (float) Math.sqrt(vX * vX + vY * vY);
+            vector.setX(vX / norm);
+            vector.setY(vY / norm);
+        }
     }
 
     public GeomPoint getEnd() {
@@ -92,6 +103,7 @@ public class Line implements GeometricObject {
 
     public void setEnd(GeomPoint end) {
         this.end = end;
+        updateVector();
     }
 
     double distance(GeomPoint point){

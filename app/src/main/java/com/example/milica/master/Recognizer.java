@@ -88,9 +88,9 @@ public class Recognizer {
             objects.put(idB, ((Triangle) recognized).getLineB());
             objects.put(idC, ((Triangle) recognized).getLineC());
 
-            commands.add("line " + idA + " ");
-            commands.add("line " + idB + " ");
-            commands.add("line " + idC + " ");
+            commands.add("line " + idA + " " + polyPoints.elementAt(1).getId() + " " + polyPoints.elementAt(2).getId());
+            commands.add("line " + idB + " " + polyPoints.elementAt(0).getId() + " " + polyPoints.elementAt(2).getId());
+            commands.add("line " + idC + " " + polyPoints.elementAt(0).getId() + " " + polyPoints.elementAt(1).getId());
             commands.add(command);
             objects.put(id, recognized);
             return true;

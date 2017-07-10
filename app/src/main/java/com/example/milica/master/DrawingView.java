@@ -133,6 +133,7 @@ public class DrawingView extends View {
                             break;
                         }
                     }
+                } else if (chooseMode) {
                 } else {
                     drawPath.moveTo(touchX, touchY);
                     points.removeAllElements();
@@ -147,6 +148,7 @@ public class DrawingView extends View {
                         current.translate(touchX, touchY);
                         contructor.recontruct(commands, geometricObjects);
                     }
+                } else if (chooseMode) {
                 } else {
                     points.add(touchPoint);
                     drawPath.lineTo(touchX, touchY);
@@ -162,6 +164,7 @@ public class DrawingView extends View {
                         contructor.recontruct(commands, geometricObjects);
                     }
                     current = null;
+                } else if (chooseMode) {
                 } else {
                     actionDown = false;
                     recognizer.recognize(points, geometricObjects, commands);
@@ -169,6 +172,7 @@ public class DrawingView extends View {
                     current = null;
                     Log.d("komande", commands.toString());
                 }
+
                 invalidate();
                 break;
             default:
@@ -197,5 +201,7 @@ public class DrawingView extends View {
                 entry.getValue().setChoose();
             }
         }
+
+        invalidate();
     }
 }

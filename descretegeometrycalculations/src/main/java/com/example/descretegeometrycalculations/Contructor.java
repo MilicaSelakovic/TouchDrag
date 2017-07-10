@@ -112,6 +112,11 @@ public class Contructor {
                     objects.put(p.getId(), p);
                     break;
                 case "line":
+                    l = new Line((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]));
+                    p = (Line) objects.get(array[1]);
+                    p.setBegin(l.getBegin());
+                    p.setEnd(l.getEnd());
+                    objects.put(p.getId(), p);
                     break;
                 case "triangle":
                     break;

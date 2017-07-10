@@ -74,16 +74,19 @@ public class GeomPoint implements GeometricObject {
             switch (canChoose) {
                 case -1:
                     circlePaint.setColor(Color.RED);
+                    break;
                 case 0:
-                    circlePaint.setColor(Color.BLACK);
+                    circlePaint.setColor(Color.DKGRAY);
+                    break;
                 case 1:
-                    circlePaint.setColor(Color.GREEN);
+                    circlePaint.setColor(Color.rgb(27, 226, 98));
+                    break;
             }
 
 
         }
 
-        canvas.drawCircle(x, y, 15f, circlePaint);
+        canvas.drawCircle(x, y, 20f, circlePaint);
     }
 
     @Override
@@ -93,7 +96,7 @@ public class GeomPoint implements GeometricObject {
 
     public boolean isUnderCursor(float x, float y) {
         //TODO: 28.5.17. konstanta mora da se nasteluje
-        double epsilon = 15;
+        double epsilon = 20;
         return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
     }
     public void translate(float x, float y){
@@ -140,7 +143,7 @@ public class GeomPoint implements GeometricObject {
 
     boolean equal(GeomPoint Y){
         // TODO epsilon
-        double epsilon = 1e-3;
+        double epsilon = 10;
         return Math.abs(x - Y.X()) < epsilon && Math.abs(y - Y.Y()) < epsilon;
 
     }

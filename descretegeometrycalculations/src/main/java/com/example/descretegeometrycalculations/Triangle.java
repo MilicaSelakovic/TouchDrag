@@ -77,10 +77,7 @@ public class Triangle extends Polygon {
     }
 
     private boolean isFree(String point) {
-        if (point == freePoint1 || point == freePoint2 || point == freePoint3)
-            return true;
-
-        return false;
+        return point == freePoint1 || point == freePoint2 || point == freePoint3;
     }
     @Override
     public void setChoose() {
@@ -99,10 +96,6 @@ public class Triangle extends Polygon {
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
         super.draw(canvas, paint, finished, choose);
-        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
-            if(entry.getValue() != null)
-                entry.getValue().draw(canvas, paint, finished, choose);
-        }
 
     }
 
@@ -118,22 +111,22 @@ public class Triangle extends Polygon {
             Line l = (Line) object;
             if (bisector(l, commands)) {
                 Log.d("Simetrala", "ugla");
-                ind = true;
+                return true;
             }
 
             if (median(l, commands)) {
                 Log.d("Tezisna", "linija");
-                ind = true;
+                return true;
             }
 
             if (altitude(l, commands)) {
                 Log.d("Visina", "trougla");
-                ind = true;
+                return true;
             }
 
             if (prepBisector(l, commands)) {
                 Log.d("Srediste", "stranice");
-                ind = true;
+                return true;
             }
 
         }
@@ -237,7 +230,7 @@ public class Triangle extends Polygon {
             line.setEnd(h.getEnd());
             commands.add("w10 " + line.getId() + " " + A.getId() + " " + a.getId());
 //            commands.add("add ha" + " " + id + " " + line.getId());
-            significatObjects.put("hc", line);
+            significatObjects.put("ha", line);
             return true;
         }
 
