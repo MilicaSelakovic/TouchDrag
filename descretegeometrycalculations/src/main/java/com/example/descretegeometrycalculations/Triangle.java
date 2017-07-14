@@ -81,7 +81,8 @@ public class Triangle extends Polygon {
     }
 
     private boolean isFree(String point) {
-        return point == freePoint1 || point == freePoint2 || point == freePoint3;
+        return point.compareTo(freePoint1) == 0 || point.compareTo(freePoint2) == 0
+                || point.compareTo(freePoint3) == 0;
     }
 
 
@@ -89,14 +90,14 @@ public class Triangle extends Polygon {
         ((GeomPoint) significatObjects.get(choosen)).setCanChoose(2);
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
-                if (choosen == freePoint1) {
+                if (choosen.compareTo(freePoint1) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
 
                         ((GeomPoint) entry.getValue()).setCanChoose(3);
 
                     }
                 }
-                if (choosen == freePoint2) {
+                if (choosen.compareTo(freePoint2) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
 
                         ((GeomPoint) entry.getValue()).setCanChoose(3);
@@ -104,7 +105,7 @@ public class Triangle extends Polygon {
                     }
                 }
 
-                if (choosen == freePoint3) {
+                if (choosen.compareTo(freePoint3) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
 
                         ((GeomPoint) entry.getValue()).setCanChoose(3);
@@ -178,7 +179,7 @@ public class Triangle extends Polygon {
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
 
             if (entry.getValue() instanceof GeomPoint && entry.getValue() != null && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                if (choosen == freePoint1) {
+                if (choosen.compareTo(freePoint1) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
                         reconstruction = canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3);
                         freePoint1 = entry.getKey();
@@ -186,7 +187,7 @@ public class Triangle extends Polygon {
 
                     }
                 }
-                if (choosen == freePoint2) {
+                if (choosen.compareTo(freePoint2) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
                         reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3);
                         freePoint2 = entry.getKey();
@@ -194,7 +195,7 @@ public class Triangle extends Polygon {
                     }
                 }
 
-                if (choosen == freePoint3) {
+                if (choosen.compareTo(freePoint3) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
                         reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2);
                         freePoint3 = entry.getKey();
@@ -237,22 +238,22 @@ public class Triangle extends Polygon {
         if(object instanceof Line){
             Line l = (Line) object;
             if (bisector(l, commands)) {
-                Log.d("Simetrala", "ugla");
+                //Log.d("Simetrala", "ugla");
                 return true;
             }
 
             if (median(l, commands)) {
-                Log.d("Tezisna", "linija");
+                //Log.d("Tezisna", "linija");
                 return true;
             }
 
             if (altitude(l, commands)) {
-                Log.d("Visina", "trougla");
+                //Log.d("Visina", "trougla");
                 return true;
             }
 
             if (prepBisector(l, commands)) {
-                Log.d("Srediste", "stranice");
+                //Log.d("Srediste", "stranice");
                 return true;
             }
 

@@ -80,6 +80,7 @@ public class DrawingView extends View {
         konstrukcija.add("w03 C a b");
 
         trics.put("A B H", konstrukcija);
+        trics.put("A B C", new Vector<String>());
     }
 
     private void setupDrawing(){
@@ -223,7 +224,7 @@ public class DrawingView extends View {
                     recognizer.recognize(points, geometricObjects, commands);
                     drawPath.reset();
                     current = null;
-                    Log.d("komande", commands.toString());
+                    //   Log.d("komande", commands.toString());
                 }
 
                 invalidate();

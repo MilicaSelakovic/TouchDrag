@@ -192,7 +192,7 @@ public class Contructor {
 
 
         } catch (PatternSyntaxException e) {
-            Log.d("Greska sa regexom", "da");
+            //Log.d("Greska sa regexom", "da");
 
         }
     }

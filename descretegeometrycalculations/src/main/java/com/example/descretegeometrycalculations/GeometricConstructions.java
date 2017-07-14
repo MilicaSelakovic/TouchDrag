@@ -50,37 +50,110 @@ public class GeometricConstructions {
 
     */
 
-    public static int w04(Line l, Circle c, GeomPoint s1, GeomPoint s2){
-        double d = l.distance(c.getCenter()) - c.getRadius();
-        // TODO konstanta
-        double epsilon = 10;
+    public static int w04(Line l, Circle k, GeomPoint s1, GeomPoint s2) {
 
-        GeomPoint p = l.getVector();
-        GeomPoint P = l.getBegin();
+        GeomPoint pointA = l.getBegin();
+        GeomPoint pointB = l.getEnd();
 
-        GeomPoint PC = new GeomPoint(c.getCenter().X() - P.X(), c.getCenter().Y() - P.Y());
+        double baX = pointB.X() - pointA.X();
+        double baY = pointB.Y() - pointA.Y();
+        double caX = k.getCenter().X() - pointA.X();
+        double caY = k.getCenter().Y() - pointA.Y();
 
-        double t = ConnectionCalculations.dotProduct(PC, p);
+        double a = baX * baX + baY * baY;
+        double bBy2 = baX * caX + baY * caY;
+        double c = caX * caX + caY * caY - k.getRadius() * k.getRadius();
 
-        double sx = P.X() + t*p.X();
-        double sy = P.Y() + t*p.Y();
+        double pBy2 = bBy2 / a;
+        double q = c / a;
 
-        if(d > epsilon){
+        double disc = pBy2 * pBy2 - q;
+        if (disc < 0) {
             return 0;
-        } else if (Math.abs(d) < epsilon){
-            s1.setX((float)sx);
-            s1.setY((float)sy);
-            return 1;
-        } else {
-            double a = Math.sqrt(c.getRadius()*c.getRadius() - d*d);
-
-            s1.setX((float)(sx - a*p.X()));
-            s1.setY((float)(sy - a*p.Y()));
-
-            s1.setX((float)(sx + a*p.X()));
-            s1.setY((float)(sy + a*p.Y()));
-            return 2;
         }
+
+        double tmpSqrt = Math.sqrt(disc);
+        double abScalingFactor1 = -pBy2 + tmpSqrt;
+        double abScalingFactor2 = -pBy2 - tmpSqrt;
+
+
+        s1.setX((float) (pointA.X() - baX * abScalingFactor1));
+        s1.setY((float) (pointA.Y() - baY * abScalingFactor1));
+        if (disc == 0) { // abScalingFactor1 == abScalingFactor2
+            return 1;
+        }
+        s2.setX((float) (pointA.X() - baX * abScalingFactor2));
+        s2.setY((float) (pointA.Y() - baY * abScalingFactor2));
+        return 2;
+//        double d = l.distance(c.getCenter()) - c.getRadius();
+//        // TODO konstanta
+//        double epsilon = 10;
+//
+//        if(d > epsilon)
+//            return 0;
+//
+//        float x1 = l.getBegin().X();
+//        float y1 = l.getBegin().Y();
+//
+//        float x2 = l.getEnd().X();
+//        float y2 = l.getEnd().Y();
+//
+//        float xc = c.getCenter().X();
+//        float yc = c.getCenter().Y();
+//
+//
+//        float dx = x2 - x1;
+//        float dy = y2 - y1;
+//
+//        double dr = Math.sqrt(dx*dx + dy*dy);
+//
+//        double D = (x1 - xc)*(y2 -yc) - (x2 - xc)*(y1 - xc);
+//
+//        double delta = c.getRadius()*c.getRadius()*dr*dr - D*D;
+//
+//        if(delta < epsilon){
+//            return 0;
+//        } else if( delta > 10){
+//            int sgn = dy < 0 ? -1 : 1;
+//
+//            s1.setX((float)((D*dy + sgn*dx*Math.sqrt(delta))/(dr*dr)) + xc);
+//            s1.setY((float)((-D*dx + sgn*dy*Math.sqrt(delta))/(dr*dr)) + yc);
+//
+//            s2.setX((float)((D*dy - sgn*dx*Math.sqrt(delta))/(dr*dr)) + xc);
+//            s2.setY((float)((-D*dx - sgn*dy*Math.sqrt(delta))/(dr*dr)) + yc);
+//            return 2;
+//        } else {
+//            s1.setX((float)((D*dy)/(dr*dr)) + xc);
+//            s1.setY((float)((-D*dx)/(dr*dr)) + yc);
+//            return 1;
+//        }
+
+//        GeomPoint p = l.getVector();
+//        GeomPoint P = l.getBegin();
+//
+//        GeomPoint PC = new GeomPoint(c.getCenter().X() - P.X(), c.getCenter().Y() - P.Y());
+//
+//        double t = ConnectionCalculations.dotProduct(PC, p);
+//
+//        double sx = P.X() + t*p.X();
+//        double sy = P.Y() + t*p.Y();
+//
+//        if(d > epsilon){
+//            return 0;
+//        } else if (Math.abs(d) < epsilon){
+//            s1.setX((float)sx);
+//            s1.setY((float)sy);
+//            return 1;
+//        } else {
+//            double a = Math.sqrt(c.getRadius()*c.getRadius() - d*d);
+//
+//            s1.setX((float)(sx - a*p.X()));
+//            s1.setY((float)(sy - a*p.Y()));
+//
+//            s1.setX((float)(sx + a*p.X()));
+//            s1.setY((float)(sy + a*p.Y()));
+//            return 2;
+//        }
 
     }
 

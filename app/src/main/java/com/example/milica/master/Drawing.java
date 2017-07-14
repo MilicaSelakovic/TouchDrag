@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -38,6 +39,12 @@ public class Drawing extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
+        this.findViewById(R.id.imageButton4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DrawingView) findViewById(R.id.view)).clearPanel();
+            }
+        });
     }
 
     @Override
@@ -45,10 +52,10 @@ public class Drawing extends Activity {
     {
         super.onResume();
         if (!OpenCVLoader.initDebug()) {
-            Log.d("OpenCV", "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+            //Log.d("OpenCV", "Internal OpenCV library not found. Using OpenCV Manager for initialization");
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this, mLoaderCallback);
         } else {
-            Log.d("OpenCV", "OpenCV library found inside package. Using it!");
+            //Log.d("OpenCV", "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
@@ -56,15 +63,24 @@ public class Drawing extends Activity {
     public void moveEnable(View view){
         boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton)).isChecked();
         ((DrawingView) this.findViewById(R.id.view)).setMoving(value);
+
+        if (value) {
+            this.findViewById(R.id.toggleButton2).setEnabled(false);
+        } else {
+            this.findViewById(R.id.toggleButton2).setEnabled(true);
+        }
     }
 
 
-    public void delete(View view) {
-        ((DrawingView) this.findViewById(R.id.view)).clearPanel();
-    }
 
     public void choose(View view) {
         boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton2)).isChecked();
         ((DrawingView) this.findViewById(R.id.view)).setChoose(value);
+
+        if (value) {
+            this.findViewById(R.id.toggleButton).setEnabled(false);
+        } else {
+            this.findViewById(R.id.toggleButton).setEnabled(true);
+        }
     }
 }
