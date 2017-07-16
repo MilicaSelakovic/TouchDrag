@@ -222,7 +222,7 @@ public class Triangle extends Polygon {
         return false;
     }
 
-    public boolean connection(GeometricObject object, Vector<String> commands) {
+    public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
 
         if(object instanceof Line){
             Line l = (Line) object;

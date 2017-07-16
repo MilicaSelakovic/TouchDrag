@@ -14,11 +14,7 @@ import android.view.MotionEvent;
 
 import android.graphics.Color;
 
-import com.example.descretegeometrycalculations.Contructor;
-import com.example.descretegeometrycalculations.GeomPoint;
-import com.example.descretegeometrycalculations.GeometricObject;
-import com.example.descretegeometrycalculations.Triangle;
-
+import com.example.descretegeometrycalculations.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;

@@ -3,6 +3,7 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Vector;
@@ -145,10 +146,10 @@ public class Line implements GeometricObject {
         return false;
     }
 
-    public boolean connection(GeometricObject object, Vector<String> commands) {
+    public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
         if (object instanceof Line) {
 
-            if (connectionLine((Line) object, commands))
+            if (connectionLine((Line) object, commands, uniqueID, objects))
                 return true;
         }
 
@@ -164,8 +165,10 @@ public class Line implements GeometricObject {
 
     }
 
-    private boolean connectionLine(Line line, Vector<String> commands) {
+    private boolean connectionLine(Line line, Vector<String> commands, UniqueID id, HashMap<String, GeometricObject> objects) {
         if (ConnectionCalculations.normalLine(this, line)) {
+            line.getBegin().setId(id.getID());
+            objects.put(line.getBegin().getId(), line.getBegin());
             commands.add("w10 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
             Line l = GeometricConstructions.w10(line.getBegin(), this);
             line.setEnd(l.getEnd());
@@ -173,6 +176,11 @@ public class Line implements GeometricObject {
         }
 
         if (ConnectionCalculations.parallelLine(this, line)) {
+
+            Log.d("Linija", "tangenta");
+            line.getBegin().setId(id.getID());
+            objects.put(line.getBegin().getId(), line.getBegin());
+
             commands.add("w16 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
 
             Line l = GeometricConstructions.w16(line.getBegin(), this);

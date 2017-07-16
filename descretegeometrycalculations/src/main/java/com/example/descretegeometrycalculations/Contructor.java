@@ -125,6 +125,18 @@ public class Contructor {
                 case "w15":
                     break;
                 case "w16":
+                    l = GeometricConstructions.w16((GeomPoint) objects.get(array[2]), (Line) objects.get(array[3]));
+                    p = (Line) objects.get(array[1]);
+
+                    if (p == null) {
+                        p = new Line(null, null);
+                        p.setId(array[1]);
+                    }
+
+                    p.setBegin(l.getBegin());
+                    p.setEnd(l.getEnd());
+                    objects.put(p.getId(), p);
+
                     break;
                 case "w17":
                     break;

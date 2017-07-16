@@ -14,7 +14,7 @@ public interface GeometricObject {
 
     boolean choose(float x, float y, HashMap<String, Vector<String>> trics);
 
-    boolean connection(GeometricObject object, Vector<String> commands);
+    boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects);
 
     void setChoose();
 

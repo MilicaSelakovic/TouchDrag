@@ -124,7 +124,7 @@ public class GeomPoint implements GeometricObject {
         return false;
     }
 
-    public boolean connection(GeometricObject object, Vector<String> commands) {
+    public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
         return false;
     }
 
