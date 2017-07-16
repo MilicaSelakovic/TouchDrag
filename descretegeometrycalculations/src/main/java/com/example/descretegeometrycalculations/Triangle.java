@@ -273,6 +273,11 @@ public class Triangle extends Polygon {
                 p.setMove(false);
                 return true;
             }
+
+            if (footOfAltitude(p, commands)) {
+                p.setMove(false);
+                return true;
+            }
         }
 
         return false;
@@ -410,7 +415,6 @@ public class Triangle extends Polygon {
             significatObjects.put("ta", line);
 
             commands.add("medianLine " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
-//            commands.add("add ta" + " " + id + " " + line.getId());
             return true;
         }
 
@@ -425,7 +429,6 @@ public class Triangle extends Polygon {
 
             significatObjects.put("symAB", line);
             commands.add("w14 " + line.getId() + " " + A.getId() + " " + B.getId());
-//            commands.add("add symAB " + id + " " + line.getId());
 
             return true;
         }
@@ -438,7 +441,6 @@ public class Triangle extends Polygon {
 
             significatObjects.put("symAC", line);
             commands.add("w14 " + line.getId() + " " + A.getId() + " " + C.getId());
-//            commands.add("add symAC " + id + " " + line.getId());
 
             return true;
         }
@@ -631,6 +633,61 @@ public class Triangle extends Polygon {
             return true;
         }
 
+        return false;
+    }
+
+
+    private boolean footOfAltitude(GeomPoint point, Vector<String> commands) {
+
+        Line ha = (Line) significatObjects.get("ha");
+        Line hb = (Line) significatObjects.get("hb");
+        Line hc = (Line) significatObjects.get("hc");
+
+        if (ha != null) {
+            GeomPoint Ha = GeometricConstructions.w03(ha, a);
+
+            if (point.distance(Ha) < 20) {
+                point.setX(Ha.X());
+                point.setY(Ha.Y());
+
+                commands.add("w03 " + point.getId() + " " + a.getId() + " " + ha.getId());
+                significatObjects.put("Ha", point);
+
+                return true;
+            }
+
+        }
+
+
+        if (hb != null) {
+            GeomPoint Hb = GeometricConstructions.w03(hb, b);
+
+            if (point.distance(Hb) < 20) {
+                point.setX(Hb.X());
+                point.setY(Hb.Y());
+
+                commands.add("w03 " + point.getId() + " " + b.getId() + " " + hb.getId());
+                significatObjects.put("Hb", point);
+
+                return true;
+            }
+
+        }
+
+        if (hc != null) {
+            GeomPoint Hc = GeometricConstructions.w03(hc, c);
+
+            if (point.distance(Hc) < 20) {
+                point.setX(Hc.X());
+                point.setY(Hc.Y());
+
+                commands.add("w03 " + point.getId() + " " + c.getId() + " " + hc.getId());
+                significatObjects.put("Hc", point);
+
+                return true;
+            }
+
+        }
         return false;
     }
 
