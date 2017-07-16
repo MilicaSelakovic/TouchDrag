@@ -269,6 +269,10 @@ public class Triangle extends Polygon {
                 p.setMove(false);
                 return true;
             }
+            if (midpoint(p, commands)) {
+                p.setMove(false);
+                return true;
+            }
         }
 
         return false;
@@ -501,18 +505,18 @@ public class Triangle extends Polygon {
         Line symC = (Line) significatObjects.get("symC");
 
         if (symA != null && symB != null) {
-            significatObjects.put("O", point);
+            significatObjects.put("I", point);
             commands.add("w03 " + point.getId() + " " + symA.getId() + " " + symB.getId());
             return true;
         }
 
         if (symC != null && symB != null) {
-            significatObjects.put("O", point);
+            significatObjects.put("I", point);
             commands.add("w03 " + point.getId() + " " + symC.getId() + " " + symB.getId());
             return true;
         }
         if (symA != null && symC != null) {
-            significatObjects.put("O", point);
+            significatObjects.put("I", point);
             commands.add("w03 " + point.getId() + " " + symA.getId() + " " + symC.getId());
             return true;
         }
@@ -534,7 +538,7 @@ public class Triangle extends Polygon {
             point.setY(T.Y());
 
 
-            significatObjects.put("T", point);
+            significatObjects.put("G", point);
             commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tb.getId());
             return true;
         }
@@ -543,7 +547,7 @@ public class Triangle extends Polygon {
             point.setX(T.X());
             point.setY(T.Y());
 
-            significatObjects.put("T", point);
+            significatObjects.put("G", point);
             commands.add("w03 " + point.getId() + " " + tc.getId() + " " + tb.getId());
             return true;
         }
@@ -551,7 +555,7 @@ public class Triangle extends Polygon {
             point.setX(T.X());
             point.setY(T.Y());
 
-            significatObjects.put("T", point);
+            significatObjects.put("G", point);
             commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tc.getId());
             return true;
         }
@@ -587,6 +591,46 @@ public class Triangle extends Polygon {
             commands.add("w03 " + point.getId() + " " + symAB.getId() + " " + symAC.getId());
             return true;
         }
+        return false;
+    }
+
+    private boolean midpoint(GeomPoint point, Vector<String> commands) {
+        GeomPoint Ma = GeometricConstructions.w01(B, B, C, 0.5f);
+        GeomPoint Mb = GeometricConstructions.w01(A, A, C, 0.5f);
+        GeomPoint Mc = GeometricConstructions.w01(A, A, B, 0.5f);
+
+        if (point.distance(Ma) < 20) {
+            point.setX(Ma.X());
+            point.setY(Ma.Y());
+
+            significatObjects.put("Ma", point);
+
+            commands.add("w01 " + point.getId() + " " + B.getId() + " " + B.getId() + " " + C.getId() + " 0.5");
+
+            return true;
+        }
+
+        if (point.distance(Mb) < 20) {
+            point.setX(Mb.X());
+            point.setY(Mb.Y());
+
+            significatObjects.put("Mb", point);
+            commands.add("w01 " + point.getId() + " " + A.getId() + " " + A.getId() + " " + C.getId() + " 0.5");
+
+            return true;
+        }
+
+
+        if (point.distance(Mc) < 20) {
+            point.setX(Mc.X());
+            point.setY(Mc.Y());
+
+            significatObjects.put("Mc", point);
+            commands.add("w01 " + point.getId() + " " + A.getId() + " " + A.getId() + " " + B.getId() + " 0.5");
+
+            return true;
+        }
+
         return false;
     }
 
