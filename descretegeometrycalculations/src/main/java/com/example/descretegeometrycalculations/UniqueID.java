@@ -1,4 +1,4 @@
-package com.example.milica.master;
+package com.example.descretegeometrycalculations;
 
 
 public class UniqueID {

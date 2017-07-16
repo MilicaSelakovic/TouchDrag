@@ -146,6 +146,16 @@ public class Line implements GeometricObject {
     }
 
     public boolean connection(GeometricObject object, Vector<String> commands) {
+        if (object instanceof Line) {
+
+            if (connectionLine((Line) object, commands))
+                return true;
+        }
+
+        if (object instanceof GeomPoint) {
+            return contain((GeomPoint) object);
+        }
+
         return false;
     }
 
@@ -154,18 +164,23 @@ public class Line implements GeometricObject {
 
     }
 
-    private void connectionLine(Line line){
-//        if(ConnectionCalculations.normalLine(this, line)){
-////            Log.d("linija", "normala");
-//        }
-//        if(ConnectionCalculations.parallelLine(this, line)){
-////            Log.d("Linija", "paralela");
-//        }
+    private boolean connectionLine(Line line, Vector<String> commands) {
+        if (ConnectionCalculations.normalLine(this, line)) {
+            commands.add("w10 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
+            Line l = GeometricConstructions.w10(line.getBegin(), this);
+            line.setEnd(l.getEnd());
+            return true;
+        }
+
+        if (ConnectionCalculations.parallelLine(this, line)) {
+            commands.add("w16 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
+
+            Line l = GeometricConstructions.w16(line.getBegin(), this);
+            l.setEnd(l.getEnd());
+            return true;
+
+        }
+
+        return false;
     }
-
-    //TODO Veze sa linijom
-
-    // paralela
-    // normala
-    // presek ?
 }

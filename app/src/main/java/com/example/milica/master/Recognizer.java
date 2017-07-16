@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Vector;
 
 public class Recognizer {
-    UniqueID uniqueID;
+    private UniqueID uniqueID;
 
     public Recognizer(UniqueID identifier) {
         uniqueID = identifier;

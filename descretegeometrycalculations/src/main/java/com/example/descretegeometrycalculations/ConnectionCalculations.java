@@ -38,7 +38,7 @@ class ConnectionCalculations {
         return Math.abs(crossProductNorm(l1.getVector(), l2.getVector())) <= GeometricObject.EPISLON;
     }
 
-    private static boolean normalLine(Line l1, Line l2) {
+    public static boolean normalLine(Line l1, Line l2) {
         float dot = dotProduct(l1.getVector(), l2.getVector());
         // TODO konstanta
         return Math.abs(dot) <= 0.1;
