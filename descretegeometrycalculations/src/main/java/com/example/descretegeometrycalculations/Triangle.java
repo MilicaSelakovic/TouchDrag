@@ -2,14 +2,14 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.util.Log;
+
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
-    String id;
+    private String id;
     private HashMap<String, GeometricObject> significatObjects;
     private GeomPoint A, B, C;
 
@@ -21,7 +21,7 @@ public class Triangle extends Polygon {
 
     private Line a, b, c;
 
-    Vector<String> reconstruction = null;
+    private Vector<String> reconstruction = null;
 
     public Triangle(Vector<GeomPoint> points) {
         super(points);
@@ -53,25 +53,14 @@ public class Triangle extends Polygon {
         return a;
     }
 
-    public void setLineA(Line a) {
-        this.a = a;
-    }
-
     public Line getLineB() {
         return b;
-    }
-
-    public void setLineB(Line b) {
-        this.b = b;
     }
 
     public Line getLineC() {
         return c;
     }
 
-    public void setLineC(Line c) {
-        this.c = c;
-    }
     public String getId() {
         return id;
     }

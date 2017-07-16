@@ -11,11 +11,10 @@ public class Circle implements GeometricObject {
 
     private GeomPoint center;
 
-    String id;
+    private String id;
 
     private double radius;
 
-    private Vector<Line> tangentLines = new Vector<>();
 
     Circle(double x, double y, double r) {
         center = new GeomPoint((float) x, (float) y);
@@ -69,13 +68,6 @@ public class Circle implements GeometricObject {
         return "Krug  " + Double.toString(radius);
     }
 
-     boolean pointBelong(GeomPoint point) {
-        double x = point.X() - center.X();
-        double y = point.Y() - center.Y();
-        double d = Math.sqrt(x * x + y * y) - radius;
-        return Math.abs(d) <= EPISLON; // TODO promeniti ovu konstantu
-    }
-
     public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
         return false;
     }
@@ -90,21 +82,9 @@ public class Circle implements GeometricObject {
        return false;
     }
 
-    public void translate(float x, float y){
-//        center.translate(x, y);
-//
-//        Log.d("centar", center.toString());
+    public void translate(float x, float y) {
     }
 
-
-    private void connectionLine(Line line) {
-
-        if (ConnectionCalculations.tangentLine(this, line)) {
-            tangentLines.add(line);
-//            Log.d("Tangenta", "da");
-        }
-
-    }
 
 
 }
