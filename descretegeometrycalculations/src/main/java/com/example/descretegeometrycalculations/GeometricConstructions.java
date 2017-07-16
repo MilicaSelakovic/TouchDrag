@@ -2,7 +2,6 @@ package com.example.descretegeometrycalculations;
 
 public class GeometricConstructions {
 
-    // TODO: 3.7.17. Dodati centroid A B C koji konstruise tb
     /*
     W01 Ако су дате тачке X, Z и W, и рационалан броj r могуће jе конструисати
     тачку Y тако да важи:
@@ -85,75 +84,6 @@ public class GeometricConstructions {
         s2.setX((float) (pointA.X() - baX * abScalingFactor2));
         s2.setY((float) (pointA.Y() - baY * abScalingFactor2));
         return 2;
-//        double d = l.distance(c.getCenter()) - c.getRadius();
-//        // TODO konstanta
-//        double epsilon = 10;
-//
-//        if(d > epsilon)
-//            return 0;
-//
-//        float x1 = l.getBegin().X();
-//        float y1 = l.getBegin().Y();
-//
-//        float x2 = l.getEnd().X();
-//        float y2 = l.getEnd().Y();
-//
-//        float xc = c.getCenter().X();
-//        float yc = c.getCenter().Y();
-//
-//
-//        float dx = x2 - x1;
-//        float dy = y2 - y1;
-//
-//        double dr = Math.sqrt(dx*dx + dy*dy);
-//
-//        double D = (x1 - xc)*(y2 -yc) - (x2 - xc)*(y1 - xc);
-//
-//        double delta = c.getRadius()*c.getRadius()*dr*dr - D*D;
-//
-//        if(delta < epsilon){
-//            return 0;
-//        } else if( delta > 10){
-//            int sgn = dy < 0 ? -1 : 1;
-//
-//            s1.setX((float)((D*dy + sgn*dx*Math.sqrt(delta))/(dr*dr)) + xc);
-//            s1.setY((float)((-D*dx + sgn*dy*Math.sqrt(delta))/(dr*dr)) + yc);
-//
-//            s2.setX((float)((D*dy - sgn*dx*Math.sqrt(delta))/(dr*dr)) + xc);
-//            s2.setY((float)((-D*dx - sgn*dy*Math.sqrt(delta))/(dr*dr)) + yc);
-//            return 2;
-//        } else {
-//            s1.setX((float)((D*dy)/(dr*dr)) + xc);
-//            s1.setY((float)((-D*dx)/(dr*dr)) + yc);
-//            return 1;
-//        }
-
-//        GeomPoint p = l.getVector();
-//        GeomPoint P = l.getBegin();
-//
-//        GeomPoint PC = new GeomPoint(c.getCenter().X() - P.X(), c.getCenter().Y() - P.Y());
-//
-//        double t = ConnectionCalculations.dotProduct(PC, p);
-//
-//        double sx = P.X() + t*p.X();
-//        double sy = P.Y() + t*p.Y();
-//
-//        if(d > epsilon){
-//            return 0;
-//        } else if (Math.abs(d) < epsilon){
-//            s1.setX((float)sx);
-//            s1.setY((float)sy);
-//            return 1;
-//        } else {
-//            double a = Math.sqrt(c.getRadius()*c.getRadius() - d*d);
-//
-//            s1.setX((float)(sx - a*p.X()));
-//            s1.setY((float)(sy - a*p.Y()));
-//
-//            s1.setX((float)(sx + a*p.X()));
-//            s1.setY((float)(sy + a*p.Y()));
-//            return 2;
-//        }
 
     }
 
@@ -422,9 +352,38 @@ public class GeometricConstructions {
         
     }
 
-    public static Line centroid(GeomPoint A, GeomPoint B, GeomPoint C) {
+    public static Line medianLine(GeomPoint A, GeomPoint B, GeomPoint C) {
         GeomPoint sB = new GeomPoint((A.X() + C.X()) / 2, (A.Y() + C.Y()) / 2);
 
         return new Line(B, sB);
+    }
+
+    static GeomPoint centroid(GeomPoint A, GeomPoint B, GeomPoint C) {
+        Line tb = medianLine(A, B, C);
+        Line tc = medianLine(B, C, A);
+
+        return w03(tb, tc);
+    }
+
+    static GeomPoint incenter(GeomPoint A, GeomPoint B, GeomPoint C) {
+        Line sb = GeometricConstructions.bisectorAngle(A, B, C);
+        Line sc = GeometricConstructions.bisectorAngle(B, C, A);
+
+        return GeometricConstructions.w03(sb, sc);
+    }
+
+    static GeomPoint circumcenter(GeomPoint A, GeomPoint B, GeomPoint C) {
+        Line sBC = GeometricConstructions.w10(new GeomPoint((B.X() + C.X()) / 2, (B.Y() + C.Y()) / 2), new Line(B, C));
+        Line sAC = GeometricConstructions.w10(new GeomPoint((A.X() + C.X()) / 2, (A.Y() + C.Y()) / 2), new Line(A, C));
+
+        return GeometricConstructions.w03(sBC, sAC);
+
+    }
+
+    static GeomPoint orthocenter(GeomPoint A, GeomPoint B, GeomPoint C) {
+        Line hb = GeometricConstructions.w10(B, new Line(A, C));
+        Line ha = GeometricConstructions.w10(A, new Line(B, C));
+
+        return GeometricConstructions.w03(hb, ha);
     }
 }

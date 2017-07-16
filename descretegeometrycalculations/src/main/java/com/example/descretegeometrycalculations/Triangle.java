@@ -376,36 +376,36 @@ public class Triangle extends Polygon {
     private boolean median(Line line, Vector<String> commands) {
 
         if(ConnectionCalculations.centroidLine(A, B, C, line)){
-            Line t = new Median(A, B, C);
+            Line t = GeometricConstructions.medianLine(A, B, C);
             line.setBegin(t.getBegin());
             line.setEnd(t.getEnd());
             significatObjects.put("tb", line);
 
-            commands.add("centroid " + line.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+            commands.add("medianLine " + line.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
 //            commands.add("add tb" + " " + id + " " + line.getId());
 
             return  true;
         }
 
         if(ConnectionCalculations.centroidLine(B, C, A, line)){
-            Line t = new Median(B, C, A);
+            Line t = GeometricConstructions.medianLine(B, C, A);
             line.setBegin(t.getBegin());
             line.setEnd(t.getEnd());
             significatObjects.put("tc", line);
 
-            commands.add("centroid " + line.getId() + " " + B.getId() + " " + C.getId() + " " + A.getId());
+            commands.add("medianLine " + line.getId() + " " + B.getId() + " " + C.getId() + " " + A.getId());
 //            commands.add("add tc" + " " + id + " " + line.getId());
             return true;
         }
 
 
         if (ConnectionCalculations.centroidLine(C, A, B, line)) {
-            Line t = new Median(C, A, B);
+            Line t = GeometricConstructions.medianLine(C, A, B);
             line.setBegin(t.getBegin());
             line.setEnd(t.getEnd());
             significatObjects.put("ta", line);
 
-            commands.add("centroid " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
+            commands.add("medianLine " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
 //            commands.add("add ta" + " " + id + " " + line.getId());
             return true;
         }
@@ -458,7 +458,7 @@ public class Triangle extends Polygon {
 
 
     private boolean orthocenter(GeomPoint point, Vector<String> commands) {
-        GeomPoint H = new Orthocenter(A, B, C);
+        GeomPoint H = GeometricConstructions.orthocenter(A, B, C);
 
         if (H.distance(point) > 20) {
             return false;
@@ -489,7 +489,7 @@ public class Triangle extends Polygon {
     }
 
     private boolean incenter(GeomPoint point, Vector<String> commands) {
-        GeomPoint O = new Incenter(A, B, C);
+        GeomPoint O = GeometricConstructions.incenter(A, B, C);
 
         if (O.distance(point) > 20) {
             return false;
@@ -520,30 +520,38 @@ public class Triangle extends Polygon {
     }
 
     private boolean centroid(GeomPoint point, Vector<String> commands) {
-        GeomPoint T = new Incenter(A, B, C);
+        GeomPoint T = GeometricConstructions.centroid(A, B, C);
 
         if (T.distance(point) > 20) {
             return false;
         }
-        point.setX(T.X());
-        point.setY(T.Y());
         Line ta = (Line) significatObjects.get("ta");
         Line tb = (Line) significatObjects.get("tb");
         Line tc = (Line) significatObjects.get("tc");
 
         if (ta != null && tb != null) {
-            significatObjects.put("O", point);
+            point.setX(T.X());
+            point.setY(T.Y());
+
+
+            significatObjects.put("T", point);
             commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tb.getId());
             return true;
         }
 
         if (tc != null && tb != null) {
-            significatObjects.put("O", point);
+            point.setX(T.X());
+            point.setY(T.Y());
+
+            significatObjects.put("T", point);
             commands.add("w03 " + point.getId() + " " + tc.getId() + " " + tb.getId());
             return true;
         }
         if (ta != null && tc != null) {
-            significatObjects.put("O", point);
+            point.setX(T.X());
+            point.setY(T.Y());
+
+            significatObjects.put("T", point);
             commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tc.getId());
             return true;
         }
@@ -552,7 +560,7 @@ public class Triangle extends Polygon {
 
 
     private boolean circumcenter(GeomPoint point, Vector<String> commands) {
-        GeomPoint O = new Circumcenter(A, B, C);
+        GeomPoint O = GeometricConstructions.circumcenter(A, B, C);
 
         if (O.distance(point) > 20) {
             return false;

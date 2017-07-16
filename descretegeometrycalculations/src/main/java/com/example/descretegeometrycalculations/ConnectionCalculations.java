@@ -32,23 +32,14 @@ class ConnectionCalculations {
         return angle;
     }
 
-    // Veze izmedju Kruga i Linije
-    static boolean tangentLine(Circle circle, Line line){
-
-        double dist = line.distance(circle.getCenter());
-
-        return Math.abs(dist-circle.getRadius()) < 10; // TODO promeni konstantu
-    }
-
     // Veze izmedju dve Linije
 
     public static boolean parallelLine(Line l1, Line l2){
         return Math.abs(crossProductNorm(l1.getVector(), l2.getVector())) <= GeometricObject.EPISLON;
     }
 
-    public static boolean normalLine(Line l1, Line l2){
+    private static boolean normalLine(Line l1, Line l2) {
         float dot = dotProduct(l1.getVector(), l2.getVector());
-        // ovi vektori su normirani, pa dot ne moze biti veci od 1
         // TODO konstanta
         return Math.abs(dot) <= 0.1;
     }
@@ -57,18 +48,16 @@ class ConnectionCalculations {
     // Veze izmedju trougla i linije
 
     static boolean isBisector(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
-        // proverava da li je prava l simetrala ugla ABC
 
         if(!l.contain(B)) {
-//            Log.d("Simetrala", "ne sadrzi srednju tacku");
             return false;
         }
         float angleA = angle(l.getVector(), new GeomPoint(B.X()-A.X(), B.Y()-A.Y()));
         float angleB = angle(l.getVector(), new GeomPoint(B.X()-C.X(), B.Y()-C.Y()));
         // TODO konstanta
-        // ugao je u radijanima
         return Math.abs(angleA-angleB) <= 0.1;
     }
+
 
     static boolean isSegmentCentar(GeomPoint A, GeomPoint B, Line l){
         if(!normalLine(new Line(A, B), l)){
@@ -82,7 +71,6 @@ class ConnectionCalculations {
     }
 
     static boolean centroidLine(GeomPoint A, GeomPoint B, GeomPoint C, Line l){
-        // proverava da li je l tezisna linija koja prolazi kroz teme B
 
         if(!l.contain(B)){
             return false;

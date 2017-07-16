@@ -1,7 +1,5 @@
 package com.example.descretegeometrycalculations;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
@@ -153,8 +151,8 @@ public class Contructor {
                     p.setEnd(l.getEnd());
                     objects.put(p.getId(), p);
                     break;
-                case "centroid":
-                    l = GeometricConstructions.centroid((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
+                case "medianLine":
+                    l = GeometricConstructions.medianLine((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
                             (GeomPoint) objects.get(array[4]));
                     p = (Line) objects.get(array[1]);
                     if (p == null) {
