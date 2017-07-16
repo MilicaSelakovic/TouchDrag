@@ -5,8 +5,7 @@ import android.util.Log;
 class ConnectionCalculations {
 
 
-
-    static float dotProduct(GeomPoint x, GeomPoint y){
+    private static float dotProduct(GeomPoint x, GeomPoint y) {
         return x.X()*y.X() + x.Y()*y.Y();
     }
 
