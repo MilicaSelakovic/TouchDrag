@@ -17,7 +17,7 @@ public class Triangle extends Polygon {
     private String freePoint2;
     private String freePoint3;
 
-    private String choosen = "";
+    private String chosen = "";
 
     private Line a, b, c;
 
@@ -76,17 +76,17 @@ public class Triangle extends Polygon {
 
 
     private void recolor(HashMap<String, Vector<String>> trics) {
-        ((GeomPoint) significatObjects.get(choosen)).setCanChoose(2);
+        ((GeomPoint) significatObjects.get(chosen)).setCanChoose(2);
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
-                if (choosen.compareTo(freePoint1) == 0) {
+                if (chosen.compareTo(freePoint1) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
 
                         ((GeomPoint) entry.getValue()).setCanChoose(3);
 
                     }
                 }
-                if (choosen.compareTo(freePoint2) == 0) {
+                if (chosen.compareTo(freePoint2) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
 
                         ((GeomPoint) entry.getValue()).setCanChoose(3);
@@ -94,7 +94,7 @@ public class Triangle extends Polygon {
                     }
                 }
 
-                if (choosen.compareTo(freePoint3) == 0) {
+                if (chosen.compareTo(freePoint3) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
 
                         ((GeomPoint) entry.getValue()).setCanChoose(3);
@@ -168,7 +168,7 @@ public class Triangle extends Polygon {
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
 
             if (entry.getValue() instanceof GeomPoint && entry.getValue() != null && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                if (choosen.compareTo(freePoint1) == 0) {
+                if (chosen.compareTo(freePoint1) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
                         reconstruction = canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3);
                         freePoint1 = entry.getKey();
@@ -176,7 +176,7 @@ public class Triangle extends Polygon {
 
                     }
                 }
-                if (choosen.compareTo(freePoint2) == 0) {
+                if (chosen.compareTo(freePoint2) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
                         reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3);
                         freePoint2 = entry.getKey();
@@ -184,7 +184,7 @@ public class Triangle extends Polygon {
                     }
                 }
 
-                if (choosen.compareTo(freePoint3) == 0) {
+                if (chosen.compareTo(freePoint3) == 0) {
                     if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
                         reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2);
                         freePoint3 = entry.getKey();
@@ -193,8 +193,8 @@ public class Triangle extends Polygon {
                 }
 
                 if (ind) {
-                    ((GeomPoint) significatObjects.get(choosen)).setMove(false);
-                    ((GeomPoint) significatObjects.get(choosen)).setCanChoose(-1);
+                    ((GeomPoint) significatObjects.get(chosen)).setMove(false);
+                    ((GeomPoint) significatObjects.get(chosen)).setCanChoose(-1);
                     ((GeomPoint) significatObjects.get(entry.getKey())).setMove(true);
                     ((GeomPoint) significatObjects.get(entry.getKey())).setCanChoose(1);
                     return true;
@@ -210,7 +210,7 @@ public class Triangle extends Polygon {
             if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
                 if (isFree(entry.getKey())) {
                     if (((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                        choosen = entry.getKey();
+                        chosen = entry.getKey();
                         recolor(trics);
                         return true;
                     }
