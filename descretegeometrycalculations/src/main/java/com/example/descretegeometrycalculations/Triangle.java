@@ -692,4 +692,59 @@ public class Triangle extends Polygon {
     }
 
 
+    private boolean footOfBisectors(GeomPoint point, Vector<String> commands) {
+
+        Line symA = (Line) significatObjects.get("symA");
+        Line symB = (Line) significatObjects.get("symB");
+        Line symC = (Line) significatObjects.get("symC");
+
+        if (symA != null) {
+            GeomPoint Ta = GeometricConstructions.w03(symA, a);
+
+            if (point.distance(Ta) < 20) {
+                point.setX(Ta.X());
+                point.setY(Ta.Y());
+
+                commands.add("w03 " + point.getId() + " " + a.getId() + " " + symA.getId());
+                significatObjects.put("Ta", point);
+
+                return true;
+            }
+
+        }
+
+
+        if (symB != null) {
+            GeomPoint Tb = GeometricConstructions.w03(symB, b);
+
+            if (point.distance(Tb) < 20) {
+                point.setX(Tb.X());
+                point.setY(Tb.Y());
+
+                commands.add("w03 " + point.getId() + " " + b.getId() + " " + symB.getId());
+                significatObjects.put("Tb", point);
+
+                return true;
+            }
+
+        }
+
+        if (symC != null) {
+            GeomPoint Tc = GeometricConstructions.w03(symC, c);
+
+            if (point.distance(Tc) < 20) {
+                point.setX(Tc.X());
+                point.setY(Tc.Y());
+
+                commands.add("w03 " + point.getId() + " " + c.getId() + " " + symC.getId());
+                significatObjects.put("Tc", point);
+
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+
 }
