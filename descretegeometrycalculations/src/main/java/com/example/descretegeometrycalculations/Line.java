@@ -154,7 +154,6 @@ public class Line implements GeometricObject {
         }
 
         if (object instanceof GeomPoint) {
-            return contain((GeomPoint) object);
         }
 
         return false;
@@ -177,7 +176,7 @@ public class Line implements GeometricObject {
 
         if (ConnectionCalculations.parallelLine(this, line)) {
 
-            Log.d("Linija", "tangenta");
+            Log.d("Linija", "paralela");
             line.getBegin().setId(id.getID());
             objects.put(line.getBegin().getId(), line.getBegin());
 

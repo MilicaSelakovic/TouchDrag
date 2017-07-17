@@ -125,6 +125,18 @@ public class GeomPoint implements GeometricObject {
     }
 
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
+        if (object instanceof Line) {
+            Line l = (Line) object;
+            if (l.contain(this)) {
+                if (l.getBegin().distance(this) < l.getEnd().distance(this)) {
+                    l.setEnd(this);
+                } else {
+                    l.setBegin(this);
+                }
+            }
+
+        }
+
         return false;
     }
 

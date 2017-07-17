@@ -35,7 +35,8 @@ class ConnectionCalculations {
     // Veze izmedju dve Linije
 
     public static boolean parallelLine(Line l1, Line l2){
-        return Math.abs(crossProductNorm(l1.getVector(), l2.getVector())) <= GeometricObject.EPISLON;
+        // TODO konstanta
+        return Math.abs(crossProductNorm(l1.getVector(), l2.getVector())) <= 0.1;
     }
 
     public static boolean normalLine(Line l1, Line l2) {
