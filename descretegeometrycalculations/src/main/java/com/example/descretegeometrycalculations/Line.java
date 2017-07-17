@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.util.Log;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 
@@ -154,6 +155,19 @@ public class Line implements GeometricObject {
         }
 
         if (object instanceof GeomPoint) {
+            if (contain((GeomPoint) object)) {
+                for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+                    if (entry.getValue() instanceof Line && entry.getValue() != this &&
+                            ((Line) entry.getValue()).contain((GeomPoint) object)) {
+                        GeomPoint point = GeometricConstructions.w03(this, (Line) entry.getValue());
+                        ((GeomPoint) object).setX(point.X());
+                        ((GeomPoint) object).setY(point.Y());
+                        commands.add("w03 " + object.getId() + " " + getId() + " " + entry.getValue().getId());
+                        ((GeomPoint) object).setMove(false);
+                        return true;
+                    }
+                }
+            }
         }
 
         return false;
