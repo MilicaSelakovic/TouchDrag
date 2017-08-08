@@ -6,6 +6,7 @@ import android.graphics.Paint;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
@@ -305,8 +306,9 @@ public class Triangle extends Polygon {
             }
 
             Constructor constructor = new Constructor();
-
-            constructor.reconstruct(reconstruction, copy);
+            Vector<Vector<String>> tmp = new Vector<>();
+            tmp.add(reconstruction);
+            constructor.reconstruct(tmp, copy);
         }
     }
 
@@ -752,4 +754,26 @@ public class Triangle extends Polygon {
     }
 
 
+    public void addCommand(String komanda) {
+        komanda += " " + getId() + " " + freePoint1 + " " + freePoint2 + " " + freePoint3;
+    }
+
+    public void recontruct(HashMap<String, Vector<String>> trics, String fP1, String fP2, String fP3) {
+        Vector<String> rec = canBeConstruct(trics, fP1, fP2, fP3);
+
+        if (rec != null) {
+            HashMap<String, GeometricObject> copy = new HashMap<>();
+
+            for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+                copy.put(entry.getKey(), entry.getValue());
+            }
+
+            Constructor constructor = new Constructor();
+            Vector<Vector<String>> tmp = new Vector<>();
+            tmp.add(rec);
+            constructor.reconstruct(tmp, copy);
+
+
+        }
+    }
 }

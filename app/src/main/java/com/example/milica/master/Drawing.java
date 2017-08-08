@@ -45,6 +45,18 @@ public class Drawing extends Activity {
                 ((DrawingView) findViewById(R.id.view)).clearPanel();
             }
         });
+        this.findViewById(R.id.imageButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DrawingView) findViewById(R.id.view)).undo();
+            }
+        });
+        this.findViewById(R.id.imageButton2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DrawingView) findViewById(R.id.view)).redo();
+            }
+        });
     }
 
     @Override
@@ -83,4 +95,5 @@ public class Drawing extends Activity {
             this.findViewById(R.id.toggleButton).setEnabled(true);
         }
     }
+
 }

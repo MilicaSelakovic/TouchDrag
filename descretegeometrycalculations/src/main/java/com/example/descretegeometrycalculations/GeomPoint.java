@@ -151,12 +151,12 @@ public class GeomPoint implements GeometricObject {
 
     }
 
-    float X() {
+    public float X() {
         return x;
     }
 
 
-    float Y() {
+    public float Y() {
         return y;
     }
 

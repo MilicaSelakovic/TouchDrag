@@ -19,6 +19,7 @@ import android.graphics.Color;
 import com.example.descretegeometrycalculations.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 import java.util.Vector;
 
 public class DrawingView extends View {
@@ -35,8 +36,15 @@ public class DrawingView extends View {
 
     private Vector<PointF> points;
     private HashMap<String, GeometricObject> geometricObjects;
-    private Vector<String> commands;
+    private HashMap<String, GeometricObject> oldObjects;
+
+    private Stack<Vector<String>> commands;
+    private Stack<String> komande; // add ili translate
+    private Stack<String> redo;
+    private Stack<Vector<String>> redoCommands;
     private GeometricObject current;
+
+    private float prevX, prevY;
 
     private Recognizer recognizer;
     private UniqueID uniqueID;
@@ -65,7 +73,13 @@ public class DrawingView extends View {
         chooseMode = false;
         points = new Vector<>();
         geometricObjects = new HashMap<>();
-        commands = new Vector<>();
+        oldObjects = new HashMap<>();
+
+        commands = new Stack<>();
+        redoCommands = new Stack<>();
+        komande = new Stack<>();
+        redo = new Stack<>();
+
         currentTriangle = null;
 
         trics = new HashMap<>();
@@ -138,8 +152,8 @@ public class DrawingView extends View {
         }
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-
-            entry.getValue().draw(canvas, objectPaint, true, chooseMode);
+            if (entry.getValue() != null)
+                entry.getValue().draw(canvas, objectPaint, true, chooseMode);
         }
 
 
@@ -172,6 +186,8 @@ public class DrawingView extends View {
                     for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                         if (entry.getValue().isUnderCursor(touchX, touchY)) {
                             current = entry.getValue();
+                            prevX = ((GeomPoint) current).X();
+                            prevY = ((GeomPoint) current).Y();
 
                             for (Map.Entry<String, GeometricObject> entry1 : geometricObjects.entrySet()) {
                                 if (entry1.getValue() instanceof Triangle) {
@@ -231,9 +247,20 @@ public class DrawingView extends View {
             case MotionEvent.ACTION_UP:
                 if (moveMode) {
                     if (current != null) {
+                        String komanda = "";
                         current.translate(touchX, touchY);
-                        if (currentTriangle != null)
+                        komanda += "translate " + current.getId()
+                                + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
+                        if (currentTriangle != null) {
+                            currentTriangle.addCommand(komanda);
                             currentTriangle.translate(touchX, touchY);
+                        }
+
+                        komande.push(komanda);
+
+                        redoCommands.clear();
+                        oldObjects.clear();
+                        redo.clear();
                         constructor.reconstruct(commands, geometricObjects);
                     }
                     current = null;
@@ -242,7 +269,12 @@ public class DrawingView extends View {
                     break;
                 } else {
                     actionDown = false;
-                    recognizer.recognize(points, geometricObjects, commands);
+                    if (recognizer.recognize(points, geometricObjects, commands)) {
+                        komande.push("add");
+                        redoCommands.clear();
+                        oldObjects.clear();
+                        redo.clear();
+                    }
                     drawPath.reset();
                     current = null;
                     //   Log.d("komande", commands.toString());
@@ -265,6 +297,11 @@ public class DrawingView extends View {
     public void clearPanel(){
         geometricObjects.clear();
         commands.clear();
+        oldObjects.clear();
+        komande.clear();
+        redo.clear();
+        redoCommands.clear();
+
         invalidate();
     }
 
@@ -299,6 +336,73 @@ public class DrawingView extends View {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             entry.getValue().scale(mScaleFactor);
         }
+    }
+
+
+    public void redo() {
+        if (!redo.isEmpty()) {
+            String kom = redo.pop();
+            if (kom.compareTo("add") == 0) {
+                commands.push(redoCommands.pop());
+                komande.push("add");
+            } else {
+                String[] array = kom.split("\\s+");
+                float dx = Float.parseFloat(array[2]);
+                float dy = Float.parseFloat(array[3]);
+
+                GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
+
+                point.translate(point.X() + dx, point.Y() + dy);
+
+                komande.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
+
+                if (array.length > 4) {
+                    ((Triangle) geometricObjects.get(array[4])).recontruct(trics, array[5], array[6], array[7]);
+                }
+            }
+
+            geometricObjects.clear();
+            constructor.reconstructNew(commands, geometricObjects, oldObjects);
+
+            invalidate();
+        }
+
+    }
+
+    public void undo() {
+
+        if (!komande.isEmpty()) {
+            if (oldObjects.isEmpty()) {
+                oldObjects.putAll(geometricObjects);
+            }
+
+            String kom = komande.pop();
+            if (kom.compareTo("add") == 0) {
+                redoCommands.push(commands.pop());
+                redo.push("add");
+                // geometricObjects.clear();
+            } else {
+                String[] array = kom.split("\\s+");
+                float dx = Float.parseFloat(array[2]);
+                float dy = Float.parseFloat(array[3]);
+
+                GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
+
+                point.translate(point.X() + dx, point.Y() + dy);
+
+                redo.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
+
+                if (array.length > 4) {
+                    ((Triangle) geometricObjects.get(array[4])).recontruct(trics, array[5], array[6], array[7]);
+                }
+            }
+
+            geometricObjects.clear();
+            constructor.reconstructNew(commands, geometricObjects, oldObjects);
+
+            invalidate();
+        }
+
     }
 }
 

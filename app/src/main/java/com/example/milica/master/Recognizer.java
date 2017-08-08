@@ -20,7 +20,8 @@ public class Recognizer {
         return DiscreteCurvature.getGeometricObject(points);
     }
 
-    public boolean recognize(Vector<PointF> points, HashMap<String, GeometricObject> objects, Vector<String> commands) {
+    public boolean recognize(Vector<PointF> points, HashMap<String, GeometricObject> objects, Vector<Vector<String>> mCommands) {
+        Vector<String> commands = new Vector<>();
         GeometricObject recognized = DiscreteCurvature.getGeometricObject(points);
 
         if (recognized == null) {
@@ -34,6 +35,7 @@ public class Recognizer {
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
             if (entry.getValue() instanceof Triangle && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
+                mCommands.add(commands);
                 return true;
             }
         }
@@ -41,6 +43,7 @@ public class Recognizer {
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
             if (entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
+                mCommands.add(commands);
                 return true;
             }
         }
@@ -100,6 +103,8 @@ public class Recognizer {
             commands.add("line " + idC + " " + polyPoints.elementAt(0).getId() + " " + polyPoints.elementAt(1).getId());
             commands.add(command);
             objects.put(id, recognized);
+
+            mCommands.add(commands);
             return true;
         }
 
@@ -123,7 +128,7 @@ public class Recognizer {
 
 
         objects.put(id, recognized);
-
+        mCommands.add(commands);
         return true;
     }
 
