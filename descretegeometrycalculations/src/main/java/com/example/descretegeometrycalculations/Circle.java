@@ -85,6 +85,10 @@ public class Circle implements GeometricObject {
     public void translate(float x, float y) {
     }
 
+    @Override
+    public void scale(float scaleFactor) {
+        radius *= scaleFactor;
+    }
 
 
 }

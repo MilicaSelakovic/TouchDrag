@@ -76,6 +76,11 @@ public class Line implements GeometricObject {
 
     }
 
+    @Override
+    public void scale(float scaleFactor) {
+
+    }
+
 
     public GeomPoint getVector() {
         return vector;

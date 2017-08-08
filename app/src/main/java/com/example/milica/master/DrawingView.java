@@ -126,7 +126,7 @@ public class DrawingView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
 
-        canvas.scale(mScaleFactor, mScaleFactor);
+        //canvas.scale(mScaleFactor, mScaleFactor);
         if (!moveMode && !chooseMode) {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
@@ -286,13 +286,18 @@ public class DrawingView extends View {
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-            mScaleFactor *= detector.getScaleFactor();
+            mScaleFactor = detector.getScaleFactor();
 
-            // Don't let the object get too small or too large.
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
-
+            scaleObjects();
             invalidate();
             return true;
+        }
+    }
+
+    private void scaleObjects() {
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            entry.getValue().scale(mScaleFactor);
         }
     }
 }

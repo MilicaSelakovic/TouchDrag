@@ -75,6 +75,10 @@ public class Polygon implements GeometricObject {
     public void translate(float x, float y){
     }
 
+    @Override
+    public void scale(float scaleFactor) {
+
+    }
 
 
     // veze sa segmentom pojedinacnim i to samo sa Linijama i tackama

@@ -119,6 +119,12 @@ public class GeomPoint implements GeometricObject {
         this.y = y;
     }
 
+    @Override
+    public void scale(float scaleFactor) {
+        x *= scaleFactor;
+        y *= scaleFactor;
+    }
+
 
     public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
         return false;
