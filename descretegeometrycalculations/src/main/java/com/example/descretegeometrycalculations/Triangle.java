@@ -304,9 +304,9 @@ public class Triangle extends Polygon {
                 copy.put(entry.getKey(), entry.getValue());
             }
 
-            Contructor contructor = new Contructor();
+            Constructor constructor = new Constructor();
 
-            contructor.reconstruct(reconstruction, copy);
+            constructor.reconstruct(reconstruction, copy);
         }
     }
 

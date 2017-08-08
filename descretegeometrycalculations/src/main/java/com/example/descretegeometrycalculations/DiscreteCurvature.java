@@ -164,7 +164,7 @@ public class DiscreteCurvature {
         if (n <= 0)
             return null;
 
-        if (n < 3) {
+        if (n < 5) {
             return new GeomPoint(points.firstElement().x, points.firstElement().y);
         }
 

@@ -3,6 +3,8 @@ package com.example.milica.master;
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -38,11 +40,14 @@ public class DrawingView extends View {
 
     private Recognizer recognizer;
     private UniqueID uniqueID;
-    private Contructor contructor;
+    private Constructor constructor;
     boolean actionDown;
 
     boolean moveMode;
     boolean chooseMode;
+
+    private ScaleGestureDetector mScaleGestureDetector;
+    private float mScaleFactor = 1.f;
 
     private HashMap<String, Vector<String>> trics;
 
@@ -54,7 +59,7 @@ public class DrawingView extends View {
 
         uniqueID = new UniqueID();
         recognizer = new Recognizer(uniqueID);
-        contructor = new Contructor();
+        constructor = new Constructor();
         actionDown = false;
         moveMode  = false;
         chooseMode = false;
@@ -77,6 +82,8 @@ public class DrawingView extends View {
 
         trics.put("A B H", konstrukcija);
         trics.put("A B C", new Vector<String>());
+
+        mScaleGestureDetector = new ScaleGestureDetector(context, new ScaleListener());
     }
 
     private void setupDrawing(){
@@ -118,6 +125,8 @@ public class DrawingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+
+        canvas.scale(mScaleFactor, mScaleFactor);
         if (!moveMode && !chooseMode) {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
@@ -136,11 +145,26 @@ public class DrawingView extends View {
 
     }
 
+
+    @Override
+    public boolean onDragEvent(DragEvent event) {
+
+        Log.d("Drag event", Float.toString(event.getX()) + " " + Float.toString(event.getY()));
+        return super.onDragEvent(event);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        mScaleGestureDetector.onTouchEvent(event);
+
         float touchX = event.getX();
         float touchY = event.getY();
         PointF touchPoint = new PointF(touchX,touchY);
+
+        if (mScaleGestureDetector.isInProgress()) {
+            return true;
+        }
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -186,12 +210,13 @@ public class DrawingView extends View {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
+
                 if (moveMode) {
                     if (current != null) {
                         current.translate(touchX, touchY);
                         if (currentTriangle != null)
                             currentTriangle.translate(touchX, touchY);
-                        contructor.reconstruct(commands, geometricObjects);
+                        constructor.reconstruct(commands, geometricObjects);
                     }
                 } else if (chooseMode) {
                     break;
@@ -209,7 +234,7 @@ public class DrawingView extends View {
                         current.translate(touchX, touchY);
                         if (currentTriangle != null)
                             currentTriangle.translate(touchX, touchY);
-                        contructor.reconstruct(commands, geometricObjects);
+                        constructor.reconstruct(commands, geometricObjects);
                     }
                     current = null;
                     currentTriangle = null;
@@ -256,4 +281,20 @@ public class DrawingView extends View {
 
         invalidate();
     }
+
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            mScaleFactor *= detector.getScaleFactor();
+
+            // Don't let the object get too small or too large.
+            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
+
+            invalidate();
+            return true;
+        }
+    }
 }
+
+

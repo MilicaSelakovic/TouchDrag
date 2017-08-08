@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
 
-public class Contructor {
+public class Constructor {
 
-    public Contructor() {
+    public Constructor() {
 
     }
 
