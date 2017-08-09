@@ -1,0 +1,6492 @@
+[
+  {
+    "problem": "O Mc Hb",
+    "solution": [
+      "w02 mc O Mc",
+      "w06 k(McA) Hb Mc",
+      "w10a c Mc mc",
+      "w04 A B k(McA) c",
+      "w02 b Hb A",
+      "w06 k(OC) A O",
+      "w05 C k(OC) b O A"
+    ]
+  },
+  {
+    "problem": "Hc Tc I",
+    "solution": [
+      "w02 c Hc Tc",
+      "w02 sc Tc I",
+      "w10b hc Hc c",
+      "w03 C hc sc",
+      "w11 k(IPa) I c",
+      "w12 a b k(IPa) C I",
+      "w03 B a c",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "Ec H Mb",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w01 A Mb Mb C",
+      "w02 ha H A",
+      "w02 b Mb C",
+      "w06 k(EcC) H Ec",
+      "w05 Ha k(EcC) ha Ec H",
+      "w02 a Ha C",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb Hb H",
+      "w03 B a hb"
+    ]
+  },
+  {
+    "problem": "Ma Ta I",
+    "solution": [
+      "w02 a Ma Ta",
+      "w02 sa Ta I",
+      "w10b ma Ma a",
+      "w03 Na ma sa",
+      "w06 k(NaC) I Na",
+      "w04 C B k(NaC) a",
+      "w11 k(IPa) I a",
+      "w13 b k(IPa) C I a",
+      "w03 A b sa"
+    ]
+  },
+  {
+    "problem": "Ea I Ma",
+    "solution": [
+      "w02 m(HbHc) Ea Ma",
+      "w02 IMa I Ma",
+      "w09 kover(IMa) I Ma",
+      "w14 m(EaMa) Ea Ma",
+      "w03 N m(EaMa) m(HbHc)",
+      "w06 k(NMa) Ea N",
+      "w22 k(IPa) I k(NMa) N Ea",
+      "w07 Pa Afi k(IPa) kover(IMa)",
+      "w01 P`a Pa Pa Ma",
+      "w12 x1 a k(IPa) Ma I",
+      "w05 Ha k(NMa) a N Ma",
+      "w02 ha Ha Ea",
+      "w10b ma Ma a",
+      "w16 AP`a P`a IMa",
+      "w03 A AP`a ha",
+      "w02 sa I A",
+      "w03 Na ma sa",
+      "w06 k(NaC) I Na",
+      "w04 C B k(NaC) a"
+    ]
+  },
+  {
+    "problem": "B C Ec",
+    "solution": [
+      "w01 Ma B B C",
+      "w01 H C C Ec",
+      "w02 hb B H",
+      "w02 hc C Ec",
+      "w06 k(MaB) B Ma",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b Hb C",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c Hc B",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "A Ea Ec",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 C Ec Ec H",
+      "w02 b A C",
+      "w02 hc Ec H",
+      "w06 k(EaA) A Ea",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb Hb H",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c Hc A",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "C Mb G",
+    "solution": [
+      "w01 A C C Mb",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "C G Tc",
+    "solution": [
+      "w01 Mc C C G",
+      "w02 sc C Tc",
+      "w02 c Tc Mc",
+      "w10b mc Mc c",
+      "w03 Nc mc sc",
+      "w14 m(CNc) C Nc",
+      "w03 O m(CNc) mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Mc G Hb",
+    "solution": [
+      "w01 C Mc Mc G",
+      "w02 b Hb C",
+      "w06 k(McA) Hb Mc",
+      "w05 A k(McA) b Mc Hb",
+      "w01 B A A Mc"
+    ]
+  },
+  {
+    "problem": "Ha Hc Tc",
+    "solution": [
+      "w02 HcHa Ha Hc",
+      "w02 c Hc Tc",
+      "w10b hc Hc c",
+      "w18 HbHc c c HcHa Hc Tc Tc Hc Ha",
+      "w20 circle[TcHaangle[s[c]][a]] Tc Ha Tc Hc Ha",
+      "w04 Cca1 C circle[TcHaangle[s[c]][a]] hc",
+      "w02 a C Ha",
+      "w03 B c a",
+      "w01 Ma B B C",
+      "w06 k(MaB) Hc Ma",
+      "w05 Hb k(MaB) HbHc Ma Hc",
+      "w02 b C Hb",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "B Ma I",
+    "solution": [
+      "w01 C B B Ma",
+      "w02 a B Ma",
+      "w11 k(IPa) I a",
+      "w13 c k(IPa) B I a",
+      "w13 b k(IPa) C I a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "C Ha I",
+    "solution": [
+      "w02 a C Ha",
+      "w10b ha Ha a",
+      "w11 k(IPa) I a",
+      "w13 b k(IPa) C I a",
+      "w03 A b ha",
+      "w13 c k(IPa) A I b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "C O Tb",
+    "solution": [
+      "w02 b C Tb",
+      "w06 k(OC) C O",
+      "w05 A k(OC) b O C",
+      "w01 Mb A A C",
+      "w02 mb O Mb",
+      "w04 Nb Nbk k(OC) mb",
+      "w02 sb Nb Tb",
+      "w05 B k(OC) sb O Nb"
+    ]
+  },
+  {
+    "problem": "A C Ta",
+    "solution": [
+      "w02 b A C",
+      "w02 a C Ta",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w13 c k(Tafoot[Tac]) A Ta b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "O Mb G",
+    "solution": [
+      "w01 B Mb Mb G",
+      "w02 mb O Mb",
+      "w06 k(OC) B O",
+      "w10a b Mb mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ea Ec Hc",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w06 k(EaA) Hc Ea",
+      "w05 H k(EaA) hc Ea Hc",
+      "w01 A H H Ea",
+      "w01 C Ec Ec H",
+      "w02 c Hc A",
+      "w02 b A C",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb H Hb",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "B C N",
+    "solution": [
+      "w01 Ma B B C",
+      "w02 a B C",
+      "w02 m(HbHc) N Ma",
+      "w06 k(MaB) B Ma",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) a N Ma",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 ha Ea Ha",
+      "w07 Hb Hc k(MaB) k(NMa)",
+      "w02 hb B Hb",
+      "w03 H ha hb",
+      "w01 G N N H",
+      "w01 Mc C C G",
+      "w01 A B B Mc"
+    ]
+  },
+  {
+    "problem": "A Eb Mb",
+    "solution": [
+      "w01 C A A Mb",
+      "w02 b A Mb",
+      "w02 m(HaHc) Eb Mb",
+      "w10b hb Eb b",
+      "w03 Hb hb b",
+      "w14 m(AHb) A Hb",
+      "w14 m(EbMb) Eb Mb",
+      "w03 N m(EbMb) m(HaHc)",
+      "w06 k(NMa) Eb N",
+      "w04 Mc Ea k(NMa) m(AHb)",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "A Hb Hc",
+    "solution": [
+      "w02 b A Hb",
+      "w02 c A Hc",
+      "w10b hb Hb b",
+      "w03 B hb c",
+      "w10b hc Hc c",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "A Mc I",
+    "solution": [
+      "w01 B A A Mc",
+      "w02 c A Mc",
+      "w11 k(IPa) I c",
+      "w13 b k(IPa) A I c",
+      "w13 a k(IPa) B I c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "C Ea Hb",
+    "solution": [
+      "w02 b C Hb",
+      "w06 k(EaA) Hb Ea",
+      "w05 A k(EaA) b Ea Hb",
+      "w01 H Ea Ea A",
+      "w02 hc C H",
+      "w02 hb Hb H",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c A Hc",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "Eb I N",
+    "solution": [
+      "w02 m(HaHc) Eb N",
+      "w06 k(NMa) Eb N",
+      "w05a Mb k(NMa) m(HaHc) N Eb",
+      "w02 IMb Mb I",
+      "w09 kover(IMb) I Mb",
+      "w22 k(IPa) I k(NMa) N Eb",
+      "w07 Bfi Pb k(IPa) kover(IMb)",
+      "w01 P`b Pb Pb Mb",
+      "w12 x2 b k(IPa) Mb I",
+      "w05 Hb k(NMa) b N Mb",
+      "w02 hb Hb Eb",
+      "w10b mb Mb b",
+      "w16 BP`b P`b IMb",
+      "w03 B BP`b hb",
+      "w02 sb I B",
+      "w03 Nb mb sb",
+      "w06 k(NbA) I Nb",
+      "w04 A C k(NbA) b"
+    ]
+  },
+  {
+    "problem": "Eb Hb O",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w10a b Hb hb",
+      "w10b mb O b",
+      "w03 Mb mb b",
+      "w02 m(HaHc) Mb Eb",
+      "w14 m(EbHb) Eb Hb",
+      "w03 N m(EbHb) m(HaHc)",
+      "w01 H O O N",
+      "w01 B Eb Eb H",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B O G",
+    "solution": [
+      "w01 Mb B B G",
+      "w01 H O O G",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w10a b Mb hb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ma Mc Ha",
+    "solution": [
+      "w02 a Ma Ha",
+      "w06 k(McA) Ha Mc",
+      "w05 B k(McA) a Mc Ha",
+      "w01 C B B Ma",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "A O Ta",
+    "solution": [
+      "w02 sa A Ta",
+      "w06 k(OC) A O",
+      "w05 Na k(OC) sa O A",
+      "w02 ma Na O",
+      "w10a a Ta ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "I Ma N",
+    "solution": [
+      "w02 IMa I Ma",
+      "w02 m(HbHc) Ma N",
+      "w06 k(NMa) Ma N",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w09 kover(IMa) I Ma",
+      "w22 k(IPa) I k(NMa) N Ma",
+      "w07 Pa Afi k(IPa) kover(IMa)",
+      "w01 P`a Pa Pa Ma",
+      "w12 x1 a k(IPa) Ma I",
+      "w05 Ha k(NMa) a N Ma",
+      "w02 ha Ha Ea",
+      "w10b ma Ma a",
+      "w16 AP`a P`a IMa",
+      "w03 A AP`a ha",
+      "w02 sa I A",
+      "w03 Na ma sa",
+      "w06 k(NaC) I Na",
+      "w04 C B k(NaC) a"
+    ]
+  },
+  {
+    "problem": "B Ma Mc",
+    "solution": [
+      "w01 C B B Ma",
+      "w01 A B B Mc"
+    ]
+  },
+  {
+    "problem": "C Ec N",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 O N N H",
+      "w01 G N N H",
+      "w01 Mc C C G",
+      "w02 hc C Ec",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Eb I Mb",
+    "solution": [
+      "w02 m(HaHc) Eb Mb",
+      "w02 IMb I Mb",
+      "w09 kover(IMb) I Mb",
+      "w14 m(EbMb) Eb Mb",
+      "w03 N m(EbMb) m(HaHc)",
+      "w06 k(NMa) Eb N",
+      "w22 k(IPa) I k(NMa) N Eb",
+      "w07 Bfi Pb k(IPa) kover(IMb)",
+      "w01 P`b Pb Pb Mb",
+      "w12 x2 b k(IPa) Mb I",
+      "w05 Hb k(NMa) b N Mb",
+      "w02 hb Hb Eb",
+      "w10b mb Mb b",
+      "w16 BP`b P`b IMb",
+      "w03 B BP`b hb",
+      "w02 sb I B",
+      "w03 Nb mb sb",
+      "w06 k(NbA) I Nb",
+      "w04 A C k(NbA) b"
+    ]
+  },
+  {
+    "problem": "A Mb Ta",
+    "solution": [
+      "w01 C A A Mb",
+      "w02 b A Mb",
+      "w02 a Ta C",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w13 c k(Tafoot[Tac]) A Ta b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "O Mc G",
+    "solution": [
+      "w01 C Mc Mc G",
+      "w02 mc O Mc",
+      "w06 k(OC) C O",
+      "w10a c Mc mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ma Ha Hc",
+    "solution": [
+      "w02 a Ma Ha",
+      "w06 k(MaB) Hc Ma",
+      "w04 B C k(MaB) a",
+      "w02 c B Hc",
+      "w10b ha Ha a",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "Eb Hb Ma",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w06 k(MaB) Hb Ma",
+      "w05 B k(MaB) hb Ma Hb",
+      "w01 H B B Eb",
+      "w01 C Ma Ma B",
+      "w02 b Hb C",
+      "w02 hc H C",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c B Hc",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "C Mc H",
+    "solution": [
+      "w01 G C C Mc",
+      "w01 O H H G",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w10a c Mc hc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "C Ha Hb",
+    "solution": [
+      "w02 a C Ha",
+      "w02 b C Hb",
+      "w10b ha Ha a",
+      "w03 A ha b",
+      "w10b hb Hb b",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "C Ta I",
+    "solution": [
+      "w02 a C Ta",
+      "w02 sa Ta I",
+      "w11 k(IPa) I a",
+      "w13 b k(IPa) C I a",
+      "w03 A b sa",
+      "w13 c k(IPa) A I b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "C Eb H",
+    "solution": [
+      "w01 Ec C C H",
+      "w01 B Eb Eb H",
+      "w02 a C B",
+      "w02 hb Eb H",
+      "w06 k(EcC) C Ec",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha Ha H",
+      "w05 Hb k(EcC) hb Ec H",
+      "w02 b Hb C",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "A Mc Ta",
+    "solution": [
+      "w01 B A A Mc",
+      "w02 c A Mc",
+      "w02 a Ta B",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w13 b k(Tafoot[Tac]) A Ta c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "A B Eb",
+    "solution": [
+      "w01 Mc A A B",
+      "w01 H B B Eb",
+      "w02 ha A H",
+      "w02 hb B Eb",
+      "w06 k(McA) A Mc",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a Ha B",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b Hb A",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "Eb Hc Ma",
+    "solution": [
+      "w06 k(EbB) Hc Eb",
+      "w06 k(MaB) Hc Ma",
+      "w08 B k(EbB) k(MaB) Hc Eb Ma",
+      "w01 H B B Eb",
+      "w01 C Ma Ma B",
+      "w02 c Hc B",
+      "w02 a Ma B",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha H Ha",
+      "w03 A c ha"
+    ]
+  },
+  {
+    "problem": "Eb G O",
+    "solution": [
+      "w01 N G G O",
+      "w01 H G G O",
+      "w01 B Eb Eb H",
+      "w01 Mb G G B",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A B Ea",
+    "solution": [
+      "w01 H A A Ea",
+      "w02 c A B",
+      "w02 hb B H",
+      "w06 k(EaA) A Ea",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc Hc H",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b Hb A",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "A Mc H",
+    "solution": [
+      "w01 B A A Mc",
+      "w02 ha A H",
+      "w02 hb H B",
+      "w06 k(McA) A Mc",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a Ha B",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b Hb A",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "A Ha Tc",
+    "solution": [
+      "w02 ha A Ha",
+      "w02 c A Tc",
+      "w10a a Ha ha",
+      "w03 B a c",
+      "w19 T`c A B Tc c",
+      "w09 kover(TcT`c) Tc T`c",
+      "w04 Cwb C kover(TcT`c) a"
+    ]
+  },
+  {
+    "problem": "A Mc N",
+    "solution": [
+      "w01 B A A Mc",
+      "w02 c A Mc",
+      "w02 m(HbHa) Mc N",
+      "w06 k(McA) A Mc",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) c N Mc",
+      "w05a Ec k(NMa) m(HbHa) N Mc",
+      "w02 hc Ec Hc",
+      "w07 Hb Ha k(McA) k(NMa)",
+      "w02 b A Hb",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "C Mc Tc",
+    "solution": [
+      "w02 sc C Tc",
+      "w02 c Mc Tc",
+      "w10b mc Mc c",
+      "w03 Nc mc sc",
+      "w14 m(CNc) C Nc",
+      "w03 O m(CNc) mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "A O Ma",
+    "solution": [
+      "w01 G A A Ma",
+      "w01 H O O G",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w10a a Ma ha",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Eb G N",
+    "solution": [
+      "w01 H G G N",
+      "w01 B Eb Eb H",
+      "w01 O G G N",
+      "w01 Mb G G B",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Eb Ha Ma",
+    "solution": [
+      "w02 a Ha Ma",
+      "w06 k(EbB) Ha Eb",
+      "w05 B k(EbB) a Eb Ha",
+      "w01 H B B Eb",
+      "w01 C Ma Ma B",
+      "w02 ha Ha H",
+      "w02 hc H C",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c B Hc",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "O Ma Hc",
+    "solution": [
+      "w02 ma O Ma",
+      "w06 k(MaB) Hc Ma",
+      "w10a a Ma ma",
+      "w04 B C k(MaB) a",
+      "w02 c Hc B",
+      "w06 k(OC) B O",
+      "w05 A k(OC) c O B"
+    ]
+  },
+  {
+    "problem": "A C Ea",
+    "solution": [
+      "w01 H A A Ea",
+      "w02 b A C",
+      "w02 hc C H",
+      "w06 k(EaA) A Ea",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb Hb H",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c Hc A",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "Mb Hc Tc",
+    "solution": [
+      "w02 c Hc Tc",
+      "w06 k(MbC) Hc Mb",
+      "w05 A k(MbC) c Mb Hc",
+      "w01 C A A Mb",
+      "w02 b Mb A",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w13 a k(Tcfoot[Tcb]) C Tc b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Ha Hc Ta",
+    "solution": [
+      "w02 HcHa Ha Hc",
+      "w02 a Ha Ta",
+      "w10b ha Ha a",
+      "w17 HaHb Ha Ta a Hc Ha Ta a HcHa",
+      "w20 circle[TaHcangle[c][s[a]]] Ta Hc Hc Ha Ta",
+      "w04 Aca2 A circle[TaHcangle[c][s[a]]] ha",
+      "w02 c A Hc",
+      "w03 B a c",
+      "w01 Mc B B A",
+      "w06 k(McA) Ha Mc",
+      "w05 Hb k(McA) HaHb Mc Ha",
+      "w02 b A Hb",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "O Ma Mb",
+    "solution": [
+      "w02 ma O Ma",
+      "w02 mb O Mb",
+      "w10a a Ma ma",
+      "w10a b Mb mb",
+      "w03 C b a",
+      "w01 B C C Ma",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "C G Ha",
+    "solution": [
+      "w01 Mc C C G",
+      "w02 a C Ha",
+      "w06 k(McA) Ha Mc",
+      "w05 B k(McA) a Mc Ha",
+      "w01 Mb G G B",
+      "w01 A C C Mb"
+    ]
+  },
+  {
+    "problem": "Eb H Tb",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w02 hb Eb H",
+      "w02 sb Tb B",
+      "w10a b Tb hb",
+      "w03 Hb b hb",
+      "w14 m(HHb) H Hb",
+      "w17 BO B Tb sb Eb B Tb sb hb",
+      "w16 m(HaHc) Eb BO",
+      "w03 Mb m(HaHc) b",
+      "w01 G Mb Mb B",
+      "w01 N H H G",
+      "w06 k(NMa) Eb N",
+      "w04 Ea Ec k(NMa) m(HHb)",
+      "w01 A Ea Ea H",
+      "w01 C H H Ec"
+    ]
+  },
+  {
+    "problem": "C Ec Ma",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 B C C Ma",
+      "w02 a C Ma",
+      "w02 hb H B",
+      "w06 k(EcC) C Ec",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha Ha H",
+      "w05 Hb k(EcC) hb Ec H",
+      "w02 b Hb C",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "O Hb H",
+    "solution": [
+      "w01 G O O H",
+      "w02 hb Hb H",
+      "w10a b Hb hb",
+      "w10b mb O b",
+      "w03 Mb mb b",
+      "w01 B Mb Mb G",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A G H",
+    "solution": [
+      "w01 Ma A A G",
+      "w01 O G G H",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w10a a Ma ha",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Mc Ha Tc",
+    "solution": [
+      "w02 c Mc Tc",
+      "w06 k(McA) Ha Mc",
+      "w04 A B k(McA) c",
+      "w02 a Ha B",
+      "w19 T`c A B Tc c",
+      "w09 kover(TcT`c) Tc T`c",
+      "w04 Cwb C kover(TcT`c) a"
+    ]
+  },
+  {
+    "problem": "A Tc I",
+    "solution": [
+      "w02 c A Tc",
+      "w02 sc Tc I",
+      "w11 k(IPa) I c",
+      "w13 b k(IPa) A I c",
+      "w03 C b sc",
+      "w13 a k(IPa) C I b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "O Mc H",
+    "solution": [
+      "w01 G O O H",
+      "w01 C Mc Mc G",
+      "w02 mc O Mc",
+      "w06 k(OC) C O",
+      "w10a c Mc mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "G Mb N",
+    "solution": [
+      "w01 B G G Mb",
+      "w01 H G G N",
+      "w01 O G G N",
+      "w01 Eb B B H",
+      "w02 hb B H",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C Ma Tb",
+    "solution": [
+      "w01 B C C Ma",
+      "w02 a C Ma",
+      "w02 b C Tb",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w13 c k(Tbfoot[Tbc]) B Tb a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "A B I",
+    "solution": [
+      "w02 c A B",
+      "w11 k(IPa) I c",
+      "w13 b k(IPa) A I c",
+      "w13 a k(IPa) B I c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "C Ma G",
+    "solution": [
+      "w01 B C C Ma",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "C Ha Tc",
+    "solution": [
+      "w02 a C Ha",
+      "w10b ha Ha a",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w13 b k(Tcfoot[Tcb]) C Tc a",
+      "w03 A b ha",
+      "w02 c Tc A",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Eb H O",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 N H H O",
+      "w01 G H H O",
+      "w01 Mb B B G",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C G Hb",
+    "solution": [
+      "w01 Mc C C G",
+      "w02 b C Hb",
+      "w06 k(McA) Hb Mc",
+      "w05 A k(McA) b Mc Hb",
+      "w01 Ma G G A",
+      "w01 B C C Ma"
+    ]
+  },
+  {
+    "problem": "B Ea N",
+    "solution": [
+      "w02 m(HbHc) Ea N",
+      "w06 k(NMa) Ea N",
+      "w05a Ma k(NMa) m(HbHc) N Ea",
+      "w01 C Ma Ma B",
+      "w02 a B Ma",
+      "w05 Ha k(NMa) a N Ma",
+      "w02 ha Ha Ea",
+      "w06 k(MaB) B Ma",
+      "w07 Hb Hc k(NMa) k(MaB)",
+      "w02 hb B Hb",
+      "w03 H ha hb",
+      "w01 A Ea Ea H"
+    ]
+  },
+  {
+    "problem": "C O G",
+    "solution": [
+      "w01 Mc C C G",
+      "w01 H O O G",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w10a c Mc hc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Ma Mb",
+    "solution": [
+      "w01 C B B Ma",
+      "w01 G B B Mb",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "Ea Eb Hb",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w06 k(EaA) Hb Ea",
+      "w05 H k(EaA) hb Ea Hb",
+      "w01 A H H Ea",
+      "w01 B Eb Eb H",
+      "w02 b Hb A",
+      "w02 c A B",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc H Hc",
+      "w03 C b hc"
+    ]
+  },
+  {
+    "problem": "B N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 Mb B B G",
+      "w01 H N N O",
+      "w01 Eb B B H",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ec Ha Ma",
+    "solution": [
+      "w02 a Ha Ma",
+      "w06 k(EcC) Ha Ec",
+      "w05 C k(EcC) a Ec Ha",
+      "w01 H C C Ec",
+      "w01 B Ma Ma C",
+      "w02 ha Ha H",
+      "w02 hb H B",
+      "w05 Hb k(EcC) hb Ec H",
+      "w02 b C Hb",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "Eb H N",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 Mb B B G",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A O Hc",
+    "solution": [
+      "w02 c A Hc",
+      "w06 k(OC) A O",
+      "w05 B k(OC) c O A",
+      "w10b hc Hc c",
+      "w04 C Ck k(OC) hc"
+    ]
+  },
+  {
+    "problem": "O G Hc",
+    "solution": [
+      "w01 H O O G",
+      "w02 hc Hc H",
+      "w10a c Hc hc",
+      "w10b mc O c",
+      "w03 Mc mc c",
+      "w01 C Mc Mc G",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "C O Hc",
+    "solution": [
+      "w02 hc C Hc",
+      "w06 k(OC) C O",
+      "w10a c Hc hc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Ma N",
+    "solution": [
+      "w01 C B B Ma",
+      "w02 a B Ma",
+      "w02 m(HbHc) Ma N",
+      "w06 k(MaB) B Ma",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) a N Ma",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 ha Ea Ha",
+      "w07 Hb Hc k(MaB) k(NMa)",
+      "w02 hb B Hb",
+      "w03 H ha hb",
+      "w01 G N N H",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "Ta Tb I",
+    "solution": [
+      "w02 sa Ta I",
+      "w02 sb Tb I",
+      "w20 circle[TaTbangle[b][a]] Ta Tb Ta I Tb",
+      "w20 circle[TbIangle[b][s[c]]] Tb I Ta I Tb",
+      "w07 Cc1 C circle[TbIangle[b][s[c]]] circle[TaTbangle[b][a]]",
+      "w02 a C Ta",
+      "w02 b Tb C",
+      "w03 A sa b",
+      "w03 B sb a"
+    ]
+  },
+  {
+    "problem": "Ec Hb Hc",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w06 k(EcC) Hb Ec",
+      "w04 C H k(EcC) hc",
+      "w02 b Hb C",
+      "w02 hb Hb H",
+      "w10a c Hc hc",
+      "w03 A c b",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "Mc Hb Tc",
+    "solution": [
+      "w02 c Mc Tc",
+      "w06 k(McA) Hb Mc",
+      "w04 A B k(McA) c",
+      "w02 b A Hb",
+      "w19 T`c A B Tc c",
+      "w09 kover(TcT`c) Tc T`c",
+      "w04 Cwa C kover(TcT`c) b"
+    ]
+  },
+  {
+    "problem": "A O Tc",
+    "solution": [
+      "w02 c A Tc",
+      "w06 k(OC) A O",
+      "w05 B k(OC) c O A",
+      "w01 Mc B B A",
+      "w02 mc O Mc",
+      "w04 Nc Nck k(OC) mc",
+      "w02 sc Nc Tc",
+      "w05 C k(OC) sc O Nc"
+    ]
+  },
+  {
+    "problem": "Mb G Hc",
+    "solution": [
+      "w01 B Mb Mb G",
+      "w02 c Hc B",
+      "w06 k(MbC) Hc Mb",
+      "w05 A k(MbC) c Mb Hc",
+      "w01 C A A Mb"
+    ]
+  },
+  {
+    "problem": "B Eb Tb",
+    "solution": [
+      "w01 H B B Eb",
+      "w02 hb B Eb",
+      "w02 sb B Tb",
+      "w10a b Tb hb",
+      "w17 BO B Tb sb Eb B Tb sb hb",
+      "w16 m(HaHc) Eb BO",
+      "w03 Mb m(HaHc) b",
+      "w01 G Mb Mb B",
+      "w01 O H H G",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Mb Tb",
+    "solution": [
+      "w02 sb B Tb",
+      "w02 b Mb Tb",
+      "w10b mb Mb b",
+      "w03 Nb mb sb",
+      "w14 m(BNb) B Nb",
+      "w03 O m(BNb) mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Hb I N",
+    "solution": [
+      "w06 k(NMa) Hb N",
+      "w22 k(IPa) I k(NMa) N Hb",
+      "w12 y2 b k(IPa) Hb I",
+      "w05 Mb k(NMa) b N Hb",
+      "w02 IMb Mb I",
+      "w02 m(HaHc) N Mb",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 hb Eb Hb",
+      "w09 kover(IMb) I Mb",
+      "w07 Bfi Pb kover(IMb) k(IPa)",
+      "w01 P`b Pb Pb Mb",
+      "w10b mb Mb b",
+      "w16 BP`b P`b IMb",
+      "w03 B BP`b hb",
+      "w02 sb I B",
+      "w03 Nb mb sb",
+      "w06 k(NbA) I Nb",
+      "w04 A C k(NbA) b"
+    ]
+  },
+  {
+    "problem": "A Mc G",
+    "solution": [
+      "w01 B A A Mc",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "Ec Mc O",
+    "solution": [
+      "w02 m(HbHa) Ec Mc",
+      "w02 mc Mc O",
+      "w10a c Mc mc",
+      "w14 m(EcMc) Ec Mc",
+      "w03 N m(EcMc) m(HbHa)",
+      "w01 G N N O",
+      "w01 C Mc Mc G",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ha Hb Tb",
+    "solution": [
+      "w02 HaHb Ha Hb",
+      "w02 b Hb Tb",
+      "w10b hb Hb b",
+      "w17 HbHc Hb Tb b Ha Hb Tb b HaHb",
+      "w20 circle[TbHaangle[a][s[b]]] Tb Ha Ha Hb Tb",
+      "w04 Bca2 B circle[TbHaangle[a][s[b]]] hb",
+      "w02 a B Ha",
+      "w03 C b a",
+      "w01 Ma C C B",
+      "w06 k(MaB) Hb Ma",
+      "w05 Hc k(MaB) HbHc Ma Hb",
+      "w02 c B Hc",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Eb Ma O",
+    "solution": [
+      "w02 m(BHc) Eb Ma",
+      "w02 ma Ma O",
+      "w10a a Ma ma",
+      "w16 m(BHa) Eb ma",
+      "w16 mc O m(BHc)",
+      "w03 Mc mc m(BHa)",
+      "w10a c Mc mc",
+      "w03 B c a",
+      "w01 H B B Eb",
+      "w01 C Ma Ma B",
+      "w01 G O O H",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "Ea Hc Mc",
+    "solution": [
+      "w02 c Hc Mc",
+      "w06 k(EaA) Hc Ea",
+      "w05 A k(EaA) c Ea Hc",
+      "w01 H A A Ea",
+      "w01 B Mc Mc A",
+      "w02 hc Hc H",
+      "w02 hb H B",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b A Hb",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "C O Mc",
+    "solution": [
+      "w01 G C C Mc",
+      "w01 H O O G",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w10a c Mc hc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ec Ma O",
+    "solution": [
+      "w02 m(CHb) Ec Ma",
+      "w02 ma Ma O",
+      "w10a a Ma ma",
+      "w16 m(CHa) Ec ma",
+      "w16 mb O m(CHb)",
+      "w03 Mb mb m(CHa)",
+      "w10a b Mb mb",
+      "w03 C b a",
+      "w01 H C C Ec",
+      "w01 B Ma Ma C",
+      "w01 G O O H",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "Eb N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 H N N O",
+      "w01 B Eb Eb H",
+      "w01 Mb G G B",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Mb Ha H",
+    "solution": [
+      "w02 ha Ha H",
+      "w06 k(MbC) Ha Mb",
+      "w05 A k(MbC) ha Mb Ha",
+      "w01 C A A Mb",
+      "w02 a Ha C",
+      "w02 hc H C",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c A Hc",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "A B N",
+    "solution": [
+      "w01 Mc A A B",
+      "w02 c A B",
+      "w02 m(HaHb) N Mc",
+      "w06 k(McA) A Mc",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) c N Mc",
+      "w05a Ec k(NMa) m(HaHb) N Mc",
+      "w02 hc Ec Hc",
+      "w07 Hb Ha k(McA) k(NMa)",
+      "w02 b A Hb",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "Eb Ec Hc",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w06 k(EbB) Hc Eb",
+      "w05 H k(EbB) hc Eb Hc",
+      "w01 B H H Eb",
+      "w01 C Ec Ec H",
+      "w02 c Hc B",
+      "w02 a B C",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha H Ha",
+      "w03 A c ha"
+    ]
+  },
+  {
+    "problem": "B Ta Tc",
+    "solution": [
+      "w02 a B Ta",
+      "w02 c B Tc",
+      "w17 sb B Ta c Ta B Tc a a",
+      "w20 circle[TcTaangle[s[c]][s[a]]] Tc Ta Ta B Tc",
+      "w04 Bsa I circle[TcTaangle[s[c]][s[a]]] sb",
+      "w02 sa I Ta",
+      "w02 sc Tc I",
+      "w03 C a sc",
+      "w03 A c sa"
+    ]
+  },
+  {
+    "problem": "A Ea Ma",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 G A A Ma",
+      "w01 N H H G",
+      "w01 O H H G",
+      "w02 ha A Ea",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "B C Ea",
+    "solution": [
+      "w01 Ma B B C",
+      "w02 a B C",
+      "w02 m(HbHc) Ea Ma",
+      "w10b ha Ea a",
+      "w03 Ha ha a",
+      "w14 m(BHa) B Ha",
+      "w14 m(EaMa) Ea Ma",
+      "w03 N m(EaMa) m(HbHc)",
+      "w06 k(NMa) Ea N",
+      "w04 Mc Eb k(NMa) m(BHa)",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "Mb Mc Hb",
+    "solution": [
+      "w02 b Mb Hb",
+      "w06 k(McA) Hb Mc",
+      "w05 A k(McA) b Mc Hb",
+      "w01 C A A Mb",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "B C Tc",
+    "solution": [
+      "w02 a B C",
+      "w02 c B Tc",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w13 b k(Tcfoot[Tcb]) C Tc a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "O Ma Mc",
+    "solution": [
+      "w02 ma O Ma",
+      "w02 mc O Mc",
+      "w10a a Ma ma",
+      "w10a c Mc mc",
+      "w03 B c a",
+      "w01 C B B Ma",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "A Ea Mc",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 B A A Mc",
+      "w02 c A Mc",
+      "w02 hb H B",
+      "w06 k(EaA) A Ea",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc Hc H",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b Hb A",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "C Eb Ha",
+    "solution": [
+      "w02 a C Ha",
+      "w06 k(EbB) Ha Eb",
+      "w05 B k(EbB) a Eb Ha",
+      "w01 H Eb Eb B",
+      "w02 hc C H",
+      "w02 ha Ha H",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c B Hc",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "O Mc Ha",
+    "solution": [
+      "w02 mc O Mc",
+      "w06 k(McA) Ha Mc",
+      "w10a c Mc mc",
+      "w04 A B k(McA) c",
+      "w02 a Ha B",
+      "w06 k(OC) A O",
+      "w05 C k(OC) a O B"
+    ]
+  },
+  {
+    "problem": "A Eb N",
+    "solution": [
+      "w02 m(HaHc) Eb N",
+      "w06 k(NMa) Eb N",
+      "w05a Mb k(NMa) m(HaHc) N Eb",
+      "w01 C Mb Mb A",
+      "w02 b A Mb",
+      "w05 Hb k(NMa) b N Mb",
+      "w02 hb Hb Eb",
+      "w06 k(MbC) A Mb",
+      "w07 Ha Hc k(NMa) k(MbC)",
+      "w02 ha A Ha",
+      "w03 H hb ha",
+      "w01 B Eb Eb H"
+    ]
+  },
+  {
+    "problem": "B Ha N",
+    "solution": [
+      "w02 a B Ha",
+      "w06 k(NMa) Ha N",
+      "w05 Ma k(NMa) a N Ha",
+      "w01 C Ma Ma B",
+      "w02 m(HbHc) N Ma",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 ha Ea Ha",
+      "w06 k(MaB) B Ma",
+      "w07 Hb Hc k(NMa) k(MaB)",
+      "w02 hb B Hb",
+      "w03 H ha hb",
+      "w01 G N N H",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "B Ha Hc",
+    "solution": [
+      "w02 a B Ha",
+      "w02 c B Hc",
+      "w10b ha Ha a",
+      "w03 A ha c",
+      "w10b hc Hc c",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "B Hb Hc",
+    "solution": [
+      "w02 hb B Hb",
+      "w02 c B Hc",
+      "w10a b Hb hb",
+      "w03 A b c",
+      "w10b hc Hc c",
+      "w03 C b hc"
+    ]
+  },
+  {
+    "problem": "Mb Hc H",
+    "solution": [
+      "w02 hc Hc H",
+      "w06 k(MbC) Hc Mb",
+      "w05 C k(MbC) hc Mb Hc",
+      "w01 A C C Mb",
+      "w02 c Hc A",
+      "w02 ha H A",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a C Ha",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "B Mc H",
+    "solution": [
+      "w01 A B B Mc",
+      "w02 hb B H",
+      "w02 ha H A",
+      "w06 k(McA) B Mc",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b Hb A",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a Ha B",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "A Ha Tb",
+    "solution": [
+      "w02 ha A Ha",
+      "w02 b A Tb",
+      "w10a a Ha ha",
+      "w03 C a b",
+      "w19 T`b A C Tb b",
+      "w09 kover(TbT`b) Tb T`b",
+      "w04 Bwc B kover(TbT`b) a"
+    ]
+  },
+  {
+    "problem": "Mc G Tc",
+    "solution": [
+      "w01 C Mc Mc G",
+      "w02 c Mc Tc",
+      "w02 sc Tc C",
+      "w10b mc Mc c",
+      "w03 Nc mc sc",
+      "w14 m(CNc) C Nc",
+      "w03 O m(CNc) mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "A N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 Ma A A G",
+      "w01 H N N O",
+      "w01 Ea A A H",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Ma Hc",
+    "solution": [
+      "w02 c A Hc",
+      "w06 k(MaB) Hc Ma",
+      "w05 B k(MaB) c Ma Hc",
+      "w01 C Ma Ma B"
+    ]
+  },
+  {
+    "problem": "C Ha Hc",
+    "solution": [
+      "w02 a C Ha",
+      "w02 hc C Hc",
+      "w10a c Hc hc",
+      "w03 B c a",
+      "w10b ha Ha a",
+      "w03 A c ha"
+    ]
+  },
+  {
+    "problem": "B Ec Ha",
+    "solution": [
+      "w02 a B Ha",
+      "w06 k(EcC) Ha Ec",
+      "w05 C k(EcC) a Ec Ha",
+      "w01 H Ec Ec C",
+      "w02 hb B H",
+      "w02 ha Ha H",
+      "w05 Hb k(EcC) hb Ec H",
+      "w02 b C Hb",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "Ec Hc Ma",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w06 k(MaB) Hc Ma",
+      "w05 C k(MaB) hc Ma Hc",
+      "w01 H C C Ec",
+      "w01 B Ma Ma C",
+      "w02 c Hc B",
+      "w02 hb H B",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b C Hb",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "C Ea H",
+    "solution": [
+      "w01 Ec C C H",
+      "w01 A Ea Ea H",
+      "w02 b C A",
+      "w02 ha Ea H",
+      "w06 k(EcC) C Ec",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb Hb H",
+      "w05 Ha k(EcC) ha Ec H",
+      "w02 a Ha C",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "A G Ta",
+    "solution": [
+      "w01 Ma A A G",
+      "w02 sa A Ta",
+      "w02 a Ta Ma",
+      "w10b ma Ma a",
+      "w03 Na ma sa",
+      "w14 m(ANa) A Na",
+      "w03 O m(ANa) ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A B Mb",
+    "solution": [
+      "w01 C A A Mb"
+    ]
+  },
+  {
+    "problem": "Ea Ha Mb",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w06 k(MbC) Ha Mb",
+      "w05 A k(MbC) ha Mb Ha",
+      "w01 H A A Ea",
+      "w01 C Mb Mb A",
+      "w02 a Ha C",
+      "w02 hc H C",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c A Hc",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "A C H",
+    "solution": [
+      "w01 Mb A A C",
+      "w02 ha A H",
+      "w02 hc C H",
+      "w06 k(MbC) A Mb",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a Ha C",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c Hc A",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Mb Ha Tb",
+    "solution": [
+      "w02 b Mb Tb",
+      "w06 k(MbC) Ha Mb",
+      "w04 C A k(MbC) b",
+      "w02 a C Ha",
+      "w19 T`b A C Tb b",
+      "w09 kover(TbT`b) Tb T`b",
+      "w04 Bwc B kover(TbT`b) a"
+    ]
+  },
+  {
+    "problem": "Ea Ec H",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 C Ec Ec H",
+      "w02 hc Ec H",
+      "w02 b A C",
+      "w06 k(EaA) H Ea",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c Hc A",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb Hb H",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "Ea Ec Mb",
+    "solution": [
+      "w02 m(CHa) Ec Mb",
+      "w14 m(EaEc) Ea Ec",
+      "w14 m(EaMb) Ea Mb",
+      "w03 N m(EaMb) m(EaEc)",
+      "w06 k(NMa) Ea N",
+      "w16 ha Ea m(CHa)",
+      "w05 Ha k(NMa) ha N Ea",
+      "w06 k(EcC) Ha Ec",
+      "w05 H k(EcC) ha Ec Ha",
+      "w01 A H H Ea",
+      "w01 C Ec Ec H",
+      "w01 G N N H",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "Ea H Ma",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 G Ma Ma A",
+      "w01 N H H G",
+      "w01 O H H G",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "B Eb G",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 Mb B B G",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w02 hb B Eb",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B O I",
+    "solution": [
+      "w02 sb B I",
+      "w06 k(OC) B O",
+      "w05 Nb k(OC) sb O B",
+      "w06 k(NbA) I Nb",
+      "w07 C A k(OC) k(NbA)"
+    ]
+  },
+  {
+    "problem": "Ec I N",
+    "solution": [
+      "w02 m(HbHa) Ec N",
+      "w06 k(NMa) Ec N",
+      "w05a Mc k(NMa) m(HbHa) N Ec",
+      "w02 IMc Mc I",
+      "w09 kover(IMc) I Mc",
+      "w22 k(IPa) I k(NMa) N Ec",
+      "w07 Cfi Pc k(IPa) kover(IMc)",
+      "w01 P`c Pc Pc Mc",
+      "w12 x3 c k(IPa) Mc I",
+      "w05 Hc k(NMa) c N Mc",
+      "w02 hc Hc Ec",
+      "w10b mc Mc c",
+      "w16 CP`c P`c IMc",
+      "w03 C CP`c hc",
+      "w02 sc I C",
+      "w03 Nc mc sc",
+      "w06 k(NcB) I Nc",
+      "w04 B A k(NcB) c"
+    ]
+  },
+  {
+    "problem": "A Eb H",
+    "solution": [
+      "w01 Ea A A H",
+      "w01 B Eb Eb H",
+      "w02 c A B",
+      "w02 hb Eb H",
+      "w06 k(EaA) A Ea",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc Hc H",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b Hb A",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "B Ma H",
+    "solution": [
+      "w01 C B B Ma",
+      "w02 hb B H",
+      "w02 hc H C",
+      "w06 k(MaB) B Ma",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b Hb C",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c Hc B",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Ma Mb Ha",
+    "solution": [
+      "w02 a Ma Ha",
+      "w06 k(MbC) Ha Mb",
+      "w05 C k(MbC) a Mb Ha",
+      "w01 B C C Ma",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "A B Ec",
+    "solution": [
+      "w01 Mc A A B",
+      "w02 c A B",
+      "w02 m(HbHa) Ec Mc",
+      "w10b hc Ec c",
+      "w03 Hc hc c",
+      "w14 m(AHc) A Hc",
+      "w14 m(EcMc) Ec Mc",
+      "w03 N m(EcMc) m(HbHa)",
+      "w06 k(NMa) Ec N",
+      "w04 Mb Ea k(NMa) m(AHc)",
+      "w01 C Mb Mb A"
+    ]
+  },
+  {
+    "problem": "A Mb Mc",
+    "solution": [
+      "w01 C A A Mb",
+      "w01 B A A Mc"
+    ]
+  },
+  {
+    "problem": "Ta Tc I",
+    "solution": [
+      "w02 sa Ta I",
+      "w02 sc Tc I",
+      "w20 circle[TaIangle[a][s[b]]] Ta I Tc I Ta",
+      "w20 circle[TcTaangle[a][c]] Tc Ta Tc I Ta",
+      "w07 Bc1 B circle[TcTaangle[a][c]] circle[TaIangle[a][s[b]]]",
+      "w02 a B Ta",
+      "w02 c Tc B",
+      "w03 A sa c",
+      "w03 C sc a"
+    ]
+  },
+  {
+    "problem": "A G N",
+    "solution": [
+      "w01 Ma A A G",
+      "w01 H G G N",
+      "w01 Ea A A H",
+      "w01 O G G N",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Ma N",
+    "solution": [
+      "w01 G A A Ma",
+      "w01 O N N G",
+      "w01 H N N G",
+      "w01 Ea A A H",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "B C Eb",
+    "solution": [
+      "w01 H B B Eb",
+      "w02 a B C",
+      "w02 hc C H",
+      "w06 k(EbB) B Eb",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha Ha H",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c Hc B",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "A Ha N",
+    "solution": [
+      "w02 ha A Ha",
+      "w06 k(NMa) Ha N",
+      "w05 Ea k(NMa) ha N Ha",
+      "w01 H Ea Ea A",
+      "w01 O N N H",
+      "w01 G N N H",
+      "w01 Ma A A G",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ha N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 H N N O",
+      "w02 ha Ha H",
+      "w06 k(NMa) Ha N",
+      "w05 Ea k(NMa) ha N Ha",
+      "w01 A Ea Ea H",
+      "w01 Ma G G A",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A O G",
+    "solution": [
+      "w01 Ma A A G",
+      "w01 H O O G",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w10a a Ma ha",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Mb Mc Hc",
+    "solution": [
+      "w02 c Mc Hc",
+      "w06 k(MbC) Hc Mb",
+      "w05 A k(MbC) c Mb Hc",
+      "w01 C A A Mb",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "A Ma Mb",
+    "solution": [
+      "w01 C A A Mb",
+      "w01 B Ma Ma C"
+    ]
+  },
+  {
+    "problem": "Tb Tc I",
+    "solution": [
+      "w02 sb Tb I",
+      "w02 sc Tc I",
+      "w20 circle[TbTcangle[c][b]] Tb Tc Tb I Tc",
+      "w20 circle[TcIangle[c][s[a]]] Tc I Tb I Tc",
+      "w07 Ac2 A circle[TcIangle[c][s[a]]] circle[TbTcangle[c][b]]",
+      "w02 b A Tb",
+      "w02 c Tc A",
+      "w03 B sb c",
+      "w03 C sc b"
+    ]
+  },
+  {
+    "problem": "H Ma N",
+    "solution": [
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 A Ma Ma G",
+      "w01 Ea H H A",
+      "w02 ha H A",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "B Mb N",
+    "solution": [
+      "w01 G B B Mb",
+      "w01 O N N G",
+      "w01 H N N G",
+      "w01 Eb B B H",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C Ma H",
+    "solution": [
+      "w01 B C C Ma",
+      "w02 hc C H",
+      "w02 hb H B",
+      "w06 k(MaB) C Ma",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c Hc B",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b Hb C",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "C Ec Mc",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 G C C Mc",
+      "w01 N H H G",
+      "w01 O H H G",
+      "w02 hc C Ec",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "C O Hb",
+    "solution": [
+      "w02 b C Hb",
+      "w06 k(OC) C O",
+      "w05 A k(OC) b O C",
+      "w10b hb Hb b",
+      "w04 Bk B k(OC) hb"
+    ]
+  },
+  {
+    "problem": "Ea Hc Mb",
+    "solution": [
+      "w06 k(EaA) Hc Ea",
+      "w06 k(MbC) Hc Mb",
+      "w08 A k(EaA) k(MbC) Hc Ea Mb",
+      "w01 H A A Ea",
+      "w01 C Mb Mb A",
+      "w02 c Hc A",
+      "w02 b Mb A",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb H Hb",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "C G H",
+    "solution": [
+      "w01 Mc C C G",
+      "w01 O G G H",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w10a c Mc hc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Eb O",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 N O O H",
+      "w01 G O O H",
+      "w01 Mb B B G",
+      "w02 hb B Eb",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Ea H",
+    "solution": [
+      "w01 Eb B B H",
+      "w01 A Ea Ea H",
+      "w02 c B A",
+      "w02 ha Ea H",
+      "w06 k(EbB) B Eb",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc Hc H",
+      "w05 Ha k(EbB) ha Eb H",
+      "w02 a Ha B",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "B C I",
+    "solution": [
+      "w02 a B C",
+      "w11 k(IPa) I a",
+      "w13 c k(IPa) B I a",
+      "w13 b k(IPa) C I a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "A Ta Tc",
+    "solution": [
+      "w02 c A Tc",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w13 b k(Tafoot[Tac]) A Ta c",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w12 a2 a k(Tcfoot[Tcb]) Ta Tc",
+      "w03 B a c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Ec G H",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w01 Mc G G C",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "A Hb Ta",
+    "solution": [
+      "w02 b A Hb",
+      "w10b hb Hb b",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w13 c k(Tafoot[Tac]) A Ta b",
+      "w03 B c hb",
+      "w02 a Ta B",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Hb Hc H",
+    "solution": [
+      "w02 hb Hb H",
+      "w02 hc Hc H",
+      "w10a b Hb hb",
+      "w03 C b hc",
+      "w10a c Hc hc",
+      "w03 B c hb",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Ec N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 H N N O",
+      "w01 C Ec Ec H",
+      "w01 Mc G G C",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ec H Ma",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w01 B Ma Ma C",
+      "w02 hb H B",
+      "w02 a Ma C",
+      "w06 k(EcC) H Ec",
+      "w05 Hb k(EcC) hb Ec H",
+      "w02 b Hb C",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha Ha H",
+      "w03 A b ha"
+    ]
+  },
+  {
+    "problem": "B C Mb",
+    "solution": [
+      "w01 A C C Mb"
+    ]
+  },
+  {
+    "problem": "Ha I N",
+    "solution": [
+      "w06 k(NMa) Ha N",
+      "w22 k(IPa) I k(NMa) N Ha",
+      "w12 y1 a k(IPa) Ha I",
+      "w05 Ma k(NMa) a N Ha",
+      "w02 IMa Ma I",
+      "w02 m(HbHc) N Ma",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 ha Ea Ha",
+      "w09 kover(IMa) I Ma",
+      "w07 Afi Pa kover(IMa) k(IPa)",
+      "w01 P`a Pa Pa Ma",
+      "w10b ma Ma a",
+      "w16 AP`a P`a IMa",
+      "w03 A AP`a ha",
+      "w02 sa I A",
+      "w03 Na ma sa",
+      "w06 k(NaC) I Na",
+      "w04 C B k(NaC) a"
+    ]
+  },
+  {
+    "problem": "Hc N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 H N N O",
+      "w02 hc Hc H",
+      "w06 k(NMa) Hc N",
+      "w05 Ec k(NMa) hc N Hc",
+      "w01 C Ec Ec H",
+      "w01 Mc G G C",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "C Ma Tc",
+    "solution": [
+      "w01 B C C Ma",
+      "w02 a C Ma",
+      "w02 c Tc B",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w13 b k(Tcfoot[Tcb]) C Tc a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "B Ec H",
+    "solution": [
+      "w01 Eb B B H",
+      "w01 C Ec Ec H",
+      "w02 a B C",
+      "w02 hc Ec H",
+      "w06 k(EbB) B Eb",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha Ha H",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c Hc B",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "C Tb I",
+    "solution": [
+      "w02 b C Tb",
+      "w02 sb Tb I",
+      "w11 k(IPa) I b",
+      "w13 a k(IPa) C I b",
+      "w03 B a sb",
+      "w13 c k(IPa) B I a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "I Mb N",
+    "solution": [
+      "w02 IMb I Mb",
+      "w02 m(HaHc) Mb N",
+      "w06 k(NMa) Mb N",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w09 kover(IMb) I Mb",
+      "w22 k(IPa) I k(NMa) N Mb",
+      "w07 Bfi Pb k(IPa) kover(IMb)",
+      "w01 P`b Pb Pb Mb",
+      "w12 x2 b k(IPa) Mb I",
+      "w05 Hb k(NMa) b N Mb",
+      "w02 hb Hb Eb",
+      "w10b mb Mb b",
+      "w16 BP`b P`b IMb",
+      "w03 B BP`b hb",
+      "w02 sb I B",
+      "w03 Nb mb sb",
+      "w06 k(NbA) I Nb",
+      "w04 A C k(NbA) b"
+    ]
+  },
+  {
+    "problem": "Ma Mc G",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w01 C Mc Mc G",
+      "w01 B Ma Ma C"
+    ]
+  },
+  {
+    "problem": "G Ha N",
+    "solution": [
+      "w01 H G G N",
+      "w01 O G G N",
+      "w02 ha Ha H",
+      "w06 k(NMa) Ha N",
+      "w05 Ea k(NMa) ha N Ha",
+      "w01 A Ea Ea H",
+      "w01 Ma G G A",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ea G N",
+    "solution": [
+      "w01 H G G N",
+      "w01 A Ea Ea H",
+      "w01 O G G N",
+      "w01 Ma G G A",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Eb Hc Mc",
+    "solution": [
+      "w02 c Hc Mc",
+      "w06 k(EbB) Hc Eb",
+      "w05 B k(EbB) c Eb Hc",
+      "w01 H B B Eb",
+      "w01 A Mc Mc B",
+      "w02 hc Hc H",
+      "w02 ha H A",
+      "w05 Ha k(EbB) ha Eb H",
+      "w02 a B Ha",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "A Eb Mc",
+    "solution": [
+      "w01 B A A Mc",
+      "w01 H Eb Eb B",
+      "w02 ha A H",
+      "w02 hb Eb B",
+      "w06 k(McA) A Mc",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a Ha B",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b Hb A",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "Eb G H",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w01 Mb G G B",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Ta I",
+    "solution": [
+      "w02 a B Ta",
+      "w02 sa Ta I",
+      "w11 k(IPa) I a",
+      "w13 c k(IPa) B I a",
+      "w03 A c sa",
+      "w13 b k(IPa) A I c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Ma Hc Tc",
+    "solution": [
+      "w02 c Hc Tc",
+      "w06 k(MaB) Hc Ma",
+      "w05 B k(MaB) c Ma Hc",
+      "w01 C B B Ma",
+      "w02 a Ma B",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w13 b k(Tcfoot[Tcb]) C Tc a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "O G Hb",
+    "solution": [
+      "w01 H O O G",
+      "w02 hb Hb H",
+      "w10a b Hb hb",
+      "w10b mb O b",
+      "w03 Mb mb b",
+      "w01 B Mb Mb G",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B C G",
+    "solution": [
+      "w01 Mc C C G",
+      "w01 A B B Mc"
+    ]
+  },
+  {
+    "problem": "Eb H Ma",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 C Ma Ma B",
+      "w02 hc H C",
+      "w02 a Ma B",
+      "w06 k(EbB) H Eb",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c Hc B",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha Ha H",
+      "w03 A c ha"
+    ]
+  },
+  {
+    "problem": "A O Hb",
+    "solution": [
+      "w02 b A Hb",
+      "w06 k(OC) A O",
+      "w05 C k(OC) b O A",
+      "w10b hb Hb b",
+      "w04 Bk B k(OC) hb"
+    ]
+  },
+  {
+    "problem": "Ma Mb G",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w01 B Mb Mb G",
+      "w01 C Ma Ma B"
+    ]
+  },
+  {
+    "problem": "A Tb I",
+    "solution": [
+      "w02 b A Tb",
+      "w02 sb Tb I",
+      "w11 k(IPa) I b",
+      "w13 c k(IPa) A I b",
+      "w03 B c sb",
+      "w13 a k(IPa) B I c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "A G Hb",
+    "solution": [
+      "w01 Ma A A G",
+      "w02 b A Hb",
+      "w06 k(MaB) Hb Ma",
+      "w05 C k(MaB) b Ma Hb",
+      "w01 Mc G G C",
+      "w01 B A A Mc"
+    ]
+  },
+  {
+    "problem": "Ea N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 H N N O",
+      "w01 A Ea Ea H",
+      "w01 Ma G G A",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ma Ha I",
+    "solution": [
+      "w02 a Ma Ha",
+      "w02 IMa Ma I",
+      "w09 kover(IMa) I Ma",
+      "w10b ma Ma a",
+      "w10b ha Ha a",
+      "w11 k(IPa) I a",
+      "w07 Pa Afi k(IPa) kover(IMa)",
+      "w01 P`a Pa Pa Ma",
+      "w16 AP`a P`a IMa",
+      "w03 A AP`a ha",
+      "w02 sa I A",
+      "w03 Na ma sa",
+      "w06 k(NaC) I Na",
+      "w04 C B k(NaC) a"
+    ]
+  },
+  {
+    "problem": "C Mb I",
+    "solution": [
+      "w01 A C C Mb",
+      "w02 b C Mb",
+      "w11 k(IPa) I b",
+      "w13 a k(IPa) C I b",
+      "w13 c k(IPa) A I b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Ma Hc H",
+    "solution": [
+      "w02 hc Hc H",
+      "w06 k(MaB) Hc Ma",
+      "w05 C k(MaB) hc Ma Hc",
+      "w01 B C C Ma",
+      "w02 c Hc B",
+      "w02 hb H B",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b C Hb",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "A Mb I",
+    "solution": [
+      "w01 C A A Mb",
+      "w02 b A Mb",
+      "w11 k(IPa) I b",
+      "w13 c k(IPa) A I b",
+      "w13 a k(IPa) C I b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "Ha Hb H",
+    "solution": [
+      "w02 ha Ha H",
+      "w02 hb Hb H",
+      "w10a a Ha ha",
+      "w03 B a hb",
+      "w10a b Hb hb",
+      "w03 A b ha",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "Mc Hb H",
+    "solution": [
+      "w02 hb Hb H",
+      "w06 k(McA) Hb Mc",
+      "w05 B k(McA) hb Mc Hb",
+      "w01 A B B Mc",
+      "w02 b Hb A",
+      "w02 ha H A",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a B Ha",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Eb G Hb",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w10a b Hb hb",
+      "w15 hG-1/2(hb) G hb Eb",
+      "w03 Mb hG-1/2(hb) b",
+      "w01 B Mb Mb G",
+      "w01 H Eb Eb B",
+      "w01 O G G H",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Eb Ec Ha",
+    "solution": [
+      "w06 k(EbB) Ha Eb",
+      "w06 k(EcC) Ha Ec",
+      "w08 H k(EbB) k(EcC) Ha Eb Ec",
+      "w01 B H H Eb",
+      "w01 C Ec Ec H",
+      "w02 hc Ec H",
+      "w02 ha Ha H",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c B Hc",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "B Eb N",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 O N N H",
+      "w01 G N N H",
+      "w01 Mb B B G",
+      "w02 hb B Eb",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Ma Tb",
+    "solution": [
+      "w01 C B B Ma",
+      "w02 a B Ma",
+      "w02 b Tb C",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w13 c k(Tbfoot[Tbc]) B Tb a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "B Hb N",
+    "solution": [
+      "w02 hb B Hb",
+      "w06 k(NMa) Hb N",
+      "w05 Eb k(NMa) hb N Hb",
+      "w01 H Eb Eb B",
+      "w01 O N N H",
+      "w01 G N N H",
+      "w01 Mb B B G",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ea Ha Mc",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w06 k(McA) Ha Mc",
+      "w05 A k(McA) ha Mc Ha",
+      "w01 H A A Ea",
+      "w01 B Mc Mc A",
+      "w02 a Ha B",
+      "w02 hb H B",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b A Hb",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "Hb Hc Tb",
+    "solution": [
+      "w02 HbHc Hb Hc",
+      "w02 b Hb Tb",
+      "w10b hb Hb b",
+      "w18 HaHb b b HbHc Hb Tb Tb Hb Hc",
+      "w20 circle[TbHcangle[s[b]][c]] Tb Hc Tb Hb Hc",
+      "w04 Bca1 B circle[TbHcangle[s[b]][c]] hb",
+      "w02 c B Hc",
+      "w03 A b c",
+      "w01 Mc A A B",
+      "w06 k(McA) Hb Mc",
+      "w05 Ha k(McA) HaHb Mc Hb",
+      "w02 a B Ha",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "G Ha H",
+    "solution": [
+      "w01 O G G H",
+      "w02 ha Ha H",
+      "w10a a Ha ha",
+      "w10b ma O a",
+      "w03 Ma ma a",
+      "w01 A Ma Ma G",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ma G Ta",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w02 a Ma Ta",
+      "w02 sa Ta A",
+      "w10b ma Ma a",
+      "w03 Na ma sa",
+      "w14 m(ANa) A Na",
+      "w03 O m(ANa) ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Ea O",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 N O O H",
+      "w01 G O O H",
+      "w01 Ma A A G",
+      "w02 ha A Ea",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ec H Tc",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w02 hc Ec H",
+      "w02 sc Tc C",
+      "w10a c Tc hc",
+      "w03 Hc c hc",
+      "w14 m(HHc) H Hc",
+      "w17 CO C Tc sc Ec C Tc sc hc",
+      "w16 m(HbHa) Ec CO",
+      "w03 Mc m(HbHa) c",
+      "w01 G Mc Mc C",
+      "w01 N H H G",
+      "w06 k(NMa) Ec N",
+      "w04 Ea Eb k(NMa) m(HHc)",
+      "w01 A Ea Ea H",
+      "w01 B H H Eb"
+    ]
+  },
+  {
+    "problem": "Ec G O",
+    "solution": [
+      "w01 N G G O",
+      "w01 H G G O",
+      "w01 C Ec Ec H",
+      "w01 Mc G G C",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "A Ea Mb",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 C A A Mb",
+      "w02 b A Mb",
+      "w02 hc H C",
+      "w06 k(EaA) A Ea",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb Hb H",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c Hc A",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "A Ha Hc",
+    "solution": [
+      "w02 ha A Ha",
+      "w02 c A Hc",
+      "w10a a Ha ha",
+      "w03 B a c",
+      "w10b hc Hc c",
+      "w03 C a hc"
+    ]
+  },
+  {
+    "problem": "C Eb Ec",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 B Eb Eb H",
+      "w02 a C B",
+      "w02 hb Eb H",
+      "w06 k(EcC) C Ec",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha Ha H",
+      "w05 Hb k(EcC) hb Ec H",
+      "w02 b Hb C",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "Ha Hb Hc",
+    "solution": [
+      "w02 HaHb Ha Hb",
+      "w02 HcHa Ha Hc",
+      "w14 m(HaHb) Ha Hb",
+      "w14 m(HbHc) Hb Hc",
+      "w17 ha Ha Hb HcHa Hb Ha Hc HaHb HaHb",
+      "w10a a Ha ha",
+      "w03 Ma a m(HbHc)",
+      "w06 k(MaB) Hb Ma",
+      "w04 B C k(MaB) a",
+      "w02 c Hc B",
+      "w03 Mc m(HaHb) c",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "Mc Hc I",
+    "solution": [
+      "w02 c Mc Hc",
+      "w02 IMc Mc I",
+      "w09 kover(IMc) I Mc",
+      "w10b mc Mc c",
+      "w10b hc Hc c",
+      "w11 k(IPa) I c",
+      "w07 Cfi Pc k(IPa) kover(IMc)",
+      "w01 P`c Pc Pc Mc",
+      "w16 CP`c P`c IMc",
+      "w03 C CP`c hc",
+      "w02 sc I C",
+      "w03 Nc mc sc",
+      "w06 k(NcB) I Nc",
+      "w04 B A k(NcB) c"
+    ]
+  },
+  {
+    "problem": "Ec G Mc",
+    "solution": [
+      "w01 C G G Mc",
+      "w01 H Ec Ec C",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w02 hc Ec C",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Mb Hc Tb",
+    "solution": [
+      "w02 b Mb Tb",
+      "w06 k(MbC) Hc Mb",
+      "w04 C A k(MbC) b",
+      "w02 c Hc A",
+      "w19 T`b A C Tb b",
+      "w09 kover(TbT`b) Tb T`b",
+      "w04 Bwa B kover(TbT`b) c"
+    ]
+  },
+  {
+    "problem": "Eb Hb Hc",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w06 k(EbB) Hc Eb",
+      "w04 B H k(EbB) hb",
+      "w02 c Hc B",
+      "w02 hc Hc H",
+      "w10a b Hb hb",
+      "w03 A b c",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "A Hb I",
+    "solution": [
+      "w02 b A Hb",
+      "w10b hb Hb b",
+      "w11 k(IPa) I b",
+      "w13 c k(IPa) A I b",
+      "w03 B c hb",
+      "w13 a k(IPa) B I c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "C O Ha",
+    "solution": [
+      "w02 a C Ha",
+      "w06 k(OC) C O",
+      "w05 B k(OC) a O C",
+      "w10b ha Ha a",
+      "w04 Ak A k(OC) ha"
+    ]
+  },
+  {
+    "problem": "B C Mc",
+    "solution": [
+      "w01 A B B Mc"
+    ]
+  },
+  {
+    "problem": "C Ma Mb",
+    "solution": [
+      "w01 B C C Ma",
+      "w01 A C C Mb"
+    ]
+  },
+  {
+    "problem": "C Ma Mc",
+    "solution": [
+      "w01 B C C Ma",
+      "w01 G C C Mc",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "B Ha Tb",
+    "solution": [
+      "w02 a B Ha",
+      "w10b ha Ha a",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w13 c k(Tbfoot[Tbc]) B Tb a",
+      "w03 A c ha",
+      "w02 b Tb A",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "B Hc N",
+    "solution": [
+      "w02 c B Hc",
+      "w06 k(NMa) Hc N",
+      "w05 Mc k(NMa) c N Hc",
+      "w01 A Mc Mc B",
+      "w02 m(HaHb) N Mc",
+      "w05a Ec k(NMa) m(HaHb) N Mc",
+      "w02 hc Ec Hc",
+      "w06 k(McA) B Mc",
+      "w07 Ha Hb k(NMa) k(McA)",
+      "w02 a B Ha",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "B Hc Ta",
+    "solution": [
+      "w02 c B Hc",
+      "w02 a B Ta",
+      "w10b hc Hc c",
+      "w03 C hc a",
+      "w19 T`a B C Ta a",
+      "w09 kover(TaT`a) Ta T`a",
+      "w04 Awb A kover(TaT`a) c"
+    ]
+  },
+  {
+    "problem": "Ea G O",
+    "solution": [
+      "w01 N G G O",
+      "w01 H G G O",
+      "w01 A Ea Ea H",
+      "w01 Ma G G A",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "C Eb Ma",
+    "solution": [
+      "w01 B C C Ma",
+      "w01 H Eb Eb B",
+      "w02 hc C H",
+      "w02 hb Eb B",
+      "w06 k(MaB) C Ma",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c Hc B",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b Hb C",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "Mb Hb I",
+    "solution": [
+      "w02 b Mb Hb",
+      "w02 IMb Mb I",
+      "w09 kover(IMb) I Mb",
+      "w10b mb Mb b",
+      "w10b hb Hb b",
+      "w11 k(IPa) I b",
+      "w07 Bfi Pb k(IPa) kover(IMb)",
+      "w01 P`b Pb Pb Mb",
+      "w16 BP`b P`b IMb",
+      "w03 B BP`b hb",
+      "w02 sb I B",
+      "w03 Nb mb sb",
+      "w06 k(NbA) I Nb",
+      "w04 A C k(NbA) b"
+    ]
+  },
+  {
+    "problem": "B Hb Ta",
+    "solution": [
+      "w02 hb B Hb",
+      "w02 a B Ta",
+      "w10a b Hb hb",
+      "w03 C b a",
+      "w19 T`a B C Ta a",
+      "w09 kover(TaT`a) Ta T`a",
+      "w04 Awc A kover(TaT`a) b"
+    ]
+  },
+  {
+    "problem": "B Ea Hc",
+    "solution": [
+      "w02 c B Hc",
+      "w06 k(EaA) Hc Ea",
+      "w05 A k(EaA) c Ea Hc",
+      "w01 H Ea Ea A",
+      "w02 hb B H",
+      "w02 hc Hc H",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b A Hb",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "B Ha I",
+    "solution": [
+      "w02 a B Ha",
+      "w10b ha Ha a",
+      "w11 k(IPa) I a",
+      "w13 c k(IPa) B I a",
+      "w03 A c ha",
+      "w13 b k(IPa) A I c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Ec Hc O",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w10a c Hc hc",
+      "w10b mc O c",
+      "w03 Mc mc c",
+      "w02 m(HbHa) Mc Ec",
+      "w14 m(EcHc) Ec Hc",
+      "w03 N m(EcHc) m(HbHa)",
+      "w01 H O O N",
+      "w01 C Ec Ec H",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ea Ec Hb",
+    "solution": [
+      "w06 k(EaA) Hb Ea",
+      "w06 k(EcC) Hb Ec",
+      "w08 H k(EaA) k(EcC) Hb Ea Ec",
+      "w01 A H H Ea",
+      "w01 C Ec Ec H",
+      "w02 hc Ec H",
+      "w02 hb Hb H",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c A Hc",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "B Ec Mc",
+    "solution": [
+      "w01 A B B Mc",
+      "w02 c B Mc",
+      "w02 m(HbHa) Ec Mc",
+      "w10b hc Ec c",
+      "w03 Hc hc c",
+      "w14 m(BHc) B Hc",
+      "w14 m(EcMc) Ec Mc",
+      "w03 N m(EcMc) m(HbHa)",
+      "w06 k(NMa) Ec N",
+      "w04 Ma Eb k(NMa) m(BHc)",
+      "w01 C Ma Ma B"
+    ]
+  },
+  {
+    "problem": "B Mb H",
+    "solution": [
+      "w01 G B B Mb",
+      "w01 O H H G",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w10a b Mb hb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C Hb N",
+    "solution": [
+      "w02 b C Hb",
+      "w06 k(NMa) Hb N",
+      "w05 Mb k(NMa) b N Hb",
+      "w01 A Mb Mb C",
+      "w02 m(HaHc) N Mb",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 hb Eb Hb",
+      "w06 k(MbC) C Mb",
+      "w07 Ha Hc k(NMa) k(MbC)",
+      "w02 a C Ha",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "C Ec Mb",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 A C C Mb",
+      "w02 b C Mb",
+      "w02 ha H A",
+      "w06 k(EcC) C Ec",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb Hb H",
+      "w05 Ha k(EcC) ha Ec H",
+      "w02 a Ha C",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "Ec Hb Mb",
+    "solution": [
+      "w02 b Hb Mb",
+      "w06 k(EcC) Hb Ec",
+      "w05 C k(EcC) b Ec Hb",
+      "w01 H C C Ec",
+      "w01 A Mb Mb C",
+      "w02 hb Hb H",
+      "w02 ha H A",
+      "w05 Ha k(EcC) ha Ec H",
+      "w02 a C Ha",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "C Hc Ta",
+    "solution": [
+      "w02 hc C Hc",
+      "w02 a C Ta",
+      "w10a c Hc hc",
+      "w03 B c a",
+      "w19 T`a B C Ta a",
+      "w09 kover(TaT`a) Ta T`a",
+      "w04 Awb A kover(TaT`a) c"
+    ]
+  },
+  {
+    "problem": "O Hc H",
+    "solution": [
+      "w01 G O O H",
+      "w02 hc Hc H",
+      "w10a c Hc hc",
+      "w10b mc O c",
+      "w03 Mc mc c",
+      "w01 C Mc Mc G",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B C H",
+    "solution": [
+      "w01 Ma B B C",
+      "w02 hb B H",
+      "w02 hc C H",
+      "w06 k(MaB) B Ma",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b Hb C",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c Hc B",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Hb Tb I",
+    "solution": [
+      "w02 b Hb Tb",
+      "w02 sb Tb I",
+      "w10b hb Hb b",
+      "w03 B hb sb",
+      "w11 k(IPa) I b",
+      "w12 c a k(IPa) B I",
+      "w03 A c b",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Mb Hb Hc",
+    "solution": [
+      "w02 b Mb Hb",
+      "w06 k(MbC) Hc Mb",
+      "w04 C A k(MbC) b",
+      "w02 c Hc A",
+      "w10b hb Hb b",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "A Mb N",
+    "solution": [
+      "w01 C A A Mb",
+      "w02 b A Mb",
+      "w02 m(HaHc) Mb N",
+      "w06 k(MbC) A Mb",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) b N Mb",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 hb Eb Hb",
+      "w07 Ha Hc k(MbC) k(NMa)",
+      "w02 ha A Ha",
+      "w03 H hb ha",
+      "w01 G N N H",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "A C N",
+    "solution": [
+      "w01 Mb A A C",
+      "w02 b A C",
+      "w02 m(HaHc) N Mb",
+      "w06 k(MbC) A Mb",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) b N Mb",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 hb Eb Hb",
+      "w07 Ha Hc k(MbC) k(NMa)",
+      "w02 ha A Ha",
+      "w03 H hb ha",
+      "w01 G N N H",
+      "w01 Mc C C G",
+      "w01 B A A Mc"
+    ]
+  },
+  {
+    "problem": "A Mb G",
+    "solution": [
+      "w01 C A A Mb",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "Eb Ec Hb",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w06 k(EcC) Hb Ec",
+      "w05 H k(EcC) hb Ec Hb",
+      "w01 B H H Eb",
+      "w01 C Ec Ec H",
+      "w02 b Hb C",
+      "w02 a B C",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha H Ha",
+      "w03 A b ha"
+    ]
+  },
+  {
+    "problem": "A Ma Hb",
+    "solution": [
+      "w02 b A Hb",
+      "w06 k(MaB) Hb Ma",
+      "w05 C k(MaB) b Ma Hb",
+      "w01 B Ma Ma C"
+    ]
+  },
+  {
+    "problem": "A Ha Hb",
+    "solution": [
+      "w02 ha A Ha",
+      "w02 b A Hb",
+      "w10a a Ha ha",
+      "w03 C a b",
+      "w10b hb Hb b",
+      "w03 B a hb"
+    ]
+  },
+  {
+    "problem": "Ec Hb Ma",
+    "solution": [
+      "w06 k(EcC) Hb Ec",
+      "w06 k(MaB) Hb Ma",
+      "w08 C k(EcC) k(MaB) Hb Ec Ma",
+      "w01 H C C Ec",
+      "w01 B Ma Ma C",
+      "w02 b Hb C",
+      "w02 a Ma C",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha H Ha",
+      "w03 A b ha"
+    ]
+  },
+  {
+    "problem": "G Hc H",
+    "solution": [
+      "w01 O G G H",
+      "w02 hc Hc H",
+      "w10a c Hc hc",
+      "w10b mc O c",
+      "w03 Mc mc c",
+      "w01 C Mc Mc G",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "H Hc N",
+    "solution": [
+      "w01 O H H N",
+      "w01 G H H N",
+      "w02 hc H Hc",
+      "w06 k(NMa) Hc N",
+      "w05 Ec k(NMa) hc N Hc",
+      "w01 C Ec Ec H",
+      "w01 Mc G G C",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ma N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 A Ma Ma G",
+      "w01 H N N O",
+      "w01 Ea A A H",
+      "w02 ha A H",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Ea Eb",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 B Eb Eb H",
+      "w02 c A B",
+      "w02 hb Eb H",
+      "w06 k(EaA) A Ea",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc Hc H",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b Hb A",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "G Hb H",
+    "solution": [
+      "w01 O G G H",
+      "w02 hb Hb H",
+      "w10a b Hb hb",
+      "w10b mb O b",
+      "w03 Mb mb b",
+      "w01 B Mb Mb G",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A Ec Hb",
+    "solution": [
+      "w02 b A Hb",
+      "w06 k(EcC) Hb Ec",
+      "w05 C k(EcC) b Ec Hb",
+      "w01 H Ec Ec C",
+      "w02 ha A H",
+      "w02 hb Hb H",
+      "w05 Ha k(EcC) ha Ec H",
+      "w02 a C Ha",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "Mc Tc I",
+    "solution": [
+      "w02 c Mc Tc",
+      "w02 sc Tc I",
+      "w10b mc Mc c",
+      "w03 Nc mc sc",
+      "w06 k(NcB) I Nc",
+      "w04 B A k(NcB) c",
+      "w11 k(IPa) I c",
+      "w13 a k(IPa) B I c",
+      "w03 C a sc"
+    ]
+  },
+  {
+    "problem": "B O Tc",
+    "solution": [
+      "w02 c B Tc",
+      "w06 k(OC) B O",
+      "w05 A k(OC) c O B",
+      "w01 Mc A A B",
+      "w02 mc O Mc",
+      "w04 Nc Nck k(OC) mc",
+      "w02 sc Nc Tc",
+      "w05 C k(OC) sc O Nc"
+    ]
+  },
+  {
+    "problem": "G Ma N",
+    "solution": [
+      "w01 A G G Ma",
+      "w01 H G G N",
+      "w01 O G G N",
+      "w01 Ea A A H",
+      "w02 ha A H",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Mc Tb",
+    "solution": [
+      "w01 B A A Mc",
+      "w02 c A Mc",
+      "w02 b A Tb",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w13 a k(Tbfoot[Tbc]) B Tb c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "Ea Eb H",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 B Eb Eb H",
+      "w02 hb Eb H",
+      "w02 c A B",
+      "w06 k(EaA) H Ea",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b Hb A",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc Hc H",
+      "w03 C b hc"
+    ]
+  },
+  {
+    "problem": "B G Ha",
+    "solution": [
+      "w01 Mb B B G",
+      "w02 a B Ha",
+      "w06 k(MbC) Ha Mb",
+      "w05 C k(MbC) a Mb Ha",
+      "w01 Mc G G C",
+      "w01 A B B Mc"
+    ]
+  },
+  {
+    "problem": "A C I",
+    "solution": [
+      "w02 b A C",
+      "w11 k(IPa) I b",
+      "w13 c k(IPa) A I b",
+      "w13 a k(IPa) C I b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "Hc I N",
+    "solution": [
+      "w06 k(NMa) Hc N",
+      "w22 k(IPa) I k(NMa) N Hc",
+      "w12 y3 c k(IPa) Hc I",
+      "w05 Mc k(NMa) c N Hc",
+      "w02 IMc Mc I",
+      "w02 m(HaHb) N Mc",
+      "w05a Ec k(NMa) m(HaHb) N Mc",
+      "w02 hc Ec Hc",
+      "w09 kover(IMc) I Mc",
+      "w07 Cfi Pc kover(IMc) k(IPa)",
+      "w01 P`c Pc Pc Mc",
+      "w10b mc Mc c",
+      "w16 CP`c P`c IMc",
+      "w03 C CP`c hc",
+      "w02 sc I C",
+      "w03 Nc mc sc",
+      "w06 k(NcB) I Nc",
+      "w04 B A k(NcB) c"
+    ]
+  },
+  {
+    "problem": "Ec Hc Mb",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w06 k(MbC) Hc Mb",
+      "w05 C k(MbC) hc Mb Hc",
+      "w01 H C C Ec",
+      "w01 A Mb Mb C",
+      "w02 c Hc A",
+      "w02 ha H A",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a C Ha",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "O Ma H",
+    "solution": [
+      "w01 G O O H",
+      "w01 A Ma Ma G",
+      "w02 ma O Ma",
+      "w06 k(OC) A O",
+      "w10a a Ma ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A C Ma",
+    "solution": [
+      "w01 B C C Ma"
+    ]
+  },
+  {
+    "problem": "C Eb Hc",
+    "solution": [
+      "w02 hc C Hc",
+      "w06 k(EbB) Hc Eb",
+      "w05 H k(EbB) hc Eb Hc",
+      "w01 B Eb Eb H",
+      "w02 a C B",
+      "w02 c Hc B",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha H Ha",
+      "w03 A c ha"
+    ]
+  },
+  {
+    "problem": "B Tc I",
+    "solution": [
+      "w02 c B Tc",
+      "w02 sc Tc I",
+      "w11 k(IPa) I c",
+      "w13 a k(IPa) B I c",
+      "w03 C a sc",
+      "w13 b k(IPa) C I a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Mc Ha Ta",
+    "solution": [
+      "w02 a Ha Ta",
+      "w06 k(McA) Ha Mc",
+      "w05 B k(McA) a Mc Ha",
+      "w01 A B B Mc",
+      "w02 c Mc B",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w13 b k(Tafoot[Tac]) A Ta c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "B Ec Hb",
+    "solution": [
+      "w02 hb B Hb",
+      "w06 k(EcC) Hb Ec",
+      "w05 H k(EcC) hb Ec Hb",
+      "w01 C Ec Ec H",
+      "w02 a B C",
+      "w02 b Hb C",
+      "w05 Ha k(EcC) a Ec C",
+      "w02 ha H Ha",
+      "w03 A b ha"
+    ]
+  },
+  {
+    "problem": "Ea I N",
+    "solution": [
+      "w02 m(HbHc) Ea N",
+      "w06 k(NMa) Ea N",
+      "w05a Ma k(NMa) m(HbHc) N Ea",
+      "w02 IMa Ma I",
+      "w09 kover(IMa) I Ma",
+      "w22 k(IPa) I k(NMa) N Ea",
+      "w07 Pa Afi k(IPa) kover(IMa)",
+      "w01 P`a Pa Pa Ma",
+      "w12 x1 a k(IPa) Ma I",
+      "w05 Ha k(NMa) a N Ma",
+      "w02 ha Ha Ea",
+      "w10b ma Ma a",
+      "w16 AP`a P`a IMa",
+      "w03 A AP`a ha",
+      "w02 sa I A",
+      "w03 Na ma sa",
+      "w06 k(NaC) I Na",
+      "w04 C B k(NaC) a"
+    ]
+  },
+  {
+    "problem": "Ma G Hb",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w02 b Hb A",
+      "w06 k(MaB) Hb Ma",
+      "w05 C k(MaB) b Ma Hb",
+      "w01 B C C Ma"
+    ]
+  },
+  {
+    "problem": "Ec Ha Hc",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w06 k(EcC) Ha Ec",
+      "w04 C H k(EcC) hc",
+      "w02 a Ha C",
+      "w02 ha Ha H",
+      "w10a c Hc hc",
+      "w03 B c a",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "Ea G Ma",
+    "solution": [
+      "w01 A G G Ma",
+      "w01 H Ea Ea A",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w02 ha Ea A",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "C Ea N",
+    "solution": [
+      "w02 m(HbHc) Ea N",
+      "w06 k(NMa) Ea N",
+      "w05a Ma k(NMa) m(HbHc) N Ea",
+      "w01 B Ma Ma C",
+      "w02 a C Ma",
+      "w05 Ha k(NMa) a N Ma",
+      "w02 ha Ha Ea",
+      "w06 k(MaB) C Ma",
+      "w07 Hb Hc k(NMa) k(MaB)",
+      "w02 b C Hb",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "Ea Eb Ha",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w06 k(EbB) Ha Eb",
+      "w05 H k(EbB) ha Eb Ha",
+      "w01 A H H Ea",
+      "w01 B Eb Eb H",
+      "w02 a Ha B",
+      "w02 c A B",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc H Hc",
+      "w03 C a hc"
+    ]
+  },
+  {
+    "problem": "A C Ec",
+    "solution": [
+      "w01 Mb A A C",
+      "w01 H C C Ec",
+      "w02 ha A H",
+      "w02 hc C Ec",
+      "w06 k(MbC) A Mb",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a Ha C",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c Hc A",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "C Hb Ta",
+    "solution": [
+      "w02 b C Hb",
+      "w02 a C Ta",
+      "w10b hb Hb b",
+      "w03 B hb a",
+      "w19 T`a B C Ta a",
+      "w09 kover(TaT`a) Ta T`a",
+      "w04 Awc A kover(TaT`a) b"
+    ]
+  },
+  {
+    "problem": "B Eb Ma",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 C B B Ma",
+      "w02 a B Ma",
+      "w02 hc H C",
+      "w06 k(EbB) B Eb",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha Ha H",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c Hc B",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "H Hb N",
+    "solution": [
+      "w01 O H H N",
+      "w01 G H H N",
+      "w02 hb H Hb",
+      "w06 k(NMa) Hb N",
+      "w05 Eb k(NMa) hb N Hb",
+      "w01 B Eb Eb H",
+      "w01 Mb G G B",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Eb Mb",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 G B B Mb",
+      "w01 N H H G",
+      "w01 O H H G",
+      "w02 hb B Eb",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "O Ma Hb",
+    "solution": [
+      "w02 ma O Ma",
+      "w06 k(MaB) Hb Ma",
+      "w10a a Ma ma",
+      "w04 B C k(MaB) a",
+      "w02 b Hb C",
+      "w06 k(OC) B O",
+      "w05 A k(OC) b O C"
+    ]
+  },
+  {
+    "problem": "C Mb Tc",
+    "solution": [
+      "w01 A C C Mb",
+      "w02 b C Mb",
+      "w02 c Tc A",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w13 a k(Tcfoot[Tcb]) C Tc b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Ma Hb Tb",
+    "solution": [
+      "w02 b Hb Tb",
+      "w06 k(MaB) Hb Ma",
+      "w05 C k(MaB) b Ma Hb",
+      "w01 B C C Ma",
+      "w02 a Ma C",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w13 c k(Tbfoot[Tbc]) B Tb a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "A H N",
+    "solution": [
+      "w01 Ea A A H",
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 Ma A A G",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ec Mb O",
+    "solution": [
+      "w02 m(CHa) Ec Mb",
+      "w02 mb Mb O",
+      "w10a b Mb mb",
+      "w16 m(CHb) Ec mb",
+      "w16 ma O m(CHa)",
+      "w03 Ma ma m(CHb)",
+      "w10a a Ma ma",
+      "w03 C a b",
+      "w01 H C C Ec",
+      "w01 A Mb Mb C",
+      "w01 G O O H",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "Ea Eb Mc",
+    "solution": [
+      "w02 m(BHa) Eb Mc",
+      "w14 m(EaEb) Ea Eb",
+      "w14 m(EaMc) Ea Mc",
+      "w03 N m(EaMc) m(EaEb)",
+      "w06 k(NMa) Ea N",
+      "w16 ha Ea m(BHa)",
+      "w05 Ha k(NMa) ha N Ea",
+      "w06 k(EbB) Ha Eb",
+      "w05 H k(EbB) ha Eb Ha",
+      "w01 A H H Ea",
+      "w01 B Eb Eb H",
+      "w01 G N N H",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "O Ha H",
+    "solution": [
+      "w01 G O O H",
+      "w02 ha Ha H",
+      "w10a a Ha ha",
+      "w10b ma O a",
+      "w03 Ma ma a",
+      "w01 A Ma Ma G",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A B G",
+    "solution": [
+      "w01 Mb B B G",
+      "w01 C A A Mb"
+    ]
+  },
+  {
+    "problem": "Eb Ma Mc",
+    "solution": [
+      "w14 m(EbMa) Eb Ma",
+      "w14 m(EbMc) Eb Mc",
+      "w03 N m(EbMc) m(EbMa)",
+      "w02 m(HbHc) Ma N",
+      "w06 k(NMa) Eb N",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 m(AHb) Mc Ea",
+      "w16 hb Eb m(AHb)",
+      "w05 Hb k(NMa) hb N Eb",
+      "w06 k(MaB) Hb Ma",
+      "w05 B k(MaB) hb Ma Hb",
+      "w01 C Ma Ma B",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "B O Hb",
+    "solution": [
+      "w02 hb B Hb",
+      "w06 k(OC) B O",
+      "w10a b Hb hb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C Mb H",
+    "solution": [
+      "w01 A C C Mb",
+      "w02 hc C H",
+      "w02 ha H A",
+      "w06 k(MbC) C Mb",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c Hc A",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a Ha C",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "B Mc Ta",
+    "solution": [
+      "w01 A B B Mc",
+      "w02 c B Mc",
+      "w02 a B Ta",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w13 b k(Tafoot[Tac]) A Ta c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "A O I",
+    "solution": [
+      "w02 sa A I",
+      "w06 k(OC) A O",
+      "w05 Na k(OC) sa O A",
+      "w06 k(NaC) I Na",
+      "w07 C B k(OC) k(NaC)"
+    ]
+  },
+  {
+    "problem": "Ec G Hc",
+    "solution": [
+      "w02 hc Ec Hc",
+      "w10a c Hc hc",
+      "w15 hG-1/2(hc) G hc Ec",
+      "w03 Mc hG-1/2(hc) c",
+      "w01 C Mc Mc G",
+      "w01 H Ec Ec C",
+      "w01 O G G H",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ea Hb Mc",
+    "solution": [
+      "w06 k(EaA) Hb Ea",
+      "w06 k(McA) Hb Mc",
+      "w08 A k(EaA) k(McA) Hb Ea Mc",
+      "w01 H A A Ea",
+      "w01 B Mc Mc A",
+      "w02 b Hb A",
+      "w02 c Mc A",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc H Hc",
+      "w03 C b hc"
+    ]
+  },
+  {
+    "problem": "B Ta Tb",
+    "solution": [
+      "w02 a B Ta",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w13 c k(Tbfoot[Tbc]) B Tb a",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w12 b1 b k(Tafoot[Tac]) Tb Ta",
+      "w03 C b a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "Hb Hc Tc",
+    "solution": [
+      "w02 HbHc Hb Hc",
+      "w02 c Hc Tc",
+      "w10b hc Hc c",
+      "w17 HcHa Hc Tc c Hb Hc Tc c HbHc",
+      "w20 circle[TcHbangle[b][s[c]]] Tc Hb Hb Hc Tc",
+      "w04 Cca2 C circle[TcHbangle[b][s[c]]] hc",
+      "w02 b C Hb",
+      "w03 A c b",
+      "w01 Mb A A C",
+      "w06 k(MbC) Hc Mb",
+      "w05 Ha k(MbC) HcHa Mb Hc",
+      "w02 a C Ha",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "Eb Ha Hb",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w06 k(EbB) Ha Eb",
+      "w04 B H k(EbB) hb",
+      "w02 a Ha B",
+      "w02 ha Ha H",
+      "w10a b Hb hb",
+      "w03 C b a",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "A O H",
+    "solution": [
+      "w01 G O O H",
+      "w01 Ma A A G",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w10a a Ma ha",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A B Ta",
+    "solution": [
+      "w02 c A B",
+      "w02 a B Ta",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w13 b k(Tafoot[Tac]) A Ta c",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Eb Mc O",
+    "solution": [
+      "w02 m(BHa) Eb Mc",
+      "w02 mc Mc O",
+      "w10a c Mc mc",
+      "w16 m(BHc) Eb mc",
+      "w16 ma O m(BHa)",
+      "w03 Ma ma m(BHc)",
+      "w10a a Ma ma",
+      "w03 B a c",
+      "w01 H B B Eb",
+      "w01 A Mc Mc B",
+      "w01 G O O H",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "B O Hc",
+    "solution": [
+      "w02 c B Hc",
+      "w06 k(OC) B O",
+      "w05 A k(OC) c O B",
+      "w10b hc Hc c",
+      "w04 C Ck k(OC) hc"
+    ]
+  },
+  {
+    "problem": "B G Hc",
+    "solution": [
+      "w01 Mb B B G",
+      "w02 c B Hc",
+      "w06 k(MbC) Hc Mb",
+      "w05 A k(MbC) c Mb Hc",
+      "w01 Ma G G A",
+      "w01 C B B Ma"
+    ]
+  },
+  {
+    "problem": "B Mc G",
+    "solution": [
+      "w01 A B B Mc",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "B Ha Tc",
+    "solution": [
+      "w02 a B Ha",
+      "w02 c B Tc",
+      "w10b ha Ha a",
+      "w03 A ha c",
+      "w19 T`c A B Tc c",
+      "w09 kover(TcT`c) Tc T`c",
+      "w04 Cwb C kover(TcT`c) a"
+    ]
+  },
+  {
+    "problem": "A Ec Mc",
+    "solution": [
+      "w01 B A A Mc",
+      "w02 c A Mc",
+      "w02 m(HbHa) Ec Mc",
+      "w10b hc Ec c",
+      "w03 Hc hc c",
+      "w14 m(AHc) A Hc",
+      "w14 m(EcMc) Ec Mc",
+      "w03 N m(EcMc) m(HbHa)",
+      "w06 k(NMa) Ec N",
+      "w04 Mb Ea k(NMa) m(AHc)",
+      "w01 C Mb Mb A"
+    ]
+  },
+  {
+    "problem": "A Ec H",
+    "solution": [
+      "w01 Ea A A H",
+      "w01 C Ec Ec H",
+      "w02 b A C",
+      "w02 hc Ec H",
+      "w06 k(EaA) A Ea",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb Hb H",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c Hc A",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "C Tb Tc",
+    "solution": [
+      "w02 b C Tb",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w13 a k(Tcfoot[Tcb]) C Tc b",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w12 c2 c k(Tbfoot[Tbc]) Tc Tb",
+      "w03 A c b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Ea H Ta",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w02 ha Ea H",
+      "w02 sa Ta A",
+      "w10a a Ta ha",
+      "w03 Ha a ha",
+      "w14 m(HHa) H Ha",
+      "w17 AO A Ta sa Ea A Ta sa ha",
+      "w16 m(HbHc) Ea AO",
+      "w03 Ma m(HbHc) a",
+      "w01 G Ma Ma A",
+      "w01 N H H G",
+      "w06 k(NMa) Ea N",
+      "w04 Eb Ec k(NMa) m(HHa)",
+      "w01 B Eb Eb H",
+      "w01 C H H Ec"
+    ]
+  },
+  {
+    "problem": "C Ea Ec",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 A Ea Ea H",
+      "w02 b C A",
+      "w02 ha Ea H",
+      "w06 k(EcC) C Ec",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb Hb H",
+      "w05 Ha k(EcC) ha Ec H",
+      "w02 a Ha C",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "O Mb Hc",
+    "solution": [
+      "w02 mb O Mb",
+      "w06 k(MbC) Hc Mb",
+      "w10a b Mb mb",
+      "w04 C A k(MbC) b",
+      "w02 c Hc A",
+      "w06 k(OC) C O",
+      "w05 B k(OC) c O A"
+    ]
+  },
+  {
+    "problem": "Eb Hb Mc",
+    "solution": [
+      "w02 hb Eb Hb",
+      "w06 k(McA) Hb Mc",
+      "w05 B k(McA) hb Mc Hb",
+      "w01 H B B Eb",
+      "w01 A Mc Mc B",
+      "w02 b Hb A",
+      "w02 ha H A",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a B Ha",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "A Ec N",
+    "solution": [
+      "w02 m(HbHa) Ec N",
+      "w06 k(NMa) Ec N",
+      "w05a Mc k(NMa) m(HbHa) N Ec",
+      "w01 B Mc Mc A",
+      "w02 c A Mc",
+      "w05 Hc k(NMa) c N Mc",
+      "w02 hc Hc Ec",
+      "w06 k(McA) A Mc",
+      "w07 Ha Hb k(NMa) k(McA)",
+      "w02 ha A Ha",
+      "w03 H hc ha",
+      "w01 C Ec Ec H"
+    ]
+  },
+  {
+    "problem": "Ea Ec Ha",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w06 k(EcC) Ha Ec",
+      "w05 H k(EcC) ha Ec Ha",
+      "w01 A H H Ea",
+      "w01 C Ec Ec H",
+      "w02 a Ha C",
+      "w02 b A C",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb H Hb",
+      "w03 B a hb"
+    ]
+  },
+  {
+    "problem": "A Ma H",
+    "solution": [
+      "w01 G A A Ma",
+      "w01 O H H G",
+      "w02 ha A H",
+      "w06 k(OC) A O",
+      "w10a a Ma ha",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "C Hb Hc",
+    "solution": [
+      "w02 b C Hb",
+      "w02 hc C Hc",
+      "w10a c Hc hc",
+      "w03 A c b",
+      "w10b hb Hb b",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "C G N",
+    "solution": [
+      "w01 Mc C C G",
+      "w01 H G G N",
+      "w01 Ec C C H",
+      "w01 O G G N",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Mb Ha Ta",
+    "solution": [
+      "w02 a Ha Ta",
+      "w06 k(MbC) Ha Mb",
+      "w05 C k(MbC) a Mb Ha",
+      "w01 A C C Mb",
+      "w02 b Mb C",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w13 c k(Tafoot[Tac]) A Ta b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "Ea H Mb",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 C Mb Mb A",
+      "w02 hc H C",
+      "w02 b Mb A",
+      "w06 k(EaA) H Ea",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c Hc A",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb Hb H",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "A Ea Ta",
+    "solution": [
+      "w01 H A A Ea",
+      "w02 ha A Ea",
+      "w02 sa A Ta",
+      "w10a a Ta ha",
+      "w17 AO A Ta sa Ea A Ta sa ha",
+      "w16 m(HbHc) Ea AO",
+      "w03 Ma m(HbHc) a",
+      "w01 G Ma Ma A",
+      "w01 O H H G",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Mb Tc",
+    "solution": [
+      "w01 C A A Mb",
+      "w02 b A Mb",
+      "w02 c A Tc",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w13 a k(Tcfoot[Tcb]) C Tc b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "B G H",
+    "solution": [
+      "w01 Mb B B G",
+      "w01 O G G H",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w10a b Mb hb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B O Mb",
+    "solution": [
+      "w01 G B B Mb",
+      "w01 H O O G",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w10a b Mb hb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Mb Tb I",
+    "solution": [
+      "w02 b Mb Tb",
+      "w02 sb Tb I",
+      "w10b mb Mb b",
+      "w03 Nb mb sb",
+      "w06 k(NbA) I Nb",
+      "w04 A C k(NbA) b",
+      "w11 k(IPa) I b",
+      "w13 c k(IPa) A I b",
+      "w03 B c sb"
+    ]
+  },
+  {
+    "problem": "Ea G H",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w01 Ma G G A",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ea Eb Hc",
+    "solution": [
+      "w06 k(EaA) Hc Ea",
+      "w06 k(EbB) Hc Eb",
+      "w08 H k(EaA) k(EbB) Hc Ea Eb",
+      "w01 A H H Ea",
+      "w01 B Eb Eb H",
+      "w02 hb Eb H",
+      "w02 hc Hc H",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b A Hb",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "Mb G H",
+    "solution": [
+      "w01 B Mb Mb G",
+      "w01 O G G H",
+      "w02 mb Mb O",
+      "w06 k(OC) B O",
+      "w10a b Mb mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C O Tc",
+    "solution": [
+      "w02 sc C Tc",
+      "w06 k(OC) C O",
+      "w05 Nc k(OC) sc O C",
+      "w02 mc Nc O",
+      "w10a c Tc mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ma Ha Hb",
+    "solution": [
+      "w02 a Ma Ha",
+      "w06 k(MaB) Hb Ma",
+      "w04 B C k(MaB) a",
+      "w02 b Hb C",
+      "w10b ha Ha a",
+      "w03 A b ha"
+    ]
+  },
+  {
+    "problem": "B H N",
+    "solution": [
+      "w01 Eb B B H",
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 Mb B B G",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C Mc Hb",
+    "solution": [
+      "w02 b C Hb",
+      "w06 k(McA) Hb Mc",
+      "w05 A k(McA) b Mc Hb",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "B Ma G",
+    "solution": [
+      "w01 C B B Ma",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "Ha Hb Ta",
+    "solution": [
+      "w02 HaHb Ha Hb",
+      "w02 a Ha Ta",
+      "w10b ha Ha a",
+      "w18 HcHa a a HaHb Ha Ta Ta Ha Hb",
+      "w20 circle[TaHbangle[s[a]][b]] Ta Hb Ta Ha Hb",
+      "w04 Aca1 A circle[TaHbangle[s[a]][b]] ha",
+      "w02 b A Hb",
+      "w03 C a b",
+      "w01 Mb C C A",
+      "w06 k(MbC) Ha Mb",
+      "w05 Hc k(MbC) HcHa Mb Ha",
+      "w02 c A Hc",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Eb Ec Ma",
+    "solution": [
+      "w02 m(CHb) Ec Ma",
+      "w14 m(EbEc) Eb Ec",
+      "w14 m(EbMa) Eb Ma",
+      "w03 N m(EbMa) m(EbEc)",
+      "w06 k(NMa) Eb N",
+      "w16 hb Eb m(CHb)",
+      "w05 Hb k(NMa) hb N Eb",
+      "w06 k(EcC) Hb Ec",
+      "w05 H k(EcC) hb Ec Hb",
+      "w01 B H H Eb",
+      "w01 C Ec Ec H",
+      "w01 G N N H",
+      "w01 A Ma Ma G"
+    ]
+  },
+  {
+    "problem": "Mc G H",
+    "solution": [
+      "w01 C Mc Mc G",
+      "w01 O G G H",
+      "w02 mc Mc O",
+      "w06 k(OC) C O",
+      "w10a c Mc mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ea Ha Hc",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w06 k(EaA) Hc Ea",
+      "w04 A H k(EaA) ha",
+      "w02 c Hc A",
+      "w02 hc Hc H",
+      "w10a a Ha ha",
+      "w03 B a c",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "B G N",
+    "solution": [
+      "w01 Mb B B G",
+      "w01 H G G N",
+      "w01 Eb B B H",
+      "w01 O G G N",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ma Mc Hc",
+    "solution": [
+      "w02 c Mc Hc",
+      "w06 k(MaB) Hc Ma",
+      "w05 B k(MaB) c Ma Hc",
+      "w01 C B B Ma",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "C Ta Tc",
+    "solution": [
+      "w02 a C Ta",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w13 b k(Tcfoot[Tcb]) C Tc a",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w12 c1 c k(Tafoot[Tac]) Tc Ta",
+      "w03 B c a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "B G Tb",
+    "solution": [
+      "w01 Mb B B G",
+      "w02 sb B Tb",
+      "w02 b Tb Mb",
+      "w10b mb Mb b",
+      "w03 Nb mb sb",
+      "w14 m(BNb) B Nb",
+      "w03 O m(BNb) mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Mc Ha H",
+    "solution": [
+      "w02 ha Ha H",
+      "w06 k(McA) Ha Mc",
+      "w05 A k(McA) ha Mc Ha",
+      "w01 B A A Mc",
+      "w02 a Ha B",
+      "w02 hb H B",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b A Hb",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "C Mb Mc",
+    "solution": [
+      "w01 A C C Mb",
+      "w01 G C C Mc",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "Ec H O",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w01 N H H O",
+      "w01 G H H O",
+      "w01 Mc C C G",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Ea Hb",
+    "solution": [
+      "w02 hb B Hb",
+      "w06 k(EaA) Hb Ea",
+      "w05 H k(EaA) hb Ea Hb",
+      "w01 A Ea Ea H",
+      "w02 c B A",
+      "w02 b Hb A",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc H Hc",
+      "w03 C b hc"
+    ]
+  },
+  {
+    "problem": "Mc Ha Hc",
+    "solution": [
+      "w02 c Mc Hc",
+      "w06 k(McA) Ha Mc",
+      "w04 A B k(McA) c",
+      "w02 a Ha B",
+      "w10b hc Hc c",
+      "w03 C a hc"
+    ]
+  },
+  {
+    "problem": "A Hc I",
+    "solution": [
+      "w02 c A Hc",
+      "w10b hc Hc c",
+      "w11 k(IPa) I c",
+      "w13 b k(IPa) A I c",
+      "w03 C b hc",
+      "w13 a k(IPa) C I b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Ma G H",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w01 O G G H",
+      "w02 ma Ma O",
+      "w06 k(OC) A O",
+      "w10a a Ma ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A B C",
+    "solution": []
+  },
+  {
+    "problem": "C Mc Ha",
+    "solution": [
+      "w02 a C Ha",
+      "w06 k(McA) Ha Mc",
+      "w05 B k(McA) a Mc Ha",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "A Eb Ha",
+    "solution": [
+      "w02 ha A Ha",
+      "w06 k(EbB) Ha Eb",
+      "w05 H k(EbB) ha Eb Ha",
+      "w01 B Eb Eb H",
+      "w02 c A B",
+      "w02 a Ha B",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc H Hc",
+      "w03 C a hc"
+    ]
+  },
+  {
+    "problem": "A Tb Tc",
+    "solution": [
+      "w02 b A Tb",
+      "w02 c A Tc",
+      "w17 sa A Tc b Tc A Tb c c",
+      "w20 circle[TbTcangle[s[b]][s[c]]] Tb Tc Tc A Tb",
+      "w04 Asa I circle[TbTcangle[s[b]][s[c]]] sa",
+      "w02 sb I Tb",
+      "w02 sc Tc I",
+      "w03 C b sc",
+      "w03 B c sb"
+    ]
+  },
+  {
+    "problem": "A C Tc",
+    "solution": [
+      "w02 b A C",
+      "w02 c A Tc",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w13 a k(Tcfoot[Tcb]) C Tc b",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "B Mb Hc",
+    "solution": [
+      "w02 c B Hc",
+      "w06 k(MbC) Hc Mb",
+      "w05 A k(MbC) c Mb Hc",
+      "w01 C Mb Mb A"
+    ]
+  },
+  {
+    "problem": "Mb Ha Hb",
+    "solution": [
+      "w02 b Mb Hb",
+      "w06 k(MbC) Ha Mb",
+      "w04 C A k(MbC) b",
+      "w02 a C Ha",
+      "w10b hb Hb b",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "G Hc N",
+    "solution": [
+      "w01 H G G N",
+      "w01 O G G N",
+      "w02 hc Hc H",
+      "w06 k(NMa) Hc N",
+      "w05 Ec k(NMa) hc N Hc",
+      "w01 C Ec Ec H",
+      "w01 Mc G G C",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "A Hc Ta",
+    "solution": [
+      "w02 c A Hc",
+      "w10b hc Hc c",
+      "w11 k(Tafoot[Tac]) Ta c",
+      "w13 b k(Tafoot[Tac]) A Ta c",
+      "w03 C b hc",
+      "w02 a Ta C",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "B O H",
+    "solution": [
+      "w01 G O O H",
+      "w01 Mb B B G",
+      "w02 hb B H",
+      "w06 k(OC) B O",
+      "w10a b Mb hb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B O Ta",
+    "solution": [
+      "w02 a B Ta",
+      "w06 k(OC) B O",
+      "w05 C k(OC) a O B",
+      "w01 Ma C C B",
+      "w02 ma O Ma",
+      "w04 Na Nak k(OC) ma",
+      "w02 sa Na Ta",
+      "w05 A k(OC) sa O Na"
+    ]
+  },
+  {
+    "problem": "Eb Ha Mc",
+    "solution": [
+      "w06 k(EbB) Ha Eb",
+      "w06 k(McA) Ha Mc",
+      "w08 B k(EbB) k(McA) Ha Eb Mc",
+      "w01 H B B Eb",
+      "w01 A Mc Mc B",
+      "w02 a Ha B",
+      "w02 c Mc B",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc H Hc",
+      "w03 C a hc"
+    ]
+  },
+  {
+    "problem": "C H N",
+    "solution": [
+      "w01 Ec C C H",
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 Mc C C G",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Tb Tc",
+    "solution": [
+      "w02 c B Tc",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w13 a k(Tbfoot[Tbc]) B Tb c",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w12 b2 b k(Tcfoot[Tcb]) Tb Tc",
+      "w03 A b c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "A Hb Tc",
+    "solution": [
+      "w02 b A Hb",
+      "w02 c A Tc",
+      "w10b hb Hb b",
+      "w03 B hb c",
+      "w19 T`c A B Tc c",
+      "w09 kover(TcT`c) Tc T`c",
+      "w04 Cwa C kover(TcT`c) b"
+    ]
+  },
+  {
+    "problem": "C Ha Tb",
+    "solution": [
+      "w02 a C Ha",
+      "w02 b C Tb",
+      "w10b ha Ha a",
+      "w03 A ha b",
+      "w19 T`b A C Tb b",
+      "w09 kover(TbT`b) Tb T`b",
+      "w04 Bwc B kover(TbT`b) a"
+    ]
+  },
+  {
+    "problem": "A Eb Hc",
+    "solution": [
+      "w02 c A Hc",
+      "w06 k(EbB) Hc Eb",
+      "w05 B k(EbB) c Eb Hc",
+      "w01 H Eb Eb B",
+      "w02 ha A H",
+      "w02 hc Hc H",
+      "w05 Ha k(EbB) ha Eb H",
+      "w02 a B Ha",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "Ea H N",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 Ma A A G",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A B Tb",
+    "solution": [
+      "w02 c A B",
+      "w02 b A Tb",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w13 a k(Tbfoot[Tbc]) B Tb c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "H Mc N",
+    "solution": [
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 C Mc Mc G",
+      "w01 Ec H H C",
+      "w02 hc H C",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "O G Ha",
+    "solution": [
+      "w01 H O O G",
+      "w02 ha Ha H",
+      "w10a a Ha ha",
+      "w10b ma O a",
+      "w03 Ma ma a",
+      "w01 A Ma Ma G",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ea Eb Ec",
+    "solution": [
+      "w14 m(EaEb) Ea Eb",
+      "w14 m(EaEc) Ea Ec",
+      "w03 N m(EaEc) m(EaEb)",
+      "w02 m(HaHc) Eb N",
+      "w06 k(NMa) Ea N",
+      "w05a Mb k(NMa) m(HaHc) N Eb",
+      "w02 m(CHa) Ec Mb",
+      "w16 ha Ea m(CHa)",
+      "w05 Ha k(NMa) ha N Ea",
+      "w06 k(EbB) Ha Eb",
+      "w05 H k(EbB) ha Eb Ha",
+      "w01 A H H Ea",
+      "w01 B Eb Eb H",
+      "w01 C Ec Ec H"
+    ]
+  },
+  {
+    "problem": "C Mb N",
+    "solution": [
+      "w01 A C C Mb",
+      "w02 b C Mb",
+      "w02 m(HaHc) Mb N",
+      "w06 k(MbC) C Mb",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) b N Mb",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 hb Eb Hb",
+      "w07 Ha Hc k(MbC) k(NMa)",
+      "w02 a C Ha",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "B O Tb",
+    "solution": [
+      "w02 sb B Tb",
+      "w06 k(OC) B O",
+      "w05 Nb k(OC) sb O B",
+      "w02 mb Nb O",
+      "w10a b Tb mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A B Ma",
+    "solution": [
+      "w01 C B B Ma"
+    ]
+  },
+  {
+    "problem": "B Mc Tb",
+    "solution": [
+      "w01 A B B Mc",
+      "w02 c B Mc",
+      "w02 b Tb A",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w13 a k(Tbfoot[Tbc]) B Tb c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "C Ea Mb",
+    "solution": [
+      "w01 A C C Mb",
+      "w01 H Ea Ea A",
+      "w02 hc C H",
+      "w02 ha Ea A",
+      "w06 k(MbC) C Mb",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c Hc A",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a Ha C",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "Ma G Hc",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w02 c Hc A",
+      "w06 k(MaB) Hc Ma",
+      "w05 B k(MaB) c Ma Hc",
+      "w01 C B B Ma"
+    ]
+  },
+  {
+    "problem": "Eb H Mc",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 A Mc Mc B",
+      "w02 ha H A",
+      "w02 c Mc B",
+      "w06 k(EbB) H Eb",
+      "w05 Ha k(EbB) ha Eb H",
+      "w02 a Ha B",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc Hc H",
+      "w03 C a hc"
+    ]
+  },
+  {
+    "problem": "Ec H N",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 Mc C C G",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "O Mb H",
+    "solution": [
+      "w01 G O O H",
+      "w01 B Mb Mb G",
+      "w02 mb O Mb",
+      "w06 k(OC) B O",
+      "w10a b Mb mb",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ma Hc Ta",
+    "solution": [
+      "w02 a Ma Ta",
+      "w06 k(MaB) Hc Ma",
+      "w04 B C k(MaB) a",
+      "w02 c B Hc",
+      "w19 T`a B C Ta a",
+      "w09 kover(TaT`a) Ta T`a",
+      "w04 Awb A kover(TaT`a) c"
+    ]
+  },
+  {
+    "problem": "Ec I Mc",
+    "solution": [
+      "w02 m(HbHa) Ec Mc",
+      "w02 IMc I Mc",
+      "w09 kover(IMc) I Mc",
+      "w14 m(EcMc) Ec Mc",
+      "w03 N m(EcMc) m(HbHa)",
+      "w06 k(NMa) Ec N",
+      "w22 k(IPa) I k(NMa) N Ec",
+      "w07 Cfi Pc k(IPa) kover(IMc)",
+      "w01 P`c Pc Pc Mc",
+      "w12 x3 c k(IPa) Mc I",
+      "w05 Hc k(NMa) c N Mc",
+      "w02 hc Hc Ec",
+      "w10b mc Mc c",
+      "w16 CP`c P`c IMc",
+      "w03 C CP`c hc",
+      "w02 sc I C",
+      "w03 Nc mc sc",
+      "w06 k(NcB) I Nc",
+      "w04 B A k(NcB) c"
+    ]
+  },
+  {
+    "problem": "Mc Hb Tb",
+    "solution": [
+      "w02 b Hb Tb",
+      "w06 k(McA) Hb Mc",
+      "w05 A k(McA) b Mc Hb",
+      "w01 B A A Mc",
+      "w02 c Mc A",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w13 a k(Tbfoot[Tbc]) B Tb c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "B Ea Mc",
+    "solution": [
+      "w01 A B B Mc",
+      "w01 H Ea Ea A",
+      "w02 hb B H",
+      "w02 ha Ea A",
+      "w06 k(McA) B Mc",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b Hb A",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a Ha B",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Ec H Mc",
+    "solution": [
+      "w01 C Ec Ec H",
+      "w01 G Mc Mc C",
+      "w01 N H H G",
+      "w01 O H H G",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ea H Mc",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 B Mc Mc A",
+      "w02 hb H B",
+      "w02 c Mc A",
+      "w06 k(EaA) H Ea",
+      "w05 Hb k(EaA) hb Ea H",
+      "w02 b Hb A",
+      "w05 Hc k(EaA) c Ea A",
+      "w02 hc Hc H",
+      "w03 C b hc"
+    ]
+  },
+  {
+    "problem": "B Hb I",
+    "solution": [
+      "w02 hb B Hb",
+      "w10a b Hb hb",
+      "w11 k(IPa) I b",
+      "w12 c a k(IPa) B I",
+      "w03 A c b",
+      "w03 C b a"
+    ]
+  },
+  {
+    "problem": "Ma Hb Ta",
+    "solution": [
+      "w02 a Ma Ta",
+      "w06 k(MaB) Hb Ma",
+      "w04 B C k(MaB) a",
+      "w02 b Hb C",
+      "w19 T`a B C Ta a",
+      "w09 kover(TaT`a) Ta T`a",
+      "w04 Awc A kover(TaT`a) b"
+    ]
+  },
+  {
+    "problem": "Ma Mb Mc",
+    "solution": [
+      "w02 McMa Ma Mc",
+      "w02 McMb Mb Mc",
+      "w16 a Ma McMb",
+      "w16 b Mb McMa",
+      "w03 C b a",
+      "w01 B C C Ma",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "G Hb N",
+    "solution": [
+      "w01 H G G N",
+      "w01 O G G N",
+      "w02 hb Hb H",
+      "w06 k(NMa) Hb N",
+      "w05 Eb k(NMa) hb N Hb",
+      "w01 B Eb Eb H",
+      "w01 Mb G G B",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ea H O",
+    "solution": [
+      "w01 A Ea Ea H",
+      "w01 N H H O",
+      "w01 G H H O",
+      "w01 Ma A A G",
+      "w02 ha Ea H",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Hb N",
+    "solution": [
+      "w02 b A Hb",
+      "w06 k(NMa) Hb N",
+      "w05 Mb k(NMa) b N Hb",
+      "w01 C Mb Mb A",
+      "w02 m(HaHc) N Mb",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 hb Eb Hb",
+      "w06 k(MbC) A Mb",
+      "w07 Ha Hc k(NMa) k(MbC)",
+      "w02 ha A Ha",
+      "w03 H hb ha",
+      "w01 G N N H",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "Eb H Mb",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 G Mb Mb B",
+      "w01 N H H G",
+      "w01 O H H G",
+      "w02 hb Eb H",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A C Mc",
+    "solution": [
+      "w01 B A A Mc"
+    ]
+  },
+  {
+    "problem": "O Mb Mc",
+    "solution": [
+      "w02 mb O Mb",
+      "w02 mc O Mc",
+      "w10a b Mb mb",
+      "w10a c Mc mc",
+      "w03 A c b",
+      "w01 C A A Mb",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "Mb Mc Ha",
+    "solution": [
+      "w06 k(MbC) Ha Mb",
+      "w06 k(McA) Ha Mc",
+      "w08 A k(MbC) k(McA) Ha Mb Mc",
+      "w01 C A A Mb",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "Ea Mc O",
+    "solution": [
+      "w02 m(AHb) Ea Mc",
+      "w02 mc Mc O",
+      "w10a c Mc mc",
+      "w16 m(AHc) Ea mc",
+      "w16 mb O m(AHb)",
+      "w03 Mb mb m(AHc)",
+      "w10a b Mb mb",
+      "w03 A b c",
+      "w01 H A A Ea",
+      "w01 B Mc Mc A",
+      "w01 G O O H",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "A Ta Tb",
+    "solution": [
+      "w02 b A Tb",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w13 c k(Tafoot[Tac]) A Ta b",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w12 a1 a k(Tbfoot[Tbc]) Ta Tb",
+      "w03 C a b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "C Eb Mb",
+    "solution": [
+      "w01 A C C Mb",
+      "w02 b C Mb",
+      "w02 m(HaHc) Eb Mb",
+      "w10b hb Eb b",
+      "w03 Hb hb b",
+      "w14 m(CHb) C Hb",
+      "w14 m(EbMb) Eb Mb",
+      "w03 N m(EbMb) m(HaHc)",
+      "w06 k(NMa) Eb N",
+      "w04 Ma Ec k(NMa) m(CHb)",
+      "w01 B Ma Ma C"
+    ]
+  },
+  {
+    "problem": "Ea Hb Mb",
+    "solution": [
+      "w02 b Hb Mb",
+      "w06 k(EaA) Hb Ea",
+      "w05 A k(EaA) b Ea Hb",
+      "w01 H A A Ea",
+      "w01 C Mb Mb A",
+      "w02 hb Hb H",
+      "w02 hc H C",
+      "w05 Hc k(EaA) hc Ea H",
+      "w02 c A Hc",
+      "w03 B hb c"
+    ]
+  },
+  {
+    "problem": "B Mb Ha",
+    "solution": [
+      "w02 a B Ha",
+      "w06 k(MbC) Ha Mb",
+      "w05 C k(MbC) a Mb Ha",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "A G Hc",
+    "solution": [
+      "w01 Ma A A G",
+      "w02 c A Hc",
+      "w06 k(MaB) Hc Ma",
+      "w05 B k(MaB) c Ma Hc",
+      "w01 Mb G G B",
+      "w01 C A A Mb"
+    ]
+  },
+  {
+    "problem": "Eb Mb O",
+    "solution": [
+      "w02 m(HaHc) Eb Mb",
+      "w02 mb Mb O",
+      "w10a b Mb mb",
+      "w14 m(EbMb) Eb Mb",
+      "w03 N m(EbMb) m(HaHc)",
+      "w01 G N N O",
+      "w01 B Mb Mb G",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 Mc C C G",
+      "w01 H N N O",
+      "w01 Ec C C H",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "A O Tb",
+    "solution": [
+      "w02 b A Tb",
+      "w06 k(OC) A O",
+      "w05 C k(OC) b O A",
+      "w01 Mb C C A",
+      "w02 mb O Mb",
+      "w04 Nb Nbk k(OC) mb",
+      "w02 sb Nb Tb",
+      "w05 B k(OC) sb O Nb"
+    ]
+  },
+  {
+    "problem": "Hb N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 H N N O",
+      "w02 hb Hb H",
+      "w06 k(NMa) Hb N",
+      "w05 Eb k(NMa) hb N Hb",
+      "w01 B Eb Eb H",
+      "w01 Mb G G B",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Hb Tc",
+    "solution": [
+      "w02 hb B Hb",
+      "w02 c B Tc",
+      "w10a b Hb hb",
+      "w03 A b c",
+      "w19 T`c A B Tc c",
+      "w09 kover(TcT`c) Tc T`c",
+      "w04 Cwa C kover(TcT`c) b"
+    ]
+  },
+  {
+    "problem": "Ea Ha O",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w10a a Ha ha",
+      "w10b ma O a",
+      "w03 Ma ma a",
+      "w02 m(HbHc) Ma Ea",
+      "w14 m(EaHa) Ea Ha",
+      "w03 N m(EaHa) m(HbHc)",
+      "w01 H O O N",
+      "w01 A Ea Ea H",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Ec Mb",
+    "solution": [
+      "w01 C A A Mb",
+      "w01 H Ec Ec C",
+      "w02 ha A H",
+      "w02 hc Ec C",
+      "w06 k(MbC) A Mb",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a Ha C",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c Hc A",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "C Ec G",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 Mc C C G",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w02 hc C Ec",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "C Mc N",
+    "solution": [
+      "w01 G C C Mc",
+      "w01 O N N G",
+      "w01 H N N G",
+      "w01 Ec C C H",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Eb G Mb",
+    "solution": [
+      "w01 B G G Mb",
+      "w01 H Eb Eb B",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w02 hb Eb B",
+      "w06 k(NMa) Eb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "Ec Ma Mb",
+    "solution": [
+      "w14 m(EcMa) Ec Ma",
+      "w14 m(EcMb) Ec Mb",
+      "w03 N m(EcMb) m(EcMa)",
+      "w02 m(HbHc) Ma N",
+      "w06 k(NMa) Ec N",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 m(AHc) Mb Ea",
+      "w16 hc Ec m(AHc)",
+      "w05 Hc k(NMa) hc N Ec",
+      "w06 k(MaB) Hc Ma",
+      "w05 C k(MaB) hc Ma Hc",
+      "w01 B Ma Ma C",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "O Mb Ha",
+    "solution": [
+      "w02 mb O Mb",
+      "w06 k(MbC) Ha Mb",
+      "w10a b Mb mb",
+      "w04 C A k(MbC) b",
+      "w02 a Ha C",
+      "w06 k(OC) C O",
+      "w05 B k(OC) a O C"
+    ]
+  },
+  {
+    "problem": "C Mb Ta",
+    "solution": [
+      "w01 A C C Mb",
+      "w02 b C Mb",
+      "w02 a C Ta",
+      "w11 k(Tafoot[Tac]) Ta b",
+      "w13 c k(Tafoot[Tac]) A Ta b",
+      "w03 B c a"
+    ]
+  },
+  {
+    "problem": "B Hc Tb",
+    "solution": [
+      "w02 c B Hc",
+      "w10b hc Hc c",
+      "w11 k(Tbfoot[Tbc]) Tb c",
+      "w13 a k(Tbfoot[Tbc]) B Tb c",
+      "w03 C a hc",
+      "w02 b Tb C",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "C O I",
+    "solution": [
+      "w02 sc C I",
+      "w06 k(OC) C O",
+      "w05 Nc k(OC) sc O C",
+      "w06 k(NcB) I Nc",
+      "w07 A B k(OC) k(NcB)"
+    ]
+  },
+  {
+    "problem": "B Mb Mc",
+    "solution": [
+      "w01 A B B Mc",
+      "w01 C Mb Mb A"
+    ]
+  },
+  {
+    "problem": "Ma Mb Hb",
+    "solution": [
+      "w02 b Mb Hb",
+      "w06 k(MaB) Hb Ma",
+      "w05 C k(MaB) b Ma Hb",
+      "w01 B C C Ma",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "Mc G Ha",
+    "solution": [
+      "w01 C Mc Mc G",
+      "w02 a Ha C",
+      "w06 k(McA) Ha Mc",
+      "w05 B k(McA) a Mc Ha",
+      "w01 A B B Mc"
+    ]
+  },
+  {
+    "problem": "C Hb I",
+    "solution": [
+      "w02 b C Hb",
+      "w10b hb Hb b",
+      "w11 k(IPa) I b",
+      "w13 a k(IPa) C I b",
+      "w03 B a hb",
+      "w13 c k(IPa) B I a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "C Hc Tb",
+    "solution": [
+      "w02 hc C Hc",
+      "w02 b C Tb",
+      "w10a c Hc hc",
+      "w03 A c b",
+      "w19 T`b A C Tb b",
+      "w09 kover(TbT`b) Tb T`b",
+      "w04 Bwa B kover(TbT`b) c"
+    ]
+  },
+  {
+    "problem": "A Ma Ta",
+    "solution": [
+      "w02 sa A Ta",
+      "w02 a Ma Ta",
+      "w10b ma Ma a",
+      "w03 Na ma sa",
+      "w14 m(ANa) A Na",
+      "w03 O m(ANa) ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "B Hc I",
+    "solution": [
+      "w02 c B Hc",
+      "w10b hc Hc c",
+      "w11 k(IPa) I c",
+      "w13 a k(IPa) B I c",
+      "w03 C a hc",
+      "w13 b k(IPa) C I a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Ha Hc H",
+    "solution": [
+      "w02 ha Ha H",
+      "w02 hc Hc H",
+      "w10a a Ha ha",
+      "w03 C a hc",
+      "w10a c Hc hc",
+      "w03 A c ha",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "Ea Mb Mc",
+    "solution": [
+      "w14 m(EaMb) Ea Mb",
+      "w14 m(EaMc) Ea Mc",
+      "w03 N m(EaMc) m(EaMb)",
+      "w02 m(HaHc) Mb N",
+      "w06 k(NMa) Ea N",
+      "w05a Eb k(NMa) m(HaHc) N Mb",
+      "w02 m(BHa) Mc Eb",
+      "w16 ha Ea m(BHa)",
+      "w05 Ha k(NMa) ha N Ea",
+      "w06 k(MbC) Ha Mb",
+      "w05 A k(MbC) ha Mb Ha",
+      "w01 C Mb Mb A",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "C Ma N",
+    "solution": [
+      "w01 B C C Ma",
+      "w02 a C Ma",
+      "w02 m(HbHc) Ma N",
+      "w06 k(MaB) C Ma",
+      "w06 k(NMa) Ma N",
+      "w05 Ha k(NMa) a N Ma",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 ha Ea Ha",
+      "w07 Hb Hc k(MaB) k(NMa)",
+      "w02 b C Hb",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "Ea G Ha",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w10a a Ha ha",
+      "w15 hG-1/2(ha) G ha Ea",
+      "w03 Ma hG-1/2(ha) a",
+      "w01 A Ma Ma G",
+      "w01 H Ea Ea A",
+      "w01 O G G H",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "H Ha N",
+    "solution": [
+      "w01 O H H N",
+      "w01 G H H N",
+      "w02 ha H Ha",
+      "w06 k(NMa) Ha N",
+      "w05 Ea k(NMa) ha N Ha",
+      "w01 A Ea Ea H",
+      "w01 Ma G G A",
+      "w02 a Ha Ma",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Ec Ha",
+    "solution": [
+      "w02 ha A Ha",
+      "w06 k(EcC) Ha Ec",
+      "w05 H k(EcC) ha Ec Ha",
+      "w01 C Ec Ec H",
+      "w02 b A C",
+      "w02 a Ha C",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb H Hb",
+      "w03 B a hb"
+    ]
+  },
+  {
+    "problem": "B C Tb",
+    "solution": [
+      "w02 a B C",
+      "w02 b C Tb",
+      "w11 k(Tbfoot[Tbc]) Tb a",
+      "w13 c k(Tbfoot[Tbc]) B Tb a",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "A C G",
+    "solution": [
+      "w01 Mc C C G",
+      "w01 B A A Mc"
+    ]
+  },
+  {
+    "problem": "B Eb Mc",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 A B B Mc",
+      "w02 c B Mc",
+      "w02 ha H A",
+      "w06 k(EbB) B Eb",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc Hc H",
+      "w05 Ha k(EbB) ha Eb H",
+      "w02 a Ha B",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "Mc Hb Hc",
+    "solution": [
+      "w02 c Mc Hc",
+      "w06 k(McA) Hb Mc",
+      "w04 A B k(McA) c",
+      "w02 b A Hb",
+      "w10b hc Hc c",
+      "w03 C hc b"
+    ]
+  },
+  {
+    "problem": "A Ea G",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 Ma A A G",
+      "w01 N G G H",
+      "w01 O G G H",
+      "w02 ha A Ea",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "A Hc Tb",
+    "solution": [
+      "w02 c A Hc",
+      "w02 b A Tb",
+      "w10b hc Hc c",
+      "w03 C hc b",
+      "w19 T`b A C Tb b",
+      "w09 kover(TbT`b) Tb T`b",
+      "w04 Bwa B kover(TbT`b) c"
+    ]
+  },
+  {
+    "problem": "C Ea Ma",
+    "solution": [
+      "w01 B C C Ma",
+      "w02 a C Ma",
+      "w02 m(HbHc) Ea Ma",
+      "w10b ha Ea a",
+      "w03 Ha ha a",
+      "w14 m(CHa) C Ha",
+      "w14 m(EaMa) Ea Ma",
+      "w03 N m(EaMa) m(HbHc)",
+      "w06 k(NMa) Ea N",
+      "w04 Mb Ec k(NMa) m(CHa)",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "A O Ha",
+    "solution": [
+      "w02 ha A Ha",
+      "w06 k(OC) A O",
+      "w10a a Ha ha",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Ec G N",
+    "solution": [
+      "w01 H G G N",
+      "w01 C Ec Ec H",
+      "w01 O G G N",
+      "w01 Mc G G C",
+      "w02 hc Ec H",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Mb Mc G",
+    "solution": [
+      "w01 B Mb Mb G",
+      "w01 C Mc Mc G",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "B Ec Ma",
+    "solution": [
+      "w01 C B B Ma",
+      "w01 H Ec Ec C",
+      "w02 hb B H",
+      "w02 hc Ec C",
+      "w06 k(MaB) B Ma",
+      "w05 Hb k(MaB) hb Ma B",
+      "w02 b Hb C",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c Hc B",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "B Eb Ec",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 C Ec Ec H",
+      "w02 a B C",
+      "w02 hc Ec H",
+      "w06 k(EbB) B Eb",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha Ha H",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c Hc B",
+      "w03 A ha c"
+    ]
+  },
+  {
+    "problem": "Ea Mb O",
+    "solution": [
+      "w02 m(AHc) Ea Mb",
+      "w02 mb Mb O",
+      "w10a b Mb mb",
+      "w16 m(AHb) Ea mb",
+      "w16 mc O m(AHc)",
+      "w03 Mc mc m(AHb)",
+      "w10a c Mc mc",
+      "w03 A c b",
+      "w01 H A A Ea",
+      "w01 C Mb Mb A",
+      "w01 G O O H",
+      "w01 B Mb Mb G"
+    ]
+  },
+  {
+    "problem": "A Hc N",
+    "solution": [
+      "w02 c A Hc",
+      "w06 k(NMa) Hc N",
+      "w05 Mc k(NMa) c N Hc",
+      "w01 B Mc Mc A",
+      "w02 m(HaHb) N Mc",
+      "w05a Ec k(NMa) m(HaHb) N Mc",
+      "w02 hc Ec Hc",
+      "w06 k(McA) A Mc",
+      "w07 Ha Hb k(NMa) k(McA)",
+      "w02 ha A Ha",
+      "w03 H hc ha",
+      "w01 G N N H",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "C Ta Tb",
+    "solution": [
+      "w02 a C Ta",
+      "w02 b C Tb",
+      "w17 sc C Tb a Tb C Ta b b",
+      "w20 circle[TaTbangle[s[a]][s[b]]] Ta Tb Tb C Ta",
+      "w04 Csa I circle[TaTbangle[s[a]][s[b]]] sc",
+      "w02 sa I Ta",
+      "w02 sb Tb I",
+      "w03 B a sb",
+      "w03 A b sa"
+    ]
+  },
+  {
+    "problem": "G Mc N",
+    "solution": [
+      "w01 C G G Mc",
+      "w01 H G G N",
+      "w01 O G G N",
+      "w01 Ec C C H",
+      "w02 hc C H",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Mc N",
+    "solution": [
+      "w01 A B B Mc",
+      "w02 c B Mc",
+      "w02 m(HbHa) Mc N",
+      "w06 k(McA) B Mc",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) c N Mc",
+      "w05a Ec k(NMa) m(HbHa) N Mc",
+      "w02 hc Ec Hc",
+      "w07 Hb Ha k(McA) k(NMa)",
+      "w02 hb B Hb",
+      "w03 H hc hb",
+      "w01 G N N H",
+      "w01 C Mc Mc G"
+    ]
+  },
+  {
+    "problem": "Ea Ha Hb",
+    "solution": [
+      "w02 ha Ea Ha",
+      "w06 k(EaA) Hb Ea",
+      "w04 A H k(EaA) ha",
+      "w02 b Hb A",
+      "w02 hb Hb H",
+      "w10a a Ha ha",
+      "w03 C a b",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "Ha Ta I",
+    "solution": [
+      "w02 a Ha Ta",
+      "w02 sa Ta I",
+      "w10b ha Ha a",
+      "w03 A ha sa",
+      "w11 k(IPa) I a",
+      "w12 c b k(IPa) A I",
+      "w03 B c a",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "Ec Ha Mb",
+    "solution": [
+      "w06 k(EcC) Ha Ec",
+      "w06 k(MbC) Ha Mb",
+      "w08 C k(EcC) k(MbC) Ha Ec Mb",
+      "w01 H C C Ec",
+      "w01 A Mb Mb C",
+      "w02 a Ha C",
+      "w02 b Mb C",
+      "w05 Hb k(EcC) b Ec C",
+      "w02 hb H Hb",
+      "w03 B a hb"
+    ]
+  },
+  {
+    "problem": "C Eb N",
+    "solution": [
+      "w02 m(HaHc) Eb N",
+      "w06 k(NMa) Eb N",
+      "w05a Mb k(NMa) m(HaHc) N Eb",
+      "w01 A Mb Mb C",
+      "w02 b C Mb",
+      "w05 Hb k(NMa) b N Mb",
+      "w02 hb Hb Eb",
+      "w06 k(MbC) C Mb",
+      "w07 Ha Hc k(NMa) k(MbC)",
+      "w02 a C Ha",
+      "w03 B hb a"
+    ]
+  },
+  {
+    "problem": "C Ma I",
+    "solution": [
+      "w01 B C C Ma",
+      "w02 a C Ma",
+      "w11 k(IPa) I a",
+      "w13 b k(IPa) C I a",
+      "w13 c k(IPa) B I a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "O Ma G",
+    "solution": [
+      "w01 A Ma Ma G",
+      "w02 ma O Ma",
+      "w06 k(OC) A O",
+      "w10a a Ma ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "C O Ta",
+    "solution": [
+      "w02 a C Ta",
+      "w06 k(OC) C O",
+      "w05 B k(OC) a O C",
+      "w01 Ma B B C",
+      "w02 ma O Ma",
+      "w04 Na Nak k(OC) ma",
+      "w02 sa Na Ta",
+      "w05 A k(OC) sa O Na"
+    ]
+  },
+  {
+    "problem": "Mb N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 B Mb Mb G",
+      "w01 H N N O",
+      "w01 Eb B B H",
+      "w02 hb B H",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "B Ec N",
+    "solution": [
+      "w02 m(HbHa) Ec N",
+      "w06 k(NMa) Ec N",
+      "w05a Mc k(NMa) m(HbHa) N Ec",
+      "w01 A Mc Mc B",
+      "w02 c B Mc",
+      "w05 Hc k(NMa) c N Mc",
+      "w02 hc Hc Ec",
+      "w06 k(McA) B Mc",
+      "w07 Ha Hb k(NMa) k(McA)",
+      "w02 a B Ha",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "A C Eb",
+    "solution": [
+      "w01 Mb A A C",
+      "w02 b A C",
+      "w02 m(HaHc) Eb Mb",
+      "w10b hb Eb b",
+      "w03 Hb hb b",
+      "w14 m(AHb) A Hb",
+      "w14 m(EbMb) Eb Mb",
+      "w03 N m(EbMb) m(HaHc)",
+      "w06 k(NMa) Eb N",
+      "w04 Mc Ea k(NMa) m(AHb)",
+      "w01 B Mc Mc A"
+    ]
+  },
+  {
+    "problem": "Ma Hb H",
+    "solution": [
+      "w02 hb Hb H",
+      "w06 k(MaB) Hb Ma",
+      "w05 B k(MaB) hb Ma Hb",
+      "w01 C B B Ma",
+      "w02 b Hb C",
+      "w02 hc H C",
+      "w05 Hc k(MaB) hc Ma C",
+      "w02 c B Hc",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Ma Mc Hb",
+    "solution": [
+      "w06 k(MaB) Hb Ma",
+      "w06 k(McA) Hb Mc",
+      "w08 B k(MaB) k(McA) Hb Ma Mc",
+      "w01 C B B Ma",
+      "w01 A Mc Mc B"
+    ]
+  },
+  {
+    "problem": "A Ea N",
+    "solution": [
+      "w01 H A A Ea",
+      "w01 O N N H",
+      "w01 G N N H",
+      "w01 Ma A A G",
+      "w02 ha A Ea",
+      "w06 k(OC) A O",
+      "w06 k(NMa) Ea N",
+      "w05 Ha k(NMa) ha N Ea",
+      "w02 a Ha Ma",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Mc N O",
+    "solution": [
+      "w01 G N N O",
+      "w01 C Mc Mc G",
+      "w01 H N N O",
+      "w01 Ec C C H",
+      "w02 hc C H",
+      "w06 k(NMa) Mc N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ma Mb Hc",
+    "solution": [
+      "w06 k(MaB) Hc Ma",
+      "w06 k(MbC) Hc Mb",
+      "w08 C k(MaB) k(MbC) Hc Ma Mb",
+      "w01 B C C Ma",
+      "w01 A Mb Mb C"
+    ]
+  },
+  {
+    "problem": "I Mc N",
+    "solution": [
+      "w02 IMc I Mc",
+      "w02 m(HbHa) Mc N",
+      "w06 k(NMa) Mc N",
+      "w05a Ec k(NMa) m(HbHa) N Mc",
+      "w09 kover(IMc) I Mc",
+      "w22 k(IPa) I k(NMa) N Mc",
+      "w07 Cfi Pc k(IPa) kover(IMc)",
+      "w01 P`c Pc Pc Mc",
+      "w12 x3 c k(IPa) Mc I",
+      "w05 Hc k(NMa) c N Mc",
+      "w02 hc Hc Ec",
+      "w10b mc Mc c",
+      "w16 CP`c P`c IMc",
+      "w03 C CP`c hc",
+      "w02 sc I C",
+      "w03 Nc mc sc",
+      "w06 k(NcB) I Nc",
+      "w04 B A k(NcB) c"
+    ]
+  },
+  {
+    "problem": "C Hb Tc",
+    "solution": [
+      "w02 b C Hb",
+      "w10b hb Hb b",
+      "w11 k(Tcfoot[Tcb]) Tc b",
+      "w13 a k(Tcfoot[Tcb]) C Tc b",
+      "w03 B a hb",
+      "w02 c Tc B",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "Eb Ec H",
+    "solution": [
+      "w01 B Eb Eb H",
+      "w01 C Ec Ec H",
+      "w02 hc Ec H",
+      "w02 a B C",
+      "w06 k(EbB) H Eb",
+      "w05 Hc k(EbB) hc Eb H",
+      "w02 c Hc B",
+      "w05 Ha k(EbB) a Eb B",
+      "w02 ha Ha H",
+      "w03 A c ha"
+    ]
+  },
+  {
+    "problem": "A Mb H",
+    "solution": [
+      "w01 C A A Mb",
+      "w02 ha A H",
+      "w02 hc H C",
+      "w06 k(MbC) A Mb",
+      "w05 Ha k(MbC) ha Mb A",
+      "w02 a Ha C",
+      "w05 Hc k(MbC) hc Mb C",
+      "w02 c Hc A",
+      "w03 B a c"
+    ]
+  },
+  {
+    "problem": "C Ea Hc",
+    "solution": [
+      "w02 hc C Hc",
+      "w06 k(EaA) Hc Ea",
+      "w05 H k(EaA) hc Ea Hc",
+      "w01 A Ea Ea H",
+      "w02 b C A",
+      "w02 c Hc A",
+      "w05 Hb k(EaA) b Ea A",
+      "w02 hb H Hb",
+      "w03 B c hb"
+    ]
+  },
+  {
+    "problem": "Mb G Tb",
+    "solution": [
+      "w01 B Mb Mb G",
+      "w02 b Mb Tb",
+      "w02 sb Tb B",
+      "w10b mb Mb b",
+      "w03 Nb mb sb",
+      "w14 m(BNb) B Nb",
+      "w03 O m(BNb) mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "A Ma Mc",
+    "solution": [
+      "w01 B A A Mc",
+      "w01 C Ma Ma B"
+    ]
+  },
+  {
+    "problem": "C Hc N",
+    "solution": [
+      "w02 hc C Hc",
+      "w06 k(NMa) Hc N",
+      "w05 Ec k(NMa) hc N Hc",
+      "w01 H Ec Ec C",
+      "w01 O N N H",
+      "w01 G N N H",
+      "w01 Mc C C G",
+      "w02 c Hc Mc",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "Ea Ma O",
+    "solution": [
+      "w02 m(HbHc) Ea Ma",
+      "w02 ma Ma O",
+      "w10a a Ma ma",
+      "w14 m(EaMa) Ea Ma",
+      "w03 N m(EaMa) m(HbHc)",
+      "w01 G N N O",
+      "w01 A Ma Ma G",
+      "w06 k(OC) A O",
+      "w04 C B k(OC) a"
+    ]
+  },
+  {
+    "problem": "Mb G Ha",
+    "solution": [
+      "w01 B Mb Mb G",
+      "w02 a Ha B",
+      "w06 k(MbC) Ha Mb",
+      "w05 C k(MbC) a Mb Ha",
+      "w01 A C C Mb"
+    ]
+  },
+  {
+    "problem": "B Mc I",
+    "solution": [
+      "w01 A B B Mc",
+      "w02 c B Mc",
+      "w11 k(IPa) I c",
+      "w13 a k(IPa) B I c",
+      "w13 b k(IPa) A I c",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "B O Ha",
+    "solution": [
+      "w02 a B Ha",
+      "w06 k(OC) B O",
+      "w05 C k(OC) a O B",
+      "w10b ha Ha a",
+      "w04 Ak A k(OC) ha"
+    ]
+  },
+  {
+    "problem": "C Ha N",
+    "solution": [
+      "w02 a C Ha",
+      "w06 k(NMa) Ha N",
+      "w05 Ma k(NMa) a N Ha",
+      "w01 B Ma Ma C",
+      "w02 m(HbHc) N Ma",
+      "w05a Ea k(NMa) m(HbHc) N Ma",
+      "w02 ha Ea Ha",
+      "w06 k(MaB) C Ma",
+      "w07 Hb Hc k(NMa) k(MaB)",
+      "w02 b C Hb",
+      "w03 A ha b"
+    ]
+  },
+  {
+    "problem": "A B H",
+    "solution": [
+      "w01 Mc A A B",
+      "w02 ha A H",
+      "w02 hb B H",
+      "w06 k(McA) A Mc",
+      "w05 Ha k(McA) ha Mc A",
+      "w02 a Ha B",
+      "w05 Hb k(McA) hb Mc B",
+      "w02 b Hb A",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "C O H",
+    "solution": [
+      "w01 G O O H",
+      "w01 Mc C C G",
+      "w02 hc C H",
+      "w06 k(OC) C O",
+      "w10a c Mc hc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Ha Hb",
+    "solution": [
+      "w02 a B Ha",
+      "w02 hb B Hb",
+      "w10a b Hb hb",
+      "w03 C b a",
+      "w10b ha Ha a",
+      "w03 A b ha"
+    ]
+  },
+  {
+    "problem": "A Ha I",
+    "solution": [
+      "w02 ha A Ha",
+      "w10a a Ha ha",
+      "w11 k(IPa) I a",
+      "w12 c b k(IPa) A I",
+      "w03 B c a",
+      "w03 C a b"
+    ]
+  },
+  {
+    "problem": "B Ma Tc",
+    "solution": [
+      "w01 C B B Ma",
+      "w02 a B Ma",
+      "w02 c B Tc",
+      "w11 k(Tcfoot[Tcb]) Tc a",
+      "w13 b k(Tcfoot[Tcb]) C Tc a",
+      "w03 A b c"
+    ]
+  },
+  {
+    "problem": "B Ea Eb",
+    "solution": [
+      "w01 H B B Eb",
+      "w01 A Ea Ea H",
+      "w02 c B A",
+      "w02 ha Ea H",
+      "w06 k(EbB) B Eb",
+      "w05 Hc k(EbB) c Eb B",
+      "w02 hc Hc H",
+      "w05 Ha k(EbB) ha Eb H",
+      "w02 a Ha B",
+      "w03 C hc a"
+    ]
+  },
+  {
+    "problem": "H Mb N",
+    "solution": [
+      "w01 O H H N",
+      "w01 G H H N",
+      "w01 B Mb Mb G",
+      "w01 Eb H H B",
+      "w02 hb H B",
+      "w06 k(NMa) Mb N",
+      "w05 Hb k(NMa) hb N Eb",
+      "w02 b Hb Mb",
+      "w06 k(OC) B O",
+      "w04 C A k(OC) b"
+    ]
+  },
+  {
+    "problem": "C Ec O",
+    "solution": [
+      "w01 H C C Ec",
+      "w01 N O O H",
+      "w01 G O O H",
+      "w01 Mc C C G",
+      "w02 hc C Ec",
+      "w06 k(OC) C O",
+      "w06 k(NMa) Ec N",
+      "w05 Hc k(NMa) hc N Ec",
+      "w02 c Hc Mc",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "C Hc I",
+    "solution": [
+      "w02 hc C Hc",
+      "w10a c Hc hc",
+      "w11 k(IPa) I c",
+      "w12 a b k(IPa) C I",
+      "w03 B a c",
+      "w03 A c b"
+    ]
+  },
+  {
+    "problem": "C Ec Tc",
+    "solution": [
+      "w01 H C C Ec",
+      "w02 hc C Ec",
+      "w02 sc C Tc",
+      "w10a c Tc hc",
+      "w17 CO C Tc sc Ec C Tc sc hc",
+      "w16 m(HbHa) Ec CO",
+      "w03 Mc m(HbHa) c",
+      "w01 G Mc Mc C",
+      "w01 O H H G",
+      "w06 k(OC) C O",
+      "w04 A B k(OC) c"
+    ]
+  },
+  {
+    "problem": "B Ea Ma",
+    "solution": [
+      "w01 C B B Ma",
+      "w02 a B Ma",
+      "w02 m(HbHc) Ea Ma",
+      "w10b ha Ea a",
+      "w03 Ha ha a",
+      "w14 m(BHa) B Ha",
+      "w14 m(EaMa) Ea Ma",
+      "w03 N m(EaMa) m(HbHc)",
+      "w06 k(NMa) Ea N",
+      "w04 Mc Eb k(NMa) m(BHa)",
+      "w01 A Mc Mc B"
+    ]
+  }
+]
