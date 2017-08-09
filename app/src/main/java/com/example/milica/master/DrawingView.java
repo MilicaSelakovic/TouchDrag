@@ -373,7 +373,13 @@ public class DrawingView extends View {
 
         if (!komande.isEmpty()) {
             if (oldObjects.isEmpty()) {
-                oldObjects.putAll(geometricObjects);
+                for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                    oldObjects.put(entry.getKey(), entry.getValue());
+                    if (entry.getValue() instanceof Triangle) {
+                        ((Triangle) entry.getValue()).recolor();
+                    }
+                }
+
             }
 
             String kom = komande.pop();

@@ -58,6 +58,7 @@ public class Recognizer {
             String ID = uniqueID.getID();
             center.setId(ID);
             objects.put(ID, center);
+            commands.add("point " + ID);
             commands.add("circle " + id + " " + Double.toString(r) + " " + ID);
         }
 
@@ -70,7 +71,9 @@ public class Recognizer {
             String idy = uniqueID.getID();
             y.setId(idy);
             objects.put(idx, x);
+            commands.add("point " + idx);
             objects.put(idy, y);
+            commands.add("point " + idy);
 
             commands.add("line " + id + " " + idx + " " + idy);
 
@@ -85,6 +88,7 @@ public class Recognizer {
                 String idp = uniqueID.getID();
                 p.setId(idp);
                 objects.put(idp, p);
+                commands.add("point " + idp);
                 command += idp + " ";
             }
 
@@ -117,9 +121,9 @@ public class Recognizer {
             for (GeomPoint p : polyPoints) {
                 String idp = uniqueID.getID();
                 p.setId(idp);
-                objects.put(idp, p);
                 command += idp + " ";
                 objects.put(idp, p);
+                commands.add("point " + idp);
             }
 
             commands.add(command);

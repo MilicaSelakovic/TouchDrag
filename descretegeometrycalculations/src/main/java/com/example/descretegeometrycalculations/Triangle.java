@@ -776,4 +776,10 @@ public class Triangle extends Polygon {
 
         }
     }
+
+    public void recolor() {
+        ((GeomPoint) significatObjects.get(freePoint1)).setCanChoose(1);
+        ((GeomPoint) significatObjects.get(freePoint2)).setCanChoose(1);
+        ((GeomPoint) significatObjects.get(freePoint3)).setCanChoose(1);
+    }
 }

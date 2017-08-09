@@ -235,12 +235,16 @@ public class Constructor {
                     newobjects.put(p.getId(), p);
                     break;
                 case "triangle":
+                    newobjects.put(array[1], objects.get(array[1]));
                     break;
                 case "polygon":
+                    newobjects.put(array[1], objects.get(array[1]));
                     break;
                 case "circle":
+                    newobjects.put(array[1], objects.get(array[1]));
                     break;
                 case "point":
+                    newobjects.put(array[1], objects.get(array[1]));
                     break;
                 default:
                     break;
