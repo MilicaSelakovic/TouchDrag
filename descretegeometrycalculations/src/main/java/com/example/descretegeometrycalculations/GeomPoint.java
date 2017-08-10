@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 
@@ -134,11 +135,25 @@ public class GeomPoint implements GeometricObject {
         if (object instanceof Line) {
             Line l = (Line) object;
             if (l.contain(this)) {
+
+                for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+                    if (entry.getValue() instanceof GeomPoint && entry.getValue() != this &&
+                            l.contain((GeomPoint) entry.getValue())) {
+                        l.setBegin(this);
+                        l.setEnd((GeomPoint) entry.getValue());
+
+                        commands.add("w02 " + object.getId() + " " + getId() + " " + entry.getValue().getId());
+                        return true;
+                    }
+                }
+
                 if (l.getBegin().distance(this) < l.getEnd().distance(this)) {
                     l.setEnd(this);
                 } else {
                     l.setBegin(this);
                 }
+
+
             }
 
         }
