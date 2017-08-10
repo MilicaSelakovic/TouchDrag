@@ -80,6 +80,8 @@ public class Recognizer {
         }
 
         if (recognized instanceof Triangle) {
+            ((Triangle) recognized).setNumber(uniqueID.getTrinagleNum());
+
             Vector<GeomPoint> polyPoints = ((Polygon) recognized).getPoints();
 
             String command = "triangle " + id + " ";
