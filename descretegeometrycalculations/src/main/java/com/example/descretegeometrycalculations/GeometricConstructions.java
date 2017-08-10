@@ -208,6 +208,7 @@ public class GeometricConstructions {
         GeomPoint v = l.getVector();
 
         // GeomPoint v1 = new GeomPoint(-v.Y(), v.X());  vektor pravca nove prave
+        // TODO da li novonastala tacka moze biti 0,0 posto X moze pripadati L
 
         return new Line(X, new GeomPoint(X.X() - v.Y(), X.Y() + v.X()));
     }
@@ -224,6 +225,8 @@ public class GeometricConstructions {
     W12 Ако су дати круг k и тачка X ван круга k, могуће jе конструисати две
     тангенте из тачке X на круг k; услов недегенерисаности jе да jе тачка X
     ван круга k; */
+
+    //TODO proveriti tacnost
 
     public static void w12(Circle k, GeomPoint X, Line t1, Line t2){
         double d = k.getCenter().distance(X);
@@ -277,6 +280,7 @@ public class GeometricConstructions {
     коефициjентом r; */
 
 
+    // TODO proveriti
     public static Line w15(GeomPoint X, Line p, float r){
         GeomPoint begin = w01(X,X, p.getBegin(), r);
         GeomPoint end = w01(X, X, p.getEnd(), r);
@@ -295,6 +299,8 @@ public class GeometricConstructions {
     /*
     W17 Ако су дате тачке X и Y и угао α могуће jе конструисати праву q тако
     да jе угао ∠(XY , q) = A · α/2B + C · π/2D; */
+
+
 
     /*
     W19 Ако су дате тачке X, Y и Z могуће jе конструисати тачку W коjа jе
@@ -321,6 +327,8 @@ public class GeometricConstructions {
 
         return w03(n, a);
     }
+
+    // Ovde ce povratna vrednost biti krug
     /*
     W20 Ако су дате тачке X и Y и угао α могуће jе конструисати скуп тачака из
     коjих се дуж XY види под углом A · α/2
