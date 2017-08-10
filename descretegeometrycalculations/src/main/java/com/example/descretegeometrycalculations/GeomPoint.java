@@ -19,6 +19,8 @@ public class GeomPoint implements GeometricObject {
 
 
     private int canChoose;
+    private Triangle triangle;
+    private String label;
 
     private String id;
 
@@ -32,6 +34,8 @@ public class GeomPoint implements GeometricObject {
 
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL);
+        triangle = null;
+        label = "";
 
 
     }
@@ -47,6 +51,8 @@ public class GeomPoint implements GeometricObject {
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL);
 
+        triangle = null;
+        label = "";
     }
 
 
@@ -56,12 +62,17 @@ public class GeomPoint implements GeometricObject {
 
     public void setId(String id) {
         this.id = id;
+        if (label.compareTo("") == 0)
+            label = "P" + id;
     }
 
     public void setCanChoose(int canChoose) {
         this.canChoose = canChoose;
     }
 
+    public void setLabel(String l) {
+        label = l;
+    }
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
@@ -95,6 +106,8 @@ public class GeomPoint implements GeometricObject {
         }
 
         canvas.drawCircle(x, y, 20f, circlePaint);
+        circlePaint.setTextSize(50);
+        canvas.drawText(label, x + 20f, y + 20f, circlePaint);
     }
 
     @Override
