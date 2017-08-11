@@ -24,6 +24,11 @@ import java.util.Vector;
 
 public class DrawingView extends View {
 
+    public enum Mode {
+        MODE_MOVE, MODE_USUAL, MODE_FREE, MODE_FIX;
+
+    }
+
     //drawing path
     private Path drawPath;
     //drawing and canvas paint
@@ -51,8 +56,6 @@ public class DrawingView extends View {
     private Constructor constructor;
     boolean actionDown;
 
-    boolean moveMode;
-    boolean chooseMode;
 
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.f;
@@ -60,6 +63,8 @@ public class DrawingView extends View {
     private HashMap<String, Vector<String>> trics;
 
     Triangle currentTriangle;
+
+    private Mode mode;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -69,8 +74,7 @@ public class DrawingView extends View {
         recognizer = new Recognizer(uniqueID);
         constructor = new Constructor();
         actionDown = false;
-        moveMode  = false;
-        chooseMode = false;
+        mode = Mode.MODE_USUAL;
         points = new Vector<>();
         geometricObjects = new HashMap<>();
         oldObjects = new HashMap<>();
@@ -141,7 +145,7 @@ public class DrawingView extends View {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
 
         //canvas.scale(mScaleFactor, mScaleFactor);
-        if (!moveMode && !chooseMode) {
+        if (mode == Mode.MODE_USUAL) {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
             }
@@ -153,7 +157,7 @@ public class DrawingView extends View {
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             if (entry.getValue() != null)
-                entry.getValue().draw(canvas, objectPaint, true, chooseMode);
+                entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_FIX || mode == Mode.MODE_FREE);
         }
 
 
@@ -176,122 +180,130 @@ public class DrawingView extends View {
         float touchY = event.getY();
         PointF touchPoint = new PointF(touchX,touchY);
 
-        if (mScaleGestureDetector.isInProgress()) {
+        if (mode == Mode.MODE_MOVE && mScaleGestureDetector.isInProgress()) {
             return true;
         }
 
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (moveMode) {
-                    for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                        if (entry.getValue().isUnderCursor(touchX, touchY)) {
-                            current = entry.getValue();
-                            prevX = ((GeomPoint) current).X();
-                            prevY = ((GeomPoint) current).Y();
 
-                            for (Map.Entry<String, GeometricObject> entry1 : geometricObjects.entrySet()) {
-                                if (entry1.getValue() instanceof Triangle) {
-                                    if (((Triangle) entry1.getValue()).belong((GeomPoint) current)) {
-                                        currentTriangle = (Triangle) entry1.getValue();
-                                        break;
+                switch (mode) {
+                    case MODE_USUAL:
+                        drawPath.moveTo(touchX, touchY);
+                        points.removeAllElements();
+                        points.add(touchPoint);
+                        actionDown = true;
+                        invalidate();
+                        break;
+                    case MODE_FIX:
+                        fix(touchX, touchY);
+                        invalidate();
+                        break;
+                    case MODE_MOVE:
+                        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                            if (entry.getValue().isUnderCursor(touchX, touchY)) {
+                                current = entry.getValue();
+                                prevX = ((GeomPoint) current).X();
+                                prevY = ((GeomPoint) current).Y();
+
+                                for (Map.Entry<String, GeometricObject> entry1 : geometricObjects.entrySet()) {
+                                    if (entry1.getValue() instanceof Triangle) {
+                                        if (((Triangle) entry1.getValue()).belong((GeomPoint) current)) {
+                                            currentTriangle = (Triangle) entry1.getValue();
+                                            break;
+                                        }
                                     }
                                 }
-                            }
 
-                            break;
-                        }
-                    }
-                } else if (chooseMode) {
-                    if (currentTriangle == null) {
-                        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                            if (entry.getValue().choose(touchX, touchY, trics)) {
-                                currentTriangle = (Triangle) entry.getValue();
                                 break;
                             }
                         }
-                    } else {
-                        if (currentTriangle.changeFree(touchX, touchY, trics)) {
-                            currentTriangle.setChoose();
-                            currentTriangle = null;
-                        }
-
-                    }
-                    invalidate();
-                } else {
-                    drawPath.moveTo(touchX, touchY);
-                    points.removeAllElements();
-                    points.add(touchPoint);
-                    actionDown = true;
-                    invalidate();
+                        break;
+                    case MODE_FREE:
+                        free(touchX, touchY);
+                        invalidate();
+                        break;
+                    default:
+                        break;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
 
-                if (moveMode) {
-                    if (current != null) {
-                        current.translate(touchX, touchY);
-                        if (currentTriangle != null)
-                            currentTriangle.translate(touchX, touchY);
-                        constructor.reconstruct(commands, geometricObjects);
-                    }
-                } else if (chooseMode) {
-                    break;
-                } else {
-                    points.add(touchPoint);
-                    drawPath.lineTo(touchX, touchY);
-                    current = recognizer.recognizeCurrent(points);
+                switch (mode) {
+                    case MODE_MOVE:
+                        if (current != null) {
+                            current.translate(touchX, touchY);
+                            if (currentTriangle != null)
+                                currentTriangle.translate(touchX, touchY);
+                            constructor.reconstruct(commands, geometricObjects);
+                        }
+                        invalidate();
+                        break;
+                    case MODE_USUAL:
+                        points.add(touchPoint);
+                        drawPath.lineTo(touchX, touchY);
+                        current = recognizer.recognizeCurrent(points);
+                        invalidate();
+                        break;
+                    default:
+                        break;
                 }
-                invalidate();
                 break;
 
             case MotionEvent.ACTION_UP:
-                if (moveMode) {
-                    if (current != null) {
-                        String komanda = "";
-                        current.translate(touchX, touchY);
-                        komanda += "translate " + current.getId()
-                                + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
-                        if (currentTriangle != null) {
-                            currentTriangle.addCommand(komanda);
-                            currentTriangle.translate(touchX, touchY);
+                switch (mode) {
+                    case MODE_MOVE:
+                        if (current != null) {
+                            String komanda = "";
+                            current.translate(touchX, touchY);
+                            komanda += "translate " + current.getId()
+                                    + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
+                            if (currentTriangle != null) {
+                                currentTriangle.addCommand(komanda);
+                                currentTriangle.translate(touchX, touchY);
+                            }
+
+                            komande.push(komanda);
+
+                            redoCommands.clear();
+                            oldObjects.clear();
+                            redo.clear();
+                            constructor.reconstruct(commands, geometricObjects);
                         }
-
-                        komande.push(komanda);
-
-                        redoCommands.clear();
-                        oldObjects.clear();
-                        redo.clear();
-                        constructor.reconstruct(commands, geometricObjects);
-                    }
-                    current = null;
-                    currentTriangle = null;
-                } else if (chooseMode) {
-                    break;
-                } else {
-                    actionDown = false;
-                    if (recognizer.recognize(points, geometricObjects, commands)) {
-                        komande.push("add");
-                        redoCommands.clear();
-                        oldObjects.clear();
-                        redo.clear();
-                    }
-                    drawPath.reset();
-                    current = null;
-                    //   Log.d("komande", commands.toString());
+                        current = null;
+                        currentTriangle = null;
+                        invalidate();
+                        break;
+                    case MODE_USUAL:
+                        actionDown = false;
+                        if (recognizer.recognize(points, geometricObjects, commands)) {
+                            komande.push("add");
+                            redoCommands.clear();
+                            oldObjects.clear();
+                            redo.clear();
+                        }
+                        drawPath.reset();
+                        current = null;
+                        invalidate();
+                        break;
+                    default:
+                        break;
                 }
-
-                invalidate();
                 break;
             default:
                 return false;
         }
 
-
         return  true;
     }
 
     public void setMoving(boolean value){
-        moveMode = value;
+        if (value) {
+            mode = Mode.MODE_MOVE;
+        } else {
+            mode = Mode.MODE_USUAL;
+        }
     }
 
     public void clearPanel(){
@@ -306,15 +318,7 @@ public class DrawingView extends View {
     }
 
 
-    public void setChoose(boolean value) {
-        chooseMode = value;
-        if (value) {
-            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                entry.getValue().setChoose();
-            }
-        } else {
-            currentTriangle = null;
-        }
+    public void setMode(boolean value) {
 
         invalidate();
     }
@@ -376,7 +380,7 @@ public class DrawingView extends View {
                 for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                     oldObjects.put(entry.getKey(), entry.getValue());
                     if (entry.getValue() instanceof Triangle) {
-                        ((Triangle) entry.getValue()).recolor();
+                        ((Triangle) entry.getValue()).recolor(trics);
                     }
                 }
 
@@ -413,12 +417,20 @@ public class DrawingView extends View {
 
 
     private void fix(float x, float y) {
-
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            if (entry.getValue().isUnderCursor(x, y) && entry.getValue() instanceof GeomPoint) {
+                ((GeomPoint) entry.getValue()).setFixed(trics);
+            }
+        }
     }
 
 
     private void free(float x, float y) {
-
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            if (entry.getValue().isUnderCursor(x, y) && entry.getValue() instanceof GeomPoint) {
+                ((GeomPoint) entry.getValue()).setFree(trics);
+            }
+        }
     }
 }
 

@@ -52,10 +52,6 @@ public class Polygon implements GeometricObject {
     }
 
 
-    @Override
-    public void setChoose() {
-
-    }
 
     public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
 

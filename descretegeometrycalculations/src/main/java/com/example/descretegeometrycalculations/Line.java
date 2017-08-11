@@ -178,10 +178,6 @@ public class Line implements GeometricObject {
         return false;
     }
 
-    @Override
-    public void setChoose() {
-
-    }
 
     private boolean connectionLine(Line line, Vector<String> commands, UniqueID id, HashMap<String, GeometricObject> objects) {
         if (ConnectionCalculations.normalLine(this, line)) {

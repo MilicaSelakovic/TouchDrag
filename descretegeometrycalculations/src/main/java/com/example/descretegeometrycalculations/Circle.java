@@ -51,10 +51,6 @@ public class Circle implements GeometricObject {
     }
 
 
-    @Override
-    public void setChoose() {
-
-    }
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {

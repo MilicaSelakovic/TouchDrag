@@ -18,7 +18,11 @@ public class GeomPoint implements GeometricObject {
     private boolean move;
 
 
-    private int canChoose;
+    public enum Type {
+        TRIANGLE_FREE, TRIANGLE_CANFREE, TRIANGLE_CANNOTFREE, OTHER;
+    }
+
+    private Type type;
 
 
     private Triangle triangle;
@@ -30,7 +34,7 @@ public class GeomPoint implements GeometricObject {
         this.x = x;
         this.y = y;
         this.move = true;
-        this.canChoose = 0;
+        this.type = Type.OTHER;
 
         circlePaint = new Paint();
 
@@ -46,7 +50,7 @@ public class GeomPoint implements GeometricObject {
         this.x = x;
         this.y = y;
         this.move = move;
-        this.canChoose = 0;
+        this.type = Type.OTHER;
 
         circlePaint = new Paint();
 
@@ -68,8 +72,8 @@ public class GeomPoint implements GeometricObject {
             label = "P" + id;
     }
 
-    public void setCanChoose(int canChoose) {
-        this.canChoose = canChoose;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public void setLabel(String l) {
@@ -91,21 +95,18 @@ public class GeomPoint implements GeometricObject {
         }
 
         if (choose) {
-            switch (canChoose) {
-                case -1:
+            switch (type) {
+                case TRIANGLE_CANNOTFREE:
                     circlePaint.setColor(Color.RED);
                     break;
-                case 0:
+                case OTHER:
                     circlePaint.setColor(Color.DKGRAY);
                     break;
-                case 1:
+                case TRIANGLE_FREE:
                     circlePaint.setColor(Color.rgb(27, 226, 98));
                     break;
-                case 2:
+                case TRIANGLE_CANFREE:
                     circlePaint.setColor(Color.YELLOW);
-                    break;
-                case 3:
-                    circlePaint.setColor(Color.MAGENTA);
                     break;
             }
 
@@ -138,6 +139,10 @@ public class GeomPoint implements GeometricObject {
     public void translate(float x, float y){
         this.x = x;
         this.y = y;
+
+        if (triangle != null) {
+            triangle.translate(x, y);
+        }
     }
 
     @Override
@@ -181,11 +186,6 @@ public class GeomPoint implements GeometricObject {
         return false;
     }
 
-    @Override
-    public void setChoose() {
-
-    }
-
     public float X() {
         return x;
     }
@@ -217,5 +217,18 @@ public class GeomPoint implements GeometricObject {
 
     double distance(GeomPoint X){
         return Math.sqrt((x-X.X())*(x-X.X()) + (y-X.Y())*(y-X.Y()));
+    }
+
+    public void setFixed(HashMap<String, Vector<String>> trics) {
+        if (type == Type.TRIANGLE_FREE) {
+            triangle.fix(this, trics);
+        }
+
+    }
+
+    public void setFree(HashMap<String, Vector<String>> trics) {
+        if (type == Type.TRIANGLE_CANFREE) {
+            triangle.free(this, trics);
+        }
     }
 }
