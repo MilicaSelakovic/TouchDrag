@@ -62,6 +62,11 @@ public class Triangle extends Polygon {
         ((GeomPoint) significatObjects.get("A")).setTriangle(this);
         ((GeomPoint) significatObjects.get("B")).setTriangle(this);
         ((GeomPoint) significatObjects.get("C")).setTriangle(this);
+
+
+        ((GeomPoint) significatObjects.get("A")).setType(GeomPoint.Type.TRIANGLE_FREE);
+        ((GeomPoint) significatObjects.get("B")).setType(GeomPoint.Type.TRIANGLE_FREE);
+        ((GeomPoint) significatObjects.get("C")).setType(GeomPoint.Type.TRIANGLE_FREE);
     }
 
     public Line getLineA() {
