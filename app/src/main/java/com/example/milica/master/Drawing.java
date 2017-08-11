@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -76,6 +77,19 @@ public class Drawing extends Activity {
         boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton)).isChecked();
         ((DrawingView) this.findViewById(R.id.view)).setMoving(value);
 
+        if (value) {
+
+            this.findViewById(R.id.radioButton).setEnabled(false);
+            this.findViewById(R.id.radioButton2).setEnabled(false);
+            this.findViewById(R.id.radioButton3).setEnabled(false);
+
+        } else {
+
+            this.findViewById(R.id.radioButton).setEnabled(true);
+            this.findViewById(R.id.radioButton2).setEnabled(true);
+            this.findViewById(R.id.radioButton3).setEnabled(true);
+
+        }
 //        if (value) {
 //            this.findViewById(R.id.toggleButton2).setEnabled(false);
 //        } else {
@@ -95,4 +109,22 @@ public class Drawing extends Activity {
 //        }
 //    }
 
+
+    public void radioButton(View view) {
+        if (((RadioButton) this.findViewById(R.id.radioButton2)).isChecked()) {
+            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
+            this.findViewById(R.id.toggleButton).setEnabled(true);
+        }
+
+        if (((RadioButton) this.findViewById(R.id.radioButton3)).isChecked()) {
+            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_FREE);
+            this.findViewById(R.id.toggleButton).setEnabled(false);
+        }
+
+        if (((RadioButton) this.findViewById(R.id.radioButton)).isChecked()) {
+            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_FIX);
+            this.findViewById(R.id.toggleButton).setEnabled(false);
+        }
+
+    }
 }

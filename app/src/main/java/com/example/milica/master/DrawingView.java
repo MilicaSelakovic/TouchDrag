@@ -318,8 +318,8 @@ public class DrawingView extends View {
     }
 
 
-    public void setMode(boolean value) {
-
+    public void setMode(Mode mode) {
+        this.mode = mode;
         invalidate();
     }
 
