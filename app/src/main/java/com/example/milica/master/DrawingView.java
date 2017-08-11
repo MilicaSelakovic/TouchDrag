@@ -410,6 +410,16 @@ public class DrawingView extends View {
         }
 
     }
+
+
+    private void fix(float x, float y) {
+
+    }
+
+
+    private void free(float x, float y) {
+
+    }
 }
 
 

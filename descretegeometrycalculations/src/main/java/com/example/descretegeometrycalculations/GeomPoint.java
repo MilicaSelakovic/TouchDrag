@@ -19,6 +19,8 @@ public class GeomPoint implements GeometricObject {
 
 
     private int canChoose;
+
+
     private Triangle triangle;
     private String label;
 
@@ -73,6 +75,11 @@ public class GeomPoint implements GeometricObject {
     public void setLabel(String l) {
         label = l;
     }
+
+    public void setTriangle(Triangle triangle) {
+        this.triangle = triangle;
+    }
+
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {

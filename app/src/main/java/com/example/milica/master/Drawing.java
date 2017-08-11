@@ -76,24 +76,23 @@ public class Drawing extends Activity {
         boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton)).isChecked();
         ((DrawingView) this.findViewById(R.id.view)).setMoving(value);
 
-        if (value) {
-            this.findViewById(R.id.toggleButton2).setEnabled(false);
-        } else {
-            this.findViewById(R.id.toggleButton2).setEnabled(true);
-        }
+//        if (value) {
+//            this.findViewById(R.id.toggleButton2).setEnabled(false);
+//        } else {
+//            this.findViewById(R.id.toggleButton2).setEnabled(true);
+//        }
     }
 
 
-
-    public void choose(View view) {
-        boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton2)).isChecked();
-        ((DrawingView) this.findViewById(R.id.view)).setChoose(value);
-
-        if (value) {
-            this.findViewById(R.id.toggleButton).setEnabled(false);
-        } else {
-            this.findViewById(R.id.toggleButton).setEnabled(true);
-        }
-    }
+//    public void choose(View view) {
+//        boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton2)).isChecked();
+//        ((DrawingView) this.findViewById(R.id.view)).setChoose(value);
+//
+//        if (value) {
+//            this.findViewById(R.id.toggleButton).setEnabled(false);
+//        } else {
+//            this.findViewById(R.id.toggleButton).setEnabled(true);
+//        }
+//    }
 
 }
