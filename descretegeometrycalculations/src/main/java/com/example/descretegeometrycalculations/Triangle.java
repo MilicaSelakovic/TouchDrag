@@ -58,6 +58,10 @@ public class Triangle extends Polygon {
         ((GeomPoint) significatObjects.get("A")).setLabel("A" + number);
         ((GeomPoint) significatObjects.get("B")).setLabel("B" + number);
         ((GeomPoint) significatObjects.get("C")).setLabel("C" + number);
+
+        ((GeomPoint) significatObjects.get("A")).setTriangle(this);
+        ((GeomPoint) significatObjects.get("B")).setTriangle(this);
+        ((GeomPoint) significatObjects.get("C")).setTriangle(this);
     }
 
     public Line getLineA() {
