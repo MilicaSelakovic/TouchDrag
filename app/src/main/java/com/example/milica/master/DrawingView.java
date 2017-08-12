@@ -25,7 +25,7 @@ import java.util.Vector;
 public class DrawingView extends View {
 
     public enum Mode {
-        MODE_MOVE, MODE_USUAL, MODE_FREE, MODE_FIX;
+        MODE_MOVE, MODE_USUAL, MODE_SELECT;
 
     }
 
@@ -157,18 +157,10 @@ public class DrawingView extends View {
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             if (entry.getValue() != null)
-                entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_FIX || mode == Mode.MODE_FREE);
+                entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_SELECT);
         }
 
 
-    }
-
-
-    @Override
-    public boolean onDragEvent(DragEvent event) {
-
-        Log.d("Drag event", Float.toString(event.getX()) + " " + Float.toString(event.getY()));
-        return super.onDragEvent(event);
     }
 
     @Override
@@ -200,8 +192,8 @@ public class DrawingView extends View {
                         actionDown = true;
                         invalidate();
                         break;
-                    case MODE_FIX:
-                        fix(touchX, touchY);
+                    case MODE_SELECT:
+                        select(touchX, touchY);
                         invalidate();
                         break;
                     case MODE_MOVE:
@@ -223,10 +215,6 @@ public class DrawingView extends View {
                                 break;
                             }
                         }
-                        break;
-                    case MODE_FREE:
-                        free(touchX, touchY);
-                        invalidate();
                         break;
                     default:
                         break;
@@ -421,22 +409,15 @@ public class DrawingView extends View {
     }
 
 
-    private void fix(float x, float y) {
+    private void select(float x, float y) {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             if (entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                ((GeomPoint) entry.getValue()).setFixed(trics);
+                ((GeomPoint) entry.getValue()).changeType(trics);
             }
         }
     }
 
 
-    private void free(float x, float y) {
-        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                ((GeomPoint) entry.getValue()).setFree(trics);
-            }
-        }
-    }
 }
 
 

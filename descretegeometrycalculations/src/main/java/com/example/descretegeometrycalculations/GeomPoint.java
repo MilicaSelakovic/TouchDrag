@@ -219,16 +219,20 @@ public class GeomPoint implements GeometricObject {
         return Math.sqrt((x-X.X())*(x-X.X()) + (y-X.Y())*(y-X.Y()));
     }
 
-    public void setFixed(HashMap<String, Vector<String>> trics) {
-        if (type == Type.TRIANGLE_FREE) {
-            triangle.fix(this, trics);
+    public void changeType(HashMap<String, Vector<String>> trics) {
+
+        switch (type) {
+            case TRIANGLE_FREE:
+                triangle.fix(this, trics);
+                break;
+            case TRIANGLE_CANFREE:
+                triangle.free(this, trics);
+                break;
+            default:
+                break;
         }
 
     }
 
-    public void setFree(HashMap<String, Vector<String>> trics) {
-        if (type == Type.TRIANGLE_CANFREE) {
-            triangle.free(this, trics);
-        }
-    }
+
 }
