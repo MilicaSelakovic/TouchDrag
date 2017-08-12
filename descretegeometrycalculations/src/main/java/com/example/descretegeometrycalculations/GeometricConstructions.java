@@ -354,7 +354,7 @@ public class GeometricConstructions {
 
     public static Line bisectorAngle(GeomPoint A, GeomPoint B, GeomPoint C){
         GeomPoint B1 = w01(B, B, C, (float) (B.distance(A)/B.distance(C)));
-        GeomPoint S = w01(A, A, B1, 1f/2);
+        GeomPoint S = w01(A, A, B1, 0.5f);
 
         return new Line(B, S);
         

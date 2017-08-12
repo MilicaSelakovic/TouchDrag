@@ -166,18 +166,18 @@ public class Triangle extends Polygon {
     }
 
     private int numOfFree() {
-        int br = 0;
+        int br = 3;
 
         if (freePoint1.compareTo("") == 0) {
-            br++;
+            br--;
         }
 
         if (freePoint2.compareTo("") == 0) {
-            br++;
+            br--;
         }
 
         if (freePoint3.compareTo("") == 0) {
-            br++;
+            br--;
         }
 
         return br;

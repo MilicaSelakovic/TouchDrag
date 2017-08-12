@@ -418,7 +418,7 @@ public class DrawingView extends View {
 
     private void fix(float x, float y) {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue().isUnderCursor(x, y) && entry.getValue() instanceof GeomPoint) {
+            if (entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
                 ((GeomPoint) entry.getValue()).setFixed(trics);
             }
         }
@@ -427,7 +427,7 @@ public class DrawingView extends View {
 
     private void free(float x, float y) {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue().isUnderCursor(x, y) && entry.getValue() instanceof GeomPoint) {
+            if (entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
                 ((GeomPoint) entry.getValue()).setFree(trics);
             }
         }
