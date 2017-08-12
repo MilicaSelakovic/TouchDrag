@@ -71,6 +71,16 @@ public class Drawing extends Activity {
                 ((DrawingView) findViewById(R.id.view)).redo();
             }
         });
+
+        this.findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Drawing.this, SettingActivity.class));
+            }
+        });
+
+
+
     }
 
     @Override
@@ -112,9 +122,5 @@ public class Drawing extends Activity {
         }
     }
 
-    public void settings(View view) {
-//        Intent i = new Intent(Drawing.this,
-//                SettingsActivity.class);
-//        startActivity(i);
-    }
+
 }
