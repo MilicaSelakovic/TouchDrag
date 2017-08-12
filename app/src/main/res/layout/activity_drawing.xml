@@ -39,8 +39,8 @@
                 android:id="@+id/toggleButton"
                 android:checked="false"
                 android:onClick="moveEnable"
-                tools:background="@android:drawable/ic_menu_edit"
-                style="@android:style/Widget.Button" />
+                style="@style/toggleButton"
+                android:background="@drawable/ic_toggle_bg" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -59,7 +59,6 @@
                     android:id="@+id/radioButton2"
                     android:layout_weight="1"
                     android:checked="false"
-                    android:backgroundTint="@android:color/background_dark"
                     style="@android:style/Widget.CompoundButton.RadioButton"
                     android:text="U"
                     android:onClick="radioButton" />
@@ -69,7 +68,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/radioButton3"
                     android:layout_weight="1"
-                    android:backgroundTint="@android:color/holo_green_dark"
                     android:text="G"
                     android:onClick="radioButton" />
 
@@ -78,7 +76,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/radioButton"
                     android:layout_weight="1"
-                    android:backgroundTint="@android:color/holo_red_dark"
                     android:text="R"
                     android:onClick="radioButton" />
             </RadioGroup>
@@ -97,7 +94,7 @@
                 android:background="@drawable/ic_delete"
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
-                android:contentDescription="" />
+                android:contentDescription="delete" />
 
             <ImageButton
                 android:layout_width="wrap_content"

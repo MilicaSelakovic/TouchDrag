@@ -174,14 +174,18 @@ public class DrawingView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        mScaleGestureDetector.onTouchEvent(event);
-
+        if (mode == Mode.MODE_MOVE) {
+            mScaleGestureDetector.onTouchEvent(event);
+        }
         float touchX = event.getX();
         float touchY = event.getY();
         PointF touchPoint = new PointF(touchX,touchY);
 
-        if (mode == Mode.MODE_MOVE && mScaleGestureDetector.isInProgress()) {
-            return true;
+        if (mode == Mode.MODE_MOVE) {
+            if (mScaleGestureDetector.isInProgress()) {
+
+                return true;
+            }
         }
 
 
@@ -331,6 +335,7 @@ public class DrawingView extends View {
 
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
             scaleObjects();
+            constructor.reconstruct(commands, geometricObjects);
             invalidate();
             return true;
         }
