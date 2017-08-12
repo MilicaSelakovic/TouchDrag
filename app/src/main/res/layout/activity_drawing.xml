@@ -93,7 +93,8 @@
                 android:background="@drawable/ic_settings"
                 style="@android:style/Widget.Holo.Light.ImageButton"
                 android:adjustViewBounds="true"
-                android:cropToPadding="true" />
+                android:cropToPadding="true"
+                android:onClick="settings (Drawing)" />
 
         </LinearLayout>
 

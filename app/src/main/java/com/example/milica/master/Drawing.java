@@ -112,4 +112,9 @@ public class Drawing extends Activity {
         }
     }
 
+    public void settings(View view) {
+//        Intent i = new Intent(Drawing.this,
+//                SettingsActivity.class);
+//        startActivity(i);
+    }
 }
