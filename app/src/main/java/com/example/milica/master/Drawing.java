@@ -99,22 +99,4 @@ public class Drawing extends Activity {
         }
     }
 
-
-//    public void radioButton(View view) {
-//        if (((RadioButton) this.findViewById(R.id.radioButton2)).isChecked()) {
-//            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
-//            this.findViewById(R.id.toggleButton).setEnabled(true);
-//        }
-//
-//        if (((RadioButton) this.findViewById(R.id.radioButton3)).isChecked()) {
-//            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_FREE);
-//            this.findViewById(R.id.toggleButton).setEnabled(false);
-//        }
-//
-//        if (((RadioButton) this.findViewById(R.id.radioButton)).isChecked()) {
-//            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_FIX);
-//            this.findViewById(R.id.toggleButton).setEnabled(false);
-//        }
-
-//    }
 }
