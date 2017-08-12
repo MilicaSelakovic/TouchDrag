@@ -24,6 +24,10 @@ import java.util.Vector;
 
 public class DrawingView extends View {
 
+    public void setTrics(HashMap<String, Vector<String>> trics) {
+        this.trics = trics;
+    }
+
     public enum Mode {
         MODE_MOVE, MODE_USUAL, MODE_SELECT;
 
@@ -87,19 +91,19 @@ public class DrawingView extends View {
         currentTriangle = null;
 
         trics = new HashMap<>();
-        Vector<String> konstrukcija = new Vector<>();
-        konstrukcija.add("w01 Mc A A B 0.5");
-        konstrukcija.add("w02 ha A H");
-        konstrukcija.add("w02 hb B H");
-        konstrukcija.add("w06 k Mc A");
-        konstrukcija.add("w05 Ha ha k A");
-        konstrukcija.add("w02 a Ha B");
-        konstrukcija.add("w05 Hb hb k B");
-        konstrukcija.add("w02 b Hb A");
-        konstrukcija.add("w03 C a b");
-
-        trics.put("A B H", konstrukcija);
-        trics.put("A B C", new Vector<String>());
+//        Vector<String> konstrukcija = new Vector<>();
+//        konstrukcija.add("w01 Mc A A B 0.5");
+//        konstrukcija.add("w02 ha A H");
+//        konstrukcija.add("w02 hb B H");
+//        konstrukcija.add("w06 k Mc A");
+//        konstrukcija.add("w05 Ha ha k A");
+//        konstrukcija.add("w02 a Ha B");
+//        konstrukcija.add("w05 Hb hb k B");
+//        konstrukcija.add("w02 b Hb A");
+//        konstrukcija.add("w03 C a b");
+//
+//        trics.put("A B H", konstrukcija);
+//        trics.put("A B C", new Vector<String>());
 
         mScaleGestureDetector = new ScaleGestureDetector(context, new ScaleListener());
     }

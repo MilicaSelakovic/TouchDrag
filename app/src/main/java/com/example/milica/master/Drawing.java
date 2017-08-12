@@ -1,6 +1,7 @@
 package com.example.milica.master;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
+
+import java.util.HashMap;
+import java.util.Vector;
 
 public class Drawing extends Activity {
 
@@ -40,6 +44,15 @@ public class Drawing extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
+
+        ConstructionParser parser = new ConstructionParser();
+
+        HashMap<String, Vector<String>> trics = new HashMap<>();
+
+        parser.fillConstructions(trics, getApplicationContext(), "allconstuctions.json");
+
+        ((DrawingView) this.findViewById(R.id.view)).setTrics(trics);
+
         this.findViewById(R.id.imageButton4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
