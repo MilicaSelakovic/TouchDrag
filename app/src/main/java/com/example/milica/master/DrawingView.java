@@ -290,14 +290,6 @@ public class DrawingView extends View {
         return  true;
     }
 
-    public void setMoving(boolean value){
-        if (value) {
-            mode = Mode.MODE_MOVE;
-        } else {
-            mode = Mode.MODE_USUAL;
-        }
-    }
-
     public void clearPanel(){
         geometricObjects.clear();
         commands.clear();
