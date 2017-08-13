@@ -41,7 +41,8 @@ public class Constructor {
                     newobjects.put(array[2], objects.get(array[2]));
                     newobjects.put(array[3], objects.get(array[3]));
                     newobjects.put(array[4], objects.get(array[4]));
-                    float d = array.length < 6 ? .5f : Float.parseFloat(array[5]);
+                    float d = array.length > 6 ? Float.parseFloat(array[5]) / Float.parseFloat(array[6])
+                            : Float.parseFloat(array[5]);
 
                     X = GeometricConstructions.w01((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
                             (GeomPoint) objects.get(array[4]), d);

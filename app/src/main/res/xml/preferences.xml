@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Pref">
+
+        <CheckBoxPreference
+            android:key="checkbox_preference"
+            android:title="lud"
+            android:summary="trla baba lan" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

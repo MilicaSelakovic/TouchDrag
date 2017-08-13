@@ -2,6 +2,7 @@ package com.example.milica.master;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.preference.PreferenceActivity;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -77,7 +78,10 @@ public class Drawing extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Drawing.this, SettingsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
+                        SettingsActivity.Prefs1Fragment.class.getName());
+
                 startActivity(intent);
                 finish();
             }
