@@ -45,6 +45,7 @@ public class Drawing extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
 
+
         ConstructionParser parser = new ConstructionParser();
 
         HashMap<String, Vector<String>> trics = new HashMap<>();
@@ -75,7 +76,10 @@ public class Drawing extends Activity {
         this.findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Drawing.this, SettingActivity.class));
+                Intent intent = new Intent(Drawing.this, SettingsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
 

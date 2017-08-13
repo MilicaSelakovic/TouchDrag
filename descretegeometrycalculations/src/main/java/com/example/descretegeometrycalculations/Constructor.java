@@ -41,7 +41,8 @@ public class Constructor {
                     newobjects.put(array[2], objects.get(array[2]));
                     newobjects.put(array[3], objects.get(array[3]));
                     newobjects.put(array[4], objects.get(array[4]));
-                    float d = array.length < 6 ? 0.5f : Float.parseFloat(array[5]);
+                    float d = array.length < 6 ? .5f : Float.parseFloat(array[5]);
+
                     X = GeometricConstructions.w01((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
                             (GeomPoint) objects.get(array[4]), d);
                     Y = (GeomPoint) objects.get(array[1]);
@@ -117,10 +118,13 @@ public class Constructor {
                 case "w05":
                     newobjects.put(array[2], objects.get(array[2]));
                     newobjects.put(array[3], objects.get(array[3]));
-                    newobjects.put(array[4], objects.get(array[4]));
-
-                    X = GeometricConstructions.w05(((Line) objects.get(array[2])), ((Circle) objects.get(array[3])),
-                            (GeomPoint) (objects.get(array[4])));
+                    String point = array[4];
+                    if (array.length > 5) {
+                        newobjects.put(array[5], objects.get(array[5]));
+                        point = array[5];
+                    }
+                    X = GeometricConstructions.w05(((Line) objects.get(array[3])), ((Circle) objects.get(array[2])),
+                            (GeomPoint) (objects.get(point)));
                     P = (GeomPoint) objects.get(array[1]);
                     if (P == null) {
                         P = new GeomPoint(0, 0);
@@ -135,7 +139,7 @@ public class Constructor {
                     newobjects.put(array[2], objects.get(array[2]));
                     newobjects.put(array[3], objects.get(array[3]));
 
-                    k = GeometricConstructions.w06((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]));
+                    k = GeometricConstructions.w06((GeomPoint) objects.get(array[3]), (GeomPoint) objects.get(array[2]));
                     c = (Circle) objects.get(array[1]);
                     if (c == null) {
                         c = new Circle(0, 0, 0);

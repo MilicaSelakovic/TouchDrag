@@ -181,7 +181,9 @@ public class Line implements GeometricObject {
 
     private boolean connectionLine(Line line, Vector<String> commands, UniqueID id, HashMap<String, GeometricObject> objects) {
         if (ConnectionCalculations.normalLine(this, line)) {
-            line.getBegin().setId(id.getID());
+            if (line.getBegin().getId().compareTo("") == 0) {
+                line.getBegin().setId(id.getID());
+            }
             objects.put(line.getBegin().getId(), line.getBegin());
             commands.add("w10 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
             Line l = GeometricConstructions.w10(line.getBegin(), this);
@@ -191,8 +193,9 @@ public class Line implements GeometricObject {
 
         if (ConnectionCalculations.parallelLine(this, line)) {
 
-            Log.d("Linija", "paralela");
-            line.getBegin().setId(id.getID());
+            if (line.getBegin().getId().compareTo("") == 0) {
+                line.getBegin().setId(id.getID());
+            }
             objects.put(line.getBegin().getId(), line.getBegin());
 
             commands.add("w16 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());

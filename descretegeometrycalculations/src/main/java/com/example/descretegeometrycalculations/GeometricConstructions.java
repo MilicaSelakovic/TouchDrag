@@ -293,7 +293,10 @@ public class GeometricConstructions {
     тачку X и паралелна jе правоj p; */
 
     public static Line w16(GeomPoint X, Line p){
-        return new Line(X, new GeomPoint(X.X() + p.getVector().X(), X.Y() + p.getVector().Y()));
+        float dx = p.getEnd().X() - p.getBegin().X();
+        float dy = p.getEnd().Y() - p.getBegin().Y();
+
+        return new Line(X, new GeomPoint(X.X() + dx, X.Y() + dy));
     }
 
     /*
@@ -335,6 +338,10 @@ public class GeometricConstructions {
     B + C · π/2D. */
 
 
+    public static Circle w20(GeomPoint X, GeomPoint Y, GeomPoint A, GeomPoint B, GeomPoint C, int a, int b, int c, int d) {
+
+        return null;
+    }
 
     /*
     W22 Ако су дати тачка X и круг k1 могуће jе конструисати круг k2 са центром

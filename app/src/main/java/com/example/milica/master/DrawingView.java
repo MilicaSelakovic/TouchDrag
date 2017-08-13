@@ -148,12 +148,11 @@ public class DrawingView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
 
-        //canvas.scale(mScaleFactor, mScaleFactor);
         if (mode == Mode.MODE_USUAL) {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
             }
-            //current = DiscreteCurvature.getGeometricObject(points);
+
             if (current != null && actionDown) {
                 current.draw(canvas, drawObject, false, false);
             }
@@ -206,16 +205,6 @@ public class DrawingView extends View {
                                 current = entry.getValue();
                                 prevX = ((GeomPoint) current).X();
                                 prevY = ((GeomPoint) current).Y();
-
-                                for (Map.Entry<String, GeometricObject> entry1 : geometricObjects.entrySet()) {
-                                    if (entry1.getValue() instanceof Triangle) {
-                                        if (((Triangle) entry1.getValue()).belong((GeomPoint) current)) {
-                                            currentTriangle = (Triangle) entry1.getValue();
-                                            break;
-                                        }
-                                    }
-                                }
-
                                 break;
                             }
                         }
@@ -230,8 +219,6 @@ public class DrawingView extends View {
                     case MODE_MOVE:
                         if (current != null) {
                             current.translate(touchX, touchY);
-                            if (currentTriangle != null)
-                                currentTriangle.translate(touchX, touchY);
                             constructor.reconstruct(commands, geometricObjects);
                         }
                         invalidate();
@@ -255,10 +242,6 @@ public class DrawingView extends View {
                             current.translate(touchX, touchY);
                             komanda += "translate " + current.getId()
                                     + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
-                            if (currentTriangle != null) {
-                                currentTriangle.addCommand(komanda);
-                                currentTriangle.translate(touchX, touchY);
-                            }
 
                             komande.push(komanda);
 
@@ -268,7 +251,6 @@ public class DrawingView extends View {
                             constructor.reconstruct(commands, geometricObjects);
                         }
                         current = null;
-                        currentTriangle = null;
                         invalidate();
                         break;
                     case MODE_USUAL:

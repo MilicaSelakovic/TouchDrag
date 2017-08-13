@@ -41,6 +41,14 @@ public class Recognizer {
         }
 
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() instanceof GeomPoint && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
+                objects.put(id, recognized);
+                mCommands.add(commands);
+                return true;
+            }
+        }
+
+        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
             if (entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
                 mCommands.add(commands);
@@ -66,16 +74,21 @@ public class Recognizer {
             GeomPoint x = ((Line) recognized).getBegin();
             GeomPoint y = ((Line) recognized).getEnd();
 
-            String idx = uniqueID.getID();
-            x.setId(idx);
-            String idy = uniqueID.getID();
-            y.setId(idy);
-            objects.put(idx, x);
-            commands.add("point " + idx);
-            objects.put(idy, y);
-            commands.add("point " + idy);
+            if (x.getId().compareTo("") == 0) {
+                String idx = uniqueID.getID();
+                x.setId(idx);
+                objects.put(idx, x);
+                commands.add("point " + idx);
+            }
 
-            commands.add("line " + id + " " + idx + " " + idy);
+            if (y.getId().compareTo("") == 0) {
+                String idy = uniqueID.getID();
+                y.setId(idy);
+                objects.put(idy, y);
+                commands.add("point " + idy);
+
+            }
+            commands.add("line " + id + " " + x.getId() + " " + y.getId());
 
         }
 

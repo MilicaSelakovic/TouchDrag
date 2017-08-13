@@ -43,6 +43,8 @@ public class GeomPoint implements GeometricObject {
         triangle = null;
         label = "";
 
+        id = "";
+
 
     }
 
@@ -59,6 +61,8 @@ public class GeomPoint implements GeometricObject {
 
         triangle = null;
         label = "";
+
+        id = "";
     }
 
 
@@ -180,6 +184,14 @@ public class GeomPoint implements GeometricObject {
 
 
             }
+
+        }
+
+        if (object instanceof GeomPoint) {
+            if (object == this) {
+                return true;
+            }
+
 
         }
 
