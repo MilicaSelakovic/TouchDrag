@@ -1,13 +1,16 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Pref">
-
-        <CheckBoxPreference
-            android:key="checkbox_preference"
-            android:title="lud"
-            android:summary="trla baba lan" />
-
-    </PreferenceCategory>
+    <Preference
+        android:title="Settings"
+        android:key="key"
+        android:icon="@drawable/ic_undo"
+        android:selectable="true"
+        android:enabled="false"></Preference>
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="Label"
+        android:key="switch_preference_1"
+        android:summary="Enable point labeling" />
 
 
 </PreferenceScreen>

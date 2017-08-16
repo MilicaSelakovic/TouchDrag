@@ -49,7 +49,8 @@ public class Recognizer {
         }
 
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
-            if (entry.getValue().connection(recognized, commands, uniqueID, objects)) {
+            if (!(entry.getValue() instanceof GeomPoint) &&
+                    entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
                 mCommands.add(commands);
                 return true;

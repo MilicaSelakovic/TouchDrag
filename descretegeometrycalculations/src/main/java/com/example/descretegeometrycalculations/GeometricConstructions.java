@@ -1,5 +1,9 @@
 package com.example.descretegeometrycalculations;
 
+import android.util.Log;
+
+import org.opencv.core.Point;
+
 public class GeometricConstructions {
 
     /*
@@ -303,7 +307,17 @@ public class GeometricConstructions {
     W17 Ако су дате тачке X и Y и угао α могуће jе конструисати праву q тако
     да jе угао ∠(XY , q) = A · α/2B + C · π/2D; */
 
+    public static Line w17(GeomPoint X, GeomPoint Y, GeomPoint A, GeomPoint B, GeomPoint C, int a,
+                           int b, int c, int d) {
+        double alpha = angle(A, B, C);
 
+        alpha = a * alpha / Math.pow(2, b) + c * Math.PI / Math.pow(2, d);
+
+        double x = Math.cos(alpha) * Y.X() - Math.sin(alpha) * Y.Y();
+        double y = Math.sin(alpha) * Y.X() + Math.cos(alpha) * Y.Y();
+
+        return new Line(X, new GeomPoint((float) x, (float) y));
+    }
 
     /*
     W19 Ако су дате тачке X, Y и Z могуће jе конструисати тачку W коjа jе
@@ -339,8 +353,12 @@ public class GeometricConstructions {
 
 
     public static Circle w20(GeomPoint X, GeomPoint Y, GeomPoint A, GeomPoint B, GeomPoint C, int a, int b, int c, int d) {
+        Line l = w17(X, Y, A, B, C, a, b, c, d);
 
-        return null;
+        Line m = w14(X, Y);
+
+        GeomPoint O = w03(l, m);
+        return w06(O, A);
     }
 
     /*
@@ -401,4 +419,24 @@ public class GeometricConstructions {
 
         return GeometricConstructions.w03(hb, ha);
     }
+
+
+    private static double angle(GeomPoint X, GeomPoint Y, GeomPoint Z) {
+
+        float dx1 = Y.X() - X.X();
+        float dy1 = Y.Y() - X.Y();
+
+        float dx2 = Y.X() - Z.X();
+        float dy2 = Y.Y() - Z.Y();
+
+        Point P = new Point(dx1, dy1);
+        Point R = new Point(dx2, dy2);
+
+        double dprod = P.dot(R);
+        double normp = Math.sqrt(P.dot(P));
+        double normr = Math.sqrt(R.dot(R));
+
+        return Math.acos(dprod / (normp * normr));
+    }
+
 }

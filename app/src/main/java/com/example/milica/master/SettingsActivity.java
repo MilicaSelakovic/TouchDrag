@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.os.Bundle;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 
 import java.util.List;
@@ -52,6 +54,20 @@ public class SettingsActivity extends PreferenceActivity {
 
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.preferences);
+
+            Preference preference = findPreference("key");
+
+            preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Log.d("kakakaka", "ajajja");
+                    Intent i = new Intent(getActivity(), Drawing.class);
+                    startActivity(i);
+                    getActivity().finish();
+                    return true;
+                }
+            });
+
 
 
         }

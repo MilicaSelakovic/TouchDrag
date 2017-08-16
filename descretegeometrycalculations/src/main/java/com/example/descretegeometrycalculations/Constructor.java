@@ -92,7 +92,7 @@ public class Constructor {
                     newobjects.put(array[4], objects.get(array[4]));
                     X = new GeomPoint(0, 0);
                     Y = new GeomPoint(0, 0);
-                    GeometricConstructions.w04(((Line) objects.get(array[3])), ((Circle) objects.get(array[4])),
+                    GeometricConstructions.w04(((Line) objects.get(array[4])), ((Circle) objects.get(array[3])),
                             X, Y);
 
                     P = (GeomPoint) objects.get(array[1]);
@@ -340,6 +340,27 @@ public class Constructor {
 
                     break;
                 case "w17":
+                    newobjects.put(array[2], objects.get(array[2]));
+                    newobjects.put(array[3], objects.get(array[3]));
+                    newobjects.put(array[5], objects.get(array[5]));
+                    newobjects.put(array[6], objects.get(array[6]));
+                    newobjects.put(array[7], objects.get(array[7]));
+
+                    l = GeometricConstructions.w17((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
+                            (GeomPoint) objects.get(array[5]), (GeomPoint) objects.get(array[6]), (GeomPoint) objects.get(array[7]),
+                            Integer.parseInt(array[10]), Integer.parseInt(array[11]), Integer.parseInt(array[12]),
+                            Integer.parseInt(array[13]));
+
+                    p = (Line) objects.get(array[1]);
+
+                    if (p == null) {
+                        p = new Line(null, null);
+                        p.setId(array[1]);
+                    }
+
+                    p.setBegin(l.getBegin());
+                    p.setEnd(l.getEnd());
+                    newobjects.put(p.getId(), p);
 
                     break;
                 case "w18":
@@ -361,6 +382,25 @@ public class Constructor {
                     newobjects.put(P.getId(), P);
                     break;
                 case "w20":
+                    newobjects.put(array[2], objects.get(array[2]));
+                    newobjects.put(array[3], objects.get(array[3]));
+                    newobjects.put(array[5], objects.get(array[4]));
+                    newobjects.put(array[5], objects.get(array[5]));
+                    newobjects.put(array[6], objects.get(array[6]));
+
+                    c = GeometricConstructions.w20((GeomPoint) objects.get(array[2]), (GeomPoint) objects.get(array[3]),
+                            (GeomPoint) objects.get(array[4]), (GeomPoint) objects.get(array[5]), (GeomPoint) objects.get(array[6]),
+                            Integer.parseInt(array[7]), Integer.parseInt(array[8]), Integer.parseInt(array[9]),
+                            Integer.parseInt(array[10]));
+
+                    k = (Circle) objects.get(array[1]);
+                    if (k == null) {
+                        k = new Circle(null, 0);
+                        k.setId(array[1]);
+                    }
+                    k.setCenter(c.getCenter());
+                    k.setRadius(c.getRadius());
+                    newobjects.put(k.getId(), k);
 
                     break;
                 case "w22":

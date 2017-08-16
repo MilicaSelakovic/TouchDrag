@@ -78,7 +78,7 @@ public class Drawing extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Drawing.this, SettingsActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
                         SettingsActivity.Prefs1Fragment.class.getName());
 

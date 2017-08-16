@@ -3,7 +3,9 @@
     <header
         android:fragment="com.example.milica.master.SettingsActivity$Prefs1Fragment"
         android:icon="@drawable/ic_settings"
-        android:title="Prefs 1"
-        android:summary="An example of some preferences." />
+        android:title="Language"
+        android:summary="An example of 1 preferences." />
+
 
 </preference-headers>
+
