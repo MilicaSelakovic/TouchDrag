@@ -313,6 +313,22 @@ public class Constructor {
 
                     break;
                 case "w18":
+
+                    l = GeometricConstructions.w17((GeomPoint) newobjects.get(array[5]), (GeomPoint) newobjects.get(array[6]),
+                            (GeomPoint) newobjects.get(array[7]), (GeomPoint) newobjects.get(array[8]), (GeomPoint) newobjects.get(array[9]),
+                            Integer.parseInt(array[10]), Integer.parseInt(array[11]), Integer.parseInt(array[12]),
+                            Integer.parseInt(array[13]));
+
+                    p = (Line) newobjects.get(array[1]);
+
+                    if (p == null) {
+                        p = new Line(null, null);
+                        p.setId(array[1]);
+                    }
+
+                    p.setBegin(l.getBegin());
+                    p.setEnd(l.getEnd());
+                    newobjects.put(p.getId(), p);
                     break;
                 case "w19":
                     X = GeometricConstructions.w19(((GeomPoint) newobjects.get(array[2])), ((GeomPoint) newobjects.get(array[3])),
