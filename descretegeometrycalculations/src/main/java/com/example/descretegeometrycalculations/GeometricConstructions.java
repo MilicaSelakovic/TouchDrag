@@ -484,7 +484,7 @@ public class GeometricConstructions {
         alpha = a * alpha / Math.pow(2, b) + c * Math.PI / Math.pow(2, d);
 
         //90-(1/pow(2,1)*angle[_G15392]+1/pow(2,1)*180)
-        double angle = Math.PI / 2 - alpha / 2;
+        double angle = Math.PI / 2 - alpha;
 
         Line l = podUglom(X, Y, -angle);
 
