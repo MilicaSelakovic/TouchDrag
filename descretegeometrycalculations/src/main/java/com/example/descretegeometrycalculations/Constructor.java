@@ -314,7 +314,7 @@ public class Constructor {
                     break;
                 case "w18":
 
-                    l = GeometricConstructions.w17((GeomPoint) newobjects.get(array[5]), (GeomPoint) newobjects.get(array[6]),
+                    l = GeometricConstructions.w18((GeomPoint) newobjects.get(array[5]), (GeomPoint) newobjects.get(array[6]),
                             (GeomPoint) newobjects.get(array[7]), (GeomPoint) newobjects.get(array[8]), (GeomPoint) newobjects.get(array[9]),
                             Integer.parseInt(array[10]), Integer.parseInt(array[11]), Integer.parseInt(array[12]),
                             Integer.parseInt(array[13]));
