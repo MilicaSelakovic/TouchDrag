@@ -41,8 +41,11 @@ public class GeometricConstructions {
         float deltaX = l1.CCoef()*l2.BCoef() - l1.BCoef()*l2.CCoef();
         float deltaY = l1.ACoef()*l2.CCoef() - l1.CCoef()*l2.ACoef();
 
-        if(Math.abs(delta) < GeometricObject.EPISLON){
+        // TODO: 18.8.17. Konstanta
+        if (Math.abs(delta) == 0) {
             //TODO nema resenja
+            // return null;
+            delta = 0.0000002f;
         }
         return new GeomPoint(deltaX/delta,deltaY/delta, false);
     }
@@ -125,45 +128,94 @@ public class GeometricConstructions {
     да су кругови различити;
     */
 
-    public static int w07(Circle c1, Circle c2, GeomPoint S1, GeomPoint S2){
-        double d = c1.getCenter().distance(c2.getCenter());
-        double r1 = c1.getRadius();
-        double r2 = c2.getRadius();
+    // TODO: 18.8.17. Ne radi
 
-        if(d + 0.001 > r1 + r1 ){
+    public static int w07(Circle c1, Circle c2, GeomPoint S1, GeomPoint S2){
+//        double d = c1.getCenter().distance(c2.getCenter());
+//        double r1 = c1.getRadius();
+//        double r2 = c2.getRadius();
+//
+//        if(d + 0.001 > r1 + r1 ){
+//            return 0;
+//        }
+//
+//        // TODO konstanta
+//        if (Math.abs(r1+r2-d) < 0.001){
+//            GeomPoint P = w01(c1.getCenter(), c1.getCenter(), c2.getCenter(), (float)(r1/r2));
+//            S1.setX(P.X());
+//            S2.setY(P.Y());
+//
+//            return 1;
+//        }
+//
+//        // Tacka P je presek S1S2 sa C1C2
+//        // x je |PC2|
+//
+//        double x = (d*d + r2*r2 - r1*r1)/(2*d);
+//
+//        // a = |PS1| = |PS2|
+//        GeomPoint P = w01(c2.getCenter(), c2.getCenter(), c1.getCenter(), (float)(x/d));
+//
+//        // vektor pravca normale na C1C2
+//        GeomPoint s = new GeomPoint(-(c2.getCenter().Y() - c1.getCenter().Y()), c2.getCenter().X() - c1.getCenter().X());
+//
+//        float a = (float)Math.sqrt(r2*r2 - x*x);
+//
+//        S1.setX(P.X() + a*s.X());
+//        S1.setY(P.Y() + a*s.Y());
+//
+//        S2.setX(P.X() - a*s.X());
+//        S2.setY(P.Y() - a*s.Y());
+//
+//        return 2;
+
+
+        // distance between the centers
+        double d = c1.getCenter().distance(c2.getCenter());
+
+        // find number of solutions
+        if (d > c1.getRadius() + c2.getRadius()) // circles are too far apart, no solution(s)
+        {
+            return 0;
+        } else if (d == 0 && c1.getRadius() == c2.getRadius()) // circles coincide
+        {
             return 0;
         }
+        // one circle contains the other
+        else if (d + Math.min(c1.getRadius(), c2.getRadius()) < Math.max(c1.getRadius(), c2.getRadius())) {
+            //std::cout << "One circle contains the other\n";
+            return 0;
+        } else {
+            double r = c1.getRadius();
+            double r2 = c2.getRadius();
+            double a = (r * r - r2 * r2 + d * d) / (2.0 * d);
+            double h = Math.sqrt(r * r - a * a);
 
-        // TODO konstanta
-        if (Math.abs(r1+r2-d) < 0.001){
-            GeomPoint P = w01(c1.getCenter(), c1.getCenter(), c2.getCenter(), (float)(r1/r2));
-            S1.setX(P.X());
-            S2.setY(P.Y());
+            // find p2
+            GeomPoint c = c1.getCenter();
+            GeomPoint C2 = c2.getCenter();
 
-            return 1;
+            double x = c.X() + (a * (C2.X() - c.X())) / d;
+            double y = c.Y() + (a * (C2.Y() - c.Y())) / d;
+
+            // find intersection points p3
+            S1.setX((float) (x + (h * (C2.Y() - c.Y()) / d)));
+            S1.setY((float) (y - (h * (C2.X() - c.X()) / d)));
+
+            if (d == r + r2)
+                return 1;
+
+            S2.setX((float) (x - (h * (C2.Y() - c.Y()) / d)));
+            S2.setY((float) (y + (h * (C2.X() - c.X()) / d)));
+
+
+//            i2.setCoords( p2.x() - (h * (C2.c.y() - c.y())/ d),
+//                    p2.y() + (h * (C2.c.x() - c.x())/ d)
+//            );
+
+
+            return 2;
         }
-
-        // Tacka P je presek S1S2 sa C1C2
-        // x je |PC2|
-
-        double x = (d*d + r2*r2 - r1*r1)/(2*d);
-
-        // a = |PS1| = |PS2|
-        GeomPoint P = w01(c2.getCenter(), c2.getCenter(), c1.getCenter(), (float)(x/d));
-
-        // vektor pravca normale na C1C2
-        GeomPoint s = new GeomPoint(-(c2.getCenter().Y() - c1.getCenter().Y()), c2.getCenter().X() - c1.getCenter().X());
-
-        float a = (float)Math.sqrt(r2*r2 - x*x);
-
-        S1.setX(P.X() + a*s.X());
-        S1.setY(P.Y() + a*s.Y());
-
-        S2.setX(P.X() - a*s.X());
-        S2.setY(P.Y() - a*s.Y());
-
-        return 2;
-
     }
     /*
     W08 Ако су датa два круга и jедна њихова заjедничка тачка, могуће jе кон-
@@ -230,22 +282,46 @@ public class GeometricConstructions {
     тангенте из тачке X на круг k; услов недегенерисаности jе да jе тачка X
     ван круга k; */
 
-    //TODO proveriti tacnost
 
     public static void w12(Circle k, GeomPoint X, Line t1, Line t2){
-        double d = k.getCenter().distance(X);
+//        double d = k.getCenter().distance(X);
+//        GeomPoint T1 = new GeomPoint(0,0);
+//        GeomPoint T2 = new GeomPoint(0,0);
+//
+//        double a = Math.sqrt(d*d - Math.pow(k.getRadius(),2));
+//
+//        w07(k, new Circle(X, a), T1, T2);
+
+        GeomPoint C = k.getCenter();
+        double d = C.distance(X);
+
+        double cos = k.getRadius() / d;
+        double sin = Math.sqrt(1 - cos * cos);
+
         GeomPoint T1 = new GeomPoint(0,0);
         GeomPoint T2 = new GeomPoint(0,0);
 
-        double a = Math.sqrt(d*d - Math.pow(k.getRadius(),2));
+        w04(new Line(X, C), k, T1, T2);
 
-        w07(k, new Circle(X, a), T1, T2);
+        double d1 = X.distance(T1);
+        double d2 = X.distance(T2);
+
+        GeomPoint T;
+
+        if (d1 < d2) {
+            T = T1;
+        } else {
+            T = T2;
+        }
+
+        float x = T.X() - C.X();
+        float y = T.Y() - C.Y();
 
         t1.setBegin(X);
-        t2.setEnd(T1);
+        t1.setEnd(new GeomPoint((float) (x * cos - y * sin) + C.X(), (float) (x * sin + y * cos) + C.Y()));
 
         t2.setBegin(X);
-        t2.setEnd(T2);
+        t2.setEnd(new GeomPoint((float) (x * cos - y * sin) + C.X(), (float) (x * sin + y * cos) + C.Y()));
     }
 
     /*
@@ -259,7 +335,7 @@ public class GeometricConstructions {
 
         w12(k, X, t1, t2);
 
-        if(t1.getEnd().equal(t.getEnd())){
+        if (t1.contain(t.getEnd())) {
             return t2;
         }
 
@@ -303,20 +379,38 @@ public class GeometricConstructions {
         return new Line(X, new GeomPoint(X.X() + dx, X.Y() + dy));
     }
 
+    private static Line podUglom(GeomPoint X, GeomPoint Y, double alpha) {
+        float xp = Y.X() - X.X();
+        float yp = Y.Y() - X.Y();
+
+        double x = Math.cos(alpha) * xp - Math.sin(alpha) * yp;
+        double y = Math.sin(alpha) * xp + Math.cos(alpha) * yp;
+
+        return new Line(X, new GeomPoint((float) x + X.X(), (float) y + X.Y()));
+    }
     /*
     W17 Ако су дате тачке X и Y и угао α могуће jе конструисати праву q тако
     да jе угао ∠(XY , q) = A · α/2B + C · π/2D; */
 
+    // Isprobano radi
     public static Line w17(GeomPoint X, GeomPoint Y, GeomPoint A, GeomPoint B, GeomPoint C, int a,
                            int b, int c, int d) {
         double alpha = angle(A, B, C);
 
         alpha = a * alpha / Math.pow(2, b) + c * Math.PI / Math.pow(2, d);
 
-        double x = Math.cos(alpha) * Y.X() - Math.sin(alpha) * Y.Y();
-        double y = Math.sin(alpha) * Y.X() + Math.cos(alpha) * Y.Y();
+        // translacija td X predje u koord pocetak
+        return podUglom(X, Y, -alpha);
+    }
 
-        return new Line(X, new GeomPoint((float) x, (float) y));
+    public static Line w18(GeomPoint X, GeomPoint Y, GeomPoint A, GeomPoint B, GeomPoint C, int a,
+                           int b, int c, int d) {
+        double alpha = angle(A, B, C);
+
+        alpha = a * alpha / Math.pow(2, b) + c * Math.PI / Math.pow(2, d);
+
+        // translacija td X predje u koord pocetak
+        return podUglom(X, Y, alpha);
     }
 
     /*
@@ -329,20 +423,52 @@ public class GeometricConstructions {
         /*Tacka van prave XY
         * */
 
-        GeomPoint O = new GeomPoint((X.X() + Y.X()) / 2 + 200, (X.Y() + Y.Y()) / 2 + 200);
+        // rotiram Y oko Z za 90
+        float x = Y.X() - Z.X();
+        float y = Y.Y() - Z.Y();
 
-        Line b = new Line(X, O);
-        Line c = w16(Z, b);
-        Line m = new Line(Y, O);
+        float tmp = x;
 
-        GeomPoint E = w03(c, m);
+        x = -y + Z.Y();
+        y = tmp + Z.X();
 
-        GeomPoint F = w01(Z, E, Z, 1);
+        GeomPoint Rotirana = new GeomPoint(x, y);
 
-        Line n = new Line(O, F);
-        Line a = new Line(X, Y);
+        Line TbR = new Line(Z, Rotirana);
 
-        return w03(n, a);
+        GeomPoint Sred = new GeomPoint((Y.X() + Rotirana.X()) / 2, (Y.Y() + Rotirana.Y()) / 2);
+
+        Line XSred = new Line(X, Sred);
+
+        Line YSred = new Line(Y, Sred);
+
+        GeomPoint G = w03(TbR, XSred);
+
+        Line XP = new Line(X, Rotirana);
+
+        Line YG = new Line(Y, G);
+
+        GeomPoint D = w03(XP, YG);
+
+        Line DSred = new Line(Sred, D);
+
+
+        return w03(DSred, new Line(X, Z));
+
+//        GeomPoint O = new GeomPoint((X.X() + Y.X()) / 2 + 200, (X.Y() + Y.Y()) / 2 + 200);
+//
+//        Line b = new Line(X, O);
+//        Line c = w16(Z, b);
+//        Line m = new Line(Y, O);
+//
+//        GeomPoint E = w03(c, m);
+//
+//        GeomPoint F = w01(Z, E, Z, 1);
+//
+//        Line n = new Line(O, F);
+//        Line a = new Line(X, Y);
+
+//        return w03(n, a);
     }
 
     // Ovde ce povratna vrednost biti krug
@@ -353,7 +479,14 @@ public class GeometricConstructions {
 
 
     public static Circle w20(GeomPoint X, GeomPoint Y, GeomPoint A, GeomPoint B, GeomPoint C, int a, int b, int c, int d) {
-        Line l = w17(X, Y, A, B, C, a, b, c, d);
+        double alpha = angle(A, B, C);
+
+        alpha = a * alpha / Math.pow(2, b) + c * Math.PI / Math.pow(2, d);
+
+        //90-(1/pow(2,1)*angle[_G15392]+1/pow(2,1)*180)
+        double angle = Math.PI / 2 - alpha / 2;
+
+        Line l = podUglom(X, Y, -angle);
 
         Line m = w14(X, Y);
 

@@ -590,6 +590,10 @@ public class Triangle extends Polygon {
         boolean ind = false;
         GeomPoint H = GeometricConstructions.orthocenter(A, B, C);
 
+        if (H == null) {
+            return false;
+        }
+
         if (H.distance(point) > 20) {
             return false;
         }
@@ -709,6 +713,10 @@ public class Triangle extends Polygon {
 
     private boolean circumcenter(GeomPoint point, Vector<String> commands) {
         GeomPoint O = GeometricConstructions.circumcenter(A, B, C);
+
+        if (O == null) {
+            return false;
+        }
 
         if (O.distance(point) > 20) {
             return false;
