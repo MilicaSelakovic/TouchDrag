@@ -266,7 +266,7 @@ public class GeometricConstructions {
         // GeomPoint v1 = new GeomPoint(-v.Y(), v.X());  vektor pravca nove prave
         // TODO da li novonastala tacka moze biti 0,0 posto X moze pripadati L
 
-        return new Line(X, new GeomPoint(X.X() - v.Y(), X.Y() + v.X()));
+        return new Line(X, new GeomPoint(X.X() - v.Y() * 10, X.Y() + v.X() * 10));
     }
 
     /*
