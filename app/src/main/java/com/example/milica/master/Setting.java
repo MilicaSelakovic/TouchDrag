@@ -8,25 +8,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 
 public class Setting extends AppCompatActivity {
 
-    private int colorMOVE;
-    private int colorFIXED;
-    private int colorACTIVE;
-    private int colorCANFREE;
-    private int colorCANNOTFREE;
-    private int colorOHTER;
+    private int moveColor;
+    private int fixedColor;
+    private int activeColor;
+    private int canChooseColor;
+    private int cannotChooseColor;
+    private int otherColor;
 
-    private int pointSize;
-    private int textSize;
-    private boolean enableLabel;
+    private float pointSize;
+    private boolean label;
+    private float textSize;
+
+    private boolean hasExtra = false;
 
 
     @Override
@@ -34,22 +40,30 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+        Bundle extras = getIntent().getExtras();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.sizes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        if (extras != null) {
+            hasExtra = true;
+            moveColor = extras.getInt("moveColor");
+            fixedColor = extras.getInt("fixedColor");
+            activeColor = extras.getInt("activeColor");
+            canChooseColor = extras.getInt("canChooseColor");
+            cannotChooseColor = extras.getInt("cannotChooseColor");
+            otherColor = extras.getInt("otherColor");
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner3);
-        spinner1.setAdapter(adapter);
+            pointSize = extras.getFloat("pointSize");
+            label = extras.getBoolean("label");
+            textSize = extras.getFloat("textSize");
+        }
 
-        // TODO postaviti vrednosti za polja.
+
+        if (hasExtra) {
+            setValues();
+        }
+
         this.findViewById(R.id.imageButton5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Setting.this, Drawing.class);
-//                startActivity(intent);
                 finish();
             }
         });
@@ -58,28 +72,175 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final ColorPicker cp = new ColorPicker(Setting.this, 1, 100, 100, 100);
-
+                final ColorPicker cp = new ColorPicker(Setting.this, Color.red(moveColor), Color.green(moveColor), Color.blue(moveColor));
                 cp.show();
 
-    /* Set a new Listener called when user click "select" */
                 cp.setCallback(new ColorPickerCallback() {
                     @Override
                     public void onColorChosen(@ColorInt int color) {
-                        // Do whatever you want
-                        // Examples
-//                        Log.d("Alpha", Integer.toString(Color.alpha(color)));
-//                        Log.d("Red", Integer.toString(Color.red(color)));
-//                        Log.d("Green", Integer.toString(Color.green(color)));
-//                        Log.d("Blue", Integer.toString(Color.blue(color)));
-//
-                        Log.d("Pure Hex", Integer.toHexString(color));
-//                        Log.d("#Hex no alpha", String.format("#%06X", (0xFFFFFF & color)));
-//                        Log.d("#Hex with alpha", String.format("#%08X", (0xFFFFFFFF & color)));
-
+                        moveColor = color;
+                        findViewById(R.id.button2).setBackgroundColor(moveColor);
                         cp.dismiss();
                     }
                 });
+            }
+        });
+
+        this.findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ColorPicker cp = new ColorPicker(Setting.this, Color.red(fixedColor), Color.green(fixedColor), Color.blue(fixedColor));
+                cp.show();
+
+                cp.setCallback(new ColorPickerCallback() {
+                    @Override
+                    public void onColorChosen(@ColorInt int color) {
+                        fixedColor = color;
+                        findViewById(R.id.button3).setBackgroundColor(fixedColor);
+                        cp.dismiss();
+                    }
+                });
+            }
+        });
+
+
+        this.findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ColorPicker cp = new ColorPicker(Setting.this, Color.red(activeColor), Color.green(activeColor), Color.blue(activeColor));
+                cp.show();
+
+                cp.setCallback(new ColorPickerCallback() {
+                    @Override
+                    public void onColorChosen(@ColorInt int color) {
+                        activeColor = color;
+                        findViewById(R.id.button4).setBackgroundColor(activeColor);
+                        cp.dismiss();
+                    }
+                });
+            }
+        });
+
+        this.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ColorPicker cp = new ColorPicker(Setting.this, Color.red(canChooseColor), Color.green(canChooseColor), Color.blue(canChooseColor));
+                cp.show();
+
+                cp.setCallback(new ColorPickerCallback() {
+                    @Override
+                    public void onColorChosen(@ColorInt int color) {
+                        canChooseColor = color;
+                        findViewById(R.id.button5).setBackgroundColor(canChooseColor);
+                        cp.dismiss();
+                    }
+                });
+            }
+        });
+
+
+        this.findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ColorPicker cp = new ColorPicker(Setting.this, Color.red(cannotChooseColor), Color.green(cannotChooseColor), Color.blue(cannotChooseColor));
+                cp.show();
+
+                cp.setCallback(new ColorPickerCallback() {
+                    @Override
+                    public void onColorChosen(@ColorInt int color) {
+                        cannotChooseColor = color;
+                        findViewById(R.id.button6).setBackgroundColor(cannotChooseColor);
+                        cp.dismiss();
+                    }
+                });
+            }
+        });
+
+
+        this.findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ColorPicker cp = new ColorPicker(Setting.this, Color.red(otherColor), Color.green(otherColor), Color.blue(otherColor));
+                cp.show();
+
+                cp.setCallback(new ColorPickerCallback() {
+                    @Override
+                    public void onColorChosen(@ColorInt int color) {
+                        otherColor = color;
+                        findViewById(R.id.button7).setBackgroundColor(otherColor);
+                        cp.dismiss();
+                    }
+                });
+            }
+        });
+
+        this.findViewById(R.id.switch1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Switch s = (Switch) findViewById(R.id.switch1);
+
+                label = s.isChecked();
+            }
+        });
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int pos = parent.getSelectedItemPosition();
+
+                switch (pos) {
+                    case 0:
+                        textSize = 30;
+                        break;
+                    case 1:
+                        textSize = 50;
+                        break;
+                    case 2:
+                        textSize = 70;
+                        break;
+                    default:
+                        textSize = 50;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner3);
+
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int pos = parent.getSelectedItemPosition();
+
+                switch (pos) {
+                    case 0:
+                        pointSize = 20;
+                        break;
+                    case 1:
+                        pointSize = 30;
+                        break;
+                    case 2:
+                        pointSize = 40;
+                        break;
+                    default:
+                        pointSize = 30;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -87,6 +248,87 @@ public class Setting extends AppCompatActivity {
     @Override
     public void finish() {
 
+        Intent intent = new Intent();
+
+        intent.putExtra("moveColor", moveColor);
+        intent.putExtra("fixedColor", fixedColor);
+        intent.putExtra("activeColor", activeColor);
+        intent.putExtra("canChooseColor", canChooseColor);
+        intent.putExtra("cannotChooseColor", cannotChooseColor);
+        intent.putExtra("otherColor", otherColor);
+
+        intent.putExtra("pointSize", pointSize);
+        intent.putExtra("label", label);
+        intent.putExtra("textSize", textSize);
+
+        setResult(RESULT_OK, intent);
         super.finish();
     }
+
+
+    private void setValues() {
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.sizes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setSelection(getTextSize());
+
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner3);
+        spinner1.setAdapter(adapter);
+        spinner1.setSelection(getPointSize());
+
+        Button button2 = (Button) findViewById(R.id.button2);
+        button2.setBackgroundColor(moveColor);
+
+        Button button3 = (Button) findViewById(R.id.button3);
+        button3.setBackgroundColor(fixedColor);
+
+        Button button4 = (Button) findViewById(R.id.button4);
+        button4.setBackgroundColor(activeColor);
+
+        Button button5 = (Button) findViewById(R.id.button5);
+        button5.setBackgroundColor(canChooseColor);
+
+        Button button6 = (Button) findViewById(R.id.button6);
+        button6.setBackgroundColor(cannotChooseColor);
+
+        Button button7 = (Button) findViewById(R.id.button7);
+        button7.setBackgroundColor(otherColor);
+
+        Switch switch1 = (Switch) findViewById(R.id.switch1);
+        switch1.setChecked(label);
+
+
+
+    }
+
+    private int getPointSize() {
+        if (pointSize < 30) {
+            return 0;
+        }
+
+        if (pointSize > 30) {
+            return 2;
+        }
+
+        return 1;
+    }
+
+    private int getTextSize() {
+        if (textSize < 50) {
+            return 0;
+        }
+
+        if (textSize > 50) {
+            return 2;
+        }
+
+        return 1;
+    }
+
+
 }

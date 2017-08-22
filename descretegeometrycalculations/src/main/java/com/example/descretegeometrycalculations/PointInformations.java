@@ -97,29 +97,11 @@ public class PointInformations {
         return textSize;
     }
 
-    public void setSmallPointSize() {
-        this.pointSize = 10f;
+    public void setPointSize(float pointSize) {
+        this.pointSize = pointSize;
     }
 
-    public void setNormalPointSize() {
-        this.pointSize = 20f;
+    public void setTextSize(float textSize) {
+        this.textSize = textSize;
     }
-
-    public void setLargePointSize() {
-        this.pointSize = 30f;
-    }
-
-
-    public void setSmallTextSize() {
-        this.textSize = 30;
-    }
-
-    public void setNormalTextSize() {
-        this.textSize = 50;
-    }
-
-    public void setLargeTextSize() {
-        this.textSize = 70;
-    }
-
 }

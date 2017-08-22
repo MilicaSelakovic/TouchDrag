@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
+import com.example.descretegeometrycalculations.PointInformations;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
@@ -23,6 +25,7 @@ import java.util.Vector;
 
 public class Drawing extends Activity {
 
+    private PointInformations pointInformations;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -46,6 +49,7 @@ public class Drawing extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
 
+        pointInformations = new PointInformations();
 
         ConstructionParser parser = new ConstructionParser();
 
@@ -78,12 +82,19 @@ public class Drawing extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Drawing.this, Setting.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
-//                        SettingsActivity.Prefs1Fragment.class.getName());
 
-                startActivity(intent);
-                // finish();
+                intent.putExtra("moveColor", pointInformations.getMoveColor());
+                intent.putExtra("fixedColor", pointInformations.getFixedColor());
+                intent.putExtra("activeColor", pointInformations.getActiveColor());
+                intent.putExtra("canChooseColor", pointInformations.getCanChooseColor());
+                intent.putExtra("cannotChooseColor", pointInformations.getCannotChooseColor());
+                intent.putExtra("otherColor", pointInformations.getOtherColor());
+
+                intent.putExtra("pointSize", pointInformations.getPointSize());
+                intent.putExtra("label", pointInformations.isLabel());
+                intent.putExtra("textSize", pointInformations.getTextSize());
+
+                startActivityForResult(intent, 17);
             }
         });
 
@@ -96,10 +107,8 @@ public class Drawing extends Activity {
     {
         super.onResume();
         if (!OpenCVLoader.initDebug()) {
-            //Log.d("OpenCV", "Internal OpenCV library not found. Using OpenCV Manager for initialization");
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this, mLoaderCallback);
         } else {
-            //Log.d("OpenCV", "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
@@ -131,4 +140,23 @@ public class Drawing extends Activity {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == 17) {
+            Bundle extras = data.getExtras();
+
+            pointInformations.setMoveColor(extras.getInt("moveColor"));
+            pointInformations.setFixedColor(extras.getInt("fixedColor"));
+            pointInformations.setActiveColor(extras.getInt("activeColor"));
+            pointInformations.setCanChooseColor(extras.getInt("canChooseColor"));
+            pointInformations.setCannotChooseColor(extras.getInt("cannotChooseColor"));
+            pointInformations.setOtherColor(extras.getInt("otherColor"));
+
+            pointInformations.setPointSize(extras.getFloat("pointSize"));
+            pointInformations.setLabel(extras.getBoolean("label"));
+            pointInformations.setTextSize(extras.getFloat("textSize"));
+            ((DrawingView) findViewById(R.id.view)).setPointInformations(pointInformations);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

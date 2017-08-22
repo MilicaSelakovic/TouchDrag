@@ -383,7 +383,11 @@ public class DrawingView extends View {
         }
     }
 
+    public void setPointInformations(PointInformations pointInformations) {
+        this.pointInformations = pointInformations;
 
+        invalidate();
+    }
 }
 
 

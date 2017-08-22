@@ -119,7 +119,9 @@ public class GeomPoint implements GeometricObject {
 
         canvas.drawCircle(x, y, pointInformations.getPointSize(), circlePaint);
         circlePaint.setTextSize(pointInformations.getTextSize());
-        canvas.drawText(label, x + 20f, y + 20f, circlePaint);
+        if (pointInformations.isLabel()) {
+            canvas.drawText(label, x + 20f, y + 20f, circlePaint);
+        }
     }
 
     @Override
