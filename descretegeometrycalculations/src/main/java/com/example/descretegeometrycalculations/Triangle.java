@@ -6,7 +6,6 @@ import android.graphics.Paint;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 import java.util.Vector;
 
 public class Triangle extends Polygon {
@@ -303,8 +302,8 @@ public class Triangle extends Polygon {
 //    }
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
-        super.draw(canvas, paint, finished, choose);
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
+        super.draw(canvas, paint, finished, choose, pointInformations);
 
     }
 

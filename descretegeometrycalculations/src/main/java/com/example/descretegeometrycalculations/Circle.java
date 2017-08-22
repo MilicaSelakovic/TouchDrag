@@ -53,9 +53,9 @@ public class Circle implements GeometricObject {
 
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         if (finished)
-            center.draw(canvas, paint, finished, choose);
+            center.draw(canvas, paint, finished, choose, pointInformations);
         canvas.drawCircle(center.X(), center.Y(), (float) radius, paint);
     }
 

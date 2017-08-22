@@ -17,9 +17,9 @@ public class Incircle extends Circle implements SignificantObject {
     }
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         if(visible)
-            super.draw(canvas, paint, finished, choose);
+            super.draw(canvas, paint, finished, choose, pointInformations);
     }
 
     @Override

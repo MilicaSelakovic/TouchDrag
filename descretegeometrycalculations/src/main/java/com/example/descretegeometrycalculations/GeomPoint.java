@@ -90,35 +90,35 @@ public class GeomPoint implements GeometricObject {
 
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         if (move) {
-            circlePaint.setColor(Color.BLUE);
+            circlePaint.setColor(pointInformations.getMoveColor());
 
         } else {
-            circlePaint.setColor(Color.GRAY);
+            circlePaint.setColor(pointInformations.getFixedColor());
         }
 
         if (choose) {
             switch (type) {
                 case TRIANGLE_CANNOTFREE:
-                    circlePaint.setColor(Color.RED);
+                    circlePaint.setColor(pointInformations.getCannotChooseColor());
                     break;
                 case OTHER:
-                    circlePaint.setColor(Color.DKGRAY);
+                    circlePaint.setColor(pointInformations.getOtherColor());
                     break;
                 case TRIANGLE_FREE:
-                    circlePaint.setColor(Color.rgb(27, 226, 98));
+                    circlePaint.setColor(pointInformations.getActiveColor());
                     break;
                 case TRIANGLE_CANFREE:
-                    circlePaint.setColor(Color.YELLOW);
+                    circlePaint.setColor(pointInformations.getCanChooseColor());
                     break;
             }
 
 
         }
 
-        canvas.drawCircle(x, y, 20f, circlePaint);
-        circlePaint.setTextSize(50);
+        canvas.drawCircle(x, y, pointInformations.getPointSize(), circlePaint);
+        circlePaint.setTextSize(pointInformations.getTextSize());
         canvas.drawText(label, x + 20f, y + 20f, circlePaint);
     }
 

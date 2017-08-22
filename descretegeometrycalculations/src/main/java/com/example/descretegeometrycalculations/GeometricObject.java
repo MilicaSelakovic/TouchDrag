@@ -10,7 +10,7 @@ import java.util.Vector;
 public interface GeometricObject {
     double EPISLON = 10; //TODO nastelovati konstantu
 
-    void draw(Canvas canvas, Paint paint, boolean finished, boolean choose);
+    void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations);
 
     boolean choose(float x, float y, HashMap<String, Vector<String>> trics);
 

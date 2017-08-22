@@ -35,7 +35,7 @@ public class Polygon implements GeometricObject {
     }
 
     @Override
-    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
+    public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         Path path = new Path();
         path.moveTo( points.firstElement().X(), points.firstElement().Y());
 

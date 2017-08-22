@@ -77,13 +77,13 @@ public class Drawing extends Activity {
         this.findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Drawing.this, SettingsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
-                        SettingsActivity.Prefs1Fragment.class.getName());
+                Intent intent = new Intent(Drawing.this, Setting.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
+//                        SettingsActivity.Prefs1Fragment.class.getName());
 
                 startActivity(intent);
-                finish();
+                // finish();
             }
         });
 

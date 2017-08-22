@@ -2,8 +2,6 @@ package com.example.milica.master;
 
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.content.Context;
@@ -69,6 +67,7 @@ public class DrawingView extends View {
     Triangle currentTriangle;
 
     private Mode mode;
+    private PointInformations pointInformations;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -91,21 +90,10 @@ public class DrawingView extends View {
         currentTriangle = null;
 
         trics = new HashMap<>();
-//        Vector<String> konstrukcija = new Vector<>();
-//        konstrukcija.add("w01 Mc A A B 0.5");
-//        konstrukcija.add("w02 ha A H");
-//        konstrukcija.add("w02 hb B H");
-//        konstrukcija.add("w06 k Mc A");
-//        konstrukcija.add("w05 Ha ha k A");
-//        konstrukcija.add("w02 a Ha B");
-//        konstrukcija.add("w05 Hb hb k B");
-//        konstrukcija.add("w02 b Hb A");
-//        konstrukcija.add("w03 C a b");
-//
-//        trics.put("A B H", konstrukcija);
-//        trics.put("A B C", new Vector<String>());
 
         mScaleGestureDetector = new ScaleGestureDetector(context, new ScaleListener());
+
+        pointInformations = new PointInformations();
     }
 
     private void setupDrawing(){
@@ -154,13 +142,13 @@ public class DrawingView extends View {
             }
 
             if (current != null && actionDown) {
-                current.draw(canvas, drawObject, false, false);
+                current.draw(canvas, drawObject, false, false, pointInformations);
             }
         }
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             if (entry.getValue() != null)
-                entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_SELECT);
+                entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_SELECT, pointInformations);
         }
 
 

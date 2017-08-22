@@ -3,7 +3,6 @@ package com.example.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,7 +51,7 @@ public class Line implements GeometricObject {
 
 
    @Override
-   public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose) {
+   public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
        float x1 = 0;
        float x2 = canvas.getWidth() * 20;
 
