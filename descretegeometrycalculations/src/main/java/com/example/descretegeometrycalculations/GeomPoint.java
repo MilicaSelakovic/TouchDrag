@@ -197,6 +197,31 @@ public class GeomPoint implements GeometricObject {
 
         }
 
+        if (object instanceof Circle) {
+            Circle c = (Circle) object;
+            if (c.contain(this)) {
+                GeomPoint P = null;
+                for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+                    if (entry.getValue() instanceof GeomPoint && entry.getValue() != this &&
+                            c.contain((GeomPoint) entry.getValue())) {
+
+                        if (P == null) {
+                            P = (GeomPoint) entry.getValue();
+                        } else {
+                            Circle k = GeometricConstructions.circleAroundTriangle(this, P, (GeomPoint) entry.getValue());
+
+                            c.setCenter(k.getCenter());
+                            c.setRadius(k.getRadius());
+
+                            commands.add("circleAroundTriangle " + object.getId() + " " + this.getId() + " " + P.getId()
+                                    + " " + entry.getValue().getId());
+
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
 

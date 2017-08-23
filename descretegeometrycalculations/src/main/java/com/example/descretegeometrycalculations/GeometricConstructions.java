@@ -128,8 +128,6 @@ public class GeometricConstructions {
     да су кругови различити;
     */
 
-    // TODO: 18.8.17. Ne radi
-
     public static int w07(Circle c1, Circle c2, GeomPoint S1, GeomPoint S2){
 //        double d = c1.getCenter().distance(c2.getCenter());
 //        double r1 = c1.getRadius();
@@ -570,6 +568,16 @@ public class GeometricConstructions {
         double normr = Math.sqrt(R.dot(R));
 
         return Math.acos(dprod / (normp * normr));
+    }
+
+
+    public static Circle circleAroundTriangle(GeomPoint A, GeomPoint B, GeomPoint C) {
+        Line l1 = w14(A, B);
+        Line l2 = w14(B, C);
+
+        GeomPoint Cen = w03(l1, l2);
+
+        return new Circle(Cen, Cen.distance(A));
     }
 
 }

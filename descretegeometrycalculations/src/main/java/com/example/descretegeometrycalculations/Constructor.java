@@ -101,10 +101,14 @@ public class Constructor {
 
                     P.setX(X.X());
                     P.setY(X.Y());
-                    newobjects.put(P.getId(), P);
-
+                    if (!P.getId().equals("R")) {
+                        newobjects.put(P.getId(), P);
+                    }
                     Q.setX(Y.X());
                     Q.setY(Y.Y());
+                    if (Q.getId().equals("R")) {
+                        break;
+                    }
                     newobjects.put(Q.getId(), Q);
                     break;
                 case "w05":
@@ -158,10 +162,16 @@ public class Constructor {
 
                     P.setX(X.X());
                     P.setY(X.Y());
-                    newobjects.put(P.getId(), P);
+                    if (!P.getId().equals("R")) {
+                        newobjects.put(P.getId(), P);
+                    }
 
                     Q.setX(Y.X());
                     Q.setY(Y.Y());
+                    if (Q.getId().equals("R")) {
+                        break;
+                    }
+
                     newobjects.put(Q.getId(), Q);
                     break;
                 case "w08":
@@ -410,6 +420,21 @@ public class Constructor {
                     p.setBegin(l.getBegin());
                     p.setEnd(l.getEnd());
                     newobjects.put(p.getId(), p);
+                    break;
+                case "circleAroundTriangle":
+                    c = GeometricConstructions.circleAroundTriangle((GeomPoint) newobjects.get(array[2]), (GeomPoint) newobjects.get(array[3]),
+                            (GeomPoint) newobjects.get(array[4]));
+
+                    k = (Circle) newobjects.get(array[1]);
+                    if (k == null) {
+                        k = new Circle(null, 0);
+                        k.setId(array[1]);
+                    }
+
+                    k.setCenter(c.getCenter());
+                    k.getCenter().setMove(false);
+                    k.setRadius(c.getRadius());
+                    newobjects.put(k.getId(), k);
                     break;
                 case "triangle":
                     break;

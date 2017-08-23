@@ -171,6 +171,44 @@ public class Line implements GeometricObject {
                         return true;
                     }
                 }
+
+                for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+                    if (entry.getValue() instanceof Circle && entry.getValue() != this &&
+                            ((Circle) entry.getValue()).contain((GeomPoint) object)) {
+                        GeomPoint P1 = new GeomPoint(0, 0);
+                        GeomPoint P2 = new GeomPoint(0, 0);
+                        int d = GeometricConstructions.w04(this, (Circle) entry.getValue(), P1, P2);
+
+                        if (d == 2) {
+                            if (P1.distance((GeomPoint) object) < P2.distance((GeomPoint) object)) {
+                                ((GeomPoint) object).setX(P1.X());
+                                ((GeomPoint) object).setY(P1.Y());
+                                commands.add("w04 " + object.getId() + " " + "R " + entry.getValue().getId() + " " + getId());
+                                ((GeomPoint) object).setMove(false);
+
+                                return true;
+
+                            } else {
+                                ((GeomPoint) object).setX(P2.X());
+                                ((GeomPoint) object).setY(P2.Y());
+                                commands.add("w04 " + "R " + object.getId() + " " + entry.getValue().getId() + " " + getId());
+                                ((GeomPoint) object).setMove(false);
+
+                                return true;
+                            }
+                        }
+
+                        if (d == 1) {
+                            ((GeomPoint) object).setX(P1.X());
+                            ((GeomPoint) object).setY(P1.Y());
+                            commands.add("w04 " + object.getId() + " " + "R " + entry.getValue().getId() + " " + getId());
+                            ((GeomPoint) object).setMove(false);
+
+                            return true;
+                        }
+                    }
+                }
+
             }
         }
 
