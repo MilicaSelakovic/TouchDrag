@@ -22,6 +22,10 @@ public class GeomPoint implements GeometricObject {
         TRIANGLE_FREE, TRIANGLE_CANFREE, TRIANGLE_CANNOTFREE, OTHER;
     }
 
+    public Type getType() {
+        return type;
+    }
+
     private Type type;
 
 

@@ -189,7 +189,7 @@ public class DrawingView extends View {
                         break;
                     case MODE_MOVE:
                         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                            if (entry.getValue().isUnderCursor(touchX, touchY)) {
+                            if (entry.getValue() != null && entry.getValue().isUnderCursor(touchX, touchY)) {
                                 current = entry.getValue();
                                 prevX = ((GeomPoint) current).X();
                                 prevY = ((GeomPoint) current).Y();
@@ -208,6 +208,11 @@ public class DrawingView extends View {
                         if (current != null) {
                             current.translate(touchX, touchY);
                             constructor.reconstruct(commands, geometricObjects);
+                            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
+                                    ((Triangle) entry.getValue()).recolor(trics);
+                                }
+                            }
                         }
                         invalidate();
                         break;
@@ -237,6 +242,11 @@ public class DrawingView extends View {
                             oldObjects.clear();
                             redo.clear();
                             constructor.reconstruct(commands, geometricObjects);
+                            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
+                                    ((Triangle) entry.getValue()).recolor(trics);
+                                }
+                            }
                         }
                         current = null;
                         invalidate();
@@ -290,6 +300,7 @@ public class DrawingView extends View {
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
             scaleObjects();
             constructor.reconstruct(commands, geometricObjects);
+
             invalidate();
             return true;
         }
@@ -297,7 +308,8 @@ public class DrawingView extends View {
 
     private void scaleObjects() {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            entry.getValue().scale(mScaleFactor);
+            if (entry.getValue() != null)
+                entry.getValue().scale(mScaleFactor);
         }
     }
 
@@ -326,6 +338,11 @@ public class DrawingView extends View {
 
             geometricObjects.clear();
             constructor.reconstructNew(commands, geometricObjects, oldObjects);
+            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
+                    ((Triangle) entry.getValue()).recolor(trics);
+                }
+            }
 
             invalidate();
         }
@@ -338,7 +355,7 @@ public class DrawingView extends View {
             if (oldObjects.isEmpty()) {
                 for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                     oldObjects.put(entry.getKey(), entry.getValue());
-                    if (entry.getValue() instanceof Triangle) {
+                    if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
                         ((Triangle) entry.getValue()).recolor(trics);
                     }
                 }
@@ -363,11 +380,21 @@ public class DrawingView extends View {
 
                 if (array.length > 4) {
                     ((Triangle) geometricObjects.get(array[4])).recontruct(trics, array[5], array[6], array[7]);
+                    for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                        if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
+                            ((Triangle) entry.getValue()).recolor(trics);
+                        }
+                    }
                 }
             }
 
             geometricObjects.clear();
             constructor.reconstructNew(commands, geometricObjects, oldObjects);
+            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
+                    ((Triangle) entry.getValue()).recolor(trics);
+                }
+            }
 
             invalidate();
         }
@@ -377,7 +404,7 @@ public class DrawingView extends View {
 
     private void select(float x, float y) {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
+            if (entry.getValue() != null && entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
                 ((GeomPoint) entry.getValue()).changeType(trics);
             }
         }

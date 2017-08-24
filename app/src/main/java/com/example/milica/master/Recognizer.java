@@ -33,6 +33,8 @@ public class Recognizer {
 
 
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() == null)
+                continue;
             if (entry.getValue() instanceof Triangle && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
                 mCommands.add(commands);
@@ -41,6 +43,8 @@ public class Recognizer {
         }
 
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() == null)
+                continue;
             if (entry.getValue() instanceof GeomPoint && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
                 mCommands.add(commands);
@@ -49,6 +53,8 @@ public class Recognizer {
         }
 
         for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() == null)
+                continue;
             if (!(entry.getValue() instanceof GeomPoint) &&
                     entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
