@@ -1,9 +1,7 @@
 package com.example.descretegeometrycalculations;
 
-import org.opencv.core.Point;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
 
