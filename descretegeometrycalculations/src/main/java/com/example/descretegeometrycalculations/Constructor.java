@@ -98,7 +98,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
 
@@ -143,12 +143,13 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
                     if (Q == null) {
                         Q = new GeomPoint(0, 0);
                         Q.setId(array[2]);
+                        Q.setMove(Q.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
                     P.setX(X.X());
@@ -186,7 +187,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
                     P.setY(X.Y());
@@ -245,12 +246,13 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
                     if (Q == null) {
                         Q = new GeomPoint(0, 0);
                         Q.setId(array[2]);
+                        Q.setMove(Q.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
                     P.setX(X.X());
@@ -283,7 +285,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
                     P.setY(X.Y());
@@ -511,7 +513,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
                     P.setY(X.Y());
@@ -637,7 +639,7 @@ public class Constructor {
 
                     k.getCenter().setX(c.getCenter().X());
                     k.getCenter().setY(c.getCenter().Y());
-                    k.getCenter().setMove(false);
+                    k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     k.setRadius(c.getRadius());
                     newobjects.put(k.getId(), k);
                     break;
@@ -661,7 +663,7 @@ public class Constructor {
 
                     k.getCenter().setX(c.getCenter().X());
                     k.getCenter().setY(c.getCenter().Y());
-                    k.getCenter().setMove(false);
+                    k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     k.setRadius(c.getRadius());
                     newobjects.put(k.getId(), k);
                     break;
@@ -684,7 +686,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
-                        P.setMove(false);
+                        P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
                     P.setY(X.Y());
