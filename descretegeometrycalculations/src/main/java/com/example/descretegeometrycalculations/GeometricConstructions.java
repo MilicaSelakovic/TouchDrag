@@ -580,4 +580,19 @@ public class GeometricConstructions {
         return new Circle(Cen, Cen.distance(A));
     }
 
+    public static Circle circleInsideTriangle(GeomPoint A, GeomPoint B, GeomPoint C) {
+        Line l1 = bisectorAngle(A, B, C);
+        Line l2 = bisectorAngle(B, C, A);
+
+        GeomPoint Cen = w03(l1, l2);
+
+        return new Circle(Cen, Cen.distance(A));
+    }
+
+    public static GeomPoint eulerPoint(Line h, Circle k, Line a) {
+        return w05(h, k, w03(h, a));
+    }
+
+
+
 }

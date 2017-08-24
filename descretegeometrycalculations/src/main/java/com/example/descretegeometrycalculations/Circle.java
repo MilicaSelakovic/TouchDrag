@@ -71,7 +71,6 @@ public class Circle implements GeometricObject {
 
 
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
-        // TODO cicrcle circle intersection
         if (object instanceof GeomPoint) {
             if (contain((GeomPoint) object)) {
                 for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
@@ -121,6 +120,13 @@ public class Circle implements GeometricObject {
     }
 
     public void translate(float x, float y) {
+    }
+
+
+    public boolean equal(Circle circle) {
+        double d = center.distance(circle.getCenter());
+        double dr = Math.abs(radius - circle.getRadius());
+        return d < 50 && dr < 170;
     }
 
     @Override

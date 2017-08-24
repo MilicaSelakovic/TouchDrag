@@ -393,15 +393,30 @@ public class Triangle extends Polygon {
                 p.setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
                 return true;
             }
+
+            if (eulerPoint(p, commands)) {
+                p.setMove(false);
+                p.setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
+                return true;
+            }
+
+
         }
 
-        return false;
-    }
+        if (object instanceof Circle) {
+            Circle circle = (Circle) object;
 
-    public boolean belong(GeomPoint point) {
-        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
-            if (point == entry.getValue())
+            if (circumscribedCircle(circle, commands)) {
                 return true;
+            }
+
+            if (inCircle(circle, commands)) {
+                return true;
+            }
+
+            if (eulerCircle(circle, commands)) {
+                return true;
+            }
         }
 
         return false;
@@ -911,6 +926,168 @@ public class Triangle extends Polygon {
         return false;
     }
 
+
+    private boolean circumscribedCircle(Circle circle, Vector<String> commands) {
+        Circle c = GeometricConstructions.circleAroundTriangle(A, B, C);
+
+        if (circle.equal(c)) {
+            circle.setCenter(c.getCenter());
+            circle.setRadius(c.getRadius());
+            significatObjects.put("cOUT", circle);
+            significatObjects.put("O", circle.getCenter());
+            circle.getCenter().setLabel("O" + number);
+            circle.getCenter().setTriangle(this);
+            circle.getCenter().setMove(false);
+            circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
+
+
+            commands.add("circleAroundTriangle " + circle.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean inCircle(Circle circle, Vector<String> commands) {
+        Circle c = GeometricConstructions.circleInsideTriangle(A, B, C);
+
+        if (circle.equal(c)) {
+            circle.setCenter(c.getCenter());
+            circle.setRadius(c.getRadius());
+            significatObjects.put("cIN", circle);
+            significatObjects.put("I", circle.getCenter());
+            circle.getCenter().setLabel("I" + number);
+            circle.getCenter().setTriangle(this);
+            circle.getCenter().setMove(false);
+            circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
+
+
+            commands.add("circleAroundTriangle " + circle.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean eulerCircle(Circle circle, Vector<String> commands) {
+        Vector<GeomPoint> point = new Vector<>();
+        // Ha, Ma, Hb, Mb, Hc, Mc
+
+        if (significatObjects.get("Ha") != null) {
+            point.add((GeomPoint) significatObjects.get("Ha"));
+        }
+
+        if (significatObjects.get("Hb") != null) {
+            point.add((GeomPoint) significatObjects.get("Hb"));
+        }
+
+        if (significatObjects.get("Hc") != null) {
+            point.add((GeomPoint) significatObjects.get("Hc"));
+        }
+
+        if (significatObjects.get("Ma") != null) {
+            point.add((GeomPoint) significatObjects.get("Ma"));
+        }
+
+        if (significatObjects.get("Mb") != null) {
+            point.add((GeomPoint) significatObjects.get("Mb"));
+        }
+
+        if (significatObjects.get("Mc") != null) {
+            point.add((GeomPoint) significatObjects.get("Mc"));
+        }
+
+        if (point.size() < 3) {
+            return false;
+        }
+
+        Circle c = GeometricConstructions.circleAroundTriangle(point.elementAt(0),
+                point.elementAt(1), point.elementAt(2));
+
+        if (circle.equal(c)) {
+            circle.setCenter(c.getCenter());
+            circle.setRadius(c.getRadius());
+            significatObjects.put("eCir", circle);
+            significatObjects.put("N", circle.getCenter());
+            circle.getCenter().setLabel("N" + number);
+            circle.getCenter().setTriangle(this);
+            circle.getCenter().setMove(false);
+            circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
+
+            commands.add("circleAroundTriangle " + circle.getId() + " " + point.elementAt(0).getId()
+                    + " " + point.elementAt(1).getId() + " " + point.elementAt(2).getId());
+
+            return true;
+
+        }
+
+        return false;
+    }
+
+    private boolean eulerPoint(GeomPoint point, Vector<String> commands) {
+
+        Line ha = (Line) significatObjects.get("ha");
+        Line hb = (Line) significatObjects.get("hb");
+        Line hc = (Line) significatObjects.get("hc");
+
+        Circle euler = (Circle) significatObjects.get("eCir");
+
+        if (ha != null && euler != null) {
+            GeomPoint Ea = GeometricConstructions.eulerPoint(ha, euler, a);
+
+            if (point.distance(Ea) < 20) {
+                point.setX(Ea.X());
+                point.setY(Ea.Y());
+
+                commands.add("eulerPoint " + point.getId() + " " + ha.getId() + " " + euler.getId()
+                        + " " + a.getId());
+                significatObjects.put("Ea", point);
+                point.setLabel("Ea" + number);
+
+                point.setTriangle(this);
+                return true;
+            }
+        }
+
+
+        if (hb != null && euler != null) {
+            GeomPoint Eb = GeometricConstructions.eulerPoint(hb, euler, b);
+
+            if (point.distance(Eb) < 20) {
+                point.setX(Eb.X());
+                point.setY(Eb.Y());
+
+                commands.add("eulerPoint " + point.getId() + " " + hb.getId() + " " + euler.getId()
+                        + " " + b.getId());
+                significatObjects.put("Eb", point);
+                point.setLabel("Eb" + number);
+
+                point.setTriangle(this);
+                return true;
+            }
+        }
+
+        if (hc != null && euler != null) {
+            GeomPoint Ec = GeometricConstructions.eulerPoint(hc, euler, c);
+
+            if (point.distance(Ec) < 20) {
+                point.setX(Ec.X());
+                point.setY(Ec.Y());
+
+                commands.add("eulerPoint " + point.getId() + " " + hc.getId() + " " + euler.getId()
+                        + " " + c.getId());
+                significatObjects.put("Ec", point);
+                point.setLabel("Ec" + number);
+
+                point.setTriangle(this);
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public void addCommand(String komanda) {
         komanda += " " + getId() + " " + freePoint1 + " " + freePoint2 + " " + freePoint3;
