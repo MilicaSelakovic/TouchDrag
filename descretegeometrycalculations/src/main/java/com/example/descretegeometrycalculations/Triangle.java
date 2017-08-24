@@ -930,7 +930,7 @@ public class Triangle extends Polygon {
     private boolean circumscribedCircle(Circle circle, Vector<String> commands) {
         Circle c = GeometricConstructions.circleAroundTriangle(A, B, C);
 
-        if (circle.equal(c)) {
+        if (circle.contain(A) && circle.contain(B) && circle.contain(C)) {
             circle.setCenter(c.getCenter());
             circle.setRadius(c.getRadius());
             significatObjects.put("cOUT", circle);
@@ -1006,7 +1006,7 @@ public class Triangle extends Polygon {
         Circle c = GeometricConstructions.circleAroundTriangle(point.elementAt(0),
                 point.elementAt(1), point.elementAt(2));
 
-        if (circle.equal(c)) {
+        if (circle.contain(point.elementAt(0)) && circle.contain(point.elementAt(1)) && circle.contain(point.elementAt(2))) {
             circle.setCenter(c.getCenter());
             circle.setRadius(c.getRadius());
             significatObjects.put("eCir", circle);

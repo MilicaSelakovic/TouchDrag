@@ -126,7 +126,7 @@ public class Circle implements GeometricObject {
     public boolean equal(Circle circle) {
         double d = center.distance(circle.getCenter());
         double dr = Math.abs(radius - circle.getRadius());
-        return d < 50 && dr < 170;
+        return d < 30 && dr < 150;
     }
 
     @Override
@@ -139,7 +139,7 @@ public class Circle implements GeometricObject {
         double y2 = Math.pow(point.Y() - center.Y(), 2);
         double r2 = radius * radius;
         double d = Math.abs(x2 + y2) / r2;
-        return d > 0.9 && d < 1.1;
+        return d > 0.85 && d < 1.15;
     }
 
 }

@@ -15,6 +15,8 @@
     <string name="color_of_point_that_can_be_active">Color of point that can be active</string>
     <string name="constructed_point_color">Constructed point color</string>
     <string name="free_point_color">Free Point Color</string>
+    <string name="point_lab">Point Labeling</string>
+    <string name="setting">Settings</string>
 
 
     <string-array name="sizes">

@@ -188,7 +188,7 @@ public class Setting extends AppCompatActivity {
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner3);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -197,7 +197,7 @@ public class Setting extends AppCompatActivity {
 
                 switch (pos) {
                     case 0:
-                        textSize = 30;
+                        textSize = 20;
                         break;
                     case 1:
                         textSize = 50;
@@ -216,7 +216,7 @@ public class Setting extends AppCompatActivity {
             }
         });
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner3);
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner2);
 
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -225,16 +225,16 @@ public class Setting extends AppCompatActivity {
 
                 switch (pos) {
                     case 0:
-                        pointSize = 20;
+                        pointSize = 15;
                         break;
                     case 1:
-                        pointSize = 30;
+                        pointSize = 20;
                         break;
                     case 2:
-                        pointSize = 40;
+                        pointSize = 30;
                         break;
                     default:
-                        pointSize = 30;
+                        pointSize = 20;
                 }
             }
 
@@ -268,7 +268,7 @@ public class Setting extends AppCompatActivity {
 
     private void setValues() {
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner3);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sizes, android.R.layout.simple_spinner_item);
@@ -277,7 +277,7 @@ public class Setting extends AppCompatActivity {
 
         spinner.setSelection(getTextSize());
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner3);
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner2);
         spinner1.setAdapter(adapter);
         spinner1.setSelection(getPointSize());
 
@@ -307,11 +307,11 @@ public class Setting extends AppCompatActivity {
     }
 
     private int getPointSize() {
-        if (pointSize < 30) {
+        if (pointSize < 20) {
             return 0;
         }
 
-        if (pointSize > 30) {
+        if (pointSize > 20) {
             return 2;
         }
 

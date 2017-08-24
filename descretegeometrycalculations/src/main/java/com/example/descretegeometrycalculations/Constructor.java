@@ -198,16 +198,19 @@ public class Constructor {
                         break;
                     }
 
-                    k = GeometricConstructions.w06((GeomPoint) newobjects.get(array[3]), (GeomPoint) newobjects.get(array[2]));
-                    c = (Circle) newobjects.get(array[1]);
-                    if (c == null) {
-                        c = new Circle(0, 0, 0);
-                        c.setId(array[1]);
+                    c = GeometricConstructions.w06((GeomPoint) newobjects.get(array[3]), (GeomPoint) newobjects.get(array[2]));
+                    k = (Circle) newobjects.get(array[1]);
+                    if (k == null) {
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
-                    c.setRadius(k.getRadius());
-                    c.getCenter().setX(k.getCenter().X());
-                    c.getCenter().setY(k.getCenter().Y());
                     newobjects.put(array[1], c);
                     break;
                 case "w07":
@@ -299,13 +302,16 @@ public class Constructor {
                     c = GeometricConstructions.w09((GeomPoint) newobjects.get(array[2]), (GeomPoint) newobjects.get(array[3]));
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
-                        k = new Circle(null, 0);
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
-                    k.getCenter().setX(c.getCenter().X());
-                    k.getCenter().setY(c.getCenter().Y());
-                    k.setRadius(c.getRadius());
                     newobjects.put(k.getId(), k);
                     break;
                 case "w10":
@@ -333,12 +339,16 @@ public class Constructor {
                     c = GeometricConstructions.w11((Line) newobjects.get(array[3]), (GeomPoint) newobjects.get(array[2]));
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
-                        k = new Circle(null, 0);
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
-                    k.getCenter().setX(c.getCenter().X());
-                    k.getCenter().setY(c.getCenter().Y());
-                    k.setRadius(c.getRadius());
+
                     newobjects.put(k.getId(), k);
                     break;
                 case "w12":
@@ -532,13 +542,17 @@ public class Constructor {
 
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
-                        k = new Circle(null, 0);
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
-                    k.getCenter().setX(c.getCenter().X());
-                    k.getCenter().setY(c.getCenter().Y());
-                    k.setRadius(c.getRadius());
+
                     newobjects.put(k.getId(), k);
 
                     break;
@@ -553,13 +567,16 @@ public class Constructor {
                     c = GeometricConstructions.w22((GeomPoint) newobjects.get(array[2]), (Circle) newobjects.get(array[3]));
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
-                        k = new Circle(null, 0);
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
-                    k.getCenter().setX(c.getCenter().X());
-                    k.getCenter().setY(c.getCenter().Y());
-                    k.setRadius(c.getRadius());
                     newobjects.put(k.getId(), k);
                     break;
                 case "bisectorAngle":
@@ -630,14 +647,16 @@ public class Constructor {
 
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
-                        k = new Circle(null, 0);
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
-
-                    k.getCenter().setX(c.getCenter().X());
-                    k.getCenter().setY(c.getCenter().Y());
-                    k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     k.setRadius(c.getRadius());
                     newobjects.put(k.getId(), k);
                     break;
@@ -654,15 +673,15 @@ public class Constructor {
 
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
-                        k = new Circle(null, 0);
+                        k = new Circle(c.getCenter(), c.getRadius());
+                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
+                    } else {
+                        k.getCenter().setX(c.getCenter().X());
+                        k.getCenter().setY(c.getCenter().Y());
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
-
-
-                    k.getCenter().setX(c.getCenter().X());
-                    k.getCenter().setY(c.getCenter().Y());
-                    k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
-                    k.setRadius(c.getRadius());
                     newobjects.put(k.getId(), k);
                     break;
                 case "eulerPoint":

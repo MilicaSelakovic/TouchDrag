@@ -91,7 +91,7 @@
                 android:id="@+id/imageButton3"
                 android:layout_weight="1"
                 android:background="@drawable/ic_settings"
-                style="@android:style/Widget.Holo.Light.ImageButton"
+                style="@android:style/Widget.DeviceDefault.ImageButton"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:onClick="settings (Drawing)" />
