@@ -399,12 +399,19 @@ public class Triangle extends Polygon {
                 p.setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
                 return true;
             }
-
+            if (eulerPoint2(p, commands)) {
+                p.setMove(false);
+                p.setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
+                return true;
+            }
 
         }
 
         if (object instanceof Circle) {
             Circle circle = (Circle) object;
+            if (eulerCircle(circle, commands)) {
+                return true;
+            }
 
             if (circumscribedCircle(circle, commands)) {
                 return true;
@@ -414,9 +421,7 @@ public class Triangle extends Polygon {
                 return true;
             }
 
-            if (eulerCircle(circle, commands)) {
-                return true;
-            }
+
         }
 
         return false;
@@ -1084,6 +1089,55 @@ public class Triangle extends Polygon {
                 point.setTriangle(this);
                 return true;
             }
+        }
+
+        return false;
+    }
+
+    private boolean eulerPoint2(GeomPoint point, Vector<String> commands) {
+        GeomPoint H = (GeomPoint) significatObjects.get("H");
+
+        if (H == null) {
+            return false;
+        }
+
+        GeomPoint Ea = GeometricConstructions.w01(A, A, H, 0.5f);
+        GeomPoint Eb = GeometricConstructions.w01(B, B, H, 0.5f);
+        GeomPoint Ec = GeometricConstructions.w01(C, C, H, 0.5f);
+
+        if (point.distance(Ea) < 20) {
+            point.setX(Ea.X());
+            point.setY(Ea.Y());
+
+            significatObjects.put("Ea", point);
+
+            commands.add("w01 " + point.getId() + " " + A.getId() + " " + A.getId() + " " + H.getId() + " 0.5");
+            point.setLabel("Ea" + number);
+            point.setTriangle(this);
+            return true;
+        }
+
+        if (point.distance(Eb) < 20) {
+            point.setX(Eb.X());
+            point.setY(Eb.Y());
+
+            significatObjects.put("Eb", point);
+            commands.add("w01 " + point.getId() + " " + B.getId() + " " + B.getId() + " " + H.getId() + " 0.5");
+            point.setLabel("Eb" + number);
+            point.setTriangle(this);
+            return true;
+        }
+
+
+        if (point.distance(Ec) < 20) {
+            point.setX(Ec.X());
+            point.setY(Ec.Y());
+
+            significatObjects.put("Ec", point);
+            commands.add("w01 " + point.getId() + " " + C.getId() + " " + C.getId() + " " + H.getId() + " 0.5");
+            point.setLabel("Ec" + number);
+            point.setTriangle(this);
+            return true;
         }
 
         return false;

@@ -319,7 +319,7 @@ public class GeometricConstructions {
         t1.setEnd(new GeomPoint((float) (x * cos - y * sin) + C.X(), (float) (x * sin + y * cos) + C.Y()));
 
         t2.setBegin(X);
-        t2.setEnd(new GeomPoint((float) (x * cos - y * sin) + C.X(), (float) (x * sin + y * cos) + C.Y()));
+        t2.setEnd(new GeomPoint((float) (x * cos + y * sin) + C.X(), (float) (-x * sin + y * cos) + C.Y()));
     }
 
     /*
@@ -585,8 +585,9 @@ public class GeometricConstructions {
         Line l2 = bisectorAngle(B, C, A);
 
         GeomPoint Cen = w03(l1, l2);
+        Line a = new Line(A, B);
 
-        return new Circle(Cen, Cen.distance(A));
+        return new Circle(Cen, a.distance(Cen));
     }
 
     public static GeomPoint eulerPoint(Line h, Circle k, Line a) {
