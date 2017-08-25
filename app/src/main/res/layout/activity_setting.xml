@@ -9,7 +9,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context="com.drag.milica.master.Setting">
+    tools:context="touch.drag.milica.master.Setting">
 
     <LinearLayout
         android:orientation="vertical"

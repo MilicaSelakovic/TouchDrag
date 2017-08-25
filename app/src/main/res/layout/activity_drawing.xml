@@ -9,7 +9,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context="com.drag.milica.master.Drawing">
+    tools:context="touch.drag.milica.master.Drawing">
 
     <LinearLayout
         android:orientation="vertical"
@@ -101,7 +101,7 @@
         <view
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            class="com.drag.milica.master.DrawingView"
+            class="touch.drag.milica.master.DrawingView"
             android:id="@+id/view"
             android:background="@android:color/background_light" />
     </LinearLayout>
