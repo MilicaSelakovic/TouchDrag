@@ -282,13 +282,6 @@ public class GeometricConstructions {
 
 
     public static void w12(Circle k, GeomPoint X, Line t1, Line t2){
-//        double d = k.getCenter().distance(X);
-//        GeomPoint T1 = new GeomPoint(0,0);
-//        GeomPoint T2 = new GeomPoint(0,0);
-//
-//        double a = Math.sqrt(d*d - Math.pow(k.getRadius(),2));
-//
-//        w07(k, new Circle(X, a), T1, T2);
 
         GeomPoint C = k.getCenter();
         double d = C.distance(X);
