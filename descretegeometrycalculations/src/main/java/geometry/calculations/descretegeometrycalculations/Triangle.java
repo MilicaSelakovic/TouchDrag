@@ -24,6 +24,10 @@ public class Triangle extends Polygon {
     private Vector<String> reconstruction = null;
 
 
+    public String getNumber() {
+        return number;
+    }
+
     private String number = "";
 
     public Triangle(Vector<GeomPoint> points) {

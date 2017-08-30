@@ -254,11 +254,15 @@ public class DrawingView extends View {
                         break;
                     case MODE_USUAL:
                         actionDown = false;
+                        if (!redo.empty())
+                            uniqueID.restore();
+
+                        redoCommands.clear();
+                        oldObjects.clear();
+                        redo.clear();
+
                         if (recognizer.recognize(points, geometricObjects, commands)) {
                             komande.push("add");
-                            redoCommands.clear();
-                            oldObjects.clear();
-                            redo.clear();
                         }
                         drawPath.reset();
                         current = null;
@@ -283,6 +287,7 @@ public class DrawingView extends View {
         redo.clear();
         redoCommands.clear();
 
+        uniqueID.reset();
         invalidate();
     }
 
@@ -319,7 +324,25 @@ public class DrawingView extends View {
         if (!redo.isEmpty()) {
             String kom = redo.pop();
             if (kom.compareTo("add") == 0) {
-                commands.push(redoCommands.pop());
+                Vector<String> redoCom = redoCommands.pop();
+                int max = -1;
+
+                for (String command : redoCom) {
+                    String array[] = command.split("\\s+");
+                    GeometricObject gobj = geometricObjects.get(array[1]);
+                    if (gobj != null && gobj instanceof Triangle) {
+                        String tid = ((Triangle) gobj).getNumber();
+                        uniqueID.setRedoTrin(Integer.parseInt(tid));
+                    }
+                    int i = Integer.parseInt(array[1]);
+                    if (i > max) {
+                        max = i;
+                    }
+                }
+
+                uniqueID.setRedoLast(max);
+
+                commands.push(redoCom);
                 komande.push("add");
             } else {
                 String[] array = kom.split("\\s+");
@@ -365,7 +388,25 @@ public class DrawingView extends View {
 
             String kom = komande.pop();
             if (kom.compareTo("add") == 0) {
-                redoCommands.push(commands.pop());
+                Vector<String> redoCom = commands.pop();
+                int min = -1;
+
+                for (String command : redoCom) {
+                    String array[] = command.split("\\s+");
+                    GeometricObject gobj = geometricObjects.get(array[1]);
+                    if (gobj != null && gobj instanceof Triangle) {
+                        String tid = ((Triangle) gobj).getNumber();
+                        uniqueID.setRedoTrin(Integer.parseInt(tid));
+                    }
+                    int i = Integer.parseInt(array[1]);
+                    if (i < min || min == -1) {
+                        min = i;
+                    }
+                }
+
+                uniqueID.setRedoLast(min);
+
+                redoCommands.push(redoCom);
                 redo.push("add");
                 // geometricObjects.clear();
             } else {
