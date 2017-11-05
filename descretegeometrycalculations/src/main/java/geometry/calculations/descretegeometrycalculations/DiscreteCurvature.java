@@ -15,58 +15,6 @@ public class DiscreteCurvature {
     public DiscreteCurvature() {
     }
 
-
-   /* public static double Curvature(Vector<Point> points){
-        int len = points.size();
-
-        if(len < 5){
-            return -1;
-        }
-        if( len % 2 == 0){
-            points.remove(0);
-            len --;
-        }
-
-        Point P = points.elementAt((len-1)/2);
-        points.remove((len-1)/2);
-
-        Point result = new Point(0,0);
-        double intensity = 0;
-        for(Point Q : points){
-            Point tmp = new Point(Q.x - P.x, Q.y - P.y);
-            result = new Point(result.x + tmp.x, result.y + tmp.y);
-
-            intensity += tmp.x*tmp.x + tmp.y*tmp.y;
-        }
-
-        return 2* Math.sqrt(result.x*result.x + result.y*result.y)/intensity;
-    }
-*/
-
-    /*    private static double Curvature(Vector<PointF> points, int index, int step){
-            PointF P = points.get(index);
-            //points.remove((len-1)/2);
-
-            PointF result = new PointF(0,0);
-            double intensity = 0;
-            for(int i = index - step; i <= index + step; i++){
-                if(i== index){
-                    continue;
-                }
-                PointF Q = points.get(i);
-                PointF tmp = new PointF(Q.x - P.x, Q.y - P.y);
-                result = new PointF(result.x + tmp.x, result.y + tmp.y);
-
-                intensity += tmp.x*tmp.x + tmp.y*tmp.y;
-            }
-
-
-
-            return 2* Math.sqrt(result.x*result.x + result.y*result.y)/intensity;
-        }
-
-    */
-
     private static boolean checkCircle(double x0, double y0, double r, Vector<PointF> points) {
         if (r < 0)
             return false;
@@ -161,10 +109,10 @@ public class DiscreteCurvature {
     public static GeometricObject getGeometricObject(Vector<PointF> points) {
         int n = points.size();
 
-        if (n <= 0)
+        if (n <= 3)
             return null;
 
-        if (n < 5) {
+        if (n < 10) {
             return new GeomPoint(points.firstElement().x, points.firstElement().y);
         }
 
