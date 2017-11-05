@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-public class Circle implements GeometricObject {
+public class Circle extends GeometricObject {
 
 
     private GeomPoint center;

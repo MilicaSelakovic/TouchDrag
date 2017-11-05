@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 
-public class Polygon implements GeometricObject {
+public class Polygon extends GeometricObject {
     String id;
 
     public Vector<GeomPoint> getPoints() {

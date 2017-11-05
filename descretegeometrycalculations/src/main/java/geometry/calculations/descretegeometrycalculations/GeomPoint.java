@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Vector;
 
 
-public class GeomPoint implements GeometricObject {
+public class GeomPoint extends GeometricObject {
 
     private float x;
     private float y;

@@ -3,6 +3,7 @@ package touch.drag.milica.master;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ToggleButton;
 
@@ -50,6 +51,7 @@ public class Drawing extends Activity {
         parser.fillConstructions(trics, getApplicationContext(), "allconstuctions.json");
 
         ((DrawingView) this.findViewById(R.id.view)).setTrics(trics);
+        ((DrawingView) this.findViewById(R.id.view)).setDensity(getResources().getDisplayMetrics().density);
 
         this.findViewById(R.id.imageButton4).setOnClickListener(new View.OnClickListener() {
             @Override

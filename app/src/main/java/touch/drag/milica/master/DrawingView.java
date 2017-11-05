@@ -69,6 +69,7 @@ public class DrawingView extends View {
 
     private Mode mode;
     private PointInformations pointInformations;
+    private double density;
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -220,7 +221,7 @@ public class DrawingView extends View {
                     case MODE_USUAL:
                         points.add(touchPoint);
                         drawPath.lineTo(touchX, touchY);
-                        current = recognizer.recognizeCurrent(points);
+                        current = recognizer.recognizeCurrent(points, density);
                         invalidate();
                         break;
                     default:
@@ -261,7 +262,7 @@ public class DrawingView extends View {
                         oldObjects.clear();
                         redo.clear();
 
-                        if (recognizer.recognize(points, geometricObjects, commands)) {
+                        if (recognizer.recognize(points, geometricObjects, commands, density)) {
                             komande.push("add");
                         }
                         drawPath.reset();
@@ -456,6 +457,10 @@ public class DrawingView extends View {
         this.pointInformations = pointInformations;
 
         invalidate();
+    }
+
+    public void setDensity(double density) {
+        this.density = density;
     }
 }
 

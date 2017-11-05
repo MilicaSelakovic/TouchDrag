@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Vector;
 
 
-public class Line implements GeometricObject {
+public class Line extends GeometricObject {
 
 
     private String id;

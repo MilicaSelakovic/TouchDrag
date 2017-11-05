@@ -1,6 +1,7 @@
 package geometry.calculations.descretegeometrycalculations;
 
 import android.graphics.PointF;
+import android.util.Log;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -106,14 +107,16 @@ public class DiscreteCurvature {
     }
 
     // @Nullable
-    public static GeometricObject getGeometricObject(Vector<PointF> points) {
+    public static GeometricObject getGeometricObject(Vector<PointF> points, double denisty) {
         int n = points.size();
 
         if (n <= 3)
             return null;
 
         if (n < 10) {
-            return new GeomPoint(points.firstElement().x, points.firstElement().y);
+            GeometricObject point = new GeomPoint(points.firstElement().x, points.firstElement().y);
+            point.setDensity(denisty);
+            return point;
         }
 
         Vector<Point> newPoints = proredi(points);
@@ -123,6 +126,7 @@ public class DiscreteCurvature {
         GeometricObject obj = circle(points);
 
         if (obj != null) {
+            obj.setDensity(denisty);
             return obj;
         }
 
@@ -173,12 +177,17 @@ public class DiscreteCurvature {
         if (isLine) {
             if (breakPoints.size() > 2) {
                 if (breakPoints.size() == 3) {
-                    return new Triangle(breakPoints);
+                    GeometricObject triangle = new Triangle(breakPoints);
+                    triangle.setDensity(denisty);
+                    return triangle;
                 }
-
-                return new Polygon(breakPoints);
+                GeometricObject polygon = new Polygon(breakPoints);
+                polygon.setDensity(denisty);
+                return polygon;
             } else if (breakPoints.size() == 2) {
-                return new Line(breakPoints.firstElement(), breakPoints.lastElement());
+                GeometricObject line = new Line(breakPoints.firstElement(), breakPoints.lastElement());
+                line.setDensity(denisty);
+                return line;
             }
         }
 
