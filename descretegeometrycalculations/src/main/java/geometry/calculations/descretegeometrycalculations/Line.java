@@ -145,7 +145,7 @@ public class Line extends GeometricObject {
         double n3 = -begin.Y() * n2 - begin.X() * n1;
 
         double d = Math.abs(n1 * point.X() + n2 * point.Y() + n3) / Math.sqrt(n1 * n1 + n2 * n2);
-        return d < EPISLON;
+        return d < Constants.EPSILON_DISTANCE;
     }
 
     public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {

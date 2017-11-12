@@ -134,15 +134,11 @@ public class GeomPoint extends GeometricObject {
     }
 
     public boolean isUnderCursor(float x, float y) {
-        //TODO: 28.5.17. konstanta mora da se nasteluje
-        double epsilon = 20;
-        return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
+        return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < Constants.DISTANCE_POINT;
     }
 
     public boolean underCursor(float x, float y) {
-        //TODO: 28.5.17. konstanta mora da se nasteluje
-        double epsilon = 20;
-        return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < epsilon;
+        return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < Constants.DISTANCE_POINT;
     }
 
 
@@ -250,12 +246,9 @@ public class GeomPoint extends GeometricObject {
         move = value;
     }
 
-
+    // TODO Gde se koristi ovaj equal
     boolean equal(GeomPoint Y) {
-        // TODO epsilon
-        double epsilon = 10;
-        return Math.abs(x - Y.X()) < epsilon && Math.abs(y - Y.Y()) < epsilon;
-
+        return Math.abs(x - Y.X()) < Constants.DISTANCE_POINT && Math.abs(y - Y.Y()) < Constants.DISTANCE_POINT;
     }
 
     double distance(GeomPoint X) {

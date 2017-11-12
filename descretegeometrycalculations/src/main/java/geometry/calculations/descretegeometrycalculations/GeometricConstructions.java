@@ -129,44 +129,6 @@ public class GeometricConstructions {
     */
 
     public static int w07(Circle c1, Circle c2, GeomPoint S1, GeomPoint S2) {
-//        double d = c1.getCenter().distance(c2.getCenter());
-//        double r1 = c1.getRadius();
-//        double r2 = c2.getRadius();
-//
-//        if(d + 0.001 > r1 + r1 ){
-//            return 0;
-//        }
-//
-//        // TODO konstanta
-//        if (Math.abs(r1+r2-d) < 0.001){
-//            GeomPoint P = w01(c1.getCenter(), c1.getCenter(), c2.getCenter(), (float)(r1/r2));
-//            S1.setX(P.X());
-//            S2.setY(P.Y());
-//
-//            return 1;
-//        }
-//
-//        // Tacka P je presek S1S2 sa C1C2
-//        // x je |PC2|
-//
-//        double x = (d*d + r2*r2 - r1*r1)/(2*d);
-//
-//        // a = |PS1| = |PS2|
-//        GeomPoint P = w01(c2.getCenter(), c2.getCenter(), c1.getCenter(), (float)(x/d));
-//
-//        // vektor pravca normale na C1C2
-//        GeomPoint s = new GeomPoint(-(c2.getCenter().Y() - c1.getCenter().Y()), c2.getCenter().X() - c1.getCenter().X());
-//
-//        float a = (float)Math.sqrt(r2*r2 - x*x);
-//
-//        S1.setX(P.X() + a*s.X());
-//        S1.setY(P.Y() + a*s.Y());
-//
-//        S2.setX(P.X() - a*s.X());
-//        S2.setY(P.Y() - a*s.Y());
-//
-//        return 2;
-
 
         // distance between the centers
         double d = c1.getCenter().distance(c2.getCenter());

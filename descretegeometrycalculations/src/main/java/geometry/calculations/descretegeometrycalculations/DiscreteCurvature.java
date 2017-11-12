@@ -108,6 +108,7 @@ public class DiscreteCurvature {
 
     // @Nullable
     public static GeometricObject getGeometricObject(Vector<PointF> points, double denisty) {
+        Log.d("density", Double.toString(denisty));
         int n = points.size();
 
         if (n <= 3)

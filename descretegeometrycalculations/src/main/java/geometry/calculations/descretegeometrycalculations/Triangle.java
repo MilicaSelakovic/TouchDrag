@@ -264,48 +264,6 @@ public class Triangle extends Polygon {
     }
 
 
-//    public boolean changeFree(float x, float y, HashMap<String, Vector<String>> trics) {
-//        boolean ind = false;
-//        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
-//
-//            if (entry.getValue() instanceof GeomPoint && entry.getValue() != null && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
-//                if (chosen.compareTo(freePoint1) == 0) {
-//                    if (canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3) != null) {
-//                        reconstruction = canBeConstruct(trics, entry.getKey(), freePoint2, freePoint3);
-//                        freePoint1 = entry.getKey();
-//                        ind = true;
-//
-//                    }
-//                }
-//                if (chosen.compareTo(freePoint2) == 0) {
-//                    if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3) != null) {
-//                        reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint3);
-//                        freePoint2 = entry.getKey();
-//                        ind = true;
-//                    }
-//                }
-//
-//                if (chosen.compareTo(freePoint3) == 0) {
-//                    if (canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2) != null) {
-//                        reconstruction = canBeConstruct(trics, entry.getKey(), freePoint1, freePoint2);
-//                        freePoint3 = entry.getKey();
-//                        ind = true;
-//                    }
-//                }
-//
-//                if (ind) {
-//                    ((GeomPoint) significatObjects.get(chosen)).setMove(false);
-//                    ((GeomPoint) significatObjects.get(chosen)).setCanChoose(-1);
-//                    ((GeomPoint) significatObjects.get(entry.getKey())).setMove(true);
-//                    ((GeomPoint) significatObjects.get(entry.getKey())).setCanChoose(1);
-//                    return true;
-//                }
-//            }
-//
-//        }
-//        return false;
-//    }
-
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         super.draw(canvas, paint, finished, choose, pointInformations);
@@ -609,15 +567,13 @@ public class Triangle extends Polygon {
 
 
     private boolean orthocenter(GeomPoint point, Vector<String> commands) {
-
-        boolean ind = false;
         GeomPoint H = GeometricConstructions.orthocenter(A, B, C);
 
         if (H == null) {
             return false;
         }
 
-        if (H.distance(point) > 20) {
+        if (H.distance(point) > Constants.DISTANCE_POINT) {
             return false;
         }
         point.setX(H.X());
@@ -654,7 +610,7 @@ public class Triangle extends Polygon {
     private boolean incenter(GeomPoint point, Vector<String> commands) {
         GeomPoint O = GeometricConstructions.incenter(A, B, C);
 
-        if (O.distance(point) > 20) {
+        if (O.distance(point) > Constants.DISTANCE_POINT) {
             return false;
         }
         point.setX(O.X());
@@ -691,7 +647,7 @@ public class Triangle extends Polygon {
     private boolean centroid(GeomPoint point, Vector<String> commands) {
         GeomPoint T = GeometricConstructions.centroid(A, B, C);
 
-        if (T.distance(point) > 20) {
+        if (T.distance(point) > Constants.DISTANCE_POINT) {
             return false;
         }
         Line ta = (Line) significatObjects.get("ta");
@@ -741,7 +697,7 @@ public class Triangle extends Polygon {
             return false;
         }
 
-        if (O.distance(point) > 20) {
+        if (O.distance(point) > Constants.DISTANCE_POINT) {
             return false;
         }
         point.setX(O.X());
@@ -780,7 +736,7 @@ public class Triangle extends Polygon {
         GeomPoint Mb = GeometricConstructions.w01(A, A, C, 0.5f);
         GeomPoint Mc = GeometricConstructions.w01(A, A, B, 0.5f);
 
-        if (point.distance(Ma) < 20) {
+        if (point.distance(Ma) < Constants.DISTANCE_POINT) {
             point.setX(Ma.X());
             point.setY(Ma.Y());
 
@@ -792,7 +748,7 @@ public class Triangle extends Polygon {
             return true;
         }
 
-        if (point.distance(Mb) < 20) {
+        if (point.distance(Mb) < Constants.DISTANCE_POINT) {
             point.setX(Mb.X());
             point.setY(Mb.Y());
 
@@ -804,7 +760,7 @@ public class Triangle extends Polygon {
         }
 
 
-        if (point.distance(Mc) < 20) {
+        if (point.distance(Mc) < Constants.DISTANCE_POINT) {
             point.setX(Mc.X());
             point.setY(Mc.Y());
 
@@ -828,7 +784,7 @@ public class Triangle extends Polygon {
         if (ha != null) {
             GeomPoint Ha = GeometricConstructions.w03(ha, a);
 
-            if (point.distance(Ha) < 20) {
+            if (point.distance(Ha) < Constants.DISTANCE_POINT) {
                 point.setX(Ha.X());
                 point.setY(Ha.Y());
 
@@ -846,7 +802,7 @@ public class Triangle extends Polygon {
         if (hb != null) {
             GeomPoint Hb = GeometricConstructions.w03(hb, b);
 
-            if (point.distance(Hb) < 20) {
+            if (point.distance(Hb) < Constants.DISTANCE_POINT) {
                 point.setX(Hb.X());
                 point.setY(Hb.Y());
 
@@ -862,7 +818,7 @@ public class Triangle extends Polygon {
         if (hc != null) {
             GeomPoint Hc = GeometricConstructions.w03(hc, c);
 
-            if (point.distance(Hc) < 20) {
+            if (point.distance(Hc) < Constants.DISTANCE_POINT) {
                 point.setX(Hc.X());
                 point.setY(Hc.Y());
 
@@ -887,7 +843,7 @@ public class Triangle extends Polygon {
         if (symA != null) {
             GeomPoint Ta = GeometricConstructions.w03(symA, a);
 
-            if (point.distance(Ta) < 20) {
+            if (point.distance(Ta) < Constants.DISTANCE_POINT) {
                 point.setX(Ta.X());
                 point.setY(Ta.Y());
 
@@ -904,7 +860,7 @@ public class Triangle extends Polygon {
         if (symB != null) {
             GeomPoint Tb = GeometricConstructions.w03(symB, b);
 
-            if (point.distance(Tb) < 20) {
+            if (point.distance(Tb) < Constants.DISTANCE_POINT) {
                 point.setX(Tb.X());
                 point.setY(Tb.Y());
 
@@ -920,7 +876,7 @@ public class Triangle extends Polygon {
         if (symC != null) {
             GeomPoint Tc = GeometricConstructions.w03(symC, c);
 
-            if (point.distance(Tc) < 20) {
+            if (point.distance(Tc) < Constants.DISTANCE_POINT) {
                 point.setX(Tc.X());
                 point.setY(Tc.Y());
 
@@ -1046,7 +1002,7 @@ public class Triangle extends Polygon {
         if (ha != null && euler != null) {
             GeomPoint Ea = GeometricConstructions.eulerPoint(ha, euler, a);
 
-            if (point.distance(Ea) < 20) {
+            if (point.distance(Ea) < Constants.DISTANCE_POINT) {
                 point.setX(Ea.X());
                 point.setY(Ea.Y());
 
@@ -1064,7 +1020,7 @@ public class Triangle extends Polygon {
         if (hb != null && euler != null) {
             GeomPoint Eb = GeometricConstructions.eulerPoint(hb, euler, b);
 
-            if (point.distance(Eb) < 20) {
+            if (point.distance(Eb) < Constants.DISTANCE_POINT) {
                 point.setX(Eb.X());
                 point.setY(Eb.Y());
 
@@ -1081,7 +1037,7 @@ public class Triangle extends Polygon {
         if (hc != null && euler != null) {
             GeomPoint Ec = GeometricConstructions.eulerPoint(hc, euler, c);
 
-            if (point.distance(Ec) < 20) {
+            if (point.distance(Ec) < Constants.DISTANCE_POINT) {
                 point.setX(Ec.X());
                 point.setY(Ec.Y());
 
@@ -1109,7 +1065,7 @@ public class Triangle extends Polygon {
         GeomPoint Eb = GeometricConstructions.w01(B, B, H, 0.5f);
         GeomPoint Ec = GeometricConstructions.w01(C, C, H, 0.5f);
 
-        if (point.distance(Ea) < 20) {
+        if (point.distance(Ea) < Constants.DISTANCE_POINT) {
             point.setX(Ea.X());
             point.setY(Ea.Y());
 
@@ -1121,7 +1077,7 @@ public class Triangle extends Polygon {
             return true;
         }
 
-        if (point.distance(Eb) < 20) {
+        if (point.distance(Eb) < Constants.DISTANCE_POINT) {
             point.setX(Eb.X());
             point.setY(Eb.Y());
 
@@ -1133,7 +1089,7 @@ public class Triangle extends Polygon {
         }
 
 
-        if (point.distance(Ec) < 20) {
+        if (point.distance(Ec) < Constants.DISTANCE_POINT) {
             point.setX(Ec.X());
             point.setY(Ec.Y());
 
@@ -1145,10 +1101,6 @@ public class Triangle extends Polygon {
         }
 
         return false;
-    }
-
-    public void addCommand(String komanda) {
-        komanda += " " + getId() + " " + freePoint1 + " " + freePoint2 + " " + freePoint3;
     }
 
     public void recontruct(HashMap<String, Vector<String>> trics, String fP1, String fP2, String fP3) {
