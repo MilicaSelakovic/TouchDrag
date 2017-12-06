@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
 import geometry.calculations.descretegeometrycalculations.PointInformations;
@@ -19,6 +20,7 @@ import java.util.Vector;
 public class Drawing extends Activity {
 
     private PointInformations pointInformations;
+    private int state = 0;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -53,26 +55,26 @@ public class Drawing extends Activity {
         ((DrawingView) this.findViewById(R.id.view)).setTrics(trics);
         ((DrawingView) this.findViewById(R.id.view)).setDensity(getResources().getDisplayMetrics().density);
 
-        this.findViewById(R.id.imageButton4).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((DrawingView) findViewById(R.id.view)).clearPanel();
             }
         });
-        this.findViewById(R.id.imageButton).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.undo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((DrawingView) findViewById(R.id.view)).undo();
             }
         });
-        this.findViewById(R.id.imageButton2).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.redo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((DrawingView) findViewById(R.id.view)).redo();
             }
         });
 
-        this.findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Drawing.this, Setting.class);
@@ -93,6 +95,31 @@ public class Drawing extends Activity {
         });
 
 
+        final ImageButton options = (ImageButton) this.findViewById(R.id.options);
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                state += 1;
+                state = state % 3;
+
+                switch (state) {
+                    case 1:
+                        ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_MOVE);
+                        options.setBackgroundResource(R.drawable.ic_action_move_on);
+                        break;
+                    case 2:
+                        ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_SELECT);
+                        options.setBackgroundResource(R.drawable.ic_action_select_on);
+                        break;
+                    default:
+                        ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
+                        options.setBackgroundResource(R.drawable.ic_action_drawing);
+
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -105,26 +132,6 @@ public class Drawing extends Activity {
         }
     }
 
-    public void moveEnable(View view) {
-        boolean value = ((ToggleButton) this.findViewById(R.id.toggleButton)).isChecked();
-
-
-        if (value) {
-            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_MOVE);
-            this.findViewById(R.id.toggleButton).setEnabled(false);
-        } else {
-            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
-            this.findViewById(R.id.toggleButton).setEnabled(true);
-        }
-
-//        if (value) {
-//            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_SELECT);
-//            this.findViewById(R.id.toggleButton).setEnabled(false);
-//        } else {
-//            ((DrawingView) this.findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
-//            this.findViewById(R.id.toggleButton).setEnabled(true);
-//        }
-    }
 
 
     @Override
