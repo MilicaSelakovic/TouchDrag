@@ -16,13 +16,13 @@ public class Recognizer {
     }
 
 
-    public GeometricObject recognizeCurrent(Vector<PointF> points, double density) {
-        return DiscreteCurvature.getGeometricObject(points, density);
+    public GeometricObject recognizeCurrent(Vector<PointF> points, DiscreteCurvature discreteCurvature) {
+        return discreteCurvature.getGeometricObject(points);
     }
 
-    public boolean recognize(Vector<PointF> points, HashMap<String, GeometricObject> objects, Vector<Vector<String>> mCommands, double density) {
+    public boolean recognize(Vector<PointF> points, HashMap<String, GeometricObject> objects, Vector<Vector<String>> mCommands, DiscreteCurvature discreteCurvature) {
         Vector<String> commands = new Vector<>();
-        GeometricObject recognized = DiscreteCurvature.getGeometricObject(points, density);
+        GeometricObject recognized = discreteCurvature.getGeometricObject(points);
 
         if (recognized == null) {
             return false;

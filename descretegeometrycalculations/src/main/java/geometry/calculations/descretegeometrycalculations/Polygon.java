@@ -23,7 +23,6 @@ public class Polygon extends GeometricObject {
 
     Polygon(Vector<GeomPoint> points) {
         this.points = new Vector<>(points);
-
     }
 
     public String getId() {
@@ -76,6 +75,14 @@ public class Polygon extends GeometricObject {
 
     }
 
+    @Override
+    public void setConstraints(Constants constants) {
+        super.setConstraints(constants);
+
+        for (GeomPoint point : points) {
+            point.setConstraints(constants);
+        }
+    }
 
     // veze sa segmentom pojedinacnim i to samo sa Linijama i tackama
     // mogu tacke preskeka da se generisu ?

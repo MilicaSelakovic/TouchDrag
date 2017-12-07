@@ -92,6 +92,7 @@ public class Line extends GeometricObject {
 
     public void setBegin(GeomPoint begin) {
         this.begin = begin;
+        begin.setConstraints(constants);
         updateVector();
     }
 
@@ -114,6 +115,7 @@ public class Line extends GeometricObject {
 
     public void setEnd(GeomPoint end) {
         this.end = end;
+        end.setConstraints(constants);
         updateVector();
     }
 
@@ -145,7 +147,7 @@ public class Line extends GeometricObject {
         double n3 = -begin.Y() * n2 - begin.X() * n1;
 
         double d = Math.abs(n1 * point.X() + n2 * point.Y() + n3) / Math.sqrt(n1 * n1 + n2 * n2);
-        return d < Constants.EPSILON_DISTANCE;
+        return d < constants.getEpsilon_distance();
     }
 
     public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
@@ -245,5 +247,13 @@ public class Line extends GeometricObject {
         }
 
         return false;
+    }
+
+
+    @Override
+    public void setConstraints(Constants constants) {
+        super.setConstraints(constants);
+        begin.setConstraints(constants);
+        end.setConstraints(constants);
     }
 }

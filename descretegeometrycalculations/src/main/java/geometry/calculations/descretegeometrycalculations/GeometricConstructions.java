@@ -285,6 +285,8 @@ public class GeometricConstructions {
     public static Line w13(Circle k, GeomPoint X, Line t) {
         Line t1 = new Line(X, new GeomPoint(0, 0));
         Line t2 = new Line(X, new GeomPoint(0, 0));
+        t1.setConstraints(k.constants);
+        t2.setConstraints(k.constants);
 
         w12(k, X, t1, t2);
 

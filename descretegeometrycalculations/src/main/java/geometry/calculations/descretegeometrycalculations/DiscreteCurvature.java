@@ -11,18 +11,19 @@ import org.opencv.core.Point;
 import java.util.Vector;
 
 public class DiscreteCurvature {
+    Constants constants;
 
-
-    public DiscreteCurvature() {
+    public DiscreteCurvature(double density) {
+        constants = new Constants(density);
     }
 
-    private static boolean checkCircle(double x0, double y0, double r, Vector<PointF> points) {
+    private boolean checkCircle(double x0, double y0, double r, Vector<PointF> points) {
         if (r < 0)
             return false;
 
         for (PointF p : points) {
             double d = ((p.x - x0) * (p.x - x0) + (p.y - y0) * (p.y - y0)) / r;
-            if (d > 1.5 || d < 0.75 || r > 300000) {
+            if (d > constants.getMaxRatio() || d < constants.getMinRatio() || r > constants.getMaxRadius()) {
                 return false;
             }
         }
@@ -36,7 +37,7 @@ public class DiscreteCurvature {
     *
     *
     * */
-    private static GeometricObject circle(Vector<PointF> points) {
+    private GeometricObject circle(Vector<PointF> points) {
 
         int n = points.size();
         Mat A = Mat.ones(n, 3, CvType.CV_64FC1);
@@ -75,7 +76,7 @@ public class DiscreteCurvature {
         }
     }
 
-    private static Vector<Point> proredi(Vector<PointF> points) {
+    private Vector<Point> proredi(Vector<PointF> points) {
         Vector<Point> newPoints = new Vector<>();
 
         Vector<Point> oldPoints = new Vector<>();
@@ -92,14 +93,14 @@ public class DiscreteCurvature {
             } else {
                 Point diff = new Point(P.x - newPoints.lastElement().x, P.y - newPoints.lastElement().y);
                 double normdiff = Math.sqrt(diff.dot(diff));
-                if (normdiff > 40) {
+                if (normdiff > constants.getMinimalDistance()) {
                     newPoints.add(P);
                 }
 
             }
 
         }
-
+        //TODO vidi sta ce ti ovo 4
         if (newPoints.size() < 4)
             return oldPoints;
 
@@ -107,16 +108,16 @@ public class DiscreteCurvature {
     }
 
     // @Nullable
-    public static GeometricObject getGeometricObject(Vector<PointF> points, double denisty) {
-        Log.d("density", Double.toString(denisty));
+    public GeometricObject getGeometricObject(Vector<PointF> points) {
+        // Log.d("density", Double.toString(denisty));
         int n = points.size();
 
-        if (n <= 3)
+        if (n <= constants.getErrorDrawing())
             return null;
 
-        if (n < 10) {
+        if (n < constants.getMinimalNumberOfPoints()) {
             GeometricObject point = new GeomPoint(points.firstElement().x, points.firstElement().y);
-            point.setDensity(denisty);
+            point.setConstraints(constants);
             return point;
         }
 
@@ -127,7 +128,7 @@ public class DiscreteCurvature {
         GeometricObject obj = circle(points);
 
         if (obj != null) {
-            obj.setDensity(denisty);
+            obj.setConstraints(constants);
             return obj;
         }
 
@@ -156,8 +157,7 @@ public class DiscreteCurvature {
 
             double angle = Math.acos(dprod / (normp * normr));
 
-            //TODO nastelovati ovaj ugao
-            if (angle < 0.8 * Math.PI && angle > 0) {
+            if (angle < constants.getMaxAngle() * Math.PI && angle > constants.getMinAngle()) {
                 lessThenPI++;
 
                 if (lessThenPI > 2) {
@@ -179,15 +179,15 @@ public class DiscreteCurvature {
             if (breakPoints.size() > 2) {
                 if (breakPoints.size() == 3) {
                     GeometricObject triangle = new Triangle(breakPoints);
-                    triangle.setDensity(denisty);
+                    triangle.setConstraints(constants);
                     return triangle;
                 }
                 GeometricObject polygon = new Polygon(breakPoints);
-                polygon.setDensity(denisty);
+                polygon.setConstraints(constants);
                 return polygon;
             } else if (breakPoints.size() == 2) {
                 GeometricObject line = new Line(breakPoints.firstElement(), breakPoints.lastElement());
-                line.setDensity(denisty);
+                line.setConstraints(constants);
                 return line;
             }
         }

@@ -8,8 +8,7 @@ import java.util.Vector;
 
 
 public abstract class GeometricObject {
-    double EPISLON = 10; //TODO nastelovati konstantu
-    double density;
+    protected Constants constants;
 
     public abstract void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations);
 
@@ -28,8 +27,8 @@ public abstract class GeometricObject {
 
     abstract public void setId(String id);
 
-    public void setDensity(double density) {
-        this.density = density;
+    public void setConstraints(Constants constants) {
+        this.constants = constants;
     }
 
 
