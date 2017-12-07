@@ -1,7 +1,6 @@
 package geometry.calculations.descretegeometrycalculations;
 
 import android.graphics.PointF;
-import android.util.Log;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -117,7 +116,7 @@ public class DiscreteCurvature {
 
         if (n < constants.getMinimalNumberOfPoints()) {
             GeometricObject point = new GeomPoint(points.firstElement().x, points.firstElement().y);
-            point.setConstraints(constants);
+            point.setConstants(constants);
             return point;
         }
 
@@ -128,7 +127,7 @@ public class DiscreteCurvature {
         GeometricObject obj = circle(points);
 
         if (obj != null) {
-            obj.setConstraints(constants);
+            obj.setConstants(constants);
             return obj;
         }
 
@@ -179,15 +178,15 @@ public class DiscreteCurvature {
             if (breakPoints.size() > 2) {
                 if (breakPoints.size() == 3) {
                     GeometricObject triangle = new Triangle(breakPoints);
-                    triangle.setConstraints(constants);
+                    triangle.setConstants(constants);
                     return triangle;
                 }
                 GeometricObject polygon = new Polygon(breakPoints);
-                polygon.setConstraints(constants);
+                polygon.setConstants(constants);
                 return polygon;
             } else if (breakPoints.size() == 2) {
                 GeometricObject line = new Line(breakPoints.firstElement(), breakPoints.lastElement());
-                line.setConstraints(constants);
+                line.setConstants(constants);
                 return line;
             }
         }

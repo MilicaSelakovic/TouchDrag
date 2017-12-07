@@ -27,7 +27,7 @@ public abstract class GeometricObject {
 
     abstract public void setId(String id);
 
-    public void setConstraints(Constants constants) {
+    public void setConstants(Constants constants) {
         this.constants = constants;
     }
 

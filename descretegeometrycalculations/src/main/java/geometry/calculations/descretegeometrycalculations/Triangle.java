@@ -1124,11 +1124,11 @@ public class Triangle extends Polygon {
 
 
     @Override
-    public void setConstraints(Constants constants) {
-        super.setConstraints(constants);
+    public void setConstants(Constants constants) {
+        super.setConstants(constants);
 
-        a.setConstraints(constants);
-        b.setConstraints(constants);
-        c.setConstraints(constants);
+        a.setConstants(constants);
+        b.setConstants(constants);
+        c.setConstants(constants);
     }
 }

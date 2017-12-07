@@ -76,11 +76,11 @@ public class Polygon extends GeometricObject {
     }
 
     @Override
-    public void setConstraints(Constants constants) {
-        super.setConstraints(constants);
+    public void setConstants(Constants constants) {
+        super.setConstants(constants);
 
         for (GeomPoint point : points) {
-            point.setConstraints(constants);
+            point.setConstants(constants);
         }
     }
 

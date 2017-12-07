@@ -144,8 +144,8 @@ public class Circle extends GeometricObject {
 
 
     @Override
-    public void setConstraints(Constants constants) {
-        super.setConstraints(constants);
-        center.setConstraints(constants);
+    public void setConstants(Constants constants) {
+        super.setConstants(constants);
+        center.setConstants(constants);
     }
 }

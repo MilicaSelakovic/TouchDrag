@@ -92,7 +92,7 @@ public class Line extends GeometricObject {
 
     public void setBegin(GeomPoint begin) {
         this.begin = begin;
-        begin.setConstraints(constants);
+        begin.setConstants(constants);
         updateVector();
     }
 
@@ -115,7 +115,7 @@ public class Line extends GeometricObject {
 
     public void setEnd(GeomPoint end) {
         this.end = end;
-        end.setConstraints(constants);
+        end.setConstants(constants);
         updateVector();
     }
 
@@ -251,9 +251,9 @@ public class Line extends GeometricObject {
 
 
     @Override
-    public void setConstraints(Constants constants) {
-        super.setConstraints(constants);
-        begin.setConstraints(constants);
-        end.setConstraints(constants);
+    public void setConstants(Constants constants) {
+        super.setConstants(constants);
+        begin.setConstants(constants);
+        end.setConstants(constants);
     }
 }
