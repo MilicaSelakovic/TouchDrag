@@ -14,25 +14,25 @@ public class UniqueID {
 
 
     public UniqueID() {
-        current = 0;
-        triangleNum = 0;
-        pointNum = 0;
+        current = -1;
+        triangleNum = -1;
+        pointNum = -1;
     }
 
 
     public String getID() {
         current++;
-        return Integer.toString(current - 1);
+        return Integer.toString(current);
     }
 
     public String getTrinagleNum() {
         triangleNum++;
-        return Integer.toString(triangleNum - 1);
+        return Integer.toString(triangleNum);
     }
 
     public String getPointNum() {
         pointNum++;
-        return Integer.toString(pointNum - 1);
+        return Integer.toString(pointNum);
     }
 
     public void setRedoLast(int id) {
@@ -56,12 +56,8 @@ public class UniqueID {
     }
 
     public void reset() {
-        current = 0;
-        triangleNum = 0;
-        pointNum = 0;
-
-        redoLast = 1;
-        redoPoint = 1;
-        redoTrin = 1;
+        current = -1;
+        triangleNum = -1;
+        pointNum = -1;
     }
 }

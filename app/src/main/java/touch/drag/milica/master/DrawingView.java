@@ -14,6 +14,8 @@ import android.view.MotionEvent;
 
 import android.graphics.Color;
 
+import org.opencv.core.Point;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -328,6 +330,7 @@ public class DrawingView extends View {
             if (kom.compareTo("add") == 0) {
                 Vector<String> redoCom = redoCommands.pop();
                 int max = -1;
+                int maxPoint = -1;
 
                 for (String command : redoCom) {
                     String array[] = command.split("\\s+");
@@ -337,12 +340,22 @@ public class DrawingView extends View {
                         uniqueID.setRedoTrin(Integer.parseInt(tid));
                     }
                     int i = Integer.parseInt(array[1]);
+                    if (gobj instanceof GeomPoint) {
+                        int k = Integer.parseInt(((GeomPoint) gobj).getPointId());
+                        if (k > maxPoint) {
+                            maxPoint = k;
+                        }
+                    }
                     if (i > max) {
                         max = i;
                     }
                 }
 
                 uniqueID.setRedoLast(max);
+
+                if (maxPoint != -1) {
+                    uniqueID.setRedoPoint(maxPoint);
+                }
 
                 commands.push(redoCom);
                 komande.push("add");
@@ -392,6 +405,7 @@ public class DrawingView extends View {
             if (kom.compareTo("add") == 0) {
                 Vector<String> redoCom = commands.pop();
                 int min = -1;
+                int minPoint = -1;
 
                 for (String command : redoCom) {
                     String array[] = command.split("\\s+");
@@ -400,6 +414,13 @@ public class DrawingView extends View {
                         String tid = ((Triangle) gobj).getNumber();
                         uniqueID.setRedoTrin(Integer.parseInt(tid));
                     }
+
+                    if (gobj != null && gobj instanceof GeomPoint) {
+                        int k = Integer.parseInt(((GeomPoint) gobj).getPointId());
+                        if (k != -1 && (k < minPoint || minPoint == -1)) {
+                            minPoint = k;
+                        }
+                    }
                     int i = Integer.parseInt(array[1]);
                     if (i < min || min == -1) {
                         min = i;
@@ -407,7 +428,9 @@ public class DrawingView extends View {
                 }
 
                 uniqueID.setRedoLast(min);
-
+                if (minPoint != -1) {
+                    uniqueID.setRedoPoint(minPoint);
+                }
                 redoCommands.push(redoCom);
                 redo.push("add");
                 // geometricObjects.clear();

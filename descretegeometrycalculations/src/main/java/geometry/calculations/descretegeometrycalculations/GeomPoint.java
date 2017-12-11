@@ -33,7 +33,7 @@ public class GeomPoint extends GeometricObject {
     private Triangle triangle;
     private String label;
     private String labelNumber = "";
-    private String pointNum = "";
+    private String pointNum = "-1";
 
     private String id;
 
@@ -145,7 +145,7 @@ public class GeomPoint extends GeometricObject {
         circlePaint.setTextSize(pointInformations.getTextSize());
         if (pointInformations.isLabel()) {
             canvas.drawText(label, x + 20f, y + 20f, circlePaint);
-            if (labelNumber.compareTo("") == 0 || Integer.parseInt(labelNumber) != 0) {
+            if (labelNumber.compareTo("") == 0 || Integer.parseInt(labelNumber) > 0) {
                 circlePaint.setTextSize(pointInformations.getTextSize() / 2);
                 canvas.drawText(labelNumber, x + pointInformations.getTextSize(), y + 20f, circlePaint);
             }

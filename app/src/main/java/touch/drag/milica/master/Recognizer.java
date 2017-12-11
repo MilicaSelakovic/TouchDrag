@@ -148,6 +148,7 @@ public class Recognizer {
             for (GeomPoint p : polyPoints) {
                 String idp = uniqueID.getID();
                 p.setId(idp);
+                p.setPointId(uniqueID.getPointNum());
                 command += idp + " ";
                 objects.put(idp, p);
                 commands.add("point " + idp);
