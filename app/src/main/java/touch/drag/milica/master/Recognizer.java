@@ -64,6 +64,7 @@ public class Recognizer {
         }
 
         if (recognized instanceof GeomPoint) {
+            ((GeomPoint) recognized).setPointId(uniqueID.getPointNum());
             commands.add("point " + id);
         }
 
@@ -72,6 +73,7 @@ public class Recognizer {
             Double r = ((Circle) recognized).getRadius();
             String ID = uniqueID.getID();
             center.setId(ID);
+            center.setPointId(uniqueID.getPointNum());
             objects.put(ID, center);
             commands.add("point " + ID);
             commands.add("circle " + id + " " + Double.toString(r) + " " + ID);
@@ -84,12 +86,14 @@ public class Recognizer {
             if (x.getId().compareTo("") == 0) {
                 String idx = uniqueID.getID();
                 x.setId(idx);
+                x.setPointId(uniqueID.getPointNum());
                 objects.put(idx, x);
                 commands.add("point " + idx);
             }
 
             if (y.getId().compareTo("") == 0) {
                 String idy = uniqueID.getID();
+                y.setPointId(uniqueID.getPointNum());
                 y.setId(idy);
                 objects.put(idy, y);
                 commands.add("point " + idy);
@@ -109,6 +113,7 @@ public class Recognizer {
             for (GeomPoint p : polyPoints) {
                 String idp = uniqueID.getID();
                 p.setId(idp);
+                p.setPointId(uniqueID.getPointNum());
                 objects.put(idp, p);
                 commands.add("point " + idp);
                 command += idp + " ";

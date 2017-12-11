@@ -59,5 +59,9 @@ public class UniqueID {
         current = 0;
         triangleNum = 0;
         pointNum = 0;
+
+        redoLast = 1;
+        redoPoint = 1;
+        redoTrin = 1;
     }
 }

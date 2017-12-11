@@ -9,6 +9,7 @@ import java.util.Vector;
 
 public abstract class GeometricObject {
     protected Constants constants;
+    protected boolean draw = true;
 
     public abstract void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations);
 
@@ -26,6 +27,10 @@ public abstract class GeometricObject {
     abstract public String getId();
 
     abstract public void setId(String id);
+
+    public void setDraw(boolean draw) {
+        this.draw = draw;
+    }
 
     public void setConstants(Constants constants) {
         this.constants = constants;

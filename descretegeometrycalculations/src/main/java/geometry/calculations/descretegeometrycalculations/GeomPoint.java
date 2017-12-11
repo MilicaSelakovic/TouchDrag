@@ -33,6 +33,7 @@ public class GeomPoint extends GeometricObject {
     private Triangle triangle;
     private String label;
     private String labelNumber = "";
+    private String pointNum = "";
 
     private String id;
 
@@ -85,8 +86,15 @@ public class GeomPoint extends GeometricObject {
     }
 
     public void setPointId(String id) {
-        labelNumber += id;
+        pointNum = id;
+        if (labelNumber.compareTo("") == 0)
+            labelNumber += id;
     }
+
+    public String getPointId() {
+        return pointNum;
+    }
+
 
     public void setType(Type type) {
         this.type = type;
@@ -94,6 +102,10 @@ public class GeomPoint extends GeometricObject {
 
     public void setLabel(String l) {
         label = l;
+    }
+
+    public void setLabelNum(String l) {
+        labelNumber = l;
     }
 
     public void setTriangle(Triangle triangle) {
@@ -133,8 +145,10 @@ public class GeomPoint extends GeometricObject {
         circlePaint.setTextSize(pointInformations.getTextSize());
         if (pointInformations.isLabel()) {
             canvas.drawText(label, x + 20f, y + 20f, circlePaint);
-            circlePaint.setTextSize(pointInformations.getTextSize() / 2);
-            canvas.drawText(labelNumber, x + 25f, y + 25f, circlePaint);
+            if (labelNumber.compareTo("") == 0 || Integer.parseInt(labelNumber) != 0) {
+                circlePaint.setTextSize(pointInformations.getTextSize() / 2);
+                canvas.drawText(labelNumber, x + pointInformations.getTextSize(), y + 20f, circlePaint);
+            }
         }
     }
 

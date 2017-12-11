@@ -53,15 +53,17 @@ public class Line extends GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
-        float x1 = 0;
-        float x2 = canvas.getWidth() * 20;
+        if (draw) {
+            float x1 = 0;
+            float x2 = canvas.getWidth() * 20;
 
-        if (Math.abs(end.X() - begin.X()) <= 10e-5) {
-            x2 = begin.X();
-            x1 = x2;
+            if (Math.abs(end.X() - begin.X()) <= 10e-5) {
+                x2 = begin.X();
+                x1 = x2;
+            }
+            int y = canvas.getHeight() * 20;
+            canvas.drawLine(x1, yCoord(x1, 0), x2, yCoord(x2, y), paint);
         }
-        int y = canvas.getHeight() * 20;
-        canvas.drawLine(x1, yCoord(x1, 0), x2, yCoord(x2, y), paint);
     }
 
     @Override
@@ -224,6 +226,7 @@ public class Line extends GeometricObject {
         if (ConnectionCalculations.normalLine(this, line)) {
             if (line.getBegin().getId().compareTo("") == 0) {
                 line.getBegin().setId(id.getID());
+                line.getBegin().setPointId(id.getPointNum());
             }
             objects.put(line.getBegin().getId(), line.getBegin());
             commands.add("w10 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
@@ -236,6 +239,7 @@ public class Line extends GeometricObject {
 
             if (line.getBegin().getId().compareTo("") == 0) {
                 line.getBegin().setId(id.getID());
+                line.getBegin().setPointId(id.getPointNum());
             }
             objects.put(line.getBegin().getId(), line.getBegin());
 
