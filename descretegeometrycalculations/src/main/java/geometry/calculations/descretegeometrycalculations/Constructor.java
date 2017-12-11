@@ -58,6 +58,7 @@ public class Constructor {
 
                     if (Y == null) {
                         Y = new GeomPoint(0, 0);
+                        Y.setConstants(newobjects.get(array[2]).constants);
                         Y.setId(array[1]);
                     }
                     Y.setX(X.X());
@@ -75,6 +76,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
                     p.setBegin(l.getBegin());
@@ -97,6 +99,7 @@ public class Constructor {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        P.setConstants(newobjects.get(array[2]).constants);
                     }
 
 
@@ -141,12 +144,14 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
+                        P.setConstants(newobjects.get(array[3]).constants);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
                     if (Q == null) {
                         Q = new GeomPoint(0, 0);
                         Q.setId(array[2]);
+                        Q.setConstants(newobjects.get(array[3]).constants);
                         Q.setMove(Q.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
@@ -185,6 +190,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
+                        P.setConstants(newobjects.get(array[2]).constants);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
@@ -202,6 +208,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        ;
                         c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
@@ -247,12 +255,14 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
+                        P.setConstants(newobjects.get(array[3]).constants);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
                     if (Q == null) {
                         Q = new GeomPoint(0, 0);
                         Q.setId(array[2]);
+                        Q.setConstants(newobjects.get(array[3]).constants);
                         Q.setMove(Q.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
@@ -286,6 +296,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
+                        P.setConstants(newobjects.get(array[2]).constants);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
@@ -303,7 +314,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
@@ -323,6 +335,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -340,7 +353,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
@@ -368,11 +382,13 @@ public class Constructor {
 
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[3]).constants);
                         p.setId(array[1]);
                     }
 
                     if (l == null) {
                         l = new Line(null, null);
+                        l.setConstants(newobjects.get(array[3]).constants);
                         l.setId(array[2]);
                     }
 
@@ -396,6 +412,7 @@ public class Constructor {
                     l = (Line) newobjects.get(array[1]);
                     if (l == null) {
                         l = new Line(null, null);
+                        l.setConstants(newobjects.get(array[2]).constants);
                         l.setId(array[1]);
                     }
 
@@ -413,6 +430,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -430,6 +448,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -448,6 +467,7 @@ public class Constructor {
 
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -472,6 +492,7 @@ public class Constructor {
 
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -497,6 +518,7 @@ public class Constructor {
 
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -521,6 +543,7 @@ public class Constructor {
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
+                        P.setConstants(newobjects.get(array[2]).constants);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     P.setX(X.X());
@@ -543,7 +566,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
@@ -568,7 +592,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
@@ -591,6 +616,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -611,6 +637,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -628,6 +655,7 @@ public class Constructor {
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
+                        p.setConstants(newobjects.get(array[2]).constants);
                         p.setId(array[1]);
                     }
 
@@ -648,7 +676,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
@@ -674,7 +703,8 @@ public class Constructor {
                     k = (Circle) newobjects.get(array[1]);
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setConstants(newobjects.get(array[2]).constants);
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
@@ -702,6 +732,7 @@ public class Constructor {
 
                     if (P == null) {
                         P = new GeomPoint(0, 0);
+                        P.setConstants(newobjects.get(array[2]).constants);
                         P.setId(array[1]);
                         P.setMove(P.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }

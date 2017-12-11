@@ -18,6 +18,7 @@ public class Circle extends GeometricObject {
 
 
     Circle(double x, double y, double r) {
+        constants = new Constants(1);
         center = new GeomPoint((float) x, (float) y);
         radius = r;
     }

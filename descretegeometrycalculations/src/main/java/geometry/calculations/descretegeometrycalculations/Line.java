@@ -20,6 +20,7 @@ public class Line extends GeometricObject {
     //private TreeSet<Line> parallel = new TreeSet<>();
 
     Line(GeomPoint x, GeomPoint y) {
+        constants = new Constants(1);
         id = "";
         begin = x;
         end = y;
@@ -253,7 +254,11 @@ public class Line extends GeometricObject {
     @Override
     public void setConstants(Constants constants) {
         super.setConstants(constants);
-        begin.setConstants(constants);
-        end.setConstants(constants);
+        if (begin != null) {
+            begin.setConstants(constants);
+        }
+        if (end != null) {
+            end.setConstants(constants);
+        }
     }
 }

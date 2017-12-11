@@ -57,7 +57,7 @@ public class Constants {
     // u Klasi Line
     private double epsilon_distance = 10;
     // udaljenonst tacke od trazene tacke u klasi Triangle metodi otrhocentar,.. i Point da li je tacka ispod kursora
-    private double distance_point = 20;
+    private double distance_point = 40;
 
     private double circle_min_ratio = 0.85;
     private double circle_max_ratio = 1.15;
@@ -67,7 +67,7 @@ public class Constants {
     private double minAngle = 0; // ne zavisi od gustine
     private double maxAngle = 0.8; // takodje
     private double minimalDistance = 40;
-    private double maxRadius = 3000;
+    private double maxRadius = 300000;
     private double minRatio = 0.75;
     private double maxRatio = 1.5;
 

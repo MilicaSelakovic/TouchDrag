@@ -3,6 +3,7 @@ package geometry.calculations.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,10 +32,12 @@ public class GeomPoint extends GeometricObject {
 
     private Triangle triangle;
     private String label;
+    private String labelNumber = "";
 
     private String id;
 
     GeomPoint(float x, float y) {
+        constants = new Constants(1);
         this.x = x;
         this.y = y;
         this.move = true;
@@ -76,8 +79,13 @@ public class GeomPoint extends GeometricObject {
 
     public void setId(String id) {
         this.id = id;
-        if (label.compareTo("") == 0)
-            label = "P" + id;
+        if (label.compareTo("") == 0) {
+            label = "P";
+        }
+    }
+
+    public void setPointId(String id) {
+        labelNumber += id;
     }
 
     public void setType(Type type) {
@@ -125,6 +133,8 @@ public class GeomPoint extends GeometricObject {
         circlePaint.setTextSize(pointInformations.getTextSize());
         if (pointInformations.isLabel()) {
             canvas.drawText(label, x + 20f, y + 20f, circlePaint);
+            circlePaint.setTextSize(pointInformations.getTextSize() / 2);
+            canvas.drawText(labelNumber, x + 25f, y + 25f, circlePaint);
         }
     }
 
@@ -134,10 +144,12 @@ public class GeomPoint extends GeometricObject {
     }
 
     public boolean isUnderCursor(float x, float y) {
+        Log.d("lala", "lala");
         return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < constants.getDistance_point();
     }
 
     public boolean underCursor(float x, float y) {
+        Log.d("lala", "lala");
         return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < constants.getDistance_point();
     }
 

@@ -22,6 +22,7 @@ public class Polygon extends GeometricObject {
     Vector<GeomPoint> points;
 
     Polygon(Vector<GeomPoint> points) {
+        constants = new Constants(1);
         this.points = new Vector<>(points);
     }
 
