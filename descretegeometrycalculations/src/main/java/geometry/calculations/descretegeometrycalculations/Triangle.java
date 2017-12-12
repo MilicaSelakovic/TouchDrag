@@ -956,7 +956,7 @@ public class Triangle extends Polygon {
             circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
 
 
-            commands.add("circleAroundTriangle " + circle.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+            commands.add("circleInsideTriangle " + circle.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
 
             return true;
         }

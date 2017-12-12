@@ -38,7 +38,6 @@ public class GeomPoint extends GeometricObject {
     private String id;
 
     GeomPoint(float x, float y) {
-        constants = new Constants(1);
         this.x = x;
         this.y = y;
         this.move = true;
