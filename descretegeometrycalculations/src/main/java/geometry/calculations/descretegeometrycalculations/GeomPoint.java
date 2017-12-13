@@ -95,7 +95,7 @@ public class GeomPoint extends GeometricObject {
     }
 
 
-    public void setType(Type type) {
+    void setType(Type type) {
         this.type = type;
     }
 
@@ -157,12 +157,10 @@ public class GeomPoint extends GeometricObject {
     }
 
     public boolean isUnderCursor(float x, float y) {
-        Log.d("lala", "lala");
         return move && Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < constants.getDistance_point();
     }
 
     public boolean underCursor(float x, float y) {
-        Log.d("lala", "lala");
         return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < constants.getDistance_point();
     }
 
@@ -197,8 +195,9 @@ public class GeomPoint extends GeometricObject {
                             l.contain((GeomPoint) entry.getValue())) {
                         l.setBegin(this);
                         l.setEnd((GeomPoint) entry.getValue());
-
-                        commands.add("w02 " + object.getId() + " " + getId() + " " + entry.getValue().getId());
+                        if (commands != null) {
+                            commands.add("w02 " + object.getId() + " " + getId() + " " + entry.getValue().getId());
+                        }
                         return true;
                     }
                 }
@@ -237,9 +236,10 @@ public class GeomPoint extends GeometricObject {
 
                             c.setCenter(k.getCenter());
                             c.setRadius(k.getRadius());
-
-                            commands.add("circleAroundTriangle " + object.getId() + " " + this.getId() + " " + P.getId()
-                                    + " " + entry.getValue().getId());
+                            if (commands != null) {
+                                commands.add("circleAroundTriangle " + object.getId() + " " + this.getId() + " " + P.getId()
+                                        + " " + entry.getValue().getId());
+                            }
 
                             return true;
                         }
@@ -271,7 +271,6 @@ public class GeomPoint extends GeometricObject {
         move = value;
     }
 
-    // TODO Gde se koristi ovaj equal
     boolean equal(GeomPoint Y) {
         return Math.abs(x - Y.X()) < constants.getDistance_point() && Math.abs(y - Y.Y()) < constants.getDistance_point();
     }

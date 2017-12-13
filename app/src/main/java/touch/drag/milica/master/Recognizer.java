@@ -16,8 +16,39 @@ public class Recognizer {
     }
 
 
-    public GeometricObject recognizeCurrent(Vector<PointF> points, DiscreteCurvature discreteCurvature) {
-        return discreteCurvature.getGeometricObject(points);
+    public GeometricObject recognizeCurrent(Vector<PointF> points, HashMap<String, GeometricObject> objects, DiscreteCurvature discreteCurvature) {
+        GeometricObject recognized = discreteCurvature.getGeometricObject(points);
+
+        if (recognized == null || recognized instanceof GeomPoint) {
+            return recognized;
+        }
+
+        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() == null)
+                continue;
+            if (entry.getValue() instanceof Triangle && entry.getValue().connection(recognized, null, null, objects)) {
+                return recognized;
+            }
+        }
+
+        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() == null)
+                continue;
+            if (entry.getValue() instanceof GeomPoint && entry.getValue().connection(recognized, null, null, objects)) {
+                return recognized;
+            }
+        }
+
+        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+            if (entry.getValue() == null)
+                continue;
+            if (!(entry.getValue() instanceof GeomPoint) &&
+                    entry.getValue().connection(recognized, null, null, objects)) {
+                return recognized;
+            }
+        }
+
+        return recognized;
     }
 
     public boolean recognize(Vector<PointF> points, HashMap<String, GeometricObject> objects, Vector<Vector<String>> mCommands, DiscreteCurvature discreteCurvature) {

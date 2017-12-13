@@ -224,7 +224,7 @@ public class DrawingView extends View {
                     case MODE_USUAL:
                         points.add(touchPoint);
                         drawPath.lineTo(touchX, touchY);
-                        current = recognizer.recognizeCurrent(points, discreteCurvature);
+                        current = recognizer.recognizeCurrent(points, geometricObjects, discreteCurvature);
                         invalidate();
                         break;
                     default:

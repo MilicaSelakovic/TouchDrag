@@ -85,17 +85,20 @@ public class Circle extends GeometricObject {
                             if (P1.distance((GeomPoint) object) < P2.distance((GeomPoint) object)) {
                                 ((GeomPoint) object).setX(P1.X());
                                 ((GeomPoint) object).setY(P1.Y());
-                                commands.add("w07 " + object.getId() + " " + "R " + getId() + " " + entry.getValue().getId());
-                                ((GeomPoint) object).setMove(false);
+                                if (commands != null) {
+                                    commands.add("w07 " + object.getId() + " " + "R " + getId() + " " + entry.getValue().getId());
+                                    ((GeomPoint) object).setMove(false);
+                                }
 
                                 return true;
 
                             } else {
                                 ((GeomPoint) object).setX(P2.X());
                                 ((GeomPoint) object).setY(P2.Y());
-                                commands.add("w07 " + "R " + object.getId() + " " + getId() + " " + entry.getValue().getId());
-                                ((GeomPoint) object).setMove(false);
-
+                                if (commands != null) {
+                                    commands.add("w07 " + "R " + object.getId() + " " + getId() + " " + entry.getValue().getId());
+                                    ((GeomPoint) object).setMove(false);
+                                }
                                 return true;
                             }
                         }
@@ -103,9 +106,10 @@ public class Circle extends GeometricObject {
                         if (d == 1) {
                             ((GeomPoint) object).setX(P1.X());
                             ((GeomPoint) object).setY(P1.Y());
-                            commands.add("w07 " + object.getId() + " " + "R " + getId() + " " + entry.getValue().getId());
-                            ((GeomPoint) object).setMove(false);
-
+                            if (commands != null) {
+                                commands.add("w07 " + object.getId() + " " + "R " + getId() + " " + entry.getValue().getId());
+                                ((GeomPoint) object).setMove(false);
+                            }
                             return true;
                         }
                     }

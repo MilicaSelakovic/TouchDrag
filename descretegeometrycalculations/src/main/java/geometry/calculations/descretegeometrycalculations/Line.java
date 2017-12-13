@@ -172,8 +172,10 @@ public class Line extends GeometricObject {
                         GeomPoint point = GeometricConstructions.w03(this, (Line) entry.getValue());
                         ((GeomPoint) object).setX(point.X());
                         ((GeomPoint) object).setY(point.Y());
-                        commands.add("w03 " + object.getId() + " " + getId() + " " + entry.getValue().getId());
-                        ((GeomPoint) object).setMove(false);
+                        if (commands != null) {
+                            commands.add("w03 " + object.getId() + " " + getId() + " " + entry.getValue().getId());
+                            ((GeomPoint) object).setMove(false);
+                        }
                         return true;
                     }
                 }
@@ -189,17 +191,19 @@ public class Line extends GeometricObject {
                             if (P1.distance((GeomPoint) object) < P2.distance((GeomPoint) object)) {
                                 ((GeomPoint) object).setX(P1.X());
                                 ((GeomPoint) object).setY(P1.Y());
-                                commands.add("w04 " + object.getId() + " " + "R " + entry.getValue().getId() + " " + getId());
-                                ((GeomPoint) object).setMove(false);
-
+                                if (commands != null) {
+                                    commands.add("w04 " + object.getId() + " " + "R " + entry.getValue().getId() + " " + getId());
+                                    ((GeomPoint) object).setMove(false);
+                                }
                                 return true;
 
                             } else {
                                 ((GeomPoint) object).setX(P2.X());
                                 ((GeomPoint) object).setY(P2.Y());
-                                commands.add("w04 " + "R " + object.getId() + " " + entry.getValue().getId() + " " + getId());
-                                ((GeomPoint) object).setMove(false);
-
+                                if (commands != null) {
+                                    commands.add("w04 " + "R " + object.getId() + " " + entry.getValue().getId() + " " + getId());
+                                    ((GeomPoint) object).setMove(false);
+                                }
                                 return true;
                             }
                         }
@@ -207,9 +211,10 @@ public class Line extends GeometricObject {
                         if (d == 1) {
                             ((GeomPoint) object).setX(P1.X());
                             ((GeomPoint) object).setY(P1.Y());
-                            commands.add("w04 " + object.getId() + " " + "R " + entry.getValue().getId() + " " + getId());
-                            ((GeomPoint) object).setMove(false);
-
+                            if (commands != null) {
+                                commands.add("w04 " + object.getId() + " " + "R " + entry.getValue().getId() + " " + getId());
+                                ((GeomPoint) object).setMove(false);
+                            }
                             return true;
                         }
                     }
@@ -224,27 +229,32 @@ public class Line extends GeometricObject {
 
     private boolean connectionLine(Line line, Vector<String> commands, UniqueID id, HashMap<String, GeometricObject> objects) {
         if (ConnectionCalculations.normalLine(this, line)) {
-            if (line.getBegin().getId().compareTo("") == 0) {
+            if (id != null && line.getBegin().getId().compareTo("") == 0) {
                 line.getBegin().setId(id.getID());
                 line.getBegin().setPointId(id.getPointNum());
             }
-            objects.put(line.getBegin().getId(), line.getBegin());
-            commands.add("w10 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
+
+            if (commands != null) {
+                objects.put(line.getBegin().getId(), line.getBegin());
+                commands.add("w10 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
+            }
             Line l = GeometricConstructions.w10(line.getBegin(), this);
+
             line.setEnd(l.getEnd());
             return true;
         }
 
         if (ConnectionCalculations.parallelLine(this, line)) {
 
-            if (line.getBegin().getId().compareTo("") == 0) {
+            if (id != null && line.getBegin().getId().compareTo("") == 0) {
                 line.getBegin().setId(id.getID());
                 line.getBegin().setPointId(id.getPointNum());
             }
-            objects.put(line.getBegin().getId(), line.getBegin());
 
-            commands.add("w16 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
-
+            if (commands != null) {
+                objects.put(line.getBegin().getId(), line.getBegin());
+                commands.add("w16 " + line.getId() + " " + line.getBegin().getId() + " " + this.getId());
+            }
             Line l = GeometricConstructions.w16(line.getBegin(), this);
             l.setEnd(l.getEnd());
             return true;
