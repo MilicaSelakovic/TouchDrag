@@ -2,6 +2,7 @@ package touch.drag.milica.master;
 
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.graphics.Path;
 import android.view.MotionEvent;
 
 import android.graphics.Color;
+import android.widget.TextView;
 
 import org.opencv.core.Point;
 
@@ -73,6 +75,8 @@ public class DrawingView extends View {
     private PointInformations pointInformations;
     private DiscreteCurvature discreteCurvature;
 
+    private TextView textView;
+
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupDrawing();
@@ -99,6 +103,7 @@ public class DrawingView extends View {
 
         pointInformations = new PointInformations();
         discreteCurvature = null;
+        textView = null;
     }
 
     private void setupDrawing() {
@@ -148,6 +153,11 @@ public class DrawingView extends View {
 
             if (current != null && actionDown) {
                 current.draw(canvas, drawObject, false, false, pointInformations);
+                if (textView != null)
+                    textView.setText(current.getLabel());
+            } else {
+                if (textView != null)
+                    textView.setText("");
             }
         }
 
@@ -485,6 +495,10 @@ public class DrawingView extends View {
 
     public void setDensity(double density) {
         this.discreteCurvature = new DiscreteCurvature(density);
+    }
+
+    public void setTextView(TextView textView) {
+        this.textView = textView;
     }
 }
 
