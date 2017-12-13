@@ -10,6 +10,8 @@ import java.util.Vector;
 public abstract class GeometricObject {
     protected Constants constants;
     protected boolean draw = true;
+    protected String recognizedLabel = "";
+
 
     public abstract void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations);
 
@@ -30,6 +32,10 @@ public abstract class GeometricObject {
 
     public void setDraw(boolean draw) {
         this.draw = draw;
+    }
+
+    public String getLabel() {
+        return recognizedLabel;
     }
 
     public void setConstants(Constants constants) {

@@ -432,6 +432,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("symB", line);
                 commands.add("bisectorAngle " + line.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+            } else {
+                line.recognizedLabel = "Bisector line of angle A" + number + "B" + number + "C" + number;
             }
             return true;
         }
@@ -444,6 +446,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("symA", line);
                 commands.add("bisectorAngle " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
+            } else {
+                line.recognizedLabel = "Bisector line of angle C" + number + "A" + number + "B" + number;
             }
             return true;
         }
@@ -455,6 +459,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("symC", line);
                 commands.add("bisectorAngle " + line.getId() + " " + B.getId() + " " + C.getId() + " " + A.getId());
+            } else {
+                line.recognizedLabel = "Bisector line of angle B" + number + "C" + number + "A" + number;
             }
             return true;
         }
@@ -471,6 +477,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 commands.add("w10 " + line.getId() + " " + B.getId() + " " + b.getId());
                 significatObjects.put("hb", line);
+            } else {
+                line.recognizedLabel = "Altitude hb" + number;
             }
             return true;
         }
@@ -482,6 +490,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 commands.add("w10 " + line.getId() + " " + C.getId() + " " + c.getId());
                 significatObjects.put("hc", line);
+            } else {
+                line.recognizedLabel = "Altitude hc" + number;
             }
             return true;
         }
@@ -493,6 +503,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 commands.add("w10 " + line.getId() + " " + A.getId() + " " + a.getId());
                 significatObjects.put("ha", line);
+            } else {
+                line.recognizedLabel = "Altitude ha" + number;
             }
             return true;
         }
@@ -509,6 +521,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("tb", line);
                 commands.add("medianLine " + line.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+            } else {
+                line.recognizedLabel = "Median line tb" + number;
             }
 
             return true;
@@ -521,6 +535,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("tc", line);
                 commands.add("medianLine " + line.getId() + " " + B.getId() + " " + C.getId() + " " + A.getId());
+            } else {
+                line.recognizedLabel = "Median line tc" + number;
             }
 
             return true;
@@ -534,6 +550,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("ta", line);
                 commands.add("medianLine " + line.getId() + " " + C.getId() + " " + A.getId() + " " + B.getId());
+            } else {
+                line.recognizedLabel = "Median line ta" + number;
             }
             return true;
         }
@@ -550,6 +568,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("symAB", line);
                 commands.add("w14 " + line.getId() + " " + A.getId() + " " + B.getId());
+            } else {
+                line.recognizedLabel = "Symmetrical line A" + number + "B" + number;
             }
 
             return true;
@@ -564,6 +584,8 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("symAC", line);
                 commands.add("w14 " + line.getId() + " " + A.getId() + " " + C.getId());
+            } else {
+                line.recognizedLabel = "Symmetrical line A" + number + "C" + number;
             }
 
             return true;
@@ -578,9 +600,9 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("symBC", line);
                 commands.add("w14 " + line.getId() + " " + B.getId() + " " + C.getId());
+            } else {
+                line.recognizedLabel = "Symmetrical line B" + number + "C" + number;
             }
-//            commands.add("add symBC " + id + " " + line.getId());
-
             return true;
         }
 
@@ -1010,6 +1032,8 @@ public class Triangle extends Polygon {
 
 
                 commands.add("circleAroundTriangle " + circle.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+            } else {
+                recognizedLabel = "Circumscribed circle of A" + number + "B" + number + "C" + number;
             }
             return true;
         }
@@ -1034,6 +1058,8 @@ public class Triangle extends Polygon {
 
 
                 commands.add("circleInsideTriangle " + circle.getId() + " " + A.getId() + " " + B.getId() + " " + C.getId());
+            } else {
+                recognizedLabel = "Incircle of A" + number + "B" + number + "C" + number;
             }
             return true;
         }
@@ -1090,6 +1116,8 @@ public class Triangle extends Polygon {
 
                 commands.add("circleAroundTriangle " + circle.getId() + " " + point.elementAt(0).getId()
                         + " " + point.elementAt(1).getId() + " " + point.elementAt(2).getId());
+            } else {
+                recognizedLabel = "Euler circle of A" + number + "B" + number + "C" + number;
             }
             return true;
 
