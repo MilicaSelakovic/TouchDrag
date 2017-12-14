@@ -39,6 +39,9 @@ public class Polygon extends GeometricObject {
         path.moveTo(points.firstElement().X(), points.firstElement().Y());
 
         for (GeomPoint p : points) {
+            if (p == null) {
+                return;
+            }
             path.lineTo(p.X(), p.Y());
         }
         path.lineTo(points.firstElement().X(), points.firstElement().Y());
