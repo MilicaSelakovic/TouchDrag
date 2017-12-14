@@ -39,7 +39,7 @@ public class GeometricConstructions {
         float deltaX = l1.CCoef() * l2.BCoef() - l1.BCoef() * l2.CCoef();
         float deltaY = l1.ACoef() * l2.CCoef() - l1.CCoef() * l2.ACoef();
 
-        if (Math.abs(delta) < 0.0000001f) {
+        if (Math.abs(delta) < 0.0001f) {
             return null;
         }
         return new GeomPoint(deltaX / delta, deltaY / delta, false);
@@ -285,7 +285,9 @@ public class GeometricConstructions {
 
         w12(k, X, t1, t2);
 
-        if (t1.contain(t.getEnd())) {
+        double d1 = t1.distance(t.getEnd());
+        double d2 = t2.distance(t.getEnd());
+        if (d1 < d2) {
             return t2;
         }
 

@@ -144,6 +144,7 @@ public class Constructor {
                         newobjects.put(array[2], null);
                     }
 
+                    boolean heuristic = circleIntersectionHeuristic(P, Q, X, Y, r);
 
                     if (P == null) {
                         P = new GeomPoint(0, 0);
@@ -157,6 +158,10 @@ public class Constructor {
                         Q.setId(array[2]);
                         Q.setConstants(newobjects.get(array[3]).constants);
                         Q.setMove(Q.getType() == GeomPoint.Type.TRIANGLE_FREE);
+                    }
+                    if (!heuristic) {
+                        P.setId(array[2]);
+                        Q.setId(array[1]);
                     }
 
                     P.setX(X.X());
@@ -256,6 +261,8 @@ public class Constructor {
                         newobjects.put(array[2], null);
                     }
 
+                    boolean heuristicCircle = circleIntersectionHeuristic(P, Q, X, Y, r);
+
                     if (P == null) {
                         P = new GeomPoint(0, 0);
                         P.setId(array[1]);
@@ -268,6 +275,11 @@ public class Constructor {
                         Q.setId(array[2]);
                         Q.setConstants(newobjects.get(array[3]).constants);
                         Q.setMove(Q.getType() == GeomPoint.Type.TRIANGLE_FREE);
+                    }
+
+                    if (!heuristicCircle) {
+                        P.setId(array[2]);
+                        Q.setId(array[1]);
                     }
 
                     P.setX(X.X());
@@ -769,5 +781,33 @@ public class Constructor {
                 newObjects.put(name, oldObject.get(name));
             }
         }
+    }
+
+
+    private boolean circleIntersectionHeuristic(GeomPoint P, GeomPoint Q, GeomPoint X, GeomPoint Y, int r) {
+        if (r == 1) {
+            if (P != null && Q != null) {
+                return P.distance(X) <= Q.distance(X);
+            } else {
+                return true;
+            }
+        } else if (r == 2) {
+            if (P == null && Q == null) {
+                return true;
+            } else if (P == null) {
+                return Q.distance(X) > Q.distance(Y);
+            } else if (Q == null) {
+                return P.distance(X) <= P.distance(Y);
+            } else {
+                if ((P.distance(X) <= Q.distance(X) && P.distance(Y) <= Q.distance(Y)) ||
+                        (P.distance(X) > Q.distance(X) && P.distance(Y) > Q.distance(Y))) {
+                    return P.distance(X) <= P.distance(Y);
+                } else {
+                    return P.distance(X) <= Q.distance(X);
+                }
+            }
+        }
+
+        return false;
     }
 }
