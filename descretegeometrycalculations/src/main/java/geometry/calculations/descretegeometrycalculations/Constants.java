@@ -1,13 +1,16 @@
 package geometry.calculations.descretegeometrycalculations;
 
 public class Constants {
+    static private double MILIMETER = 0.0393700787; // 1 mm u inchima
 
-    Constants(double density) {
+    Constants(double density, int densityDPI) {
+        double pixels = MILIMETER * densityDPI;
 
-    }
+        distance_point = pixels * 2;
+        minimalDistance = pixels * 2;
 
-    public double getEpsilon_distance() {
-        return epsilon_distance;
+        errorDrawing = (int) density;
+        minimalNumberOfPoints = 3 * errorDrawing;
     }
 
     public double getDistance_point() {
@@ -54,22 +57,20 @@ public class Constants {
         return maxRatio;
     }
 
-    // u Klasi Line
-    private double epsilon_distance = 10;
     // udaljenonst tacke od trazene tacke u klasi Triangle metodi otrhocentar,.. i Point da li je tacka ispod kursora
-    private double distance_point = 40;
+    private double distance_point;
 
-    private double circle_min_ratio = 0.85;
-    private double circle_max_ratio = 1.15;
+    private static double circle_min_ratio = 0.85;
+    private static double circle_max_ratio = 1.15;
 
-    private int errorDrawing = 3;
-    private int minimalNumberOfPoints = 10;
-    private double minAngle = 0; // ne zavisi od gustine
-    private double maxAngle = 0.8; // takodje
-    private double minimalDistance = 40;
-    private double maxRadius = 300000;
-    private double minRatio = 0.75;
-    private double maxRatio = 1.5;
+    private int errorDrawing;
+    private int minimalNumberOfPoints;
+    private static double minAngle = 0; // ne zavisi od gustine
+    private static double maxAngle = 0.8; // takodje
+    private double minimalDistance;
+    private static double maxRadius = 300000;
+    private static double minRatio = 0.75;
+    private static double maxRatio = 1.5;
 
 
 }

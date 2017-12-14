@@ -489,8 +489,8 @@ public class DrawingView extends View {
         invalidate();
     }
 
-    public void setDensity(double density) {
-        this.discreteCurvature = new DiscreteCurvature(density);
+    public void setDensity(double density, int densityDPI) {
+        this.discreteCurvature = new DiscreteCurvature(density, densityDPI);
     }
 
     public void setTextView(TextView textView) {

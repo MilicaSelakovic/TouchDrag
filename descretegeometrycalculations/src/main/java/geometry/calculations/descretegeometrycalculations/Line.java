@@ -20,7 +20,6 @@ public class Line extends GeometricObject {
     //private TreeSet<Line> parallel = new TreeSet<>();
 
     Line(GeomPoint x, GeomPoint y) {
-        constants = new Constants(1);
         id = "";
         begin = x;
         end = y;
@@ -150,7 +149,7 @@ public class Line extends GeometricObject {
         double n3 = -begin.Y() * n2 - begin.X() * n1;
 
         double d = Math.abs(n1 * point.X() + n2 * point.Y() + n3) / Math.sqrt(n1 * n1 + n2 * n2);
-        return d < constants.getEpsilon_distance();
+        return d < constants.getDistance_point();
     }
 
     public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {

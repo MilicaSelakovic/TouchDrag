@@ -55,7 +55,7 @@ public class Drawing extends Activity {
 
         DrawingView view = ((DrawingView) this.findViewById(R.id.view));
         view.setTrics(trics);
-        view.setDensity(getResources().getDisplayMetrics().density);
+        view.setDensity(getResources().getDisplayMetrics().density, getResources().getDisplayMetrics().densityDpi);
         view.setTextView((TextView) this.findViewById(R.id.textView));
 
         this.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
