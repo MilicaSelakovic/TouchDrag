@@ -39,11 +39,8 @@ public class GeometricConstructions {
         float deltaX = l1.CCoef() * l2.BCoef() - l1.BCoef() * l2.CCoef();
         float deltaY = l1.ACoef() * l2.CCoef() - l1.CCoef() * l2.ACoef();
 
-        // TODO: 18.8.17. Konstanta
-        if (Math.abs(delta) == 0) {
-            //TODO nema resenja
-            // return null;
-            delta = 0.0000002f;
+        if (Math.abs(delta) < 0.0000001f) {
+            return null;
         }
         return new GeomPoint(deltaX / delta, deltaY / delta, false);
     }

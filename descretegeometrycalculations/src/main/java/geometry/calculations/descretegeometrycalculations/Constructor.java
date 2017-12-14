@@ -46,7 +46,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (Y != null && Y.isFree()) {
+                        if (Y != null && !Y.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -87,7 +87,7 @@ public class Constructor {
                     P = (GeomPoint) newobjects.get(array[1]);
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -102,6 +102,10 @@ public class Constructor {
                         P.setConstants(newobjects.get(array[2]).constants);
                     }
 
+                    if (X == null) {
+                        newobjects.put(P.getId(), null);
+                        break;
+                    }
 
                     P.setX(X.X());
                     P.setY(X.Y());
@@ -113,11 +117,11 @@ public class Constructor {
                     Q = (GeomPoint) newobjects.get(array[2]);
 
                     if (newobjects.get(array[3]) == null || newobjects.get(array[4]) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
-                        if (Q != null && Q.isFree()) {
+                        if (Q != null && !Q.isFree()) {
                             newobjects.put(array[2], null);
                         }
 
@@ -178,7 +182,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(point) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -226,11 +230,11 @@ public class Constructor {
                     Q = (GeomPoint) newobjects.get(array[2]);
 
                     if (newobjects.get(array[3]) == null || newobjects.get(array[4]) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
-                        if (Q != null && Q.isFree()) {
+                        if (Q != null && !Q.isFree()) {
                             newobjects.put(array[2], null);
                         }
 
@@ -285,7 +289,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -531,7 +535,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -719,7 +723,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (P != null && P.isFree()) {
+                        if (P != null && !P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
