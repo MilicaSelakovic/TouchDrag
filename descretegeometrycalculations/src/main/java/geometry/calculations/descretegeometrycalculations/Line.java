@@ -152,10 +152,6 @@ public class Line extends GeometricObject {
         return d < constants.getDistance_point();
     }
 
-    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
-        return false;
-    }
-
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
         if (object instanceof Line) {
 

@@ -65,10 +65,6 @@ public class Circle extends GeometricObject {
         return "Krug  " + Double.toString(radius);
     }
 
-    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
-        return false;
-    }
-
 
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
         if (object instanceof GeomPoint) {

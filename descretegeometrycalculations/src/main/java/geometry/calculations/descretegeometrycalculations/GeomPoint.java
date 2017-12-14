@@ -1,9 +1,7 @@
 package geometry.calculations.descretegeometrycalculations;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -180,10 +178,6 @@ public class GeomPoint extends GeometricObject {
         y *= scaleFactor;
     }
 
-
-    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
-        return false;
-    }
 
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
         if (object instanceof Line) {

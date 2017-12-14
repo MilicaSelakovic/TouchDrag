@@ -45,8 +45,11 @@ public class Triangle extends Polygon {
         c = new Line(A, B);
 
         freePoint1 = "A";
+        A.setFree(true);
         freePoint2 = "B";
+        B.setFree(true);
         freePoint3 = "C";
+        C.setFree(true);
 
     }
 
@@ -126,6 +129,8 @@ public class Triangle extends Polygon {
             }
         }
 
+        point.setFree(true);
+
         if (freePoint1.compareTo("") == 0) {
             freePoint1 = label;
         } else if (freePoint2.compareTo("") == 0) {
@@ -199,15 +204,18 @@ public class Triangle extends Polygon {
             if (entry.getValue() == point) {
                 if (freePoint1.compareTo(entry.getKey()) == 0) {
                     freePoint1 = "";
+                    point.setFree(false);
                     break;
                 }
 
                 if (freePoint2.compareTo(entry.getKey()) == 0) {
                     freePoint2 = "";
+                    point.setFree(false);
                     break;
                 }
                 if (freePoint2.compareTo(entry.getKey()) == 0) {
                     freePoint2 = "";
+                    point.setFree(false);
                     break;
                 }
             }
@@ -276,24 +284,6 @@ public class Triangle extends Polygon {
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         super.draw(canvas, paint, finished, choose, pointInformations);
 
-    }
-
-    @Override
-    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
-        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
-            if (entry.getValue() instanceof GeomPoint && entry.getValue() != null) {
-                if (isFree(entry.getKey())) {
-                    if (((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                        chosen = entry.getKey();
-                        recolor(trics);
-                        return true;
-                    }
-                }
-            }
-
-        }
-
-        return false;
     }
 
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {

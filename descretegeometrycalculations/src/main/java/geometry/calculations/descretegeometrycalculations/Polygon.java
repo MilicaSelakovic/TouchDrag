@@ -51,12 +51,6 @@ public class Polygon extends GeometricObject {
     }
 
 
-    public boolean choose(float x, float y, HashMap<String, Vector<String>> trics) {
-
-        return false;
-
-    }
-
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
 
         return false;

@@ -11,14 +11,11 @@ public abstract class GeometricObject {
     protected Constants constants;
     protected boolean draw = true;
     protected String recognizedLabel = "";
-
+    private boolean free = false;
 
     public abstract void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations);
 
-    public abstract boolean choose(float x, float y, HashMap<String, Vector<String>> trics);
-
     public abstract boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects);
-
 
     public abstract boolean isUnderCursor(float x, float y);
 
@@ -42,5 +39,12 @@ public abstract class GeometricObject {
         this.constants = constants;
     }
 
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
+    }
 
 }

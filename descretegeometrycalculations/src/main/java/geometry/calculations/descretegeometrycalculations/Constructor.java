@@ -46,7 +46,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (Y != null && Y.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (Y != null && Y.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -87,7 +87,7 @@ public class Constructor {
                     P = (GeomPoint) newobjects.get(array[1]);
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -113,11 +113,11 @@ public class Constructor {
                     Q = (GeomPoint) newobjects.get(array[2]);
 
                     if (newobjects.get(array[3]) == null || newobjects.get(array[4]) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
-                        if (Q != null && Q.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (Q != null && Q.isFree()) {
                             newobjects.put(array[2], null);
                         }
 
@@ -178,7 +178,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(point) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -226,11 +226,11 @@ public class Constructor {
                     Q = (GeomPoint) newobjects.get(array[2]);
 
                     if (newobjects.get(array[3]) == null || newobjects.get(array[4]) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
-                        if (Q != null && Q.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (Q != null && Q.isFree()) {
                             newobjects.put(array[2], null);
                         }
 
@@ -285,7 +285,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -531,7 +531,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
@@ -719,7 +719,7 @@ public class Constructor {
 
                     if (newobjects.get(array[2]) == null || newobjects.get(array[3]) == null ||
                             newobjects.get(array[4]) == null) {
-                        if (P != null && P.getType() != GeomPoint.Type.TRIANGLE_FREE) {
+                        if (P != null && P.isFree()) {
                             newobjects.put(array[1], null);
                         }
 
