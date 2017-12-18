@@ -15,22 +15,48 @@ public class PointInformations {
     private boolean label;
     private float textSize;
 
+    private int paintColor;
+
+    private int drawPathColor;
+    private int tempObjectColor;
+    private int textColor;
+
 
     public PointInformations() {
         setToDefaults();
     }
 
     public void setToDefaults() {
-        moveColor = Color.BLUE;
-        fixedColor = Color.GRAY;
-        activeColor = Color.rgb(27, 226, 98);
-        canChooseColor = Color.YELLOW;
-        cannotChooseColor = Color.RED;
-        otherColor = Color.BLACK;
+        moveColor = Color.parseColor("#65be00");
+        fixedColor = Color.parseColor("#e20000");
+        activeColor = Color.parseColor("#65be00");
+        canChooseColor = Color.parseColor("#f69100");
+        cannotChooseColor = Color.parseColor("#e20000");
+        otherColor = Color.parseColor("#e20000");
+        paintColor = Color.WHITE;
+        tempObjectColor = Color.WHITE;
+        drawPathColor = Color.WHITE;
+        textColor = Color.WHITE;
 
         pointSize = 20f;
         label = true;
         textSize = 50;
+    }
+
+    public int getPaintColor() {
+        return paintColor;
+    }
+
+    public int getDrawPathColor() {
+        return drawPathColor;
+    }
+
+    public int getTempObjectColor() {
+        return tempObjectColor;
+    }
+
+    public int getTextColor() {
+        return textColor;
     }
 
     public int getMoveColor() {

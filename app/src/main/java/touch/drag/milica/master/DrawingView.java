@@ -40,8 +40,6 @@ public class DrawingView extends View {
     private Path drawPath;
     //drawing and canvas paint
     private Paint drawPaint, canvasPaint, objectPaint, drawObject;
-    //initial color
-    private int paintColor = Color.parseColor("#808080");
 
     //canvas bitmap
     private Bitmap canvasBitmap;
@@ -79,6 +77,7 @@ public class DrawingView extends View {
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        pointInformations = new PointInformations();
         setupDrawing();
 
         uniqueID = new UniqueID();
@@ -109,7 +108,7 @@ public class DrawingView extends View {
     private void setupDrawing() {
         drawPath = new Path();
         drawPaint = new Paint();
-        drawPaint.setColor(paintColor);
+        drawPaint.setColor(pointInformations.getDrawPathColor());
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(10);
         drawPaint.setStyle(Paint.Style.STROKE);
@@ -118,7 +117,7 @@ public class DrawingView extends View {
         canvasPaint = new Paint(Paint.DITHER_FLAG);
 
         drawObject = new Paint();
-        drawObject.setColor(Color.BLUE);
+        drawObject.setColor(pointInformations.getTempObjectColor());
         drawObject.setAntiAlias(true);
         drawObject.setStrokeWidth(3);
         drawObject.setStyle(Paint.Style.STROKE);
@@ -128,7 +127,7 @@ public class DrawingView extends View {
 
 
         objectPaint = new Paint();
-        objectPaint.setColor(Color.parseColor("#483D8B"));
+        objectPaint.setColor(pointInformations.getPaintColor());
         objectPaint.setAntiAlias(true);
         objectPaint.setStrokeWidth(4);
         objectPaint.setStyle(Paint.Style.STROKE);

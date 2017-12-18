@@ -140,6 +140,8 @@ public class GeomPoint extends GeometricObject {
 
         canvas.drawCircle(x, y, pointInformations.getPointSize(), circlePaint);
         circlePaint.setTextSize(pointInformations.getTextSize());
+
+        circlePaint.setColor(pointInformations.getTextColor());
         if (pointInformations.isLabel()) {
             canvas.drawText(label, x + 20f, y + 20f, circlePaint);
             if (labelNumber.compareTo("") == 0 || Integer.parseInt(labelNumber) > 0) {
