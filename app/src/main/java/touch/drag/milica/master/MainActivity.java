@@ -111,15 +111,17 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_MOVE);
                         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.moveFloatBackGround)));
+                        fab.setImageResource(R.drawable.ic_action_move);
                         break;
                     case 2:
                         ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_SELECT);
                         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.selectFloatBackGround)));
+                        fab.setImageResource(R.drawable.ic_action_select);
                         break;
                     default:
                         ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
                         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.drawFloatBackGround)));
-
+                        fab.setImageResource(R.drawable.ic_action_draw);
 
                 }
             }

@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:background="@color/backgroundMain">
+            android:background="@color/backgroundMain"
+            android:padding="10dp">
 
             <ImageButton
                 android:layout_width="@android:dimen/app_icon_size"
@@ -65,22 +66,28 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:id="@+id/undo"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="top|end"
         android:layout_marginEnd="@android:dimen/app_icon_size"
         android:layout_marginTop="@dimen/undo_margin"
-        android:background="@drawable/ic_action_undo" />
+        android:paddingEnd="10dp">
 
+        <ImageButton
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:id="@+id/undo"
+            android:background="@drawable/ic_action_undo" />
+    </RelativeLayout>
     <ImageButton
         android:layout_width="@android:dimen/app_icon_size"
         android:layout_height="@android:dimen/app_icon_size"
         android:layout_marginTop="@dimen/undo_margin"
         android:id="@+id/redo"
         android:layout_gravity="top|end"
-        android:background="@drawable/ic_action_redo" />
+        android:background="@drawable/ic_action_redo"
+        android:layout_marginEnd="10dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -89,6 +96,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/drawFloatBackGround"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_action_draw" />
 
 </android.support.design.widget.CoordinatorLayout>

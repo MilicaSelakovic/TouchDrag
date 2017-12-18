@@ -4,5 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <item name="cons_height" type="dimen">10%</item>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="undo_margin">96dip</dimen>
+    <dimen name="undo_margin">120dip</dimen>
+    <dimen name="design_fab_image_size">36dp</dimen>
 </resources>

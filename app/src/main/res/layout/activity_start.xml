@@ -8,10 +8,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="touch.drag.milica.master.Start">
+    tools:context="touch.drag.milica.master.Start"
+    android:background="@color/backgroundMain">
 
     <ProgressBar
-        style="?android:attr/progressBarStyleLargeInverse"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
