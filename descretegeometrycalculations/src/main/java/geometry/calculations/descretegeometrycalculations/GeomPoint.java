@@ -161,7 +161,7 @@ public class GeomPoint extends GeometricObject {
     }
 
     public boolean underCursor(float x, float y) {
-        return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < constants.getDistance_point();
+        return Math.sqrt(Math.pow((this.x - x), 2) + Math.pow((this.y - y), 2)) < 2 * constants.getDistance_point();
     }
 
 

@@ -213,8 +213,8 @@ public class Triangle extends Polygon {
                     point.setFree(false);
                     break;
                 }
-                if (freePoint2.compareTo(entry.getKey()) == 0) {
-                    freePoint2 = "";
+                if (freePoint3.compareTo(entry.getKey()) == 0) {
+                    freePoint3 = "";
                     point.setFree(false);
                     break;
                 }
