@@ -152,7 +152,13 @@ public class DrawingView extends View {
 
             if (current != null && actionDown) {
                 current.draw(canvas, drawObject, false, false, pointInformations);
-                Log.d("label", current.getLabel());
+                if (textView != null) {
+                    textView.setText(current.getLabel());
+                }
+            } else {
+                if (textView != null) {
+                    textView.setText("");
+                }
             }
         }
 

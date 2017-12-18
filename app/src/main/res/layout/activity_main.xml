@@ -53,11 +53,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="@android:dimen/app_icon_size"
                 tools:text="Some text"
-                android:fontFamily="roboto"
-                android:textSize="30sp"
-                android:textColor="@color/materialcolorpicker__white"
                 android:background="@color/textBackGround"
-                android:gravity="center" />
+                android:gravity="center"
+                android:id="@+id/textView"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp"
+                android:textColor="@color/text_color" />
         </LinearLayout>
 
         <include layout="@layout/content_main" />
