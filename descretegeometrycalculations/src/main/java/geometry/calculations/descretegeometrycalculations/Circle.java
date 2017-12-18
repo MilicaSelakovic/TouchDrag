@@ -122,10 +122,10 @@ public class Circle extends GeometricObject {
     public void translate(float x, float y) {
     }
 
-    // TODO da li se ovaj equal uopste koristi
     public boolean equal(Circle circle) {
         double d = center.distance(circle.getCenter());
         double dr = Math.abs(radius - circle.getRadius());
+        // TODO izvuci ovaj 150
         return d < constants.getDistance_point() * 1.5 && dr < 150;
     }
 

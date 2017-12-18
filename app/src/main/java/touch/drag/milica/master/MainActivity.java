@@ -1,15 +1,16 @@
 package touch.drag.milica.master;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-
-import geometry.calculations.descretegeometrycalculations.PointInformations;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
@@ -18,7 +19,9 @@ import org.opencv.android.OpenCVLoader;
 import java.util.HashMap;
 import java.util.Vector;
 
-public class Drawing extends Activity {
+import geometry.calculations.descretegeometrycalculations.PointInformations;
+
+public class MainActivity extends AppCompatActivity {
 
     private PointInformations pointInformations;
     private int state = 0;
@@ -43,7 +46,7 @@ public class Drawing extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawing);
+        setContentView(R.layout.activity_main);
 
         pointInformations = new PointInformations();
 
@@ -80,7 +83,7 @@ public class Drawing extends Activity {
         this.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Drawing.this, Setting.class);
+                Intent intent = new Intent(MainActivity.this, Setting.class);
 
                 intent.putExtra("moveColor", pointInformations.getMoveColor());
                 intent.putExtra("fixedColor", pointInformations.getFixedColor());
@@ -97,32 +100,30 @@ public class Drawing extends Activity {
             }
         });
 
-
-        final ImageButton options = (ImageButton) this.findViewById(R.id.options);
-        options.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 state += 1;
                 state = state % 3;
 
                 switch (state) {
                     case 1:
                         ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_MOVE);
-                        options.setBackgroundResource(R.drawable.ic_action_move_on);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.moveFloatBackGround)));
                         break;
                     case 2:
                         ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_SELECT);
-                        options.setBackgroundResource(R.drawable.ic_action_select_on);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.selectFloatBackGround)));
                         break;
                     default:
                         ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
-                        options.setBackgroundResource(R.drawable.ic_action_drawing);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.drawFloatBackGround)));
+
 
                 }
             }
         });
-
-
     }
 
     @Override
@@ -134,7 +135,6 @@ public class Drawing extends Activity {
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
-
 
 
     @Override
@@ -156,4 +156,5 @@ public class Drawing extends Activity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 }

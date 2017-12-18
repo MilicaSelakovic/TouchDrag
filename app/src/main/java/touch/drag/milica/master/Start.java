@@ -24,7 +24,7 @@ public class Start extends AppCompatActivity {
                 } finally {
 
                     Intent i = new Intent(Start.this,
-                            Drawing.class);
+                            MainActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                     finish();

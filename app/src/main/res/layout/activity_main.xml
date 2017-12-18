@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="touch.drag.milica.master.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/backgroundMain">
+
+            <ImageButton
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:id="@+id/delete"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_action_new" />
+
+            <ImageButton
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:id="@+id/button8"
+                android:background="@drawable/ic_action_help"
+                android:layout_marginStart="@android:dimen/app_icon_size"
+                android:layout_alignParentStart="true" />
+
+            <ImageButton
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:id="@+id/settings"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_action_sett" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="horizontal"
+            android:background="@color/backgroundMain">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@android:dimen/app_icon_size"
+                tools:text="Some text"
+                android:fontFamily="roboto"
+                android:textSize="30sp"
+                android:textColor="@color/materialcolorpicker__white"
+                android:background="@color/textBackGround"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:background="@color/backgroundMain">
+
+            <ImageButton
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:id="@+id/undo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@android:dimen/app_icon_size"
+                android:background="@drawable/ic_action_undo" />
+
+            <ImageButton
+                android:layout_width="@android:dimen/app_icon_size"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:id="@+id/redo"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_action_redo" />
+        </RelativeLayout>
+
+        <include layout="@layout/content_main" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/drawFloatBackGround"
+        app:fabSize="normal" />
+
+</android.support.design.widget.CoordinatorLayout>

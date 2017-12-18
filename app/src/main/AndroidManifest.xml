@@ -9,10 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Drawing"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity
             android:name=".Start"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -23,6 +19,10 @@
         </activity>
         <activity
             android:name=".Setting"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
             android:theme="@style/AppTheme"></activity>
     </application>
 
