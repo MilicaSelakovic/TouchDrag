@@ -241,6 +241,21 @@ public class GeomPoint extends GeometricObject {
                         }
                     }
                 }
+
+                if (P != null) {
+
+                } else {
+                    // krug sa precnikom koji sadrzi ovu tacku
+                    GeomPoint center = c.getCenter();
+                    c.setRadius(distance(center));
+
+                    if (commands != null) {
+                        center.setId(uniqueID.getID());
+                        center.setPointId(uniqueID.getPointNum());
+                        objects.put(center.getId(), center);
+                        commands.add("w06 " + c.getId() + " " + this.getId() + " " + center.getId());
+                    }
+                }
             }
         }
         return false;
