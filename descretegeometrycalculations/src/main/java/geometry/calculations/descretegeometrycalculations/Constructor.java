@@ -218,17 +218,16 @@ public class Constructor {
                     if (k == null) {
                         k = new Circle(c.getCenter(), c.getRadius());
                         k.setConstants(newobjects.get(array[2]).constants);
-                        ;
-                        c.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
+                        k.setRadius(c.getRadius());
+                        k.getCenter().setMove(c.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                         k.setId(array[1]);
                     } else {
                         k.getCenter().setX(c.getCenter().X());
                         k.getCenter().setY(c.getCenter().Y());
                         k.setRadius(c.getRadius());
-                        k.getCenter().setMove(k.getCenter().getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
 
-                    newobjects.put(array[1], c);
+                    newobjects.put(array[1], k);
                     break;
                 case "w07":
                     P = (GeomPoint) newobjects.get(array[1]);
