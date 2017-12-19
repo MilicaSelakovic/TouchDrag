@@ -9,6 +9,8 @@ public class Constants {
         distance_point = pixels * 2;
         minimalDistance = pixels * 2;
 
+        radius_difference = pixels * 7.5;
+
         errorDrawing = (int) density;
         minimalNumberOfPoints = 3 * errorDrawing;
     }
@@ -57,6 +59,10 @@ public class Constants {
         return maxRatio;
     }
 
+    public double getRadius_difference() {
+        return radius_difference;
+    }
+
     // udaljenonst tacke od trazene tacke u klasi Triangle metodi otrhocentar,.. i Point da li je tacka ispod kursora
     private double distance_point;
 
@@ -71,6 +77,8 @@ public class Constants {
     private static double maxRadius = 300000;
     private static double minRatio = 0.75;
     private static double maxRatio = 1.5;
+
+    private double radius_difference;
 
 
 }

@@ -125,8 +125,8 @@ public class Circle extends GeometricObject {
     public boolean equal(Circle circle) {
         double d = center.distance(circle.getCenter());
         double dr = Math.abs(radius - circle.getRadius());
-        // TODO izvuci ovaj 150
-        return d < constants.getDistance_point() * 1.5 && dr < 150;
+
+        return d < constants.getDistance_point() * 1.5 && dr < constants.getRadius_difference();
     }
 
     @Override
