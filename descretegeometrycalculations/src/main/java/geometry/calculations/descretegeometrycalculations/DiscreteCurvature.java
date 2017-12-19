@@ -176,6 +176,9 @@ public class DiscreteCurvature {
 
         if (isLine) {
             if (breakPoints.size() > 2) {
+                if (breakPoints.firstElement().distance(breakPoints.lastElement()) < constants.getMinimalDistance()) {
+                    breakPoints.removeElementAt(breakPoints.size() - 1);
+                }
                 if (breakPoints.size() == 3) {
                     GeometricObject triangle = new Triangle(breakPoints);
                     triangle.setConstants(constants);
