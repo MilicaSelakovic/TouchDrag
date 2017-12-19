@@ -370,18 +370,11 @@ public class Triangle extends Polygon {
 
         if (object instanceof Circle) {
             Circle circle = (Circle) object;
-            if (eulerCircle(circle, commands)) {
+            if (eulerCircle(circle, commands) || circumscribedCircle(circle, commands) || inCircle(circle, commands)) {
+                circle.setConstants(this.constants);
+                circle.getCenter().setConstants(this.constants);
                 return true;
             }
-
-            if (circumscribedCircle(circle, commands)) {
-                return true;
-            }
-
-            if (inCircle(circle, commands)) {
-                return true;
-            }
-
 
         }
 
@@ -1008,7 +1001,7 @@ public class Triangle extends Polygon {
     private boolean circumscribedCircle(Circle circle, Vector<String> commands) {
         Circle c = GeometricConstructions.circleAroundTriangle(A, B, C);
 
-        if (circle.contain(A) && circle.contain(B) && circle.contain(C)) {
+        if (circle.equal(c)) {
             circle.setCenter(c.getCenter());
             circle.setRadius(c.getRadius());
             if (commands != null) {

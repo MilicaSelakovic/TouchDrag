@@ -140,10 +140,6 @@ public class Constructor {
                         break;
                     }
 
-                    if (r == 1) {
-                        newobjects.put(array[2], null);
-                    }
-
                     boolean heuristic = circleIntersectionHeuristic(P, Q, X, Y, r);
 
                     if (P == null) {
@@ -171,7 +167,11 @@ public class Constructor {
                     }
                     Q.setX(Y.X());
                     Q.setY(Y.Y());
-                    if (r == 1 || Q.getId().equals("R")) {
+                    if (r == 1) {
+                        Q.setX(X.X());
+                        Q.setY(X.Y());
+                    }
+                    if (Q.getId().equals("R")) {
                         break;
                     }
                     newobjects.put(Q.getId(), Q);
@@ -257,9 +257,6 @@ public class Constructor {
                         break;
                     }
 
-                    if (r == 1) {
-                        newobjects.put(array[2], null);
-                    }
 
                     boolean heuristicCircle = circleIntersectionHeuristic(P, Q, X, Y, r);
 
@@ -290,7 +287,11 @@ public class Constructor {
 
                     Q.setX(Y.X());
                     Q.setY(Y.Y());
-                    if (r == 1 || Q.getId().equals("R")) {
+                    if (r == 1) {
+                        Q.setX(X.X());
+                        Q.setY(X.Y());
+                    }
+                    if (Q.getId().equals("R")) {
                         break;
                     }
 
@@ -390,11 +391,20 @@ public class Constructor {
 
                     x = new Line(null, null);
                     y = new Line(null, null);
-                    GeometricConstructions.w12(((Circle) newobjects.get(array[3])), ((GeomPoint) newobjects.get(array[4])),
+                    r = GeometricConstructions.w12(((Circle) newobjects.get(array[3])), ((GeomPoint) newobjects.get(array[4])),
                             x, y);
+
+                    if (r == 0) {
+                        newobjects.put(array[1], null);
+                        newobjects.put(array[2], null);
+                        break;
+                    }
+
 
                     p = (Line) newobjects.get(array[1]);
                     l = (Line) newobjects.get(array[2]);
+
+                    heuristic = circleTangentHeuristic(p, l, x, y, r);
 
                     if (p == null) {
                         p = new Line(null, null);
@@ -408,12 +418,22 @@ public class Constructor {
                         l.setId(array[2]);
                     }
 
+                    if (!heuristic) {
+                        p.setId(array[2]);
+                        l.setId(array[1]);
+                    }
+
                     p.setBegin(x.getBegin());
                     p.setEnd(x.getEnd());
                     newobjects.put(p.getId(), p);
 
                     l.setBegin(y.getBegin());
                     l.setEnd(y.getEnd());
+
+                    if (r == 1) {
+                        l.setBegin(x.getBegin());
+                        l.setEnd(x.getEnd());
+                    }
                     newobjects.put(l.getId(), l);
                     break;
                 case "w13":
@@ -804,6 +824,35 @@ public class Constructor {
                     return P.distance(X) <= P.distance(Y);
                 } else {
                     return P.distance(X) <= Q.distance(X);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean circleTangentHeuristic(Line l1, Line l2, Line p1, Line p2, int r) {
+        GeomPoint X = p1.getEnd();
+        GeomPoint Y = p2.getEnd();
+        if (r == 1) {
+            if (l1 != null && l2 != null) {
+                return l1.distance(X) <= l2.distance(X);
+            } else {
+                return true;
+            }
+        } else if (r == 2) {
+            if (l1 == null && l2 == null) {
+                return true;
+            } else if (l1 == null) {
+                return l2.distance(X) > l2.distance(Y);
+            } else if (l2 == null) {
+                return l1.distance(X) <= l1.distance(Y);
+            } else {
+                if ((l1.distance(X) <= l2.distance(X) && l1.distance(Y) <= l2.distance(Y)) ||
+                        (l1.distance(X) > l2.distance(X) && l1.distance(Y) > l2.distance(Y))) {
+                    return l1.distance(X) <= l1.distance(Y);
+                } else {
+                    return l1.distance(X) <= l2.distance(X);
                 }
             }
         }

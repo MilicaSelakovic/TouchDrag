@@ -238,10 +238,14 @@ public class GeometricConstructions {
     ван круга k; */
 
 
-    public static void w12(Circle k, GeomPoint X, Line t1, Line t2) {
-
+    public static int w12(Circle k, GeomPoint X, Line t1, Line t2) {
         GeomPoint C = k.getCenter();
         double d = C.distance(X);
+
+        if (d < k.getRadius()) {
+            // point is inside
+            return 0;
+        }
 
         double cos = k.getRadius() / d;
         double sin = Math.sqrt(1 - cos * cos);
@@ -249,7 +253,18 @@ public class GeometricConstructions {
         GeomPoint T1 = new GeomPoint(0, 0);
         GeomPoint T2 = new GeomPoint(0, 0);
 
-        w04(new Line(X, C), k, T1, T2);
+        int r = w04(new Line(X, C), k, T1, T2);
+
+        if (r == 0) {
+            return r;
+        }
+
+        if (r == 1) {
+            t1.setBegin(X);
+            t2.setEnd(T1);
+            return r;
+        }
+
 
         double d1 = X.distance(T1);
         double d2 = X.distance(T2);
@@ -270,6 +285,8 @@ public class GeometricConstructions {
 
         t2.setBegin(X);
         t2.setEnd(new GeomPoint((float) (x * cos + y * sin) + C.X(), (float) (-x * sin + y * cos) + C.Y()));
+
+        return 2;
     }
 
     /*
@@ -285,8 +302,15 @@ public class GeometricConstructions {
 
         w12(k, X, t1, t2);
 
-        double d1 = t1.distance(t.getEnd());
-        double d2 = t2.distance(t.getEnd());
+        double d1, d2;
+
+        if (X.distance(t.getBegin()) < X.distance(t.getEnd())) {
+            d1 = t1.distance(t.getEnd());
+            d2 = t2.distance(t.getEnd());
+        } else {
+            d1 = t1.distance(t.getBegin());
+            d2 = t2.distance(t.getBegin());
+        }
         if (d1 < d2) {
             return t2;
         }

@@ -68,6 +68,9 @@ public class Recognizer {
                 continue;
             if (entry.getValue() instanceof Triangle && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
+                if (recognized instanceof Circle) {
+                    objects.put(((Circle) recognized).getCenter().getId(), ((Circle) recognized).getCenter());
+                }
                 mCommands.add(commands);
                 return true;
             }
@@ -78,6 +81,7 @@ public class Recognizer {
                 continue;
             if (entry.getValue() instanceof GeomPoint && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
                 objects.put(id, recognized);
+
                 mCommands.add(commands);
                 return true;
             }
