@@ -530,7 +530,7 @@ public class GeometricConstructions {
     }
 
 
-    private static double angle(GeomPoint X, GeomPoint Y, GeomPoint Z) {
+    public static double angle(GeomPoint X, GeomPoint Y, GeomPoint Z) {
 
         float dx1 = Y.X() - X.X();
         float dy1 = Y.Y() - X.Y();

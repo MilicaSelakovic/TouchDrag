@@ -176,7 +176,14 @@ public class DiscreteCurvature {
 
         if (isLine) {
             if (breakPoints.size() > 2) {
-                if (breakPoints.firstElement().distance(breakPoints.lastElement()) < constants.getMinimalDistance()) {
+                n = breakPoints.size();
+                GeomPoint first = breakPoints.firstElement();
+                GeomPoint last = breakPoints.lastElement();
+                GeomPoint secondLast = breakPoints.elementAt(n - 1);
+
+                double angle = GeometricConstructions.angle(secondLast, last, first);
+
+                if (first.distance(last) < constants.getMinimalDistance() || Math.abs(angle) > constants.getMaxAngle() * Math.PI) {
                     breakPoints.removeElementAt(breakPoints.size() - 1);
                 }
                 if (breakPoints.size() == 3) {

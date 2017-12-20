@@ -3,6 +3,7 @@ package geometry.calculations.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Vector;
@@ -35,17 +36,16 @@ public class Polygon extends GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
-        Path path = new Path();
-        path.moveTo(points.firstElement().X(), points.firstElement().Y());
 
-        for (GeomPoint p : points) {
-            if (p == null) {
+        int n = points.size();
+        for (int i = 0; i < n; i++) {
+            GeomPoint P = points.elementAt(i % n);
+            GeomPoint Q = points.elementAt((i + 1) % n);
+            if (P == null || Q == null) {
                 return;
             }
-            path.lineTo(p.X(), p.Y());
+            drawSegment(canvas, paint, P, Q);
         }
-        path.lineTo(points.firstElement().X(), points.firstElement().Y());
-        canvas.drawPath(path, paint);
     }
 
     @Override
@@ -81,25 +81,106 @@ public class Polygon extends GeometricObject {
         }
     }
 
-    // veze sa segmentom pojedinacnim i to samo sa Linijama i tackama
-    // mogu tacke preskeka da se generisu ?
+    private int checkPoints(int h, int w) {
 
-    // trougao - krug
-    // upisan, opisan
+        int n = points.size();
 
-    // trougao - prava   done
-    // simentrala ugla done
-    // simetrala stranice
-    // tezisna linija
-    // visina
+        for (int i = 0; i < n; i++) {
+            if (checkPoint(points.elementAt(i), h, w)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    private boolean checkPoint(GeomPoint P, int h, int w) {
+        return P.X() >= 0 && P.X() <= w + 10 && P.Y() >= 0 && P.Y() <= h + 10;
+    }
 
 
-    // trougao tacka
-    // teme
-    // ortocentar
-    // teziste
-    // centri opisanog, upisanog kruga
-    // sredine stranica
-    //
+    private GeomPoint intersection(GeomPoint in, GeomPoint out, int h, int w) {
+        int x = -1, y = -1;
+
+        if (out.X() < 0) {
+            x = 0;
+        }
+
+        if (out.X() > w) {
+            x = w;
+        }
+
+        if (out.Y() < 0) {
+            y = 0;
+        }
+
+        if (out.Y() > h) {
+            y = h;
+        }
+
+
+        if (y >= 0) {
+            GeomPoint P = new GeomPoint(0, y);
+            GeomPoint Q = new GeomPoint(w, y);
+            GeomPoint X = GeometricConstructions.w03(new Line(in, out), new Line(P, Q));
+
+
+            if (X != null && checkPoint(X, h, w)) {
+                X.setY(y);
+                return X;
+            }
+        }
+
+        if (x >= 0) {
+            GeomPoint P = new GeomPoint(x, 0);
+            GeomPoint Q = new GeomPoint(x, h);
+            GeomPoint X = GeometricConstructions.w03(new Line(in, out), new Line(P, Q));
+
+            if (X != null && checkPoint(X, h, w)) {
+                X.setX(x);
+                return X;
+            }
+        }
+
+        return null;
+    }
+
+    private boolean onSameBorder(GeomPoint X, GeomPoint Y, int h, int w) {
+        if (X.X() == Y.X() && (X.X() == 0 || X.X() == w)) {
+            return true;
+        }
+
+        return (X.Y() == Y.Y() && (X.Y() == 0 || X.Y() == h));
+    }
+
+    private void drawSegment(Canvas canvas, Paint paint, GeomPoint P, GeomPoint Q) {
+        int h = canvas.getHeight();
+        int w = canvas.getWidth();
+
+        if (checkPoint(P, h, w) && checkPoint(Q, h, w)) {
+            canvas.drawLine(P.X(), P.Y(), Q.X(), Q.Y(), paint);
+            return;
+        }
+
+        if (checkPoint(P, h, w)) {
+            // samo je P unutra
+            GeomPoint R = intersection(P, Q, h, w);
+            canvas.drawLine(P.X(), P.Y(), R.X(), R.Y(), paint);
+            return;
+        }
+
+        if (checkPoint(Q, h, w)) {
+            //samo je Q unutra;
+            GeomPoint R = intersection(Q, P, h, w);
+            canvas.drawLine(Q.X(), Q.Y(), R.X(), R.Y(), paint);
+            return;
+        }
+
+        GeomPoint R = intersection(P, Q, h, w);
+        GeomPoint S = intersection(Q, P, h, w);
+        canvas.drawLine(S.X(), S.Y(), R.X(), R.Y(), paint);
+
+        return;
+    }
 
 }
