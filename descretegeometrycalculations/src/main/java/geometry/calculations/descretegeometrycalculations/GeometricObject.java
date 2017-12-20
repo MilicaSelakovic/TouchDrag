@@ -13,6 +13,8 @@ public abstract class GeometricObject {
     protected String recognizedLabel = "";
     private boolean free = false;
 
+    private boolean infoObject = false;
+
     public abstract void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations);
 
     public abstract boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects);
@@ -46,5 +48,15 @@ public abstract class GeometricObject {
     public void setFree(boolean free) {
         this.free = free;
     }
+
+
+    public boolean isInfoObject() {
+        return infoObject;
+    }
+
+    public void setInfoObject(boolean infoObject) {
+        this.infoObject = infoObject;
+    }
+
 
 }

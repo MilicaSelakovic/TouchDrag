@@ -55,7 +55,7 @@ public class Circle extends GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
-        if (finished)
+        if (finished && !isInfoObject())
             center.draw(canvas, paint, finished, choose, pointInformations);
         canvas.drawCircle(center.X(), center.Y(), (float) radius, paint);
     }

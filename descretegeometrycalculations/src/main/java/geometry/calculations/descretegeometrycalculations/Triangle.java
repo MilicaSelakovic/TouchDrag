@@ -1,8 +1,11 @@
 package geometry.calculations.descretegeometrycalculations;
 
 import android.graphics.Canvas;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 
+
+import org.opencv.core.Point;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +14,7 @@ import java.util.Vector;
 public class Triangle extends Polygon {
     private String id;
     private HashMap<String, GeometricObject> significatObjects;
+    private Vector<GeometricObject> significatObjectsDraw;
     private GeomPoint A, B, C;
 
     private String freePoint1;
@@ -33,6 +37,7 @@ public class Triangle extends Polygon {
     public Triangle(Vector<GeomPoint> points) {
         super(points);
         significatObjects = new HashMap<>(30);
+        significatObjectsDraw = new Vector<>(50);
         A = points.elementAt(0);
         B = points.elementAt(1);
         C = points.elementAt(2);
@@ -50,6 +55,8 @@ public class Triangle extends Polygon {
         B.setFree(true);
         freePoint3 = "C";
         C.setFree(true);
+
+        populateSignificantObjects();
 
     }
 
@@ -284,6 +291,17 @@ public class Triangle extends Polygon {
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         super.draw(canvas, paint, finished, choose, pointInformations);
 
+        if (pointInformations.isShowSignInfo()) {
+            Paint infoPaint = new Paint(paint);
+            infoPaint.setColor(pointInformations.getInfoColor());
+            infoPaint.setPathEffect(new DashPathEffect(new float[]{10, 10}, 0));
+
+            for (GeometricObject object : significatObjectsDraw) {
+                object.setInfoObject(true);
+                object.draw(canvas, infoPaint, finished, choose, pointInformations);
+            }
+        }
+
     }
 
     public boolean connection(GeometricObject object, Vector<String> commands, UniqueID uniqueID, HashMap<String, GeometricObject> objects) {
@@ -386,6 +404,7 @@ public class Triangle extends Polygon {
     }
 
     public void translate(float x, float y) {
+        populateSignificantObjects();
         if (reconstruction != null) {
             HashMap<String, GeometricObject> copy = new HashMap<>();
 
@@ -1262,5 +1281,128 @@ public class Triangle extends Polygon {
         a.setConstants(constants);
         b.setConstants(constants);
         c.setConstants(constants);
+    }
+
+
+    private void populateSignificantObjects() {
+        Line line;
+        GeomPoint point;
+        significatObjectsDraw.clear();
+
+        Line symB = GeometricConstructions.bisectorAngle(A, B, C);
+        significatObjectsDraw.add(symB);
+
+        Line symA = GeometricConstructions.bisectorAngle(C, A, B);
+        significatObjectsDraw.add(symA);
+
+        Line symC = GeometricConstructions.bisectorAngle(B, C, A);
+        significatObjectsDraw.add(symC);
+
+        Line hb = GeometricConstructions.w10(B, b);
+        significatObjectsDraw.add(hb);
+
+        Line hc = GeometricConstructions.w10(C, c);
+        significatObjectsDraw.add(hc);
+
+        Line ha = GeometricConstructions.w10(A, a);
+        significatObjectsDraw.add(ha);
+
+        line = GeometricConstructions.medianLine(A, B, C);
+        significatObjectsDraw.add(line);
+
+        line = GeometricConstructions.medianLine(B, C, A);
+        significatObjectsDraw.add(line);
+
+        line = GeometricConstructions.medianLine(C, A, B);
+        significatObjectsDraw.add(line);
+
+        line = GeometricConstructions.w14(A, B);
+        significatObjectsDraw.add(line);
+
+        line = GeometricConstructions.w14(A, C);
+        significatObjectsDraw.add(line);
+
+        line = GeometricConstructions.w14(B, C);
+        significatObjectsDraw.add(line);
+
+        GeomPoint H = GeometricConstructions.orthocenter(A, B, C);
+        H.setLabel("H");
+        significatObjectsDraw.add(H);
+
+        point = GeometricConstructions.incenter(A, B, C);
+        point.setLabel("I");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.centroid(A, B, C);
+        point.setLabel("G");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.circumcenter(A, B, C);
+        point.setLabel("O");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w01(B, B, C, 0.5f);
+        point.setLabel("Ma");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w01(A, A, C, 0.5f);
+        point.setLabel("Mb");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w01(A, A, B, 0.5f);
+        point.setLabel("Mc");
+        significatObjectsDraw.add(point);
+
+        GeomPoint Ha = GeometricConstructions.w03(ha, a);
+        point.setLabel("Ha");
+        significatObjectsDraw.add(Ha);
+
+        GeomPoint Hb = GeometricConstructions.w03(hb, b);
+        point.setLabel("Hb");
+        significatObjectsDraw.add(Hb);
+
+        GeomPoint Hc = GeometricConstructions.w03(hc, c);
+        point.setLabel("Hc");
+        significatObjectsDraw.add(Hc);
+
+
+        point = GeometricConstructions.w03(symA, a);
+        point.setLabel("Ta");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w03(symB, b);
+        point.setLabel("Tb");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w03(symC, c);
+        point.setLabel("Tc");
+        significatObjectsDraw.add(point);
+
+        Circle circle = GeometricConstructions.circleAroundTriangle(A, B, C);
+
+        significatObjectsDraw.add(circle);
+
+        circle = GeometricConstructions.circleInsideTriangle(A, B, C);
+        significatObjectsDraw.add(circle);
+
+
+        circle = GeometricConstructions.circleAroundTriangle(Ha, Hb, Hc);
+
+        significatObjectsDraw.add(circle);
+        circle.getCenter().setLabel("N");
+        significatObjectsDraw.add(circle.getCenter());
+
+
+        point = GeometricConstructions.w01(A, A, H, 0.5f);
+        point.setLabel("Ea");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w01(B, B, H, 0.5f);
+        point.setLabel("Eb");
+        significatObjectsDraw.add(point);
+
+        point = GeometricConstructions.w01(C, C, H, 0.5f);
+        point.setLabel("Ec");
+        significatObjectsDraw.add(point);
     }
 }

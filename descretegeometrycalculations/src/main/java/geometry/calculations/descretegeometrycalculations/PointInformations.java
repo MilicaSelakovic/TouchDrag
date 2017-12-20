@@ -20,6 +20,7 @@ public class PointInformations {
     private int drawPathColor;
     private int tempObjectColor;
     private int textColor;
+    private int infoColor;
 
     private boolean showSignInfo;
 
@@ -39,6 +40,8 @@ public class PointInformations {
         drawPathColor = Color.WHITE;
         textColor = Color.WHITE;
 
+        infoColor = Color.parseColor("#465E5E5E");
+
         pointSize = 20f;
         label = true;
         textSize = 50;
@@ -56,6 +59,9 @@ public class PointInformations {
         this.showSignInfo = showSignInfo;
     }
 
+    public int getInfoColor() {
+        return infoColor;
+    }
     public int getPaintColor() {
         return paintColor;
     }
