@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -30,6 +31,8 @@ public class Setting extends AppCompatActivity {
 
     private boolean hasExtra = false;
 
+    private float factor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class Setting extends AppCompatActivity {
             pointSize = extras.getFloat("pointSize");
             label = extras.getBoolean("label");
             textSize = extras.getFloat("textSize");
+            factor = extras.getFloat("factor");
         }
 
 
@@ -239,6 +243,14 @@ public class Setting extends AppCompatActivity {
 
             }
         });
+
+        final SeekBar seekBar = (SeekBar) this.findViewById(R.id.factor);
+        seekBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                factor = seekBar.getProgress() / 10f;
+            }
+        });
     }
 
     @Override
@@ -256,6 +268,7 @@ public class Setting extends AppCompatActivity {
         intent.putExtra("pointSize", pointSize);
         intent.putExtra("label", label);
         intent.putExtra("textSize", textSize);
+        intent.putExtra("factor", factor);
 
         setResult(RESULT_OK, intent);
         super.finish();
@@ -298,6 +311,8 @@ public class Setting extends AppCompatActivity {
         Switch switch1 = (Switch) findViewById(R.id.switch1);
         switch1.setChecked(label);
 
+        SeekBar seekBar = (SeekBar) findViewById(R.id.factor);
+        seekBar.setProgress((int) factor * 10);
 
     }
 

@@ -24,6 +24,7 @@ import geometry.calculations.descretegeometrycalculations.PointInformations;
 public class MainActivity extends AppCompatActivity {
 
     private PointInformations pointInformations;
+    private float factor = 1f;
     private int state = 0;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("pointSize", pointInformations.getPointSize());
                 intent.putExtra("label", pointInformations.isLabel());
                 intent.putExtra("textSize", pointInformations.getTextSize());
+                intent.putExtra("factor", factor);
 
                 startActivityForResult(intent, 17);
             }
@@ -154,7 +156,10 @@ public class MainActivity extends AppCompatActivity {
             pointInformations.setPointSize(extras.getFloat("pointSize"));
             pointInformations.setLabel(extras.getBoolean("label"));
             pointInformations.setTextSize(extras.getFloat("textSize"));
-            ((DrawingView) findViewById(R.id.view)).setPointInformations(pointInformations);
+            factor = extras.getFloat("factor");
+            DrawingView view = (DrawingView) findViewById(R.id.view);
+            view.setPointInformations(pointInformations);
+            view.setSenisitivityFactor(factor);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

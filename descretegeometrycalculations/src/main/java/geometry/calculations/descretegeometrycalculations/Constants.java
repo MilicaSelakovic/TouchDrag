@@ -3,7 +3,10 @@ package geometry.calculations.descretegeometrycalculations;
 public class Constants {
     static private double MILIMETER = 0.0393700787; // 1 mm u inchima
 
-    Constants(double density, int densityDPI) {
+    private float factor;
+
+    public Constants(double density, int densityDPI) {
+        factor = 1.0f;
         double pixels = MILIMETER * densityDPI;
 
         distance_point = pixels * 2;
@@ -16,7 +19,7 @@ public class Constants {
     }
 
     public double getDistance_point() {
-        return distance_point;
+        return factor * distance_point;
     }
 
     public double getCircle_min_ratio() {
@@ -28,11 +31,11 @@ public class Constants {
     }
 
     public int getErrorDrawing() {
-        return errorDrawing;
+        return (int) factor * errorDrawing;
     }
 
     public int getMinimalNumberOfPoints() {
-        return minimalNumberOfPoints;
+        return (int) factor * minimalNumberOfPoints;
     }
 
     public double getMinAngle() {
@@ -44,7 +47,7 @@ public class Constants {
     }
 
     public double getMinimalDistance() {
-        return minimalDistance;
+        return factor * minimalDistance;
     }
 
     public double getMaxRadius() {
@@ -60,7 +63,11 @@ public class Constants {
     }
 
     public double getRadius_difference() {
-        return radius_difference;
+        return factor * radius_difference;
+    }
+
+    public void setFactor(float factor) {
+        this.factor = factor;
     }
 
     // udaljenonst tacke od trazene tacke u klasi Triangle metodi otrhocentar,.. i Point da li je tacka ispod kursora

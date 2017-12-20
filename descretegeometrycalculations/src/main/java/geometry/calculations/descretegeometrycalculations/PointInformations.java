@@ -21,7 +21,6 @@ public class PointInformations {
     private int tempObjectColor;
     private int textColor;
 
-
     public PointInformations() {
         setToDefaults();
     }
@@ -41,6 +40,7 @@ public class PointInformations {
         pointSize = 20f;
         label = true;
         textSize = 50;
+
     }
 
     public int getPaintColor() {

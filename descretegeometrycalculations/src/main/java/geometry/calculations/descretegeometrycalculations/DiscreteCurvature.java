@@ -12,8 +12,8 @@ import java.util.Vector;
 public class DiscreteCurvature {
     Constants constants;
 
-    public DiscreteCurvature(double density, int densityDPI) {
-        constants = new Constants(density, densityDPI);
+    public DiscreteCurvature(Constants constants) {
+        this.constants = constants;
     }
 
     private boolean checkCircle(double x0, double y0, double r, Vector<PointF> points) {

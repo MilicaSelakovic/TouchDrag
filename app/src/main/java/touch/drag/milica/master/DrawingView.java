@@ -27,9 +27,6 @@ import geometry.calculations.descretegeometrycalculations.*;
 
 public class DrawingView extends View {
 
-    public void setTrics(HashMap<String, Vector<String>> trics) {
-        this.trics = trics;
-    }
 
     public enum Mode {
         MODE_MOVE, MODE_USUAL, MODE_SELECT;
@@ -72,6 +69,7 @@ public class DrawingView extends View {
     private Mode mode;
     private PointInformations pointInformations;
     private DiscreteCurvature discreteCurvature;
+    private Constants constants;
 
     private TextView textView;
 
@@ -102,6 +100,7 @@ public class DrawingView extends View {
 
         pointInformations = new PointInformations();
         discreteCurvature = null;
+        constants = null;
         textView = null;
     }
 
@@ -293,6 +292,7 @@ public class DrawingView extends View {
 
         return true;
     }
+
 
     public void clearPanel() {
         geometricObjects.clear();
@@ -495,12 +495,22 @@ public class DrawingView extends View {
     }
 
     public void setDensity(double density, int densityDPI) {
-        this.discreteCurvature = new DiscreteCurvature(density, densityDPI);
+        this.constants = new Constants(density, densityDPI);
+        this.discreteCurvature = new DiscreteCurvature(constants);
     }
 
     public void setTextView(TextView textView) {
         this.textView = textView;
     }
+
+    public void setTrics(HashMap<String, Vector<String>> trics) {
+        this.trics = trics;
+    }
+
+    public void setSenisitivityFactor(float factor) {
+        constants.setFactor(factor);
+    }
+
 }
 
 
