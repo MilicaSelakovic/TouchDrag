@@ -28,8 +28,6 @@ public class GeomPoint extends GeometricObject {
     private Type type;
 
 
-    private Triangle triangle;
-    private String label;
     private String labelNumber = "";
     private String pointNum = "-1";
 
@@ -45,9 +43,6 @@ public class GeomPoint extends GeometricObject {
 
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL);
-        triangle = null;
-        label = "";
-
         id = "";
 
 
@@ -64,9 +59,6 @@ public class GeomPoint extends GeometricObject {
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL);
 
-        triangle = null;
-        label = "";
-
         id = "";
     }
 
@@ -77,8 +69,8 @@ public class GeomPoint extends GeometricObject {
 
     public void setId(String id) {
         this.id = id;
-        if (label.compareTo("") == 0) {
-            label = "P";
+        if (label().compareTo("") == 0) {
+            setLabel("P");
         }
     }
 
@@ -97,16 +89,8 @@ public class GeomPoint extends GeometricObject {
         this.type = type;
     }
 
-    public void setLabel(String l) {
-        label = l;
-    }
-
     public void setLabelNum(String l) {
         labelNumber = l;
-    }
-
-    public void setTriangle(Triangle triangle) {
-        this.triangle = triangle;
     }
 
 
@@ -149,7 +133,7 @@ public class GeomPoint extends GeometricObject {
             circlePaint.setColor(pointInformations.getTextColor());
         }
         if (pointInformations.isLabel()) {
-            canvas.drawText(label, x + 20f, y + 20f, circlePaint);
+            canvas.drawText(label(), x + 20f, y + 20f, circlePaint);
             if (labelNumber.compareTo("") == 0 || Integer.parseInt(labelNumber) > 0) {
                 circlePaint.setTextSize(pointInformations.getTextSize() / 2);
                 canvas.drawText(labelNumber, x + pointInformations.getTextSize(), y + 20f, circlePaint);
@@ -175,8 +159,8 @@ public class GeomPoint extends GeometricObject {
         this.x = x;
         this.y = y;
 
-        if (triangle != null) {
-            triangle.translate(x, y);
+        if (getTriangle() != null) {
+            getTriangle().translate(x, y);
         }
     }
 
@@ -300,10 +284,10 @@ public class GeomPoint extends GeometricObject {
 
         switch (type) {
             case TRIANGLE_FREE:
-                triangle.fix(this, trics);
+                getTriangle().fix(this, trics);
                 break;
             case TRIANGLE_CANFREE:
-                triangle.free(this, trics);
+                getTriangle().free(this, trics);
                 break;
             default:
                 break;

@@ -11,7 +11,10 @@ public abstract class GeometricObject {
     protected Constants constants;
     protected boolean draw = true;
     protected String recognizedLabel = "";
+    private Triangle triangle = null;
     private boolean free = false;
+
+    private String label = "";
 
     private boolean infoObject = false;
 
@@ -57,6 +60,25 @@ public abstract class GeometricObject {
     public void setInfoObject(boolean infoObject) {
         this.infoObject = infoObject;
     }
+
+
+    public Triangle getTriangle() {
+        return triangle;
+    }
+
+    public void setTriangle(Triangle triangle) {
+        this.triangle = triangle;
+    }
+
+
+    public String label() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
 
 
 }
