@@ -81,19 +81,6 @@ public class Polygon extends GeometricObject {
         }
     }
 
-    private int checkPoints(int h, int w) {
-
-        int n = points.size();
-
-        for (int i = 0; i < n; i++) {
-            if (checkPoint(points.elementAt(i), h, w)) {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
     private boolean checkPoint(GeomPoint P, int h, int w) {
         return P.X() >= 0 && P.X() <= w + 10 && P.Y() >= 0 && P.Y() <= h + 10;
     }
