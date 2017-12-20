@@ -132,14 +132,6 @@ public class Polygon extends GeometricObject {
         return null;
     }
 
-    private boolean onSameBorder(GeomPoint X, GeomPoint Y, int h, int w) {
-        if (X.X() == Y.X() && (X.X() == 0 || X.X() == w)) {
-            return true;
-        }
-
-        return (X.Y() == Y.Y() && (X.Y() == 0 || X.Y() == h));
-    }
-
     private void drawSegment(Canvas canvas, Paint paint, GeomPoint P, GeomPoint Q) {
         int h = canvas.getHeight();
         int w = canvas.getWidth();
