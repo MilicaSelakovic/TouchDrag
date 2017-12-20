@@ -33,6 +33,8 @@ public class Setting extends AppCompatActivity {
 
     private float factor;
 
+    private boolean signInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class Setting extends AppCompatActivity {
             label = extras.getBoolean("label");
             textSize = extras.getFloat("textSize");
             factor = extras.getFloat("factor");
+            signInfo = extras.getBoolean("signInfo");
         }
 
 
@@ -188,6 +191,16 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+
+        this.findViewById(R.id.show).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Switch s = (Switch) findViewById(R.id.show);
+
+                signInfo = s.isChecked();
+            }
+        });
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner3);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -269,6 +282,7 @@ public class Setting extends AppCompatActivity {
         intent.putExtra("label", label);
         intent.putExtra("textSize", textSize);
         intent.putExtra("factor", factor);
+        intent.putExtra("signInfo", signInfo);
 
         setResult(RESULT_OK, intent);
         super.finish();
@@ -310,6 +324,10 @@ public class Setting extends AppCompatActivity {
 
         Switch switch1 = (Switch) findViewById(R.id.switch1);
         switch1.setChecked(label);
+
+        Switch show = (Switch) findViewById(R.id.show);
+        show.setChecked(signInfo);
+
 
         SeekBar seekBar = (SeekBar) findViewById(R.id.factor);
         seekBar.setProgress((int) factor * 10);

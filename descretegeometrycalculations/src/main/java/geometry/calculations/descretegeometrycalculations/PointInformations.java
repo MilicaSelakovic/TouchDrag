@@ -21,6 +21,8 @@ public class PointInformations {
     private int tempObjectColor;
     private int textColor;
 
+    private boolean showSignInfo;
+
     public PointInformations() {
         setToDefaults();
     }
@@ -41,6 +43,17 @@ public class PointInformations {
         label = true;
         textSize = 50;
 
+        showSignInfo = false;
+
+    }
+
+
+    public boolean isShowSignInfo() {
+        return showSignInfo;
+    }
+
+    public void setShowSignInfo(boolean showSignInfo) {
+        this.showSignInfo = showSignInfo;
     }
 
     public int getPaintColor() {

@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("label", pointInformations.isLabel());
                 intent.putExtra("textSize", pointInformations.getTextSize());
                 intent.putExtra("factor", factor);
+                intent.putExtra("signInfo", pointInformations.isShowSignInfo());
 
                 startActivityForResult(intent, 17);
             }
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             pointInformations.setPointSize(extras.getFloat("pointSize"));
             pointInformations.setLabel(extras.getBoolean("label"));
             pointInformations.setTextSize(extras.getFloat("textSize"));
+            pointInformations.setShowSignInfo(extras.getBoolean("signInfo"));
             factor = extras.getFloat("factor");
             DrawingView view = (DrawingView) findViewById(R.id.view);
             view.setPointInformations(pointInformations);

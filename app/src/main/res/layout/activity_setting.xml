@@ -72,6 +72,15 @@
                     android:textSize="18sp"
                     android:checked="true" />
 
+                <Switch
+                    android:text="Show significant geometric objects of triangle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@android:dimen/notification_large_icon_height"
+                    android:textSize="18sp"
+                    android:checked="false"
+                    android:id="@+id/show" />
+
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -304,11 +313,6 @@
 
                 </LinearLayout>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:background="@color/materialcolorpicker__grey" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
