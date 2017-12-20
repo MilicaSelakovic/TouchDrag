@@ -167,7 +167,6 @@ public class Polygon extends GeometricObject {
         GeomPoint S = intersection(Q, P, h, w);
         canvas.drawLine(S.X(), S.Y(), R.X(), R.Y(), paint);
 
-        return;
     }
 
 }
