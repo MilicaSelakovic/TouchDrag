@@ -1368,6 +1368,30 @@ public class Triangle extends Polygon {
     }
 
     public void removeSignificant(String label) {
+        if (isFree(label)) {
+            freePoint1 = "A";
+            freePoint2 = "B";
+            freePoint3 = "C";
+            reset();
+        }
         significatObjects.remove(label);
+    }
+
+
+    private void reset() {
+        for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
+            if (isFree(entry.getKey())) {
+                if (entry.getValue() != null && entry.getValue() instanceof GeomPoint) {
+                    ((GeomPoint) entry.getValue()).setMove(true);
+                    ((GeomPoint) entry.getValue()).setType(GeomPoint.Type.TRIANGLE_FREE);
+                }
+            } else {
+                if (entry.getValue() != null && entry.getValue() instanceof GeomPoint) {
+                    ((GeomPoint) entry.getValue()).setMove(false);
+                    ((GeomPoint) entry.getValue()).setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
+
+                }
+            }
+        }
     }
 }

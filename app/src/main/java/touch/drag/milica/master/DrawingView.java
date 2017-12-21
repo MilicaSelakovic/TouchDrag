@@ -346,12 +346,15 @@ public class DrawingView extends View {
                 for (String command : redoCom) {
                     String array[] = command.split("\\s+");
                     GeometricObject gobj = geometricObjects.get(array[1]);
+                    if (gobj != null && gobj.getTriangle() != null) {
+                        gobj.getTriangle().addSignificant(gobj.label(), gobj);
+                    }
                     if (gobj != null && gobj instanceof Triangle) {
                         String tid = ((Triangle) gobj).getNumber();
                         uniqueID.setRedoTrin(Integer.parseInt(tid));
                     }
                     int i = Integer.parseInt(array[1]);
-                    if (gobj instanceof GeomPoint) {
+                    if (gobj != null && gobj instanceof GeomPoint) {
                         int k = Integer.parseInt(((GeomPoint) gobj).getPointId());
                         if (k > maxPoint) {
                             maxPoint = k;
@@ -421,6 +424,9 @@ public class DrawingView extends View {
                 for (String command : redoCom) {
                     String array[] = command.split("\\s+");
                     GeometricObject gobj = geometricObjects.get(array[1]);
+                    if (gobj != null && gobj.getTriangle() != null) {
+                        gobj.getTriangle().removeSignificant(gobj.label());
+                    }
                     if (gobj != null && gobj instanceof Triangle) {
                         String tid = ((Triangle) gobj).getNumber();
                         uniqueID.setRedoTrin(Integer.parseInt(tid));
@@ -437,6 +443,7 @@ public class DrawingView extends View {
                         min = i;
                     }
                 }
+
 
                 uniqueID.setRedoLast(min);
                 if (minPoint != -1) {
