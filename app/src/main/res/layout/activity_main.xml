@@ -20,20 +20,43 @@
             android:background="@color/backgroundMain"
             android:padding="10dp">
 
-            <ImageButton
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true">
+
+                <ImageButton
                 android:layout_width="@android:dimen/app_icon_size"
                 android:layout_height="@android:dimen/app_icon_size"
                 android:id="@+id/delete"
-                android:layout_alignParentStart="true"
+
                 android:background="@drawable/ic_action_new" />
 
             <ImageButton
                 android:layout_width="@android:dimen/app_icon_size"
                 android:layout_height="@android:dimen/app_icon_size"
                 android:id="@+id/button8"
-                android:background="@drawable/ic_action_help"
-                android:layout_marginStart="@android:dimen/app_icon_size"
-                android:layout_alignParentStart="true" />
+                android:background="@drawable/ic_action_help" />
+
+                <Button
+                    android:text="S"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:id="@+id/button" />
+
+                <Button
+                    android:text="L"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:id="@+id/button1" />
+
+                <Button
+                    android:text="C"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:id="@+id/button2" />
+
+            </LinearLayout>
 
             <ImageButton
                 android:layout_width="@android:dimen/app_icon_size"

@@ -1,22 +1,28 @@
 package touch.drag.milica.master;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 
+import java.io.FileOutputStream;
+import java.sql.Time;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Timer;
 import java.util.Vector;
 
 import geometry.calculations.descretegeometrycalculations.PointInformations;
@@ -81,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        this.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save();
+            }
+        });
         this.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,6 +176,55 @@ public class MainActivity extends AppCompatActivity {
             view.setSenisitivityFactor(factor);
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    public void save() {
+
+        AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
+        dialog.setTitle("Chose project name");
+
+        EditText et = new EditText(getApplicationContext());
+
+        et.setText("Untitled");
+
+        dialog.setView(et, 30, 10, 30, 10);
+
+
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DISCARD",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "SAVE",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DrawingView view = (DrawingView) findViewById(R.id.view);
+                        String array = view.save();
+
+                        String filename = "Untilted" + Calendar.getInstance().getTime().toString();
+                        FileOutputStream outputStream;
+
+                        try {
+                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                            outputStream.write(array.getBytes());
+                            outputStream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        String[] fajlovi = getFilesDir().list();
+                        Log.d("svi fajlovi", fajlovi.toString());
+
+                        dialog.cancel();
+                    }
+                });
+        dialog.show();
+
     }
 
 }

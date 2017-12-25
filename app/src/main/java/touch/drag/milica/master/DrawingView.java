@@ -16,9 +16,14 @@ import android.view.MotionEvent;
 import android.graphics.Color;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.opencv.core.Point;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Stack;
 import java.util.Vector;
@@ -50,6 +55,7 @@ public class DrawingView extends View {
     private Stack<String> redo;
     private Stack<Vector<String>> redoCommands;
     private GeometricObject current;
+
 
     private float prevX, prevY;
 
@@ -516,6 +522,36 @@ public class DrawingView extends View {
 
     public void setSenisitivityFactor(float factor) {
         constants.setFactor(factor);
+    }
+
+    public String save() {
+        Iterator<Vector<String>> stackedCommands = commands.iterator();
+        StringBuilder stringBuilder = new StringBuilder();
+        while (stackedCommands.hasNext()) {
+            Vector<String> scommands = stackedCommands.next();
+            for (String command : scommands) {
+                String array[] = command.split("\\s+");
+                GeometricObject gobj = geometricObjects.get(array[1]);
+                if (gobj == null) {
+                    continue;
+                }
+
+                String triangle = "";
+                if (array[0].compareTo("point") == 0) {
+                    command = "point " + gobj.getId() + " " + ((GeomPoint) gobj).X() + " " + ((GeomPoint) gobj).X();
+                } else {
+                    if (gobj.getTriangle() != null) {
+                        triangle += "addTriangle " + gobj.getId() + " " + gobj.getTriangle().getId();
+                    }
+                }
+                stringBuilder.append(command).append("\n");
+                stringBuilder.append("addLabel ").append(gobj.getId()).append(" ").append(gobj.label()).append("\n");
+                stringBuilder.append(triangle).append("\n");
+            }
+        }
+
+
+        return stringBuilder.toString();
     }
 
 }
