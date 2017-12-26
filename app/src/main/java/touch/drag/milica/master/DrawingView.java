@@ -553,7 +553,7 @@ public class DrawingView extends View {
 
                 String triangle = "";
                 if (array[0].compareTo("point") == 0) {
-                    command = "point " + gobj.getId() + " " + ((GeomPoint) gobj).X() + " " + ((GeomPoint) gobj).X();
+                    command = "point " + gobj.getId() + " " + ((GeomPoint) gobj).X() + " " + ((GeomPoint) gobj).Y();
                 } else {
                     if (gobj.getTriangle() != null) {
                         triangle += "addTriangle " + gobj.getId() + " " + gobj.getTriangle().getId();
@@ -576,7 +576,13 @@ public class DrawingView extends View {
         redo.clear();
         redoCommands.clear();
         uniqueID.reset();
-        constructor.openNew(file, geometricObjects, uniqueID, constants);
+        int i = constructor.openNew(file, geometricObjects, uniqueID, constants);
+        komande.add("add");
+        commands.add(file);
+        uniqueID.setRedoLast(i);
+        uniqueID.setRedoPoint(Integer.parseInt(uniqueID.getPointNum()) - 1);
+        uniqueID.setRedoTrin(Integer.parseInt(uniqueID.getTrinagleNum()) - 1);
+        uniqueID.restore();
         invalidate();
     }
 

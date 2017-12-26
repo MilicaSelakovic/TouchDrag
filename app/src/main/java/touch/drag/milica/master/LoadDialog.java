@@ -21,10 +21,12 @@ import java.util.Vector;
 
 public class LoadDialog extends Dialog {
     private Activity main;
+    private DrawingView drawingView;
 
-    public LoadDialog(Context context, Activity main) {
+    public LoadDialog(Context context, Activity main, DrawingView drawingView) {
         super(context);
         this.main = main;
+        this.drawingView = drawingView;
     }
 
     @Override
@@ -37,27 +39,23 @@ public class LoadDialog extends Dialog {
 
         listView.setAdapter(new ListAdapter(main, new ArrayList<File>(Arrays.asList(getContext().getFilesDir().listFiles(new Filter())))));
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                for (int a = 0; a < parent.getChildCount(); a++) {
-                    parent.getChildAt(a).setBackgroundColor(Color.TRANSPARENT);
-                }
-
-                view.setBackgroundColor(Color.GRAY);
-            }
-        });
-        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancel();
             }
         });
 
-        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File selected = (File) listView.getSelectedItem();
+                int selectedId = listView.getCheckedItemPosition();
+
+                File selected = (File) listView.getAdapter().getItem(selectedId);
+                if (selected == null) {
+                    cancel();
+                    return;
+                }
 
                 Vector<String> commands = new Vector<>();
                 commands.clear();
@@ -76,11 +74,9 @@ public class LoadDialog extends Dialog {
                     e.printStackTrace();
                 }
 
-                DrawingView view = (DrawingView) findViewById(R.id.view);
+                drawingView.load(commands);
 
-                view.load(commands);
-
-                view.setUnsaved(false);
+                drawingView.setUnsaved(false);
 
                 cancel();
             }

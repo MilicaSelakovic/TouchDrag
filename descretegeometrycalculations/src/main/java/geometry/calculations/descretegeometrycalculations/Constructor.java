@@ -1575,7 +1575,7 @@ public class Constructor {
                 case "point":
                     X = new GeomPoint(Float.parseFloat(array[2]), Float.parseFloat(array[3]));
                     X.setId(array[1]);
-                    X.setMove(false);
+                    X.setMove(true);
                     X.setConstants(constants);
                     newobjects.put(array[1], X);
                     break;
@@ -1587,24 +1587,30 @@ public class Constructor {
                     newobjects.put(array[4], t.getLineC());
                     break;
                 case "addTriangle":
-                    newobjects.get(array[1]).setTriangle((Triangle) newobjects.get(array[2]));
-                    if (newobjects.get(array[1]) instanceof GeomPoint) {
-                        ((GeomPoint) newobjects.get(array[1])).setLabelNum(((Triangle) newobjects.get(array[2])).getNumber());
+                    if (newobjects.get(array[1]) != null) {
+                        newobjects.get(array[1]).setTriangle((Triangle) newobjects.get(array[2]));
+                        if (newobjects.get(array[1]) instanceof GeomPoint) {
+                            ((GeomPoint) newobjects.get(array[1])).setLabelNum(((Triangle) newobjects.get(array[2])).getNumber());
+                        }
                     }
                     break;
                 case "addLabel":
                     if (array.length > 2) {
-                        newobjects.get(array[1]).setLabel(array[2]);
-                        if (newobjects.get(array[1]) instanceof GeomPoint) {
-                            ((GeomPoint) newobjects.get(array[1])).setPointId(id.getPointNum());
+                        if (newobjects.get(array[1]) != null) {
+                            newobjects.get(array[1]).setLabel(array[2]);
+                            if (newobjects.get(array[1]) instanceof GeomPoint) {
+                                ((GeomPoint) newobjects.get(array[1])).setPointId(id.getPointNum());
+                            }
                         }
                     }
                     break;
                 default:
                     break;
             }
+            if (array.length > 1) {
+                return Integer.parseInt(array[1]);
+            }
 
-            return Integer.parseInt(array[1]);
         } catch (PatternSyntaxException e) {
             //Log.d("Greska sa regexom", "da");
 
@@ -1678,7 +1684,7 @@ public class Constructor {
         return false;
     }
 
-    public void openNew(Vector<String> commands, HashMap<String, GeometricObject> objects, UniqueID id, Constants constants) {
+    public int openNew(Vector<String> commands, HashMap<String, GeometricObject> objects, UniqueID id, Constants constants) {
         int max = -1;
         for (String commad : commands) {
             int i = executeCommand2(commad, objects, id, constants);
@@ -1687,6 +1693,6 @@ public class Constructor {
             }
         }
 
-        id.setRedoLast(max);
+        return max;
     }
 }

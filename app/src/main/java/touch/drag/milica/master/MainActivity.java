@@ -309,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        LoadDialog dialog = new LoadDialog(this, this);
+        LoadDialog dialog = new LoadDialog(this, this, view);
         dialog.show();
         view.setUnsaved(false);
 

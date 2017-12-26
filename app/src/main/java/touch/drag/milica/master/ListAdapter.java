@@ -1,11 +1,14 @@
 package touch.drag.milica.master;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -48,8 +51,23 @@ public class ListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+
         String name = listDir.get(position).getName();
         viewHolder.fileName.setText(name.substring(0, name.length() - 3));
+        final ListView listView = (ListView) parent;
+        final View view = convertView;
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int a = 0; a < listView.getChildCount(); a++) {
+                    listView.getChildAt(a).setBackgroundColor(Color.TRANSPARENT);
+                    listView.setItemChecked(a, false);
+                }
+
+                listView.setItemChecked(position, true);
+                view.setBackgroundColor(Color.GRAY);
+            }
+        });
         viewHolder.deleteFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
