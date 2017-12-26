@@ -85,6 +85,7 @@ public class Line extends GeometricObject {
 
 
     public GeomPoint getVector() {
+        updateVector();
         return vector;
     }
 

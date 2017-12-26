@@ -583,6 +583,11 @@ public class DrawingView extends View {
         uniqueID.setRedoPoint(Integer.parseInt(uniqueID.getPointNum()) - 1);
         uniqueID.setRedoTrin(Integer.parseInt(uniqueID.getTrinagleNum()) - 1);
         uniqueID.restore();
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
+                ((Triangle) entry.getValue()).recolor(trics);
+            }
+        }
         invalidate();
     }
 

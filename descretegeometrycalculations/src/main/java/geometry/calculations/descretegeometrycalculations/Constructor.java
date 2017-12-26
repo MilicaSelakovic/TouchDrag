@@ -60,6 +60,7 @@ public class Constructor {
                         Y = new GeomPoint(0, 0);
                         Y.setConstants(newobjects.get(array[2]).constants);
                         Y.setId(array[1]);
+                        Y.setMove(Y.getType() == GeomPoint.Type.TRIANGLE_FREE);
                     }
                     Y.setX(X.X());
                     Y.setY(X.Y());
@@ -828,6 +829,7 @@ public class Constructor {
                         Y = new GeomPoint(0, 0);
                         Y.setConstants(newobjects.get(array[2]).constants);
                         Y.setId(array[1]);
+                        Y.setMove(false);
                     }
                     Y.setX(X.X());
                     Y.setY(X.Y());
@@ -1589,6 +1591,7 @@ public class Constructor {
                 case "addTriangle":
                     if (newobjects.get(array[1]) != null) {
                         newobjects.get(array[1]).setTriangle((Triangle) newobjects.get(array[2]));
+                        ((Triangle) newobjects.get(array[2])).addSignificant(newobjects.get(array[1]).label(), newobjects.get(array[1]));
                         if (newobjects.get(array[1]) instanceof GeomPoint) {
                             ((GeomPoint) newobjects.get(array[1])).setLabelNum(((Triangle) newobjects.get(array[2])).getNumber());
                         }
