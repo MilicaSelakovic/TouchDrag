@@ -576,6 +576,7 @@ public class DrawingView extends View {
         redo.clear();
         redoCommands.clear();
         uniqueID.reset();
+        geometricObjects.clear();
         int i = constructor.openNew(file, geometricObjects, uniqueID, constants);
         komande.add("add");
         commands.add(file);

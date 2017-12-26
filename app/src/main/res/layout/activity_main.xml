@@ -38,23 +38,23 @@
                     android:id="@+id/button8"
                     android:background="@drawable/ic_action_help" />
 
-                <Button
-                    android:text="S"
+                <ImageButton
                     android:layout_width="@android:dimen/app_icon_size"
                     android:layout_height="@android:dimen/app_icon_size"
-                    android:id="@+id/button" />
+                    android:id="@+id/button"
+                    android:background="@drawable/ic_action_save" />
 
-                <Button
-                    android:text="L"
+                <ImageButton
                     android:layout_width="@android:dimen/app_icon_size"
                     android:layout_height="@android:dimen/app_icon_size"
-                    android:id="@+id/button1" />
+                    android:id="@+id/button1"
+                    android:background="@drawable/ic_action_open" />
 
-                <Button
-                    android:text="C"
+                <ImageButton
                     android:layout_width="@android:dimen/app_icon_size"
                     android:layout_height="@android:dimen/app_icon_size"
-                    android:id="@+id/button2" />
+                    android:id="@+id/button2"
+                    android:background="@drawable/ic_action_center" />
 
             </LinearLayout>
 
