@@ -77,6 +77,16 @@ public class DrawingView extends View {
     private DiscreteCurvature discreteCurvature;
     private Constants constants;
 
+    public boolean isUnsaved() {
+        return unsaved;
+    }
+
+    public void setUnsaved(boolean unsaved) {
+        this.unsaved = unsaved;
+    }
+
+    private boolean unsaved = true;
+
     private TextView textView;
 
     public DrawingView(Context context, AttributeSet attrs) {
@@ -270,6 +280,7 @@ public class DrawingView extends View {
                             }
                         }
                         current = null;
+                        unsaved = true;
                         invalidate();
                         break;
                     case MODE_USUAL:
@@ -286,6 +297,7 @@ public class DrawingView extends View {
                         }
                         drawPath.reset();
                         current = null;
+                        unsaved = true;
                         invalidate();
                         break;
                     default:
@@ -309,6 +321,7 @@ public class DrawingView extends View {
         redoCommands.clear();
 
         uniqueID.reset();
+        unsaved = true;
         invalidate();
     }
 
@@ -403,6 +416,7 @@ public class DrawingView extends View {
                 }
             }
 
+            unsaved = true;
             invalidate();
         }
 
@@ -487,6 +501,7 @@ public class DrawingView extends View {
                 }
             }
 
+            unsaved = true;
             invalidate();
         }
 
@@ -552,6 +567,17 @@ public class DrawingView extends View {
 
 
         return stringBuilder.toString();
+    }
+
+
+    public void load(Vector<String> file) {
+        oldObjects.clear();
+        komande.clear();
+        redo.clear();
+        redoCommands.clear();
+        uniqueID.reset();
+        constructor.openNew(file, geometricObjects, uniqueID, constants);
+        invalidate();
     }
 
 }

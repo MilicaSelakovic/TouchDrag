@@ -1,5 +1,6 @@
 package touch.drag.milica.master;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,17 +10,26 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
+import java.sql.Array;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Timer;
@@ -91,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 save();
+            }
+        });
+
+        this.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                open();
             }
         });
         this.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
@@ -184,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
         dialog.setTitle("Chose project name");
 
-        EditText et = new EditText(getApplicationContext());
+        final EditText et = new EditText(getApplicationContext());
 
         et.setText("Untitled");
 
@@ -203,27 +220,98 @@ public class MainActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        DrawingView view = (DrawingView) findViewById(R.id.view);
-                        String array = view.save();
+                        final String filename = et.getText() + ".tg";
 
-                        String filename = "Untilted" + Calendar.getInstance().getTime().toString();
-                        FileOutputStream outputStream;
+                        String[] names = getFilesDir().list(new FilenameFilter() {
+                            @Override
+                            public boolean accept(File dir, String name) {
+                                return name.compareTo(filename) == 0;
+                            }
+                        });
 
-                        try {
-                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                            outputStream.write(array.getBytes());
-                            outputStream.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        if (names.length > 0) {
+                            final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                            alertDialog.setMessage("Project with this name exists. Do you want to overwrite it?");
+
+                            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DISCARD", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    alertDialog.cancel();
+                                }
+                            });
+
+                            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OVERWRITE", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FileOutputStream outputStream;
+                                    DrawingView view = (DrawingView) findViewById(R.id.view);
+                                    String array = view.save();
+
+                                    try {
+                                        outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                        outputStream.write(array.getBytes());
+                                        outputStream.close();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    view.setUnsaved(false);
+                                    alertDialog.cancel();
+                                }
+                            });
+
+                            alertDialog.show();
+
+                        } else {
+
+                            FileOutputStream outputStream;
+                            DrawingView view = (DrawingView) findViewById(R.id.view);
+                            String array = view.save();
+
+                            try {
+                                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                outputStream.write(array.getBytes());
+                                outputStream.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            view.setUnsaved(false);
+
                         }
 
-                        String[] fajlovi = getFilesDir().list();
-                        Log.d("svi fajlovi", fajlovi.toString());
 
                         dialog.cancel();
                     }
                 });
         dialog.show();
+
+    }
+
+    public void open() {
+        DrawingView view = (DrawingView) findViewById(R.id.view);
+        if (view.isUnsaved()) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+            alertDialog.setMessage("There is unsaved changes. Do you want to save them?");
+
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "DISCARD", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.cancel();
+                }
+            });
+
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "SAVE", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.cancel();
+                    save();
+                }
+            });
+        }
+        LoadDialog dialog = new LoadDialog(this, this);
+        dialog.show();
+        view.setUnsaved(false);
 
     }
 

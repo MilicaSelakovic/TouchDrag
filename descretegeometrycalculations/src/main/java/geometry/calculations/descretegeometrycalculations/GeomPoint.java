@@ -295,5 +295,9 @@ public class GeomPoint extends GeometricObject {
 
     }
 
-
+    @Override
+    public void setFree(boolean free) {
+        super.setFree(free);
+        this.type = Type.TRIANGLE_FREE;
+    }
 }

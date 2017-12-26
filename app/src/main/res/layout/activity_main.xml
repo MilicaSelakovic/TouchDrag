@@ -26,17 +26,17 @@
                 android:layout_alignParentStart="true">
 
                 <ImageButton
-                android:layout_width="@android:dimen/app_icon_size"
-                android:layout_height="@android:dimen/app_icon_size"
-                android:id="@+id/delete"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:id="@+id/delete"
 
-                android:background="@drawable/ic_action_new" />
+                    android:background="@drawable/ic_action_new" />
 
-            <ImageButton
-                android:layout_width="@android:dimen/app_icon_size"
-                android:layout_height="@android:dimen/app_icon_size"
-                android:id="@+id/button8"
-                android:background="@drawable/ic_action_help" />
+                <ImageButton
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:id="@+id/button8"
+                    android:background="@drawable/ic_action_help" />
 
                 <Button
                     android:text="S"

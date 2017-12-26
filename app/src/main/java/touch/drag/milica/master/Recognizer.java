@@ -195,5 +195,4 @@ public class Recognizer {
         mCommands.add(commands);
         return true;
     }
-
 }
