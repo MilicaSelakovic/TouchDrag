@@ -10,7 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/app_icon_size"
         android:typeface="sans"
-        android:layout_marginEnd="@android:dimen/app_icon_size" />
+        android:layout_marginEnd="@android:dimen/app_icon_size"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18sp"
+        android:textColor="@color/text_color"
+        android:textAlignment="center"
+        android:padding="10dp" />
     <ImageButton
         android:id="@+id/delete_file"
         android:layout_width="@android:dimen/app_icon_size"
