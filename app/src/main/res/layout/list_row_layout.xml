@@ -7,12 +7,10 @@
 
     <TextView
         android:id="@+id/file_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@android:dimen/app_icon_size"
-        android:textStyle="bold"
         android:typeface="sans"
-        android:textColor="@color/text_color" />
-
+        android:layout_marginEnd="@android:dimen/app_icon_size" />
     <ImageButton
         android:id="@+id/delete_file"
         android:layout_width="@android:dimen/app_icon_size"
