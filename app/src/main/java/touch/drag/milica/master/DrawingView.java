@@ -651,6 +651,8 @@ public class DrawingView extends View {
             }
         }
 
+        constructor.reconstruct(commands, geometricObjects);
+
     }
 
 }
