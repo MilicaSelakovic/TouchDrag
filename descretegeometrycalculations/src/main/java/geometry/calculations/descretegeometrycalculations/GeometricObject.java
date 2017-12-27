@@ -26,7 +26,7 @@ public abstract class GeometricObject {
 
     public abstract void translate(float x, float y);
 
-    abstract public void scale(float scaleFactor);
+    abstract public void scale(float scaleFactor, float w, float h);
 
     abstract public String getId();
 
@@ -77,6 +77,10 @@ public abstract class GeometricObject {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public void translateWhole(float x, float y) {
+
     }
 
 

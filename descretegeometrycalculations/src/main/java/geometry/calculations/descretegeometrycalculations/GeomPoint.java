@@ -165,9 +165,23 @@ public class GeomPoint extends GeometricObject {
     }
 
     @Override
-    public void scale(float scaleFactor) {
+    public void translateWhole(float x, float y) {
+        super.translateWhole(x, y);
+        this.x -= x;
+        this.y -= y;
+    }
+
+    @Override
+    public void scale(float scaleFactor, float w, float h) {
         x *= scaleFactor;
         y *= scaleFactor;
+        if (scaleFactor < 1) {
+            x += (1 - scaleFactor) * w / 2;
+            y += (1 - scaleFactor) * h / 2;
+        } else {
+            x -= (1 - 1 / scaleFactor) * w / 2;
+            y -= (1 - 1 / scaleFactor) * h / 2;
+        }
     }
 
 

@@ -65,7 +65,7 @@ public class ListAdapter extends BaseAdapter {
                 }
 
                 listView.setItemChecked(position, true);
-                view.setBackgroundColor(Color.GRAY);
+                view.setBackgroundColor(Color.parseColor("#5a000000"));
             }
         });
         viewHolder.deleteFile.setOnClickListener(new View.OnClickListener() {

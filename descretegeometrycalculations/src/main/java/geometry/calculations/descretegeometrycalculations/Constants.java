@@ -15,7 +15,7 @@ public class Constants {
         radius_difference = pixels * 7.5;
 
         errorDrawing = (int) density;
-        minimalNumberOfPoints = 3 * errorDrawing;
+        minimalNumberOfPoints = 4 * errorDrawing;
     }
 
     public double getDistance_point() {

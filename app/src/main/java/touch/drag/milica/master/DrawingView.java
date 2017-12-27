@@ -349,7 +349,7 @@ public class DrawingView extends View {
     private void scaleObjects() {
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             if (entry.getValue() != null)
-                entry.getValue().scale(mScaleFactor);
+                entry.getValue().scale(mScaleFactor, getWidth(), getHeight());
         }
     }
 
@@ -580,7 +580,7 @@ public class DrawingView extends View {
         int i = constructor.openNew(file, geometricObjects, uniqueID, constants);
         komande.add("add");
         commands.add(file);
-        uniqueID.setRedoLast(i);
+        uniqueID.setRedoLast(i + 1);
         uniqueID.setRedoPoint(Integer.parseInt(uniqueID.getPointNum()) - 1);
         uniqueID.setRedoTrin(Integer.parseInt(uniqueID.getTrinagleNum()) - 1);
         uniqueID.restore();
@@ -590,6 +590,67 @@ public class DrawingView extends View {
             }
         }
         invalidate();
+    }
+
+
+    public void center() {
+        float minX = 0, minY = 0, maxX = 0, maxY = 0;
+        boolean id = true;
+
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            if (entry.getValue() != null && entry.getValue() instanceof GeomPoint) {
+                float x = ((GeomPoint) entry.getValue()).X();
+                float y = ((GeomPoint) entry.getValue()).Y();
+
+                if (id) {
+                    minX = x;
+                    minY = y;
+                    maxX = x;
+                    maxY = y;
+                    id = false;
+
+                } else {
+                    if (x < minX) {
+                        minX = x;
+                    }
+
+                    if (x > maxX) {
+                        maxX = x;
+                    }
+
+                    if (y < minY) {
+                        minY = y;
+                    }
+
+                    if (y > maxY) {
+                        maxY = y;
+                    }
+                }
+            }
+        }
+
+        if (id) {
+            return;
+        }
+
+        float dx = (maxX + minX) / 2;
+        float w = getWidth() / 2.0f;
+        float dy = (maxY + minY) / 2;
+        float h = getHeight() / 2.0f;
+
+        float fx = (maxX - minX) / (0.95f * w);
+        float fy = (maxY - minY) / (0.95f * h);
+
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            if (entry.getValue() != null) {
+                entry.getValue().translateWhole(dx - w, dy - h);
+                float min = fx > fy ? fx : fy;
+                if (min > 0.01f) {
+                    entry.getValue().scale(1.f / min, w, h);
+                }
+            }
+        }
+
     }
 
 }

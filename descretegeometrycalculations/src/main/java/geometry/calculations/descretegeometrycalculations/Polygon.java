@@ -67,8 +67,9 @@ public class Polygon extends GeometricObject {
     public void translate(float x, float y) {
     }
 
+
     @Override
-    public void scale(float scaleFactor) {
+    public void scale(float scaleFactor, float w, float h) {
 
     }
 
@@ -157,6 +158,9 @@ public class Polygon extends GeometricObject {
 
         GeomPoint R = intersection(P, Q, h, w);
         GeomPoint S = intersection(Q, P, h, w);
+        if (R == null || S == null) {
+            return;
+        }
         canvas.drawLine(S.X(), S.Y(), R.X(), R.Y(), paint);
 
     }

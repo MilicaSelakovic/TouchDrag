@@ -79,10 +79,9 @@ public class Line extends GeometricObject {
     }
 
     @Override
-    public void scale(float scaleFactor) {
+    public void scale(float scaleFactor, float w, float h) {
 
     }
-
 
     public GeomPoint getVector() {
         updateVector();

@@ -362,10 +362,9 @@ public class Triangle extends Polygon {
     }
 
     @Override
-    public void scale(float scaleFactor) {
-
+    public void scale(float scaleFactor, float w, float h) {
+        super.scale(scaleFactor, w, h);
     }
-
 
     private boolean bisector(Line line, Vector<String> commands) {
 

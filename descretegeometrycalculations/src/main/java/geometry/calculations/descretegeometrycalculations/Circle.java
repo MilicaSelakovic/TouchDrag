@@ -130,8 +130,8 @@ public class Circle extends GeometricObject {
     }
 
     @Override
-    public void scale(float scaleFactor) {
-        radius *= scaleFactor;
+    public void scale(float scaleFactor, float w, float h) {
+
     }
 
     public boolean contain(GeomPoint point) {

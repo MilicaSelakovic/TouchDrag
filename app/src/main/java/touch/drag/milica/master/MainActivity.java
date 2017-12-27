@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         parser.fillConstructions(trics, getApplicationContext(), "allconstuctions.json");
 
-        DrawingView view = ((DrawingView) this.findViewById(R.id.view));
+        final DrawingView view = ((DrawingView) this.findViewById(R.id.view));
         view.setTrics(trics);
         view.setDensity(getResources().getDisplayMetrics().density, getResources().getDisplayMetrics().densityDpi);
         view.setTextView((TextView) this.findViewById(R.id.textView));
@@ -110,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
                 open();
             }
         });
+
+        this.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.center();
+
+                view.invalidate();
+            }
+        });
+
         this.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
