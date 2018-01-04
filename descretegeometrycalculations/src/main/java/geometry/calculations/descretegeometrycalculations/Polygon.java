@@ -10,7 +10,7 @@ import java.util.Vector;
 
 
 public class Polygon extends GeometricObject {
-    String id;
+    private String id;
 
     public Vector<GeomPoint> getPoints() {
         return points;
@@ -20,10 +20,12 @@ public class Polygon extends GeometricObject {
         this.points = points;
     }
 
-    Vector<GeomPoint> points;
+    private Vector<GeomPoint> points;
+    private Path path;
 
     Polygon(Vector<GeomPoint> points) {
         this.points = new Vector<>(points);
+        path = new Path();
     }
 
     public String getId() {
@@ -36,7 +38,7 @@ public class Polygon extends GeometricObject {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
-
+        path.reset();
         int n = points.size();
         for (int i = 0; i < n; i++) {
             GeomPoint P = points.elementAt(i % n);
@@ -44,8 +46,9 @@ public class Polygon extends GeometricObject {
             if (P == null || Q == null) {
                 return;
             }
-            drawSegment(canvas, paint, P, Q);
+            drawSegment(canvas, P, Q);
         }
+        canvas.drawPath(path, paint);
     }
 
     @Override
@@ -133,26 +136,29 @@ public class Polygon extends GeometricObject {
         return null;
     }
 
-    private void drawSegment(Canvas canvas, Paint paint, GeomPoint P, GeomPoint Q) {
+    private void drawSegment(Canvas canvas, GeomPoint P, GeomPoint Q) {
         int h = canvas.getHeight();
         int w = canvas.getWidth();
 
         if (checkPoint(P, h, w) && checkPoint(Q, h, w)) {
-            canvas.drawLine(P.X(), P.Y(), Q.X(), Q.Y(), paint);
+            path.moveTo(P.X(), P.Y());
+            path.lineTo(Q.X(), Q.Y());
             return;
         }
 
         if (checkPoint(P, h, w)) {
             // samo je P unutra
             GeomPoint R = intersection(P, Q, h, w);
-            canvas.drawLine(P.X(), P.Y(), R.X(), R.Y(), paint);
+            path.moveTo(P.X(), P.Y());
+            path.lineTo(R.X(), R.Y());
             return;
         }
 
         if (checkPoint(Q, h, w)) {
             //samo je Q unutra;
             GeomPoint R = intersection(Q, P, h, w);
-            canvas.drawLine(Q.X(), Q.Y(), R.X(), R.Y(), paint);
+            path.moveTo(Q.X(), Q.Y());
+            path.lineTo(R.X(), R.Y());
             return;
         }
 
@@ -161,8 +167,8 @@ public class Polygon extends GeometricObject {
         if (R == null || S == null) {
             return;
         }
-        canvas.drawLine(S.X(), S.Y(), R.X(), R.Y(), paint);
-
+        path.moveTo(S.X(), S.Y());
+        path.lineTo(R.X(), R.Y());
     }
 
 }

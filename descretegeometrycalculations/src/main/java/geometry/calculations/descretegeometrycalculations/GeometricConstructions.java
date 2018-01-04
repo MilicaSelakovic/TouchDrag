@@ -12,6 +12,8 @@ public class GeometricConstructions {
     */
 
     public static GeomPoint w01(GeomPoint X, GeomPoint Z, GeomPoint W, float r) {
+        if (X == null || Z == null || W == null)
+            return null;
         GeomPoint v = new GeomPoint(W.X() - Z.X(), W.Y() - Z.Y());
         float x = X.X() + r * v.X();
         float y = X.Y() + r * v.Y();
@@ -24,7 +26,9 @@ public class GeometricConstructions {
     */
 
     public static Line w02(GeomPoint X, GeomPoint Y) {
-        // TODO razmisliti gde ce se vrsiti provera ako su tacke iste
+        if (X == null || Y == null) {
+            return null;
+        }
         return new Line(X, Y);
     }
 
@@ -35,6 +39,9 @@ public class GeometricConstructions {
     */
 
     public static GeomPoint w03(Line l1, Line l2) {
+        if (l1 == null || l2 == null) {
+            return null;
+        }
         float delta = l1.ACoef() * l2.BCoef() - l1.BCoef() * l2.ACoef();
         float deltaX = l1.CCoef() * l2.BCoef() - l1.BCoef() * l2.CCoef();
         float deltaY = l1.ACoef() * l2.CCoef() - l1.CCoef() * l2.ACoef();
@@ -95,6 +102,9 @@ public class GeometricConstructions {
     да се права и круг секу;*/
 
     public static GeomPoint w05(Line l, Circle c, GeomPoint P) {
+        if (l == null || c == null || P == null) {
+            return null;
+        }
         GeomPoint S1 = new GeomPoint(0, 0, false);
         GeomPoint S2 = new GeomPoint(0, 0, false);
 
@@ -216,6 +226,9 @@ public class GeometricConstructions {
     држи тачку X и управна jе на праву p; */
 
     public static Line w10(GeomPoint X, Line l) {
+        if (X == null || l == null) {
+            return null;
+        }
         GeomPoint v = l.getVector();
 
         // GeomPoint v1 = new GeomPoint(-v.Y(), v.X());  vektor pravca nove prave
@@ -431,20 +444,6 @@ public class GeometricConstructions {
 
         return w03(DSred, new Line(X, Z));
 
-//        GeomPoint O = new GeomPoint((X.X() + Y.X()) / 2 + 200, (X.Y() + Y.Y()) / 2 + 200);
-//
-//        Line b = new Line(X, O);
-//        Line c = w16(Z, b);
-//        Line m = new Line(Y, O);
-//
-//        GeomPoint E = w03(c, m);
-//
-//        GeomPoint F = w01(Z, E, Z, 1);
-//
-//        Line n = new Line(O, F);
-//        Line a = new Line(X, Y);
-
-//        return w03(n, a);
     }
 
     // Ovde ce povratna vrednost biti krug
@@ -550,20 +549,36 @@ public class GeometricConstructions {
 
 
     public static Circle circleAroundTriangle(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
         Line l1 = w14(A, B);
         Line l2 = w14(B, C);
 
         GeomPoint Cen = w03(l1, l2);
 
+        if (Cen == null) {
+            return null;
+        }
+
         return new Circle(Cen, Cen.distance(A));
     }
 
     public static Circle circleInsideTriangle(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
+
         Line l1 = bisectorAngle(A, B, C);
         Line l2 = bisectorAngle(B, C, A);
 
         GeomPoint Cen = w03(l1, l2);
         Line a = new Line(A, B);
+
+        if (Cen == null) {
+            return null;
+        }
+
 
         return new Circle(Cen, a.distance(Cen));
     }

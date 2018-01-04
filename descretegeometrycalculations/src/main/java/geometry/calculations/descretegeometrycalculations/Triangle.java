@@ -4,9 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 
-
-import org.opencv.core.Point;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -21,8 +18,6 @@ public class Triangle extends Polygon {
     private String freePoint2;
     private String freePoint3;
 
-    private String chosen = "";
-
     private Line a, b, c;
 
     private Vector<String> reconstruction = null;
@@ -34,7 +29,7 @@ public class Triangle extends Polygon {
 
     private String number = "";
 
-    public Triangle(Vector<GeomPoint> points) {
+    Triangle(Vector<GeomPoint> points) {
         super(points);
         significatObjects = new HashMap<>(30);
         significatObjectsDraw = new Vector<>(50);
@@ -71,18 +66,18 @@ public class Triangle extends Polygon {
 
     public void setNumber(String number) {
         this.number = number;
-        ((GeomPoint) significatObjects.get("A")).setLabel("A");
-        ((GeomPoint) significatObjects.get("B")).setLabel("B");
-        ((GeomPoint) significatObjects.get("C")).setLabel("C");
+        significatObjects.get("A").setLabel("A");
+        significatObjects.get("B").setLabel("B");
+        significatObjects.get("C").setLabel("C");
 
         ((GeomPoint) significatObjects.get("A")).setLabelNum(number);
         ((GeomPoint) significatObjects.get("B")).setLabelNum(number);
         ((GeomPoint) significatObjects.get("C")).setLabelNum(number);
 
 
-        ((GeomPoint) significatObjects.get("A")).setTriangle(this);
-        ((GeomPoint) significatObjects.get("B")).setTriangle(this);
-        ((GeomPoint) significatObjects.get("C")).setTriangle(this);
+        significatObjects.get("A").setTriangle(this);
+        significatObjects.get("B").setTriangle(this);
+        significatObjects.get("C").setTriangle(this);
 
 
         ((GeomPoint) significatObjects.get("A")).setType(GeomPoint.Type.TRIANGLE_FREE);
@@ -116,7 +111,7 @@ public class Triangle extends Polygon {
                 || point.compareTo(freePoint3) == 0;
     }
 
-    public void fix(GeomPoint point, HashMap<String, Vector<String>> trics) {
+    void fix(GeomPoint point, HashMap<String, Vector<String>> trics) {
         unfreePoint(point);
 
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
@@ -128,7 +123,7 @@ public class Triangle extends Polygon {
         recolor(trics);
     }
 
-    public void free(GeomPoint point, HashMap<String, Vector<String>> trics) {
+    void free(GeomPoint point, HashMap<String, Vector<String>> trics) {
         String label = "";
         for (Map.Entry<String, GeometricObject> entry : significatObjects.entrySet()) {
             if (entry.getValue() == point) {
@@ -297,8 +292,10 @@ public class Triangle extends Polygon {
             infoPaint.setPathEffect(new DashPathEffect(new float[]{10, 10}, 0));
 
             for (GeometricObject object : significatObjectsDraw) {
-                object.setInfoObject(true);
-                object.draw(canvas, infoPaint, finished, choose, pointInformations);
+                if (object != null) {
+                    object.setInfoObject(true);
+                    object.draw(canvas, infoPaint, finished, choose, pointInformations);
+                }
             }
         }
 
@@ -838,7 +835,7 @@ public class Triangle extends Polygon {
         if (ha != null) {
             GeomPoint Ha = GeometricConstructions.w03(ha, a);
 
-            if (point.distance(Ha) < constants.getDistance_point()) {
+            if (Ha != null && point.distance(Ha) < constants.getDistance_point()) {
                 point.setX(Ha.X());
                 point.setY(Ha.Y());
 
@@ -861,7 +858,7 @@ public class Triangle extends Polygon {
         if (hb != null) {
             GeomPoint Hb = GeometricConstructions.w03(hb, b);
 
-            if (point.distance(Hb) < constants.getDistance_point()) {
+            if (Hb != null && point.distance(Hb) < constants.getDistance_point()) {
                 point.setX(Hb.X());
                 point.setY(Hb.Y());
 
@@ -882,7 +879,7 @@ public class Triangle extends Polygon {
         if (hc != null) {
             GeomPoint Hc = GeometricConstructions.w03(hc, c);
 
-            if (point.distance(Hc) < constants.getDistance_point()) {
+            if (Hc != null && point.distance(Hc) < constants.getDistance_point()) {
                 point.setX(Hc.X());
                 point.setY(Hc.Y());
 
@@ -912,7 +909,7 @@ public class Triangle extends Polygon {
         if (symA != null) {
             GeomPoint Ta = GeometricConstructions.w03(symA, a);
 
-            if (point.distance(Ta) < constants.getDistance_point()) {
+            if (Ta != null && point.distance(Ta) < constants.getDistance_point()) {
                 point.setX(Ta.X());
                 point.setY(Ta.Y());
                 if (commands != null) {
@@ -932,7 +929,7 @@ public class Triangle extends Polygon {
         if (symB != null) {
             GeomPoint Tb = GeometricConstructions.w03(symB, b);
 
-            if (point.distance(Tb) < constants.getDistance_point()) {
+            if (Tb != null && point.distance(Tb) < constants.getDistance_point()) {
                 point.setX(Tb.X());
                 point.setY(Tb.Y());
                 if (commands != null) {
@@ -951,7 +948,7 @@ public class Triangle extends Polygon {
         if (symC != null) {
             GeomPoint Tc = GeometricConstructions.w03(symC, c);
 
-            if (point.distance(Tc) < constants.getDistance_point()) {
+            if (Tc != null && point.distance(Tc) < constants.getDistance_point()) {
                 point.setX(Tc.X());
                 point.setY(Tc.Y());
                 if (commands != null) {
@@ -1282,56 +1279,77 @@ public class Triangle extends Polygon {
         significatObjectsDraw.add(line);
 
         GeomPoint H = GeometricConstructions.orthocenter(A, B, C);
-        H.setLabel("H");
+        if (H != null) {
+            H.setLabel("H");
+        }
         significatObjectsDraw.add(H);
 
         point = GeometricConstructions.incenter(A, B, C);
-        point.setLabel("I");
+        if (point != null)
+            point.setLabel("I");
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.centroid(A, B, C);
-        point.setLabel("G");
+        if (point != null)
+            point.setLabel("G");
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.circumcenter(A, B, C);
-        point.setLabel("O");
+        if (point != null)
+            point.setLabel("O");
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w01(B, B, C, 0.5f);
-        point.setLabel("Ma");
+        if (point != null)
+            point.setLabel("Ma");
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w01(A, A, C, 0.5f);
-        point.setLabel("Mb");
+        if (point != null)
+            point.setLabel("Mb");
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w01(A, A, B, 0.5f);
-        point.setLabel("Mc");
+        if (point != null) {
+            point.setLabel("Mc");
+        }
         significatObjectsDraw.add(point);
 
         GeomPoint Ha = GeometricConstructions.w03(ha, a);
-        point.setLabel("Ha");
+        if (Ha != null) {
+            Ha.setLabel("Ha");
+        }
         significatObjectsDraw.add(Ha);
 
         GeomPoint Hb = GeometricConstructions.w03(hb, b);
-        point.setLabel("Hb");
+        if (Hb != null) {
+            Hb.setLabel("Hb");
+        }
         significatObjectsDraw.add(Hb);
 
         GeomPoint Hc = GeometricConstructions.w03(hc, c);
-        point.setLabel("Hc");
+        if (Hc != null) {
+            Hc.setLabel("Hc");
+        }
         significatObjectsDraw.add(Hc);
 
 
         point = GeometricConstructions.w03(symA, a);
-        point.setLabel("Ta");
+        if (point != null) {
+            point.setLabel("Ta");
+        }
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w03(symB, b);
-        point.setLabel("Tb");
+        if (point != null) {
+            point.setLabel("Tb");
+        }
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w03(symC, c);
-        point.setLabel("Tc");
+        if (point != null) {
+            point.setLabel("Tc");
+        }
         significatObjectsDraw.add(point);
 
         Circle circle = GeometricConstructions.circleAroundTriangle(A, B, C);
@@ -1345,20 +1363,27 @@ public class Triangle extends Polygon {
         circle = GeometricConstructions.circleAroundTriangle(Ha, Hb, Hc);
 
         significatObjectsDraw.add(circle);
-        circle.getCenter().setLabel("N");
-        significatObjectsDraw.add(circle.getCenter());
-
+        if (circle != null) {
+            circle.getCenter().setLabel("N");
+            significatObjectsDraw.add(circle.getCenter());
+        }
 
         point = GeometricConstructions.w01(A, A, H, 0.5f);
-        point.setLabel("Ea");
+        if (point != null) {
+            point.setLabel("Ea");
+        }
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w01(B, B, H, 0.5f);
-        point.setLabel("Eb");
+        if (point != null) {
+            point.setLabel("Eb");
+        }
         significatObjectsDraw.add(point);
 
         point = GeometricConstructions.w01(C, C, H, 0.5f);
-        point.setLabel("Ec");
+        if (point != null) {
+            point.setLabel("Ec");
+        }
         significatObjectsDraw.add(point);
     }
 

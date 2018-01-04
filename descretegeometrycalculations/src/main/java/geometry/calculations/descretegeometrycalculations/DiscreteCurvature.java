@@ -181,9 +181,15 @@ public class DiscreteCurvature {
                 GeomPoint last = breakPoints.lastElement();
                 GeomPoint secondLast = breakPoints.elementAt(n - 1);
 
-                double angle = GeometricConstructions.angle(secondLast, last, first);
+                Point P = new Point(last.X() - secondLast.X(), last.Y() - secondLast.Y());
+                Point R = new Point(last.X() - first.X(), last.Y() - first.Y());
 
-                if (first.distance(last) < constants.getMinimalDistance() || Math.abs(angle) > constants.getMaxAngle() * Math.PI) {
+                double dprod = P.dot(R);
+                double normp = Math.sqrt(P.dot(P));
+                double normr = Math.sqrt(R.dot(R));
+
+                double angle = Math.acos(dprod / (normp * normr));
+                if (first.distance(last) < 3 * constants.getMinimalDistance() || Math.abs(angle) > constants.getMaxAngle() * Math.PI) {
                     breakPoints.removeElementAt(breakPoints.size() - 1);
                 }
                 if (breakPoints.size() == 3) {
