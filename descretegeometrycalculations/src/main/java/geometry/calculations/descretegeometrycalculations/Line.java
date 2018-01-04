@@ -3,7 +3,6 @@ package geometry.calculations.descretegeometrycalculations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +15,6 @@ public class Line extends GeometricObject {
     private String id;
     private GeomPoint begin;
     private GeomPoint end;
-    private Path path;
 
     private GeomPoint vector; // normiran vektor pravca
     //private TreeSet<Line> parallel = new TreeSet<>();
@@ -31,7 +29,6 @@ public class Line extends GeometricObject {
             float norm = (float) Math.sqrt(vX * vX + vY * vY);
             vector = new GeomPoint(vX / norm, vY / norm);
         }
-        path = new Path();
     }
 
 
@@ -56,7 +53,6 @@ public class Line extends GeometricObject {
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
         if (draw) {
-            path.reset();
             float x1 = 0;
             float x2 = canvas.getWidth() * 20;
 
@@ -65,9 +61,7 @@ public class Line extends GeometricObject {
                 x1 = x2;
             }
             int y = canvas.getHeight() * 20;
-            path.moveTo(x1, yCoord(x1, 0));
-            path.lineTo(x2, yCoord(x2, y));
-            canvas.drawPath(path, paint);
+            canvas.drawLine(x1, yCoord(x1, 0), x2, yCoord(x2, y), paint);
         }
     }
 
