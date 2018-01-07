@@ -54,6 +54,7 @@ public class Recognizer {
     public boolean recognize(Vector<PointF> points, HashMap<String, GeometricObject> objects, Vector<Vector<String>> mCommands, DiscreteCurvature discreteCurvature) {
         Vector<String> commands = new Vector<>();
         GeometricObject recognized = discreteCurvature.getGeometricObject(points);
+        HashMap<String, GeometricObject> old_objects = new HashMap<>(objects);
 
         if (recognized == null) {
             return false;
@@ -63,7 +64,7 @@ public class Recognizer {
         recognized.setId(id);
 
 
-        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+        for (Map.Entry<String, GeometricObject> entry : old_objects.entrySet()) {
             if (entry.getValue() == null)
                 continue;
             if (entry.getValue() instanceof Triangle && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
@@ -76,7 +77,7 @@ public class Recognizer {
             }
         }
 
-        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+        for (Map.Entry<String, GeometricObject> entry : old_objects.entrySet()) {
             if (entry.getValue() == null)
                 continue;
             if (entry.getValue() instanceof GeomPoint && entry.getValue().connection(recognized, commands, uniqueID, objects)) {
@@ -87,7 +88,7 @@ public class Recognizer {
             }
         }
 
-        for (Map.Entry<String, GeometricObject> entry : objects.entrySet()) {
+        for (Map.Entry<String, GeometricObject> entry : old_objects.entrySet()) {
             if (entry.getValue() == null)
                 continue;
             if (!(entry.getValue() instanceof GeomPoint) &&

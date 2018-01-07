@@ -1,6 +1,8 @@
 package geometry.calculations.descretegeometrycalculations;
 
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
@@ -349,6 +351,9 @@ public class Constructor {
                         break;
                     }
                     l = GeometricConstructions.w10((GeomPoint) newobjects.get(array[2]), (Line) newobjects.get(array[3]));
+                    if (!(newobjects.get(array[1]) instanceof Line)) {
+                        Log.d("Sranje", "se desava");
+                    }
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
@@ -785,6 +790,22 @@ public class Constructor {
                 case "point":
                     break;
                 case "setIDTriangleLine":
+                    break;
+                case "addTriangle":
+                    if (newobjects.get(array[1]) != null) {
+                        newobjects.get(array[1]).setTriangle((Triangle) newobjects.get(array[2]));
+                        ((Triangle) newobjects.get(array[2])).addSignificant(newobjects.get(array[1]).label(), newobjects.get(array[1]));
+                        if (newobjects.get(array[1]) instanceof GeomPoint) {
+                            ((GeomPoint) newobjects.get(array[1])).setLabelNum(((Triangle) newobjects.get(array[2])).getNumber());
+                        }
+                    }
+                    break;
+                case "addLabel":
+                    if (array.length > 2) {
+                        if (newobjects.get(array[1]) != null) {
+                            newobjects.get(array[1]).setLabel(array[2]);
+                        }
+                    }
                     break;
                 default:
                     break;

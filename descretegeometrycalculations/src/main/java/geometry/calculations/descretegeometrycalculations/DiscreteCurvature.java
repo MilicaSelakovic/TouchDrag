@@ -111,7 +111,7 @@ public class DiscreteCurvature {
         // Log.d("density", Double.toString(denisty));
         int n = points.size();
 
-        if (n <= constants.getErrorDrawing())
+        if (n < constants.getErrorDrawing())
             return null;
 
         if (n < constants.getMinimalNumberOfPoints()) {
