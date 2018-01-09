@@ -177,10 +177,14 @@ public class DrawingView extends View {
         }
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() != null)
+            if (entry.getValue() != null && !(entry.getValue() instanceof GeomPoint))
                 entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_SELECT, pointInformations);
         }
 
+        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
+            if (entry.getValue() != null && entry.getValue() instanceof GeomPoint)
+                entry.getValue().draw(canvas, objectPaint, true, mode == Mode.MODE_SELECT, pointInformations);
+        }
 
     }
 
