@@ -3,6 +3,7 @@ package geometry.calculations.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.util.Log;
 
 import org.opencv.core.Point;
 
@@ -327,7 +328,7 @@ public class Triangle extends Polygon {
 
         if (object instanceof Circle) {
             Circle circle = (Circle) object;
-            if (eulerCircle(circle, commands) || circumscribedCircle(circle, commands) || inCircle(circle, commands)) {
+            if (eulerCircle(circle, commands, uniqueID) || circumscribedCircle(circle, commands, uniqueID) || inCircle(circle, commands, uniqueID)) {
                 circle.setConstants(this.constants);
                 circle.getCenter().setConstants(this.constants);
                 circle.setTriangle(this);
@@ -921,7 +922,7 @@ public class Triangle extends Polygon {
     }
 
 
-    private boolean circumscribedCircle(Circle circle, Vector<String> commands) {
+    private boolean circumscribedCircle(Circle circle, Vector<String> commands, UniqueID id) {
         Circle c = GeometricConstructions.circleAroundTriangle(A, B, C);
 
         if (circle.equal(c)) {
@@ -931,6 +932,7 @@ public class Triangle extends Polygon {
                 circle.setLabel("cOUT");
                 significatObjects.put("cOUT", circle);
                 significatObjects.put("O", circle.getCenter());
+                circle.getCenter().setId(id.getID());
                 setData(circle.getCenter(), "O", number, commands);
                 circle.getCenter().setMove(false);
                 circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
@@ -946,7 +948,7 @@ public class Triangle extends Polygon {
         return false;
     }
 
-    private boolean inCircle(Circle circle, Vector<String> commands) {
+    private boolean inCircle(Circle circle, Vector<String> commands, UniqueID id) {
         Circle c = GeometricConstructions.circleInsideTriangle(A, B, C);
 
         if (circle.equal(c)) {
@@ -956,6 +958,7 @@ public class Triangle extends Polygon {
                 circle.setLabel("cIN");
                 significatObjects.put("cIN", circle);
                 significatObjects.put("I", circle.getCenter());
+                circle.getCenter().setId(id.getID());
                 setData(circle.getCenter(), "I", number, commands);
                 circle.getCenter().setMove(false);
                 circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
@@ -971,7 +974,7 @@ public class Triangle extends Polygon {
         return false;
     }
 
-    private boolean eulerCircle(Circle circle, Vector<String> commands) {
+    private boolean eulerCircle(Circle circle, Vector<String> commands, UniqueID id) {
         Vector<GeomPoint> point = new Vector<>();
         // Ha, Ma, Hb, Mb, Hc, Mc
 
@@ -1013,6 +1016,7 @@ public class Triangle extends Polygon {
                 circle.setLabel("eCir");
                 significatObjects.put("eCir", circle);
                 significatObjects.put("N", circle.getCenter());
+                circle.getCenter().setId(id.getID());
                 setData(circle.getCenter(), "N", number, commands);
                 circle.getCenter().setMove(false);
                 circle.getCenter().setType(GeomPoint.Type.TRIANGLE_CANNOTFREE);
@@ -1357,6 +1361,9 @@ public class Triangle extends Polygon {
         commands.add("addLabel " + object.getId() + " " + label);
         object.setLabelNum(labelNum);
         object.setTriangle(this);
+        if (object.getId().compareTo("") == 0) {
+            Log.d("Sranjce", "se desilo");
+        }
         commands.add("addTriangle " + object.getId() + " " + getId());
 
     }

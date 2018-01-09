@@ -234,14 +234,17 @@ public class GeomPoint extends GeometricObject {
                         } else {
                             Circle k = GeometricConstructions.circleAroundTriangle(this, P, (GeomPoint) entry.getValue());
 
-                            c.setCenter(k.getCenter());
-                            c.setRadius(k.getRadius());
-                            if (commands != null) {
-                                commands.add("circleAroundTriangle " + object.getId() + " " + this.getId() + " " + P.getId()
-                                        + " " + entry.getValue().getId());
-                            }
+                            if (k != null) {
 
-                            return true;
+                                c.setCenter(k.getCenter());
+                                c.setRadius(k.getRadius());
+                                if (commands != null) {
+                                    commands.add("circleAroundTriangle " + object.getId() + " " + this.getId() + " " + P.getId()
+                                            + " " + entry.getValue().getId());
+                                }
+
+                                return true;
+                            }
                         }
                     }
                 }
