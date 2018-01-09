@@ -1,7 +1,7 @@
 package geometry.calculations.descretegeometrycalculations;
 
 public class Constants {
-    static private double MILIMETER = 0.0393700787; // 1 mm u inchima
+    static public double MILIMETER = 0.0393700787; // 1 mm u inchima
 
     private float factor;
 

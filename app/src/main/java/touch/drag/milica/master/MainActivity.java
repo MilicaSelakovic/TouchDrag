@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pointInformations = new PointInformations();
+        pointInformations = new PointInformations(getResources().getDisplayMetrics().densityDpi);
 
         ConstructionParser parser = new ConstructionParser();
 

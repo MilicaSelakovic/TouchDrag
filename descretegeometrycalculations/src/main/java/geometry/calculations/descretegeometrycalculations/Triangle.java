@@ -666,7 +666,7 @@ public class Triangle extends Polygon {
             if (commands != null) {
                 significatObjects.put("G", point);
                 commands.add("w03 " + point.getId() + " " + ta.getId() + " " + tb.getId());
-                setData(point, "I", number, commands);
+                setData(point, "G", number, commands);
             }
             return true;
         }

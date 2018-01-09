@@ -24,11 +24,11 @@ public class PointInformations {
 
     private boolean showSignInfo;
 
-    public PointInformations() {
-        setToDefaults();
+    public PointInformations(int density) {
+        setToDefaults(density);
     }
 
-    public void setToDefaults() {
+    public void setToDefaults(int density) {
         moveColor = Color.parseColor("#65be00");
         fixedColor = Color.parseColor("#e20000");
         activeColor = Color.parseColor("#65be00");
@@ -42,9 +42,11 @@ public class PointInformations {
 
         infoColor = Color.parseColor("#465E5E5E");
 
-        pointSize = 20f;
+        float pixels = (float) Constants.MILIMETER * density;
+
+        pointSize = pixels;
         label = true;
-        textSize = 50;
+        textSize = 2.5f * pointSize;
 
         showSignInfo = false;
 

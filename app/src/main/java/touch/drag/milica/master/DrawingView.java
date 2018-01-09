@@ -91,7 +91,7 @@ public class DrawingView extends View {
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        pointInformations = new PointInformations();
+        pointInformations = new PointInformations(0);
         setupDrawing();
 
         uniqueID = new UniqueID();
@@ -114,7 +114,6 @@ public class DrawingView extends View {
 
         mScaleGestureDetector = new ScaleGestureDetector(context, new ScaleListener());
 
-        pointInformations = new PointInformations();
         discreteCurvature = null;
         constants = null;
         textView = null;
@@ -525,6 +524,7 @@ public class DrawingView extends View {
     public void setDensity(double density, int densityDPI) {
         this.constants = new Constants(density, densityDPI);
         this.discreteCurvature = new DiscreteCurvature(constants);
+        this.pointInformations = new PointInformations(densityDPI);
     }
 
     public void setTextView(TextView textView) {
