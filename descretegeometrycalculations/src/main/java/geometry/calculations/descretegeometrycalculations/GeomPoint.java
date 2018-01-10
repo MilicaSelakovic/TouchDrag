@@ -160,7 +160,7 @@ public class GeomPoint extends GeometricObject {
         this.y = y;
 
         if (getTriangle() != null) {
-            getTriangle().translate(x, y, );
+            getTriangle().translate(x, y, objects);
         }
     }
 
