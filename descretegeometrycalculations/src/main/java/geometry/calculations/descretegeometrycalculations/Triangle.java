@@ -367,9 +367,7 @@ public class Triangle extends Polygon {
     public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
         if (canNotBeConstructed(freePoint1, freePoint2, freePoint3)) {
             significatObjects.put("C", null);
-            if (C != null) {
-                objects.put(C.getId(), null);
-            }
+            objects.put(idC, null);
             C = null;
             return;
         }
@@ -1211,7 +1209,7 @@ public class Triangle extends Polygon {
             double len = Math.sqrt(Math.pow((A.X() - B.X()), 2) + Math.pow((A.Y() - B.Y()), 2));
             double distance = c.distance(I);
 
-            return distance > len;
+            return distance >= len / 2;
 
         }
 
