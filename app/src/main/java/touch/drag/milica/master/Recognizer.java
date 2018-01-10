@@ -152,6 +152,7 @@ public class Recognizer {
                 objects.put(idp, p);
                 commands.add("point " + idp);
                 commands.add("addTriangle " + idp + id);
+                commands.add("addLabel " + idp + p.label());
                 command += idp + " ";
             }
 

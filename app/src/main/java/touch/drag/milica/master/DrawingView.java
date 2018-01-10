@@ -232,7 +232,7 @@ public class DrawingView extends View {
                 switch (mode) {
                     case MODE_MOVE:
                         if (current != null) {
-                            current.translate(touchX, touchY, );
+                            current.translate(touchX, touchY, geometricObjects);
                             constructor.reconstruct(commands, geometricObjects);
                             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                                 if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
@@ -258,7 +258,7 @@ public class DrawingView extends View {
                     case MODE_MOVE:
                         if (current != null) {
                             String komanda = "";
-                            current.translate(touchX, touchY, );
+                            current.translate(touchX, touchY, geometricObjects);
                             komanda += "translate " + current.getId()
                                     + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
 
@@ -394,7 +394,7 @@ public class DrawingView extends View {
 
                 GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
 
-                point.translate(point.X() + dx, point.Y() + dy, );
+                point.translate(point.X() + dx, point.Y() + dy, geometricObjects);
 
                 komande.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
 
@@ -474,7 +474,7 @@ public class DrawingView extends View {
 
                 GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
 
-                point.translate(point.X() + dx, point.Y() + dy, );
+                point.translate(point.X() + dx, point.Y() + dy, geometricObjects);
 
                 redo.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
 
