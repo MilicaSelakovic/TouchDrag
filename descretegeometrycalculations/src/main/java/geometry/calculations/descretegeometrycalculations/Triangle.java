@@ -367,11 +367,12 @@ public class Triangle extends Polygon {
     public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
         if (canNotBeConstructed(freePoint1, freePoint2, freePoint3)) {
             significatObjects.put("C", null);
-            objects.put(C.getId(), null);
+            if (C != null) {
+                objects.put(C.getId(), null);
+            }
             C = null;
             return;
         }
-        populateSignificantObjects();
         if (reconstruction != null) {
             HashMap<String, GeometricObject> copy = new HashMap<>();
 
@@ -384,12 +385,21 @@ public class Triangle extends Polygon {
             tmp.add(reconstruction);
             constructor.reconstruct(tmp, copy);
 
-            A = (GeomPoint) significatObjects.get("A");
-            B = (GeomPoint) significatObjects.get("B");
-            C = (GeomPoint) significatObjects.get("C");
+            A = (GeomPoint) copy.get("A");
+            B = (GeomPoint) copy.get("B");
+            C = (GeomPoint) copy.get("C");
 
+            significatObjects.put("A", A);
+            significatObjects.put("B", B);
+            significatObjects.put("C", C);
+
+            objects.put(idA, A);
+            objects.put(idB, B);
+            objects.put(idC, C);
 
         }
+
+        populateSignificantObjects();
     }
 
     @Override
