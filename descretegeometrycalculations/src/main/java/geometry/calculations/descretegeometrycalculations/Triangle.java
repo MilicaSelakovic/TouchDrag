@@ -31,6 +31,7 @@ public class Triangle extends Polygon {
     }
 
     private String number = "";
+    private boolean changed = false;
 
     Triangle(Vector<GeomPoint> points) {
         super(points);
@@ -287,6 +288,19 @@ public class Triangle extends Polygon {
 
     @Override
     public void draw(Canvas canvas, Paint paint, boolean finished, boolean choose, PointInformations pointInformations) {
+        if (A == null || B == null || C == null) {
+            changed = true;
+            return;
+        } else {
+            if (changed) {
+                Vector<GeomPoint> points = new Vector<>();
+                points.clear();
+                points.add(A);
+                points.add(B);
+                points.add(C);
+                setPoints(points);
+            }
+        }
         super.draw(canvas, paint, finished, choose, pointInformations);
 
         if (pointInformations.isShowSignInfo()) {
@@ -1163,6 +1177,19 @@ public class Triangle extends Polygon {
         }
     }
 
+    private boolean canNotBeConstructed(String fP1, String fP2, String fP3) {
+        if ((fP1.compareTo("A") == 0 && fP2.compareTo("B") == 0 && fP3.compareTo("I") == 0)) {
+            GeomPoint I = (GeomPoint) significatObjects.get("I");
+
+            double len = Math.sqrt(Math.pow((A.X() - B.X()), 2) + Math.pow((A.Y() - B.Y()), 2));
+            double distance = c.distance(I);
+
+            return distance > len;
+
+        }
+
+        return false;
+    }
 
     @Override
     public void setConstants(Constants constants) {
@@ -1369,7 +1396,7 @@ public class Triangle extends Polygon {
     }
 
     private String number() {
-        return Integer.parseInt(number()) == 0 ? "" : number;
+        return Integer.parseInt(number) == 0 ? "" : number;
     }
 
 
