@@ -3,7 +3,6 @@ package geometry.calculations.descretegeometrycalculations;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Vector;
@@ -67,7 +66,7 @@ public class Polygon extends GeometricObject {
         return false;
     }
 
-    public void translate(float x, float y) {
+    public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
     }
 
 

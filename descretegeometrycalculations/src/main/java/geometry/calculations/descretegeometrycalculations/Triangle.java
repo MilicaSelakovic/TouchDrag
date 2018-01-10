@@ -5,8 +5,6 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.util.Log;
 
-import org.opencv.core.Point;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -16,6 +14,7 @@ public class Triangle extends Polygon {
     private HashMap<String, GeometricObject> significatObjects;
     private Vector<GeometricObject> significatObjectsDraw;
     private GeomPoint A, B, C;
+    private String idA, idB, idC;
 
     private String freePoint1;
     private String freePoint2;
@@ -66,6 +65,12 @@ public class Triangle extends Polygon {
         b.setDraw(false);
         c.setId(cId);
         c.setDraw(false);
+    }
+
+    public void setIDPoints() {
+        idA = A.getId();
+        idB = B.getId();
+        idC = C.getId();
     }
 
     public void setNumber(String number) {
@@ -359,7 +364,13 @@ public class Triangle extends Polygon {
         return false;
     }
 
-    public void translate(float x, float y) {
+    public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
+        if (canNotBeConstructed(freePoint1, freePoint2, freePoint3)) {
+            significatObjects.put("C", null);
+            objects.put(C.getId(), null);
+            C = null;
+            return;
+        }
         populateSignificantObjects();
         if (reconstruction != null) {
             HashMap<String, GeometricObject> copy = new HashMap<>();
@@ -372,6 +383,12 @@ public class Triangle extends Polygon {
             Vector<Vector<String>> tmp = new Vector<>();
             tmp.add(reconstruction);
             constructor.reconstruct(tmp, copy);
+
+            A = (GeomPoint) significatObjects.get("A");
+            B = (GeomPoint) significatObjects.get("B");
+            C = (GeomPoint) significatObjects.get("C");
+
+
         }
     }
 

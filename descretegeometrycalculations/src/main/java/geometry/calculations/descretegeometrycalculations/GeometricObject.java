@@ -24,7 +24,7 @@ public abstract class GeometricObject {
 
     public abstract boolean isUnderCursor(float x, float y);
 
-    public abstract void translate(float x, float y);
+    public abstract void translate(float x, float y, HashMap<String, GeometricObject> objects);
 
     abstract public void scale(float scaleFactor, float w, float h);
 

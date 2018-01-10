@@ -155,12 +155,12 @@ public class GeomPoint extends GeometricObject {
     }
 
 
-    public void translate(float x, float y) {
+    public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
         this.x = x;
         this.y = y;
 
         if (getTriangle() != null) {
-            getTriangle().translate(x, y);
+            getTriangle().translate(x, y, );
         }
     }
 

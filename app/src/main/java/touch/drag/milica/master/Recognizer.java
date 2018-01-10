@@ -151,6 +151,7 @@ public class Recognizer {
                 p.setId(idp);
                 objects.put(idp, p);
                 commands.add("point " + idp);
+                commands.add("addTriangle " + idp + id);
                 command += idp + " ";
             }
 
@@ -159,6 +160,8 @@ public class Recognizer {
             String idC = uniqueID.getID();
 
             ((Triangle) recognized).setIDLines(idA, idB, idC);
+            ((Triangle) recognized).setIDPoints();
+
             objects.put(idA, ((Triangle) recognized).getLineA());
             objects.put(idB, ((Triangle) recognized).getLineB());
             objects.put(idC, ((Triangle) recognized).getLineC());

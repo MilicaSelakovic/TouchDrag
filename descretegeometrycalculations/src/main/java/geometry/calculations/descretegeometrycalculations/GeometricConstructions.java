@@ -2,7 +2,7 @@ package geometry.calculations.descretegeometrycalculations;
 
 import org.opencv.core.Point;
 
-public class GeometricConstructions {
+class GeometricConstructions {
 
     /*
     W01 Ако су дате тачке X, Z и W, и рационалан броj r могуће jе конструисати
@@ -337,6 +337,9 @@ public class GeometricConstructions {
     */
 
     public static Line w14(GeomPoint X, GeomPoint Y) {
+        if (X == null || Y == null) {
+            return null;
+        }
         GeomPoint A = new GeomPoint((X.X() + Y.X()) / 2, (X.Y() + Y.Y()) / 2);
 //        GeomPoint v= new GeomPoint( - (X.Y() - Y.Y()), X.X() - Y.X());
 //        return new Line(A, new GeomPoint(A.X() + v.X(), A.Y() + v.Y()));
@@ -351,6 +354,9 @@ public class GeometricConstructions {
 
     // TODO proveriti
     public static Line w15(GeomPoint X, Line p, float r) {
+        if (X == null || p == null) {
+            return null;
+        }
         GeomPoint begin = w01(X, X, p.getBegin(), r);
         GeomPoint end = w01(X, X, p.getEnd(), r);
 
@@ -486,6 +492,9 @@ public class GeometricConstructions {
     /*Simetrala ugla*/
 
     public static Line bisectorAngle(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
         GeomPoint B1 = w01(B, B, C, (float) (B.distance(A) / B.distance(C)));
         GeomPoint S = w01(A, A, B1, 0.5f);
 
@@ -494,12 +503,20 @@ public class GeometricConstructions {
     }
 
     public static Line medianLine(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
+
         GeomPoint sB = new GeomPoint((A.X() + C.X()) / 2, (A.Y() + C.Y()) / 2);
 
         return new Line(B, sB);
     }
 
     static GeomPoint centroid(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
+
         Line tb = medianLine(A, B, C);
         Line tc = medianLine(B, C, A);
 
@@ -507,6 +524,10 @@ public class GeometricConstructions {
     }
 
     static GeomPoint incenter(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
+
         Line sb = GeometricConstructions.bisectorAngle(A, B, C);
         Line sc = GeometricConstructions.bisectorAngle(B, C, A);
 
@@ -514,6 +535,10 @@ public class GeometricConstructions {
     }
 
     static GeomPoint circumcenter(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
+
         Line sBC = GeometricConstructions.w10(new GeomPoint((B.X() + C.X()) / 2, (B.Y() + C.Y()) / 2), new Line(B, C));
         Line sAC = GeometricConstructions.w10(new GeomPoint((A.X() + C.X()) / 2, (A.Y() + C.Y()) / 2), new Line(A, C));
 
@@ -522,6 +547,10 @@ public class GeometricConstructions {
     }
 
     static GeomPoint orthocenter(GeomPoint A, GeomPoint B, GeomPoint C) {
+        if (A == null || B == null || C == null) {
+            return null;
+        }
+
         Line hb = GeometricConstructions.w10(B, new Line(A, C));
         Line ha = GeometricConstructions.w10(A, new Line(B, C));
 
@@ -530,6 +559,9 @@ public class GeometricConstructions {
 
 
     public static double angle(GeomPoint X, GeomPoint Y, GeomPoint Z) {
+        if (X == null || Y == null || Z == null) {
+            return 0;
+        }
 
         float dx1 = Y.X() - X.X();
         float dy1 = Y.Y() - X.Y();

@@ -119,7 +119,7 @@ public class Circle extends GeometricObject {
         return false;
     }
 
-    public void translate(float x, float y) {
+    public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
     }
 
     public boolean equal(Circle circle) {

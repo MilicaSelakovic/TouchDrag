@@ -74,7 +74,7 @@ public class Line extends GeometricObject {
         return false;
     }
 
-    public void translate(float x, float y) {
+    public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
 
     }
 

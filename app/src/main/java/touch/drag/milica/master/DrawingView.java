@@ -2,7 +2,6 @@ package touch.drag.milica.master;
 
 import android.graphics.DashPathEffect;
 import android.graphics.PointF;
-import android.util.Log;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.content.Context;
@@ -13,17 +12,10 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.view.MotionEvent;
 
-import android.graphics.Color;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.opencv.core.Point;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Stack;
 import java.util.Vector;
@@ -240,7 +232,7 @@ public class DrawingView extends View {
                 switch (mode) {
                     case MODE_MOVE:
                         if (current != null) {
-                            current.translate(touchX, touchY);
+                            current.translate(touchX, touchY, );
                             constructor.reconstruct(commands, geometricObjects);
                             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                                 if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
@@ -266,7 +258,7 @@ public class DrawingView extends View {
                     case MODE_MOVE:
                         if (current != null) {
                             String komanda = "";
-                            current.translate(touchX, touchY);
+                            current.translate(touchX, touchY, );
                             komanda += "translate " + current.getId()
                                     + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
 
@@ -402,7 +394,7 @@ public class DrawingView extends View {
 
                 GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
 
-                point.translate(point.X() + dx, point.Y() + dy);
+                point.translate(point.X() + dx, point.Y() + dy, );
 
                 komande.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
 
@@ -482,7 +474,7 @@ public class DrawingView extends View {
 
                 GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
 
-                point.translate(point.X() + dx, point.Y() + dy);
+                point.translate(point.X() + dx, point.Y() + dy, );
 
                 redo.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
 
