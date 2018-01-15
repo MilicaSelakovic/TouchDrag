@@ -40,11 +40,14 @@ public class PointInformations {
         drawPathColor = Color.WHITE;
         textColor = Color.WHITE;
 
-        infoColor = Color.parseColor("#465E5E5E");
+//        paintColor = Color.BLACK;
+//        tempObjectColor = Color.parseColor("#16355b");
+//        drawPathColor = Color.parseColor("#16355b");
+//        textColor = Color.BLACK;
 
-        float pixels = (float) Constants.MILIMETER * density;
+        infoColor = Color.parseColor("#46D4D4D4");
 
-        pointSize = pixels;
+        pointSize = (float) Constants.MILIMETER * density;
         label = true;
         textSize = 2.5f * pointSize;
 

@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_help"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context="touch.drag.milica.master.Help">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundMain"
+            android:padding="10dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="@android:dimen/app_icon_size"
+                android:id="@+id/imageButton10"
+                android:background="@android:color/transparent"
+                android:layout_weight="0.08"
+                android:contentDescription=""
+                tools:ignore="ContentDescription"
+                app:srcCompat="@drawable/ic_action_back" />
+
+            <TextView
+                android:text="Touch&amp;Drag"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                style="@android:style/Widget.DeviceDefault.Light.TextView"
+                android:layout_marginLeft="10dp"
+                tools:ignore="RtlHardcoded"
+                android:fontFamily="sans-serif"
+                android:paddingTop="5dp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:text="Introduction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/backgroundMain"
+                    android:textAlignment="textStart"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:text="This is android application for geometric constructions. In this application a user can construct geometric objects just by drawing sketches. The application will automaticly recognize the intention of the user and instead of sketch, it will draw geometric objects."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/materialcolorpicker__grey" />
+
+                <TextView
+                    android:text="There is three modes:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/materialcolorpicker__grey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@android:dimen/app_icon_size"
+                        android:layout_height="@android:dimen/app_icon_size"
+                        android:background="@mipmap/ic_helpDraw"
+                        style="@android:style/Widget.ImageButton" />
+
+                    <TextView
+                        android:text="Construction mode (default)"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingLeft="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:layout_width="@android:dimen/app_icon_size"
+                        android:layout_height="@android:dimen/app_icon_size"
+                        android:background="@mipmap/ic_helpMove"
+                        style="@android:style/Widget.ImageButton" />
+
+                    <TextView
+                        android:text="Drag mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingLeft="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:layout_width="@android:dimen/app_icon_size"
+                        android:layout_height="@android:dimen/app_icon_size"
+                        android:background="@mipmap/ic_helpSelect"
+                        style="@android:style/Widget.ImageButton" />
+
+                    <TextView
+                        android:text="Selection mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingLeft="20dp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/materialcolorpicker__grey" />
+
+                <TextView
+                    android:text="Construction mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/backgroundMain"
+                    android:textAlignment="textStart"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:text="In this mode, the user constructs geometric objects (Points, Lines, Circles, Polygons, and Triangles) by drawing them on the screen. During the drawing of an object a temporary dashed object is shown. The dashed object to what would be recognized if the user stops drawing."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/materialcolorpicker__grey" />
+
+                <TextView
+                    android:text="Basic constructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/backgroundMain"
+                    android:textAlignment="textStart"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/backgroundMain"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:text="The point can be constructed just by taping on the screen."
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/materialcolorpicker__grey"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/backgroundMain"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:text="Line is constructed by drawing a straight path on the canvas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/materialcolorpicker__grey"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Circle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/backgroundMain"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:text="Circle is constructed by drawing path on canvas that is close to part of the circle."
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/materialcolorpicker__grey"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Polygon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/backgroundMain"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:text="Drawing the path that is similar to polygon the user will draw the polygon. All polygons are closed (first and the last vertex are connected). In the case when the last vertex is almost on the line between fist and next to the last vertex then the last vertex is dismissed."
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/materialcolorpicker__grey"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Significant objects"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/backgroundMain"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:text="The tool checks relationships between the object that was recognized last and the existing geometric objects. For instance, if the drawn line is close to an altitude of an existing triangle, then the drawn line is updated (docked) to be that altitude, as it was, likely, the intention of the user. In that case, information that line will be recognized as altitude of the triangle is shown."
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/materialcolorpicker__grey"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp" />
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@mipmap/ic_altitude"
+                        android:scaleType="center"
+                        android:scaleX="3"
+                        android:scaleY="3" />
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:text="Drag mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/backgroundMain"
+                    android:textAlignment="textStart"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:text="Constructed points are points that are recognized during the construction as an intersection of some objects or as a significant point of a triangle. All points that are not constructed are marked as free. All free points can be dragged in this mode."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/materialcolorpicker__grey" />
+
+                <TextView
+                    android:text="Select mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/backgroundMain"
+                    android:textAlignment="textStart"
+                    android:textSize="25sp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:text="By entering this mode a user can change which points of the triangle are free. Points can be marked as free (green), be candidates to become free (yellow) and be other points witch can't become free points (red). By taping a green point it will become yellow and by taping yellow it will become green. Red points can become yellow when some green point become yellow."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/materialcolorpicker__grey" />
+
+
+                <TextView
+                    android:text="Utilities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/backgroundMain"
+                    android:textAlignment="textStart"
+                    android:textSize="25sp"
+                    android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/new_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="New project"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/help_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="Help"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/save_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="Save project"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/load_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="Open project"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/center_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="Center picture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/sett_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="Settings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/undo_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <ImageView
+                            android:layout_width="@android:dimen/app_icon_size"
+                            android:layout_height="@android:dimen/app_icon_size"
+                            android:background="@drawable/redo_light"
+                            style="@android:style/Widget.ImageButton" />
+
+                        <TextView
+                            android:text="Undo and redo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="20dp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

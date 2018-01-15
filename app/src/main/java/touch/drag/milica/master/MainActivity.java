@@ -120,6 +120,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        this.findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Help.class);
+                startActivity(intent);
+            }
+        });
+
         this.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
