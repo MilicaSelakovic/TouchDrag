@@ -311,15 +311,15 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="175dp">
+                    android:layout_height="350dp">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:srcCompat="@mipmap/ic_altitude"
                         android:scaleType="center"
-                        android:scaleX="3"
-                        android:scaleY="3" />
+                        android:scaleX="6"
+                        android:scaleY="6" />
 
                 </RelativeLayout>
 
