@@ -2,9 +2,13 @@
 ### Introduction
 This is android application for geometric constructions. In this application a user can construct geometric objects just by drawing sketches. The application will automaticly recognize the intention of the user and instead of sketch, it will draw geometric objects.
 There is three modes:
+
   <img src="https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpDraw-web.png" width="48"> Construction mode (default)
+
   <img src="https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpMove-web.png" width="48"> Drag mode
+
   <img src="https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpSelect-web.png" width="48"> Selection mode
+
 ### Construction mode
 In this mode, the user constructs geometric objects (Points, Lines, Circles, Polygons, and Triangles) by drawing them on the screen. During the drawing of an object a temporary dashed object is shown. The dashed object to what would be recognized if the user stops drawing.
 #### Basic constructions
