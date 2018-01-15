@@ -2,9 +2,9 @@
 ### Introduction
 This is android application for geometric constructions. In this application a user can construct geometric objects just by drawing sketches. The application will automaticly recognize the intention of the user and instead of sketch, it will draw geometric objects.
 There is three modes:
- - ![construction](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpDraw-web.png) Construction mode (default)
- - ![draq](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpMove-web.png)Drag mode
- - ![selection](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpSelect-web.png)Selection mode
+  <img src="https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpDraw-web.png" width="48"> Construction mode (default)
+  <img src="https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpMove-web.png" width="48"> Drag mode
+  <img src="https://github.com/MilicaSelakovic/master/blob/master/app/src/main/ic_helpSelect-web.png" width="48"> Selection mode
 ### Construction mode
 In this mode, the user constructs geometric objects (Points, Lines, Circles, Polygons, and Triangles) by drawing them on the screen. During the drawing of an object a temporary dashed object is shown. The dashed object to what would be recognized if the user stops drawing.
 #### Basic constructions
@@ -36,9 +36,15 @@ By entering this mode a user can change which points of the triangle are free.
 Points can be marked as free (green), be candidates to become free (yellow) and be other points witch can't become free points (red). By taping a green point it will become yellow and by taping yellow it will become green. Red points can become yellow when some green point become yellow.
 ### Utilities 
 ![new](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/new_light.png) New project
+
 ![help](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/help_light.png) Help
+
 ![save](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/save_light.png) Save project
+
 ![load](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/load_light.png) Load project
+
 ![center](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/center_light.png) Center
+
 ![settings](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/sett_light.png) Settings
+
 ![undo](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/undo_light.png) ![redo](https://github.com/MilicaSelakovic/master/blob/master/app/src/main/res/drawable-hdpi/redo_light.png) Undo and redo
