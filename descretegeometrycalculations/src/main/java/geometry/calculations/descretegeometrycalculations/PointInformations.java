@@ -24,6 +24,9 @@ public class PointInformations {
 
     private boolean showSignInfo;
 
+    private int pointSizeFactor;
+    private int textSizeFactor;
+
     public PointInformations(int density) {
         setToDefaults(density);
     }
@@ -53,6 +56,9 @@ public class PointInformations {
 
         showSignInfo = false;
 
+        pointSizeFactor = 1;
+        textSizeFactor = 1;
+
     }
 
 
@@ -63,6 +69,15 @@ public class PointInformations {
     public void setShowSignInfo(boolean showSignInfo) {
         this.showSignInfo = showSignInfo;
     }
+
+    public int getPointSizeFactor() {
+        return pointSizeFactor;
+    }
+
+    public int getTextSizeFactor() {
+        return textSizeFactor;
+    }
+
 
     public int getInfoColor() {
         return infoColor;
@@ -140,18 +155,32 @@ public class PointInformations {
     }
 
     public float getPointSize() {
-        return pointSize;
+        switch (pointSizeFactor) {
+            case 0:
+                return pointSize / 2;
+            case 1:
+                return pointSize;
+            default:
+                return pointSize * 2;
+        }
     }
 
     public float getTextSize() {
-        return textSize;
+        switch (textSizeFactor) {
+            case 0:
+                return textSize / 2;
+            case 1:
+                return textSize;
+            default:
+                return textSize * 2;
+        }
     }
 
-    public void setPointSize(float pointSize) {
-        this.pointSize = pointSize;
+    public void setPointSize(int pointSize) {
+        this.pointSizeFactor = pointSize;
     }
 
-    public void setTextSize(float textSize) {
-        this.textSize = textSize;
+    public void setTextSize(int textSize) {
+        this.textSizeFactor = textSize;
     }
 }

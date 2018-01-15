@@ -11,7 +11,7 @@
     <string name="text_size">Text size</string>
     <string name="other_points_color">Other points color</string>
     <string name="active_point_color">Active point color</string>
-    <string name="color_of_point_tat_cannot_be_active">Color of point tat cannot be active</string>
+    <string name="color_of_point_tat_cannot_be_active">Color of point that cannot be active</string>
     <string name="color_of_point_that_can_be_active">Color of point that can be active</string>
     <string name="constructed_point_color">Constructed point color</string>
     <string name="free_point_color">Free Point Color</string>

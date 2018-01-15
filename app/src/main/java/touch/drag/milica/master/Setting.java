@@ -25,9 +25,9 @@ public class Setting extends AppCompatActivity {
     private int cannotChooseColor;
     private int otherColor;
 
-    private float pointSize;
+    private int pointSize;
     private boolean label;
-    private float textSize;
+    private int textSize;
 
     private boolean hasExtra = false;
 
@@ -52,9 +52,9 @@ public class Setting extends AppCompatActivity {
             cannotChooseColor = extras.getInt("cannotChooseColor");
             otherColor = extras.getInt("otherColor");
 
-            pointSize = extras.getFloat("pointSize");
+            pointSize = extras.getInt("pointSize");
             label = extras.getBoolean("label");
-            textSize = extras.getFloat("textSize");
+            textSize = extras.getInt("textSize");
             factor = extras.getFloat("factor");
             signInfo = extras.getBoolean("signInfo");
         }
@@ -261,7 +261,8 @@ public class Setting extends AppCompatActivity {
         seekBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                factor = seekBar.getProgress() / 10f;
+                float progress = seekBar.getProgress();
+                factor = progress / 10f;
             }
         });
     }
@@ -335,27 +336,11 @@ public class Setting extends AppCompatActivity {
     }
 
     private int getPointSize() {
-        if (pointSize < 20) {
-            return 0;
-        }
-
-        if (pointSize > 20) {
-            return 2;
-        }
-
-        return 1;
+        return pointSize;
     }
 
     private int getTextSize() {
-        if (textSize < 50) {
-            return 0;
-        }
-
-        if (textSize > 50) {
-            return 2;
-        }
-
-        return 1;
+        return textSize;
     }
 
 

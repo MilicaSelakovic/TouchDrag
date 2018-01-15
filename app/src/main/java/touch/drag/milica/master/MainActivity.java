@@ -140,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("cannotChooseColor", pointInformations.getCannotChooseColor());
                 intent.putExtra("otherColor", pointInformations.getOtherColor());
 
-                intent.putExtra("pointSize", pointInformations.getPointSize());
+                intent.putExtra("pointSize", pointInformations.getPointSizeFactor());
                 intent.putExtra("label", pointInformations.isLabel());
-                intent.putExtra("textSize", pointInformations.getTextSize());
+                intent.putExtra("textSize", pointInformations.getTextSizeFactor());
                 intent.putExtra("factor", factor);
                 intent.putExtra("signInfo", pointInformations.isShowSignInfo());
 
@@ -201,9 +201,9 @@ public class MainActivity extends AppCompatActivity {
             pointInformations.setCannotChooseColor(extras.getInt("cannotChooseColor"));
             pointInformations.setOtherColor(extras.getInt("otherColor"));
 
-            pointInformations.setPointSize(extras.getFloat("pointSize"));
+            pointInformations.setPointSize(extras.getInt("pointSize"));
             pointInformations.setLabel(extras.getBoolean("label"));
-            pointInformations.setTextSize(extras.getFloat("textSize"));
+            pointInformations.setTextSize(extras.getInt("textSize"));
             pointInformations.setShowSignInfo(extras.getBoolean("signInfo"));
             factor = extras.getFloat("factor");
             DrawingView view = (DrawingView) findViewById(R.id.view);
