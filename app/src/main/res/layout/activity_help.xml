@@ -94,7 +94,7 @@
                     <ImageView
                         android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="@android:dimen/app_icon_size"
-                        android:background="@mipmap/ic_helpDraw"
+                        android:background="@mipmap/ic_helpdraw"
                         style="@android:style/Widget.ImageButton" />
 
                     <TextView
@@ -114,7 +114,7 @@
                     <ImageButton
                         android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="@android:dimen/app_icon_size"
-                        android:background="@mipmap/ic_helpMove"
+                        android:background="@mipmap/ic_helpmove"
                         style="@android:style/Widget.ImageButton" />
 
                     <TextView
@@ -134,7 +134,7 @@
                     <ImageButton
                         android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="@android:dimen/app_icon_size"
-                        android:background="@mipmap/ic_helpSelect"
+                        android:background="@mipmap/ic_helpselect"
                         style="@android:style/Widget.ImageButton" />
 
                     <TextView
