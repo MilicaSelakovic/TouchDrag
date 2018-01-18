@@ -378,12 +378,6 @@ public class Triangle extends Polygon {
     }
 
     public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
-//        if (canNotBeConstructed(freePoint1, freePoint2, freePoint3)) {
-//            significatObjects.put("C", null);
-//            objects.put(idC, null);
-//            C = null;
-//            return;
-//        }
         if (reconstruction != null) {
             HashMap<String, GeometricObject> copy = new HashMap<>();
 
