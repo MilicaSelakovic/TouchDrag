@@ -3,8 +3,10 @@ package touch.drag.milica.master;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -69,14 +71,35 @@ public class LoadDialog extends Dialog {
                     }
 
                 } catch (FileNotFoundException e) {
+                    final AlertDialog alertDialog = new AlertDialog.Builder(main).create();
+
+                    alertDialog.setMessage("File not found exception\n" + e.getMessage());
+
+                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "CLOSE", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            alertDialog.cancel();
+                        }
+                    });
+
+                    cancel();
                     e.printStackTrace();
                 } catch (IOException e) {
+                    final AlertDialog alertDialog = new AlertDialog.Builder(main).create();
+
+                    alertDialog.setMessage("IOException\n" + e.getMessage());
+
+                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "CLOSE", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            alertDialog.cancel();
+                        }
+                    });
+                    cancel();
                     e.printStackTrace();
                 }
 
                 drawingView.load(commands);
-
-                drawingView.setUnsaved(false);
 
                 cancel();
             }
