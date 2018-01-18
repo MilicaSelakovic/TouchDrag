@@ -36,7 +36,7 @@
                 app:srcCompat="@drawable/ic_action_back" />
 
             <TextView
-                android:text="Touch&amp;Drag"
+                android:text="@string/touch_amp_drag"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView"
@@ -64,7 +64,7 @@
                 android:paddingRight="20dp">
 
                 <TextView
-                    android:text="Introduction"
+                    android:text="@string/introduction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -72,14 +72,14 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:text="This is android application for geometric constructions. In this application a user can construct geometric objects just by drawing sketches. The application will automaticly recognize the intention of the user and instead of sketch, it will draw geometric objects."
+                    android:text="@string/app_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/materialcolorpicker__grey" />
 
                 <TextView
-                    android:text="There is three modes:"
+                    android:text="@string/modes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -89,20 +89,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="@android:dimen/app_icon_size"
                         android:background="@mipmap/ic_helpdraw"
-                        style="@android:style/Widget.ImageButton" />
+                        style="@android:style/Widget.ImageButton"
+                        android:contentDescription=""
+                        tools:ignore="ContentDescription" />
 
                     <TextView
-                        android:text="Construction mode (default)"
+                        android:text="@string/construction_mode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:paddingLeft="20dp" />
+                        android:paddingLeft="20dp"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -115,14 +119,16 @@
                         android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="@android:dimen/app_icon_size"
                         android:background="@mipmap/ic_helpmove"
-                        style="@android:style/Widget.ImageButton" />
+                        style="@android:style/Widget.ImageButton"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
-                        android:text="Drag mode"
+                        android:text="@string/drag_mode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:paddingLeft="20dp" />
+                        android:paddingLeft="20dp"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,14 +141,16 @@
                         android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="@android:dimen/app_icon_size"
                         android:background="@mipmap/ic_helpselect"
-                        style="@android:style/Widget.ImageButton" />
+                        style="@android:style/Widget.ImageButton"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
-                        android:text="Selection mode"
+                        android:text="@string/selection_mode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:paddingLeft="20dp" />
+                        android:paddingLeft="20dp"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
 
                 <Space
@@ -151,7 +159,7 @@
                     android:background="@color/materialcolorpicker__grey" />
 
                 <TextView
-                    android:text="Construction mode"
+                    android:text="@string/construction_mode_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -159,14 +167,14 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:text="In this mode, the user constructs geometric objects (Points, Lines, Circles, Polygons, and Triangles) by drawing them on the screen. During the drawing of an object a temporary dashed object is shown. The dashed object to what would be recognized if the user stops drawing."
+                    android:text="@string/construction_mode_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/materialcolorpicker__grey" />
 
                 <TextView
-                    android:text="Basic constructions"
+                    android:text="@string/basic_constructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -182,7 +190,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="Point"
+                        android:text="@string/point"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/backgroundMain"
@@ -190,7 +198,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:text="The point can be constructed just by taping on the screen."
+                        android:text="@string/point_construcion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/materialcolorpicker__grey"
@@ -209,7 +217,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="Line"
+                        android:text="@string/line"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/backgroundMain"
@@ -217,7 +225,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:text="Line is constructed by drawing a straight path on the canvas"
+                        android:text="@string/line_construcion_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/materialcolorpicker__grey"
@@ -236,7 +244,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="Circle"
+                        android:text="@string/circle_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/backgroundMain"
@@ -244,7 +252,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:text="Circle is constructed by drawing path on canvas that is close to part of the circle."
+                        android:text="@string/description_circle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/materialcolorpicker__grey"
@@ -263,7 +271,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="Polygon"
+                        android:text="@string/polygon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/backgroundMain"
@@ -271,7 +279,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:text="Drawing the path that is similar to polygon the user will draw the polygon. All polygons are closed (first and the last vertex are connected). In the case when the last vertex is almost on the line between fist and next to the last vertex then the last vertex is dismissed."
+                        android:text="@string/polygon_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/materialcolorpicker__grey"
@@ -290,7 +298,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="Significant objects"
+                        android:text="@string/significant_objects"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/backgroundMain"
@@ -298,7 +306,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:text="The tool checks relationships between the object that was recognized last and the existing geometric objects. For instance, if the drawn line is close to an altitude of an existing triangle, then the drawn line is updated (docked) to be that altitude, as it was, likely, the intention of the user. In that case, information that line will be recognized as altitude of the triangle is shown."
+                        android:text="@string/significant_object_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/materialcolorpicker__grey"
@@ -319,13 +327,14 @@
                         app:srcCompat="@mipmap/ic_altitude"
                         android:scaleType="center"
                         android:scaleX="6"
-                        android:scaleY="6" />
+                        android:scaleY="6"
+                        tools:ignore="ContentDescription" />
 
                 </RelativeLayout>
 
 
                 <TextView
-                    android:text="Drag mode"
+                    android:text="@string/drag_mode_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -333,14 +342,14 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:text="Constructed points are points that are recognized during the construction as an intersection of some objects or as a significant point of a triangle. All points that are not constructed are marked as free. All free points can be dragged in this mode."
+                    android:text="@string/drag_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/materialcolorpicker__grey" />
 
                 <TextView
-                    android:text="Select mode"
+                    android:text="@string/select_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -349,7 +358,7 @@
                     android:layout_marginTop="20dp" />
 
                 <TextView
-                    android:text="By entering this mode a user can change which points of the triangle are free. Points can be marked as free (green), be candidates to become free (yellow) and be other points witch can't become free points (red). By taping a green point it will become yellow and by taping yellow it will become green. Red points can become yellow when some green point become yellow."
+                    android:text="@string/description_selection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -357,7 +366,7 @@
 
 
                 <TextView
-                    android:text="Utilities"
+                    android:text="@string/utilities"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -375,120 +384,139 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/new_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="New project"
+                            android:text="@string/new_project"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/help_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="Help"
+                            android:text="@string/help"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/save_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="Save project"
+                            android:text="@string/save_project"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/load_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="Open project"
+                            android:text="@string/open_project"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/center_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="Center picture"
+                            android:text="@string/center_picture"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/sett_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            android:contentDescription=""
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="Settings"
+                            android:text="@string/settings_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -501,20 +529,23 @@
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/undo_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <ImageView
                             android:layout_width="@android:dimen/app_icon_size"
                             android:layout_height="@android:dimen/app_icon_size"
                             android:background="@drawable/redo_light"
-                            style="@android:style/Widget.ImageButton" />
+                            style="@android:style/Widget.ImageButton"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
-                            android:text="Undo and redo"
+                            android:text="@string/undo_and_redo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp" />
+                            android:paddingLeft="20dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry" />
                     </LinearLayout>
 
 
