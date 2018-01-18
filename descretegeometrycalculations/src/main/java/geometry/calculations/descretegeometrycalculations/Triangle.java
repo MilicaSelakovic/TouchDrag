@@ -378,12 +378,12 @@ public class Triangle extends Polygon {
     }
 
     public void translate(float x, float y, HashMap<String, GeometricObject> objects) {
-        if (canNotBeConstructed(freePoint1, freePoint2, freePoint3)) {
-            significatObjects.put("C", null);
-            objects.put(idC, null);
-            C = null;
-            return;
-        }
+//        if (canNotBeConstructed(freePoint1, freePoint2, freePoint3)) {
+//            significatObjects.put("C", null);
+//            objects.put(idC, null);
+//            C = null;
+//            return;
+//        }
         if (reconstruction != null) {
             HashMap<String, GeometricObject> copy = new HashMap<>();
 
@@ -399,6 +399,26 @@ public class Triangle extends Polygon {
             A = (GeomPoint) copy.get("A");
             B = (GeomPoint) copy.get("B");
             C = (GeomPoint) copy.get("C");
+
+            if (isFree("I")) {
+                GeomPoint I = (GeomPoint) copy.get("I");
+
+                if (canNotBeConstructed(A, B, C, I)) {
+                    if (!isFree("A")) {
+                        A = null;
+                    }
+
+                    if (!isFree("B")) {
+                        B = null;
+                    }
+
+                    if (!isFree("C")) {
+                        C = null;
+                    }
+                }
+
+            }
+
 
             significatObjects.put("A", A);
             significatObjects.put("B", B);
@@ -1215,18 +1235,15 @@ public class Triangle extends Polygon {
         }
     }
 
-    private boolean canNotBeConstructed(String fP1, String fP2, String fP3) {
-        if ((fP1.compareTo("A") == 0 && fP2.compareTo("B") == 0 && fP3.compareTo("I") == 0)) {
-            GeomPoint I = (GeomPoint) significatObjects.get("I");
+    private boolean canNotBeConstructed(GeomPoint A, GeomPoint B, GeomPoint C, GeomPoint I) {
+        GeomPoint newI = GeometricConstructions.incenter(A, B, C);
 
-            double len = Math.sqrt(Math.pow((A.X() - B.X()), 2) + Math.pow((A.Y() - B.Y()), 2));
-            double distance = c.distance(I);
-
-            return distance >= len / 2;
-
+        if (newI == null) {
+            return true;
         }
 
-        return false;
+        newI.setConstants(constants);
+        return !I.equal(newI);
     }
 
     @Override
