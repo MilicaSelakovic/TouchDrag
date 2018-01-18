@@ -37,7 +37,7 @@ public class LoadDialog extends Dialog {
         final ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        listView.setAdapter(new ListAdapter(main, new ArrayList<File>(Arrays.asList(getContext().getFilesDir().listFiles(new Filter())))));
+        listView.setAdapter(new ListAdapter(main, new ArrayList<>(Arrays.asList(getContext().getFilesDir().listFiles(new Filter())))));
 
         findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
             @Override

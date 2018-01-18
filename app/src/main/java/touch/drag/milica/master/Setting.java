@@ -206,21 +206,8 @@ public class Setting extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int pos = parent.getSelectedItemPosition();
+                textSize = parent.getSelectedItemPosition();
 
-                switch (pos) {
-                    case 0:
-                        textSize = 20;
-                        break;
-                    case 1:
-                        textSize = 50;
-                        break;
-                    case 2:
-                        textSize = 70;
-                        break;
-                    default:
-                        textSize = 50;
-                }
             }
 
             @Override
@@ -236,19 +223,7 @@ public class Setting extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = parent.getSelectedItemPosition();
 
-                switch (pos) {
-                    case 0:
-                        pointSize = 15;
-                        break;
-                    case 1:
-                        pointSize = 20;
-                        break;
-                    case 2:
-                        pointSize = 30;
-                        break;
-                    default:
-                        pointSize = 20;
-                }
+                pointSize = pos;
             }
 
             @Override
@@ -258,11 +233,20 @@ public class Setting extends AppCompatActivity {
         });
 
         final SeekBar seekBar = (SeekBar) this.findViewById(R.id.factor);
-        seekBar.setOnClickListener(new View.OnClickListener() {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onClick(View v) {
-                float progress = seekBar.getProgress();
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 factor = progress / 10f;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }

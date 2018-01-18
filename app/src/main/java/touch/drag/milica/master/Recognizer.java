@@ -168,6 +168,13 @@ public class Recognizer {
             objects.put(idC, ((Triangle) recognized).getLineC());
 
             commands.add(command);
+            String A = ((Triangle) recognized).getIdA();
+            String B = ((Triangle) recognized).getIdB();
+            String C = ((Triangle) recognized).getIdC();
+
+            commands.add("line " + idA + " " + B + " " + C);
+            commands.add("line " + idB + " " + A + " " + C);
+            commands.add("line " + idC + " " + A + " " + B);
             commands.add("setIDTriangleLine " + id + " " + idA + " " + idB + " " + idC);
 
             objects.put(id, recognized);

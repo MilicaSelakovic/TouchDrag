@@ -14,6 +14,19 @@ public class Triangle extends Polygon {
     private HashMap<String, GeometricObject> significatObjects;
     private Vector<GeometricObject> significatObjectsDraw;
     private GeomPoint A, B, C;
+
+    public String getIdA() {
+        return idA;
+    }
+
+    public String getIdB() {
+        return idB;
+    }
+
+    public String getIdC() {
+        return idC;
+    }
+
     private String idA, idB, idC;
 
     private String freePoint1;
