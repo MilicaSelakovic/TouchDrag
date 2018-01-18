@@ -17,8 +17,6 @@
     <string name="free_point_color">Free Point Color</string>
     <string name="point_lab">Point Labeling</string>
     <string name="setting">Settings</string>
-
-
     <string-array name="sizes">
         <item>Small</item>
         <item>Medium</item>
@@ -26,16 +24,15 @@
     </string-array>
     <string name="title_activity_main">MainActivity</string>
     <string name="basic_constructions">Basic constructions</string>
-    <string name="description_selection">By entering this mode a user can change which points of the triangle are free. Points can be marked as free (green), be candidates to become free (yellow) and be other points witch can\'t become free points (red). By taping a green point it will become yellow and by taping yellow it will become green. Red points can become yellow when some green point become yellow.</string>
+    <string name="description_selection">By entering this mode a user can change which points of the triangle are free. Points can be marked as free (green), as candidates to become free (yellow) or as points which cannot become free points in the active configuration (red). Tapping a green point will change its color to yellow and by taping yellow it will become green. Red points may become yellow in some other configurations, by turning some green points to yellow.</string>
     <string name="center_picture">Center picture</string>
     <string name="description_circle">Circle is constructed by drawing path on canvas that is close to part of the circle.</string>
     <string name="circle_1">Circle</string>
-    <string name="drag_description">Constructed points are points that are recognized during the construction as an intersection of some objects or as a significant point of a triangle. All points that are not constructed are marked as free. All free points can be dragged in this mode.</string>
+    <string name="drag_description">Constructed points are points that are recognized during the construction as an intersection of some objects or as a significant point of a triangle. All points that are not constructed are marked as free. All points marked as free can be dragged while user is in this mode.</string>
     <string name="construction_mode">Construction mode (default)</string>
     <string name="construction_mode_1">Construction mode</string>
-    <string name="drag_mode">Drag mode</string>
-    <string name="drag_mode_1">Drag mode</string>
-    <string name="polygon_description">Drawing the path that is similar to polygon the user will draw the polygon. All polygons are closed (first and the last vertex are connected). In the case when the last vertex is almost on the line between fist and next to the last vertex then the last vertex is dismissed.</string>
+    <string name="drag_mode">Dragging mode</string>
+    <string name="polygon_description">Drawing the path that is similar to polygon the user will draw the polygon. All polygons are closed (first and the last vertex are connected). In case when the last vertex is close to the line connecting first vertex and the vertex next to the last one, the last vertex will be dismissed.</string>
     <string name="help">Help</string>
     <string name="construction_mode_description">In this mode, the user constructs geometric objects (Points, Lines, Circles, Polygons, and Triangles) by drawing them on the screen. During the drawing of an object a temporary dashed object is shown. The dashed object to what would be recognized if the user stops drawing.</string>
     <string name="introduction">Introduction</string>
@@ -46,14 +43,13 @@
     <string name="point">Point</string>
     <string name="polygon">Polygon</string>
     <string name="save_project">Save project</string>
-    <string name="select_mode">Select mode</string>
     <string name="selection_mode">Selection mode</string>
     <string name="settings_1">Settings</string>
     <string name="significant_objects">Significant objects</string>
     <string name="point_construcion">The point can be constructed just by taping on the screen.</string>
     <string name="significant_object_desc">The tool checks relationships between the object that was recognized last and the existing geometric objects. For instance, if the drawn line is close to an altitude of an existing triangle, then the drawn line is updated (docked) to be that altitude, as it was, likely, the intention of the user. In that case, information that line will be recognized as altitude of the triangle is shown.</string>
-    <string name="modes">There is three modes:</string>
-    <string name="app_desc">This is android application for geometric constructions. In this application a user can construct geometric objects just by drawing sketches. The application will automaticly recognize the intention of the user and instead of sketch, it will draw geometric objects.</string>
+    <string name="modes">There are three modes:</string>
+    <string name="app_desc"><![CDATA[Touch&Drag]]> is android application for geometric constructions. In this application a user can construct geometric objects just by drawing sketches. The application will automaticly recognize the intention of the user and instead of sketch, it will draw geometric objects.</string>
     <string name="touch_amp_drag"><![CDATA[Touch&Drag]]></string>
     <string name="undo_and_redo">Undo and redo</string>
     <string name="utilities">Utilities</string>

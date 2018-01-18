@@ -334,7 +334,7 @@
 
 
                 <TextView
-                    android:text="@string/drag_mode_1"
+                    android:text="@string/drag_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
@@ -349,7 +349,7 @@
                     android:textColor="@color/materialcolorpicker__grey" />
 
                 <TextView
-                    android:text="@string/select_mode"
+                    android:text="@string/selection_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/backgroundMain"
