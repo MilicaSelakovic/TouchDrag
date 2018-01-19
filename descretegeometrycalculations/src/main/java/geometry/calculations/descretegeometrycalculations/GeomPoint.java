@@ -124,9 +124,12 @@ public class GeomPoint extends GeometricObject {
 
         if (isInfoObject()) {
             circlePaint.setColor(pointInformations.getInfoColor());
+            canvas.drawCircle(x, y, pointInformations.getPointSize() / 2, circlePaint);
+        } else {
+            canvas.drawCircle(x, y, pointInformations.getPointSize(), circlePaint);
         }
 
-        canvas.drawCircle(x, y, pointInformations.getPointSize(), circlePaint);
+
         circlePaint.setTextSize(pointInformations.getTextSize());
 
         if (!isInfoObject()) {

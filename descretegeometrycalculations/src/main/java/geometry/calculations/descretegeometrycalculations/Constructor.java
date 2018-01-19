@@ -76,6 +76,10 @@ public class Constructor {
                     }
 
                     l = GeometricConstructions.w02((GeomPoint) newobjects.get(array[2]), (GeomPoint) newobjects.get(array[3]));
+                    if (l == null) {
+                        newobjects.put(array[1], null);
+                        break;
+                    }
                     p = (Line) newobjects.get(array[1]);
                     if (p == null) {
                         p = new Line(null, null);
@@ -1612,10 +1616,13 @@ public class Constructor {
                 case "addTriangle":
                     if (newobjects.get(array[1]) != null) {
                         newobjects.get(array[1]).setTriangle((Triangle) newobjects.get(array[2]));
-                        ((Triangle) newobjects.get(array[2])).addSignificant(newobjects.get(array[1]).label(), newobjects.get(array[1]));
-                        if (newobjects.get(array[1]) instanceof GeomPoint) {
-                            ((GeomPoint) newobjects.get(array[1])).setLabelNum(((Triangle) newobjects.get(array[2])).getNumber());
+                        if (newobjects.get(array[2]) != null) {
+                            ((Triangle) newobjects.get(array[2])).addSignificant(newobjects.get(array[1]).label(), newobjects.get(array[1]));
+                            if (newobjects.get(array[1]) instanceof GeomPoint) {
+                                ((GeomPoint) newobjects.get(array[1])).setLabelNum(((Triangle) newobjects.get(array[2])).getNumber());
+                            }
                         }
+
                     }
                     break;
                 case "addLabel":

@@ -29,6 +29,10 @@ class GeometricConstructions {
         if (X == null || Y == null) {
             return null;
         }
+
+        if (X.distance(Y) < 10) {
+            return null;
+        }
         return new Line(X, Y);
     }
 
