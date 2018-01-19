@@ -71,30 +71,9 @@ public class LoadDialog extends Dialog {
                     }
 
                 } catch (FileNotFoundException e) {
-                    final AlertDialog alertDialog = new AlertDialog.Builder(main).create();
-
-                    alertDialog.setMessage("File not found exception\n" + e.getMessage());
-
-                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "CLOSE", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            alertDialog.cancel();
-                        }
-                    });
-
                     cancel();
                     e.printStackTrace();
                 } catch (IOException e) {
-                    final AlertDialog alertDialog = new AlertDialog.Builder(main).create();
-
-                    alertDialog.setMessage("IOException\n" + e.getMessage());
-
-                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "CLOSE", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            alertDialog.cancel();
-                        }
-                    });
                     cancel();
                     e.printStackTrace();
                 }
