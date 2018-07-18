@@ -179,7 +179,7 @@ public class DiscreteCurvature {
                 n = breakPoints.size();
                 GeomPoint first = breakPoints.firstElement();
                 GeomPoint last = breakPoints.lastElement();
-                GeomPoint secondLast = breakPoints.elementAt(n - 1);
+                GeomPoint secondLast = breakPoints.elementAt(n - 2);
 
                 Point P = new Point(last.X() - secondLast.X(), last.Y() - secondLast.Y());
                 Point R = new Point(last.X() - first.X(), last.Y() - first.Y());

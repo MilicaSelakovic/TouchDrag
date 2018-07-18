@@ -1,2 +1,3 @@
 include ':app', ':descretegeometrycalculations'
-include ':openCVLibrary320'
+
+include ':openCVLibrary341'
