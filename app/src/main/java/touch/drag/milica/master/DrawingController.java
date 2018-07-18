@@ -53,7 +53,7 @@ public class DrawingController extends View {
 
     private Recognizer recognizer;
     private UniqueID uniqueID;
-    private Constructor constructor;
+    private GeometricConstructor geometricConstructor;
     boolean actionDown;
 
 
@@ -88,7 +88,7 @@ public class DrawingController extends View {
 
         uniqueID = new UniqueID();
         recognizer = new Recognizer(uniqueID);
-        constructor = new Constructor();
+        geometricConstructor = new GeometricConstructor();
         actionDown = false;
         mode = Mode.MODE_USUAL;
         points = new Vector<>();
@@ -233,7 +233,7 @@ public class DrawingController extends View {
                     case MODE_MOVE:
                         if (current != null) {
                             current.translate(touchX, touchY, geometricObjects);
-                            constructor.reconstruct(commands, geometricObjects);
+                            geometricConstructor.reconstruct(commands, geometricObjects);
                             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                                 if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
                                     ((Triangle) entry.getValue()).recolor(trics);
@@ -267,7 +267,7 @@ public class DrawingController extends View {
                             redoCommands.clear();
                             oldObjects.clear();
                             redo.clear();
-                            constructor.reconstruct(commands, geometricObjects);
+                            geometricConstructor.reconstruct(commands, geometricObjects);
                             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                                 if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
                                     ((Triangle) entry.getValue()).recolor(trics);
@@ -334,7 +334,7 @@ public class DrawingController extends View {
 
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
             scaleObjects();
-            constructor.reconstruct(commands, geometricObjects);
+            geometricConstructor.reconstruct(commands, geometricObjects);
 
             invalidate();
             return true;
@@ -404,7 +404,7 @@ public class DrawingController extends View {
             }
 
             geometricObjects.clear();
-            constructor.reconstructNew(commands, geometricObjects, oldObjects);
+            geometricConstructor.reconstructNew(commands, geometricObjects, oldObjects);
             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                 if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
                     ((Triangle) entry.getValue()).recolor(trics);
@@ -489,7 +489,7 @@ public class DrawingController extends View {
             }
 
             geometricObjects.clear();
-            constructor.reconstructNew(commands, geometricObjects, oldObjects);
+            geometricConstructor.reconstructNew(commands, geometricObjects, oldObjects);
             for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
                 if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
                     ((Triangle) entry.getValue()).recolor(trics);
@@ -573,7 +573,7 @@ public class DrawingController extends View {
         redoCommands.clear();
         uniqueID.reset();
         geometricObjects.clear();
-        int i = constructor.openNew(file, geometricObjects, uniqueID, constants);
+        int i = geometricConstructor.openNew(file, geometricObjects, uniqueID, constants);
         komande.add("add");
         commands.add(file);
         uniqueID.setRedoLast(i + 1);
@@ -647,7 +647,7 @@ public class DrawingController extends View {
             }
         }
 
-        constructor.reconstruct(commands, geometricObjects);
+        geometricConstructor.reconstruct(commands, geometricObjects);
 
     }
 

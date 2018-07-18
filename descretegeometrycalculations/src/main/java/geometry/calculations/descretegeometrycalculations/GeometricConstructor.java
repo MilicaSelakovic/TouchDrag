@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
 
-public class Constructor {
+public class GeometricConstructor {
 
-    public Constructor() {
+    public GeometricConstructor() {
 
     }
 

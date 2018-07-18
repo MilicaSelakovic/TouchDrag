@@ -385,10 +385,10 @@ public class Triangle extends Polygon {
                 copy.put(entry.getKey(), entry.getValue());
             }
 
-            Constructor constructor = new Constructor();
+            GeometricConstructor geometricConstructor = new GeometricConstructor();
             Vector<Vector<String>> tmp = new Vector<>();
             tmp.add(reconstruction);
-            constructor.reconstruct(tmp, copy);
+            geometricConstructor.reconstruct(tmp, copy);
 
             A = (GeomPoint) copy.get("A");
             B = (GeomPoint) copy.get("B");
@@ -1220,10 +1220,10 @@ public class Triangle extends Polygon {
                 copy.put(entry.getKey(), entry.getValue());
             }
 
-            Constructor constructor = new Constructor();
+            GeometricConstructor geometricConstructor = new GeometricConstructor();
             Vector<Vector<String>> tmp = new Vector<>();
             tmp.add(rec);
-            constructor.reconstruct(tmp, copy);
+            geometricConstructor.reconstruct(tmp, copy);
 
 
         }
