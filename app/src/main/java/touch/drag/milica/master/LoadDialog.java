@@ -3,12 +3,8 @@ package touch.drag.milica.master;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -23,12 +19,12 @@ import java.util.Vector;
 
 public class LoadDialog extends Dialog {
     private Activity main;
-    private DrawingView drawingView;
+    private DrawingController drawingController;
 
-    public LoadDialog(Context context, Activity main, DrawingView drawingView) {
+    public LoadDialog(Context context, Activity main, DrawingController drawingController) {
         super(context);
         this.main = main;
-        this.drawingView = drawingView;
+        this.drawingController = drawingController;
     }
 
     @Override
@@ -78,7 +74,7 @@ public class LoadDialog extends Dialog {
                     e.printStackTrace();
                 }
 
-                drawingView.load(commands);
+                drawingController.load(commands);
 
                 cancel();
             }

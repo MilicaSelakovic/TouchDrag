@@ -10,7 +10,7 @@
     tools:showIn="@layout/activity_main">
 
     <view
-        class="touch.drag.milica.master.DrawingView"
+        class="touch.drag.milica.master.DrawingController"
         android:id="@+id/view"
         android:background="@color/backgroundMain"
         android:layout_width="match_parent"

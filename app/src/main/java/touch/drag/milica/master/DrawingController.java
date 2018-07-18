@@ -22,7 +22,7 @@ import java.util.Vector;
 
 import geometry.calculations.descretegeometrycalculations.*;
 
-public class DrawingView extends View {
+public class DrawingController extends View {
 
 
     public enum Mode {
@@ -81,7 +81,7 @@ public class DrawingView extends View {
 
     private TextView textView;
 
-    public DrawingView(Context context, AttributeSet attrs) {
+    public DrawingController(Context context, AttributeSet attrs) {
         super(context, attrs);
         pointInformations = new PointInformations(0);
         setupDrawing();

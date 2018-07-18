@@ -1,6 +1,5 @@
 package touch.drag.milica.master;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,13 +8,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -23,16 +17,9 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
-import java.sql.Array;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Timer;
 import java.util.Vector;
 
 import geometry.calculations.descretegeometrycalculations.PointInformations;
@@ -73,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         parser.fillConstructions(trics, getApplicationContext(), "allconstuctions.json");
 
-        final DrawingView view = ((DrawingView) this.findViewById(R.id.view));
+        final DrawingController view = ((DrawingController) this.findViewById(R.id.view));
         view.setTrics(trics);
         view.setDensity(getResources().getDisplayMetrics().density, getResources().getDisplayMetrics().densityDpi);
         view.setTextView((TextView) this.findViewById(R.id.textView));
@@ -81,19 +68,19 @@ public class MainActivity extends AppCompatActivity {
         this.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((DrawingView) findViewById(R.id.view)).clearPanel();
+                ((DrawingController) findViewById(R.id.view)).clearPanel();
             }
         });
         this.findViewById(R.id.undo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((DrawingView) findViewById(R.id.view)).undo();
+                ((DrawingController) findViewById(R.id.view)).undo();
             }
         });
         this.findViewById(R.id.redo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((DrawingView) findViewById(R.id.view)).redo();
+                ((DrawingController) findViewById(R.id.view)).redo();
             }
         });
 
@@ -159,17 +146,17 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (state) {
                     case 1:
-                        ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_MOVE);
+                        ((DrawingController) findViewById(R.id.view)).setMode(DrawingController.Mode.MODE_MOVE);
                         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.moveFloatBackGround)));
                         fab.setImageResource(R.drawable.ic_action_move);
                         break;
                     case 2:
-                        ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_SELECT);
+                        ((DrawingController) findViewById(R.id.view)).setMode(DrawingController.Mode.MODE_SELECT);
                         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.selectFloatBackGround)));
                         fab.setImageResource(R.drawable.ic_action_select);
                         break;
                     default:
-                        ((DrawingView) findViewById(R.id.view)).setMode(DrawingView.Mode.MODE_USUAL);
+                        ((DrawingController) findViewById(R.id.view)).setMode(DrawingController.Mode.MODE_USUAL);
                         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.drawFloatBackGround)));
                         fab.setImageResource(R.drawable.ic_action_draw);
 
@@ -206,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             pointInformations.setTextSize(extras.getInt("textSize"));
             pointInformations.setShowSignInfo(extras.getBoolean("signInfo"));
             factor = extras.getFloat("factor");
-            DrawingView view = (DrawingView) findViewById(R.id.view);
+            DrawingController view = (DrawingController) findViewById(R.id.view);
             view.setPointInformations(pointInformations);
             view.setSenisitivityFactor(factor);
         }
@@ -262,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     FileOutputStream outputStream;
-                                    DrawingView view = (DrawingView) findViewById(R.id.view);
+                                    DrawingController view = (DrawingController) findViewById(R.id.view);
                                     String array = view.save();
 
                                     try {
@@ -282,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
 
                             FileOutputStream outputStream;
-                            DrawingView view = (DrawingView) findViewById(R.id.view);
+                            DrawingController view = (DrawingController) findViewById(R.id.view);
                             String array = view.save();
 
                             try {
@@ -306,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void open() {
-        DrawingView view = (DrawingView) findViewById(R.id.view);
+        DrawingController view = (DrawingController) findViewById(R.id.view);
         if (view.isUnsaved()) {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
