@@ -15,59 +15,32 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Stack;
 import java.util.Vector;
 
 import geometry.calculations.descretegeometrycalculations.*;
 
 public class DrawingController extends View {
 
-
     public enum Mode {
         MODE_MOVE, MODE_USUAL, MODE_SELECT;
 
     }
 
-    //drawing path
     private Path drawPath;
-    //drawing and canvas paint
     private Paint drawPaint, canvasPaint, objectPaint, drawObject;
-
-    //canvas bitmap
     private Bitmap canvasBitmap;
 
     private Vector<PointF> points;
-    private HashMap<String, GeometricObject> geometricObjects;
-    private HashMap<String, GeometricObject> oldObjects;
 
-    private Stack<Vector<String>> commands;
-    private Stack<String> komande; // add ili translate
-    private Stack<String> redo;
-    private Stack<Vector<String>> redoCommands;
-    private GeometricObject current;
-
-
-    private float prevX, prevY;
-
-    private Recognizer recognizer;
-    private UniqueID uniqueID;
-    private GeometricConstructor geometricConstructor;
     boolean actionDown;
 
 
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.f;
 
-    private HashMap<String, Vector<String>> trics;
-
-    Triangle currentTriangle;
-
     private Mode mode;
     private PointInformations pointInformations;
-    private DiscreteCurvature discreteCurvature;
-    private Constants constants;
 
     public boolean isUnsaved() {
         return unsaved;
@@ -81,33 +54,18 @@ public class DrawingController extends View {
 
     private TextView textView;
 
+    private DrawingModel model;
     public DrawingController(Context context, AttributeSet attrs) {
         super(context, attrs);
         pointInformations = new PointInformations(0);
         setupDrawing();
 
-        uniqueID = new UniqueID();
-        recognizer = new Recognizer(uniqueID);
-        geometricConstructor = new GeometricConstructor();
         actionDown = false;
         mode = Mode.MODE_USUAL;
         points = new Vector<>();
-        geometricObjects = new HashMap<>();
-        oldObjects = new HashMap<>();
-
-        commands = new Stack<>();
-        redoCommands = new Stack<>();
-        komande = new Stack<>();
-        redo = new Stack<>();
-
-        currentTriangle = null;
-
-        trics = new HashMap<>();
 
         mScaleGestureDetector = new ScaleGestureDetector(context, new ScaleListener());
-
-        discreteCurvature = null;
-        constants = null;
+        model = new DrawingModel();
         textView = null;
     }
 
@@ -155,6 +113,7 @@ public class DrawingController extends View {
             if (actionDown) {
                 canvas.drawPath(drawPath, drawPaint);
             }
+            GeometricObject current = model.getCurrent();
 
             if (current != null && actionDown) {
                 current.draw(canvas, drawObject, false, false, pointInformations);
@@ -167,6 +126,7 @@ public class DrawingController extends View {
                 }
             }
         }
+        HashMap<String, GeometricObject> geometricObjects = model.getGeometricObjects();
 
         for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
             if (entry.getValue() != null && !(entry.getValue() instanceof GeomPoint))
@@ -180,6 +140,7 @@ public class DrawingController extends View {
 
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -192,7 +153,6 @@ public class DrawingController extends View {
 
         if (mode == Mode.MODE_MOVE) {
             if (mScaleGestureDetector.isInProgress()) {
-
                 return true;
             }
         }
@@ -210,18 +170,11 @@ public class DrawingController extends View {
                         invalidate();
                         break;
                     case MODE_SELECT:
-                        select(touchX, touchY);
+                        model.select(touchX, touchY);
                         invalidate();
                         break;
                     case MODE_MOVE:
-                        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                            if (entry.getValue() != null && entry.getValue().isUnderCursor(touchX, touchY)) {
-                                current = entry.getValue();
-                                prevX = ((GeomPoint) current).X();
-                                prevY = ((GeomPoint) current).Y();
-                                break;
-                            }
-                        }
+                        model.underCurrsor(touchX, touchY);
                         break;
                     default:
                         break;
@@ -231,21 +184,13 @@ public class DrawingController extends View {
 
                 switch (mode) {
                     case MODE_MOVE:
-                        if (current != null) {
-                            current.translate(touchX, touchY, geometricObjects);
-                            geometricConstructor.reconstruct(commands, geometricObjects);
-                            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                                    ((Triangle) entry.getValue()).recolor(trics);
-                                }
-                            }
-                        }
+                        model.translate(touchX, touchY);
                         invalidate();
                         break;
                     case MODE_USUAL:
                         points.add(touchPoint);
                         drawPath.lineTo(touchX, touchY);
-                        current = recognizer.recognizeCurrent(points, geometricObjects, discreteCurvature);
+                        model.recognize(points);
                         invalidate();
                         break;
                     default:
@@ -256,42 +201,14 @@ public class DrawingController extends View {
             case MotionEvent.ACTION_UP:
                 switch (mode) {
                     case MODE_MOVE:
-                        if (current != null) {
-                            String komanda = "";
-                            current.translate(touchX, touchY, geometricObjects);
-                            komanda += "translate " + current.getId()
-                                    + " " + Float.toString(prevX - touchX) + " " + Float.toString(prevY - touchY);
-
-                            komande.push(komanda);
-
-                            redoCommands.clear();
-                            oldObjects.clear();
-                            redo.clear();
-                            geometricConstructor.reconstruct(commands, geometricObjects);
-                            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                                    ((Triangle) entry.getValue()).recolor(trics);
-                                }
-                            }
-                        }
-                        current = null;
+                        model.translateFinish(touchX, touchY);
                         unsaved = true;
                         invalidate();
                         break;
                     case MODE_USUAL:
                         actionDown = false;
-                        if (!redo.empty())
-                            uniqueID.restore();
-
-                        redoCommands.clear();
-                        oldObjects.clear();
-                        redo.clear();
-
-                        if (recognizer.recognize(points, geometricObjects, commands, discreteCurvature)) {
-                            komande.push("add");
-                        }
+                        model.drawingFinished(points);
                         drawPath.reset();
-                        current = null;
                         unsaved = true;
                         invalidate();
                         break;
@@ -308,14 +225,7 @@ public class DrawingController extends View {
 
 
     public void clearPanel() {
-        geometricObjects.clear();
-        commands.clear();
-        oldObjects.clear();
-        komande.clear();
-        redo.clear();
-        redoCommands.clear();
-
-        uniqueID.reset();
+        model.clear();
         unsaved = true;
         invalidate();
     }
@@ -333,183 +243,28 @@ public class DrawingController extends View {
             mScaleFactor = detector.getScaleFactor();
 
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
-            scaleObjects();
-            geometricConstructor.reconstruct(commands, geometricObjects);
-
+            model.update(mScaleFactor, getWidth(), getHeight());
             invalidate();
             return true;
         }
     }
 
-    private void scaleObjects() {
-        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() != null)
-                entry.getValue().scale(mScaleFactor, getWidth(), getHeight());
-        }
-    }
-
 
     public void redo() {
-        if (!redo.isEmpty()) {
-            String kom = redo.pop();
-            if (kom.compareTo("add") == 0) {
-                Vector<String> redoCom = redoCommands.pop();
-                int max = -1;
-                int maxPoint = -1;
-
-                for (String command : redoCom) {
-                    String array[] = command.split("\\s+");
-                    GeometricObject gobj = geometricObjects.get(array[1]);
-                    if (gobj != null && gobj.getTriangle() != null) {
-                        gobj.getTriangle().addSignificant(gobj.label(), gobj);
-                    }
-                    if (gobj != null && gobj instanceof Triangle) {
-                        String tid = ((Triangle) gobj).getNumber();
-                        uniqueID.setRedoTrin(Integer.parseInt(tid));
-                    }
-                    int i = Integer.parseInt(array[1]);
-                    if (gobj != null && gobj instanceof GeomPoint) {
-                        int k = Integer.parseInt(((GeomPoint) gobj).getPointId());
-                        if (k > maxPoint) {
-                            maxPoint = k;
-                        }
-                    }
-                    if (i > max) {
-                        max = i;
-                    }
-                }
-
-                uniqueID.setRedoLast(max);
-
-                if (maxPoint != -1) {
-                    uniqueID.setRedoPoint(maxPoint);
-                }
-
-                commands.push(redoCom);
-                komande.push("add");
-            } else {
-                String[] array = kom.split("\\s+");
-                float dx = Float.parseFloat(array[2]);
-                float dy = Float.parseFloat(array[3]);
-
-                GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
-
-                point.translate(point.X() + dx, point.Y() + dy, geometricObjects);
-
-                komande.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
-
-                if (array.length > 4) {
-                    ((Triangle) geometricObjects.get(array[4])).recontruct(trics, array[5], array[6], array[7]);
-                }
-            }
-
-            geometricObjects.clear();
-            geometricConstructor.reconstructNew(commands, geometricObjects, oldObjects);
-            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                    ((Triangle) entry.getValue()).recolor(trics);
-                }
-            }
-
-            unsaved = true;
-            invalidate();
-        }
-
+        model.redo();
+        unsaved = true;
+        invalidate();
     }
 
     public void undo() {
+        model.undo();
 
-        if (!komande.isEmpty()) {
-            if (oldObjects.isEmpty()) {
-                for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                    oldObjects.put(entry.getKey(), entry.getValue());
-                    if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                        ((Triangle) entry.getValue()).recolor(trics);
-                    }
-                }
-
-            }
-
-            String kom = komande.pop();
-            if (kom.compareTo("add") == 0) {
-                Vector<String> redoCom = commands.pop();
-                int min = -1;
-                int minPoint = -1;
-
-                for (String command : redoCom) {
-                    String array[] = command.split("\\s+");
-                    GeometricObject gobj = geometricObjects.get(array[1]);
-                    if (gobj != null && gobj.getTriangle() != null) {
-                        gobj.getTriangle().removeSignificant(gobj.label());
-                    }
-                    if (gobj != null && gobj instanceof Triangle) {
-                        String tid = ((Triangle) gobj).getNumber();
-                        uniqueID.setRedoTrin(Integer.parseInt(tid));
-                    }
-
-                    if (gobj != null && gobj instanceof GeomPoint) {
-                        int k = Integer.parseInt(((GeomPoint) gobj).getPointId());
-                        if (k != -1 && (k < minPoint || minPoint == -1)) {
-                            minPoint = k;
-                        }
-                    }
-                    int i = Integer.parseInt(array[1]);
-                    if (i < min || min == -1) {
-                        min = i;
-                    }
-                }
-
-
-                uniqueID.setRedoLast(min);
-                if (minPoint != -1) {
-                    uniqueID.setRedoPoint(minPoint);
-                }
-                redoCommands.push(redoCom);
-                redo.push("add");
-                // geometricObjects.clear();
-            } else {
-                String[] array = kom.split("\\s+");
-                float dx = Float.parseFloat(array[2]);
-                float dy = Float.parseFloat(array[3]);
-
-                GeomPoint point = (GeomPoint) geometricObjects.get(array[1]);
-
-                point.translate(point.X() + dx, point.Y() + dy, geometricObjects);
-
-                redo.push("translate " + array[1] + " " + Float.toString(-dx) + " " + Float.toString(-dy));
-
-                if (array.length > 4) {
-                    ((Triangle) geometricObjects.get(array[4])).recontruct(trics, array[5], array[6], array[7]);
-                    for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                        if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                            ((Triangle) entry.getValue()).recolor(trics);
-                        }
-                    }
-                }
-            }
-
-            geometricObjects.clear();
-            geometricConstructor.reconstructNew(commands, geometricObjects, oldObjects);
-            for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-                if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                    ((Triangle) entry.getValue()).recolor(trics);
-                }
-            }
-
-            unsaved = true;
-            invalidate();
-        }
+        unsaved = true;
+        invalidate();
 
     }
 
 
-    private void select(float x, float y) {
-        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() != null && entry.getValue() instanceof GeomPoint && ((GeomPoint) entry.getValue()).underCursor(x, y)) {
-                ((GeomPoint) entry.getValue()).changeType(trics);
-            }
-        }
-    }
 
     public void setPointInformations(PointInformations pointInformations) {
         this.pointInformations = pointInformations;
@@ -518,8 +273,8 @@ public class DrawingController extends View {
     }
 
     public void setDensity(double density, int densityDPI) {
-        this.constants = new Constants(density, densityDPI);
-        this.discreteCurvature = new DiscreteCurvature(constants);
+        Constants constants = new Constants(density, densityDPI);
+        model.setUp(constants, new DiscreteCurvature(constants));
         this.pointInformations = new PointInformations(densityDPI);
     }
 
@@ -528,127 +283,27 @@ public class DrawingController extends View {
     }
 
     public void setTrics(HashMap<String, Vector<String>> trics) {
-        this.trics = trics;
+        model.setTrics(trics);
     }
 
     public void setSenisitivityFactor(float factor) {
-        constants.setFactor(factor);
+        model.setSenisitivity(factor);
     }
 
     public String save() {
-        Iterator<Vector<String>> stackedCommands = commands.iterator();
-        StringBuilder stringBuilder = new StringBuilder();
-        while (stackedCommands.hasNext()) {
-            Vector<String> scommands = stackedCommands.next();
-            for (String command : scommands) {
-                String array[] = command.split("\\s+");
-                GeometricObject gobj = geometricObjects.get(array[1]);
-                if (gobj == null) {
-                    continue;
-                }
-
-                String triangle = "";
-                if (array[0].compareTo("point") == 0) {
-                    command = "point " + gobj.getId() + " " + ((GeomPoint) gobj).X() + " " + ((GeomPoint) gobj).Y();
-                } else {
-                    if (gobj.getTriangle() != null) {
-                        triangle += "addTriangle " + gobj.getId() + " " + gobj.getTriangle().getId();
-                    }
-                }
-                stringBuilder.append(command).append("\n");
-                stringBuilder.append("addLabel ").append(gobj.getId()).append(" ").append(gobj.label()).append("\n");
-                stringBuilder.append(triangle).append("\n");
-            }
-        }
-
-
-        return stringBuilder.toString();
+        return model.save();
     }
 
 
     public void load(Vector<String> file) {
-        oldObjects.clear();
-        komande.clear();
-        redo.clear();
-        redoCommands.clear();
-        uniqueID.reset();
-        geometricObjects.clear();
-        int i = geometricConstructor.openNew(file, geometricObjects, uniqueID, constants);
-        komande.add("add");
-        commands.add(file);
-        uniqueID.setRedoLast(i + 1);
-        uniqueID.setRedoPoint(Integer.parseInt(uniqueID.getPointNum()) - 1);
-        uniqueID.setRedoTrin(Integer.parseInt(uniqueID.getTrinagleNum()) - 1);
-        uniqueID.restore();
-        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() != null && entry.getValue() instanceof Triangle) {
-                ((Triangle) entry.getValue()).recolor(trics);
-            }
-        }
+        model.load(file);
         invalidate();
     }
 
 
     public void center() {
-        float minX = 0, minY = 0, maxX = 0, maxY = 0;
-        boolean id = true;
-
-        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() != null && entry.getValue() instanceof GeomPoint) {
-                float x = ((GeomPoint) entry.getValue()).X();
-                float y = ((GeomPoint) entry.getValue()).Y();
-
-                if (id) {
-                    minX = x;
-                    minY = y;
-                    maxX = x;
-                    maxY = y;
-                    id = false;
-
-                } else {
-                    if (x < minX) {
-                        minX = x;
-                    }
-
-                    if (x > maxX) {
-                        maxX = x;
-                    }
-
-                    if (y < minY) {
-                        minY = y;
-                    }
-
-                    if (y > maxY) {
-                        maxY = y;
-                    }
-                }
-            }
-        }
-
-        if (id) {
-            return;
-        }
-
-        float dx = (maxX + minX) / 2;
-        float w = getWidth() / 2.0f;
-        float dy = (maxY + minY) / 2;
-        float h = getHeight() / 2.0f;
-
-        float fx = (maxX - minX) / (0.95f * w);
-        float fy = (maxY - minY) / (0.95f * h);
-
-        for (Map.Entry<String, GeometricObject> entry : geometricObjects.entrySet()) {
-            if (entry.getValue() != null) {
-                entry.getValue().translateWhole(dx - w, dy - h);
-                float min = fx > fy ? fx : fy;
-                if (min > 0.01f) {
-                    entry.getValue().scale(1.f / min, w, h);
-                }
-            }
-        }
-
-        geometricConstructor.reconstruct(commands, geometricObjects);
-
+        model.center(getWidth(), getHeight());
+        invalidate();
     }
 
 }
